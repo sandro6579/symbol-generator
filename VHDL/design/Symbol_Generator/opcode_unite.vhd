@@ -14,48 +14,48 @@
 --
 ------------------------------------------------------------------------------------------------
 -- Revision:
---			Number		Date		Name								Description			
---			1.00		16.3.2012	Olga Liberman and Yoav Shvartz		Creation
---			1.10		12.4.2012	Olga Liberman						Aesthetics: header, comments, ports and signals names, synchronic fsm
---			2.00		20.4.2021	Olga Liberman and Yoav Shvartz		Wushbone signals are dealt in the upper level
+--			Number		Date		     Name								                      Description			
+--			1.00		 16.3.2012	  Olga Liberman and Yoav Shvartz		  Creation
+--			1.10		 12.4.2012	  Olga Liberman						               Aesthetics: header, comments, ports and signals names, synchronic fsm
+--			2.00		 20.4.2012	  Olga Liberman and Yoav Shvartz		  Wishbone signals are dealt in the upper level
+--    2.10   08.05.2012  Olga Liberman	and Yoav Shvartz    addition of "when others" to the case, default value to outputs
 --
 ------------------------------------------------------------------------------------------------
 --	Todo:
---	(1) The wbs signals shoulb be dealt in the upper level, also the wbs_adr comparison
+--	(1) The wbs signals should be dealt in the upper level, also the wbs_adr comparison
 --		with our address.
---	(2) to add the ports: opu_data_in and opu_data_in_valid
+--	(2) 
 --	(3)
 ------------------------------------------------------------------------------------------------
 
 
 library ieee;
 use IEEE.std_logic_1164.all;
-use IEEE.std_logic_unsigned.all;
+use ieee.std_logic_arith.all;
 
 entity opcode_unite is
 
   port (
-	clk_133 : in std_logic; -- the main clock to which all the internal logic of the Symbol Generator block is synchronized.
-    reset_133_n : in std_logic; -- asynchronous reset
-	opu_data_in : in std_logic_vector(7 downto 0); -- data from wbs
-	opu_data_in_valid : in std_logic; -- valid signal for data from wbs
-	opu_data_in_cnt : in std_logic_vector(9 downto 0); -- number of changes in bytes - 1, each change is 3 bytes
-    -- wbs_adr_i : in std_logic_vector(9 downto 0); -- this signal is sent from the WBS. It indicates the address of the Display Controller Top. With it we can know if our blocks inside Display Controller are requested – TBD with Beeri
-    -- wbs_tga_i : in std_logic_vector(9 downto 0); -- this signal is sent from the WBS. It indicates how many words are there that are transmitted to us (in other words, it indicate the field Data_Length in the message pack).
-    -- wbs_dat_i : in std_logic_vector(7 downto 0); -- this signal is sent from the WBS. It indicates the data itself from the field Payload in the message pack.
+	 clk : in std_logic; -- the main clock to which all the internal logic of the Symbol Generator block is synchronized.
+   reset_n : in std_logic; -- asynchronous reset
+	 opu_data_in : in std_logic_vector(7 downto 0); -- data from wbs
+	 opu_data_in_valid : in std_logic; -- valid signal for data from wbs
+	 -- opu_data_in_cnt : in std_logic_vector(9 downto 0); -- number of changes in bytes - 1, each change is 3 bytes
+   -- wbs_adr_i : in std_logic_vector(9 downto 0); -- this signal is sent from the WBS. It indicates the address of the Display Controller Top. With it we can know if our blocks inside Display Controller are requested – TBD with Beeri
+   -- wbs_tga_i : in std_logic_vector(9 downto 0); -- this signal is sent from the WBS. It indicates how many words are there that are transmitted to us (in other words, it indicate the field Data_Length in the message pack).
+   -- wbs_dat_i : in std_logic_vector(7 downto 0); -- this signal is sent from the WBS. It indicates the data itself from the field Payload in the message pack.
     -- wbs_cyc_i : in std_logic; -- this signal is sent from the WBS. It indicates the signal cycle required by the Wishbone protocol.
     -- wbs_stb_i : in std_logic; -- this signal is sent from the WBS. It indicates the signal strobe required by the Wishbone protocol.
     -- wbs_ack_o : out std_logic; -- The acknowledge signal required by the Wishbone protocol.
     -- wbs_stall_o : out std_logic; -- The stall signal required by the Wishbone protocol. It indicates that the slave is busy, therefore, the will be repeated until stall is low.
     -- wbs_err_o : out std_logic; -- The error signal required by the Wishbone protocol. TBD – how we use it?
-    opu_wr_en : out std_logic; -- This signal is an enable signal to write opcodes to the Opcode Store block. It is active when a new opcode was united and is ready to be stored in the FIFO.
-    opu_data_out : out std_logic_vector(23 downto 0); -- The data signal is the united Opcode to be stored in the Opcode store block.
+    opu_wr_en : out std_logic := '0'; -- This signal is an enable signal to write opcodes to the Opcode Store block. It is active when a new opcode was united and is ready to be stored in the FIFO.
+    opu_data_out : out std_logic_vector(23 downto 0) := (others=>'0') -- The data signal is the united Opcode to be stored in the Opcode store block.
     --opu_cnt : out std_logic_vector(9 downto 0) -- sampling the tga signal when data is active on the wbs
-	counter :out std_logic_vector(9 downto 0) := (others => '0');  -- counter signal to count the message packs from wbs
-  test :out std_logic := '0'
+	  --counter :out std_logic_vector(9 downto 0) := (others => '0');  -- counter signal to count the message packs from wbs
   );
   
-end opcode_unite;
+end entity opcode_unite;
 
 architecture opcode_unite_rtl of opcode_unite is
 
@@ -72,7 +72,7 @@ begin
 	--Output data
 	opu_data_out_proc:
 	opu_data_out <= opcode;
-	counter <= counter_i;
+	--counter <= counter_i;
 	
 
 	---------------------------------------------------------------------------------
@@ -80,7 +80,7 @@ begin
 	---------------------------------------------------------------------------------
 	-- The process is the opcode unite fsm
 	---------------------------------------------------------------------------------
-	opu_fsm_proc: process(clk_133, reset_133_n)
+	opu_fsm_proc: process(clk, reset_n)
     begin
       
 		  --------------------------------------------------------
@@ -92,11 +92,11 @@ begin
 		  -- opu_wr_en <= '0';
 		  --------------------------------------------------------
 	  
-		if reset_133_n='0' then
+		if reset_n='0' then
 			current_sm <= idle_st;
 			opcode <= (others=>'0');
 			counter_i <= (others=>'0');
-		elsif rising_edge(clk_133) then
+		elsif rising_edge(clk) then
       
       
 			case current_sm is
@@ -109,7 +109,7 @@ begin
 					if ( opu_data_in_valid='1' ) then
 						opcode(15 downto 0) <= (others=>'0'); -- reset the lower bits of the opcode register
 						opcode(23 downto 16) <= opu_data_in; -- the higher bits receive the
-						counter_i <= counter_i + 1;
+            counter_i	<= unsigned(counter_i) + 1;
 						current_sm <= mp1_st;
 					else
 						opcode <= (others=>'0');
@@ -121,10 +121,8 @@ begin
 				when mp1_st =>
 					if ( opu_data_in_valid='1' ) then
 						opcode(15 downto 8) <= opu_data_in; -- reset the middle bits of the opcode register
-						counter_i <= counter_i + 1;
+						counter_i <= unsigned(counter_i) + 1;
 						current_sm <= mp2_st;
-					else
-						current_sm <= mp1_st;
 					end if;
 					opu_wr_en <= '0';
 					
@@ -132,11 +130,9 @@ begin
 				when mp2_st =>
 					if ( opu_data_in_valid='1' ) then
 						opcode(7 downto 0) <= opu_data_in; -- reset the lower bits of the opcode register
-						counter_i <= counter_i + 1;
+						counter_i <= unsigned(counter_i) + 1;
 						opu_wr_en <= '1';
 						current_sm <= idle_st;
-					else 
-						current_sm <= mp2_st;
 					end if;
 				
 				-- third packet of the current opcode (current change)
@@ -149,23 +145,17 @@ begin
 				  -- elsif (counter = wbs_tga_i) then -- we finished all the changes
 					-- current_sm <= idle_st;
 				  -- end if;
+				  
+				  when others =>
+				    opu_wr_en <= '0';
+				    opcode <= (others=>'0');
+						counter_i <= (others=>'0');
+						current_sm <= idle_st;
+						
 		
 			  end case;
 		end if;
   end process opu_fsm_proc;
   
-  --test for ourselves!!! Tghe world is trumbeling apart!!!
-  process(clk_133, reset_133_n)
-  begin
-    if rising_edge(clk_133) then
-      if ( opu_data_in_valid='1' ) then
-        test <='1';
-      else
-        test<='0';
-      end if;
-    end if;
-  end process;
-    
-  
-end opcode_unite_rtl;
+end architecture opcode_unite_rtl;
   

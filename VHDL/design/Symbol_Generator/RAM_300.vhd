@@ -18,7 +18,7 @@
 -- Each row stores the address of the wanted symbol in the SDRAM
 --
 -- Note: no "read enable" is needed
--- If the read address is valid, then the data will be on the dataout signal 
+-- If the read address is valid, then the data will be on the ram_data_out signal 
 --
 ------------------------------------------------------------------------------------------------
 -- Revision:
@@ -38,15 +38,14 @@ use ieee.numeric_std.all ;
 
 entity RAM_300 is
   port (
-    clk         : in std_logic;	 							-- clock
---  reset_n     : in std_logic; 						-- asynchronous reset
-    we          : in  std_logic;
-    write_addr  : in  std_logic_vector(8 downto 0);
---  re          : in  std_logic;
-    read_addr   : in  std_logic_vector(8 downto 0);
-    datain      : in  std_logic_vector(12 downto 0);
-    dataout     : out std_logic_vector(12 downto 0) 
-
+    clk        : in  std_logic;	 						
+	reset_n    : in  std_logic; 						
+    ram_addr_wr    : in  std_logic_vector(8 downto 0);
+	ram_wr_en      : in  std_logic;
+	ram_data_in    : in  std_logic_vector(12 downto 0);
+	ram_rd_en      : in  std_logic;
+    ram_addr_rd    : in  std_logic_vector(8 downto 0);
+    ram_data_out   : out std_logic_vector(12 downto 0)
   );
 end entity RAM_300;
 
@@ -56,21 +55,22 @@ architecture RAM_300_rtl of RAM_300 is
   signal mem : ram_type; 
   
 begin
-    
-    ram_proc: process(clk) is
-    begin
-      if rising_edge(clk) then
-        
-        if ( (we = '1') and ( write_addr < 300 ) ) then
-            mem(to_integer(unsigned(write_addr))) <= datain;
-        end if;
-        
---      if ( (re = '1') and ( read_addr < 300 ) ) then
-        if ( read_addr < 300 ) then
-            dataout <= mem(to_integer(unsigned(read_addr)));
-        end if;
 
-      end if;
+    ram_proc: process(clk,reset_n) is
+    begin
+		if (reset_n='0') then
+			ram_data_out <= (others=>'0');
+			for i in 0 to 299 loop
+				mem(i) <= (others=>'0');
+			end loop;
+		elsif rising_edge(clk) then
+			if ( (ram_wr_en = '1') and ( to_integer(unsigned(ram_addr_wr)) < 300 ) ) then
+				mem(to_integer(unsigned(ram_addr_wr))) <= ram_data_in;
+			end if;
+			if ( (ram_rd_en = '1') and (to_integer(unsigned(ram_addr_rd)) < 300 ) )  then
+				ram_data_out <= mem(to_integer(unsigned(ram_addr_rd)));
+			end if;
+		end if;
     end process ram_proc;
   
 end RAM_300_rtl;  
