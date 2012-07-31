@@ -10,9 +10,11 @@
 --
 ------------------------------------------------------------------------------------------------
 -- Revision:
---			Number		 Date		          Name								  Description			
---			1.00		   12.6.2012	     Olga Liberman and Yoav Shvartz		  Creation
---			2.00		   13.6.2012	     Olga Liberman and Yoav Shvartz		  added the inputs: fifo_a_rd_en and fifo_b_rd_en
+--			Number		Date			Name								Description			
+--			1.00		12.06.2012	   	Olga Liberman and Yoav Shvartz		Creation
+--			2.00		13.06.2012		Olga Liberman and Yoav Shvartz		added the inputs: fifo_a_rd_en and fifo_b_rd_en
+--			2.01		16.07.2012		Olga Liberman						fifo_a_rd_en and fifo_b_rd_en names are chamged to rd_en_a and rd_en_b
+--																			width_g generic is added
 --
 ------------------------------------------------------------------------------------------------
 --	Todo:
@@ -26,17 +28,19 @@ library ieee;
 use IEEE.std_logic_1164.all;
 
 entity mux2 is
-
-  port (
-	clk 		    : 		in std_logic;                       -- the main clock to which all the internal logic of the Symbol Generator block is synchronized.
-	reset_n 	  	: 		in std_logic;                       -- asynchronous reset
-	mux_din_a 		: 		in std_logic_vector(7 downto 0);    -- data from fifo_a
-	mux_din_b 		: 		in std_logic_vector(7 downto 0);    -- data from fifo_b
-	--mux_sel 	  	: 		in std_logic;                       -- selection of enteries: mux_sel='0' -> mux_din_a , mux_sel='1' -> mux_din_b
-	fifo_a_rd_en 	: 		in std_logic; 						-- read enable to fifo a
-	fifo_b_rd_en 	: 		in std_logic; 						-- read enable to fifo b
-	mux_dout	  	: 		out std_logic_vector(7 downto 0)    -- data out to DC FIFO
-  );
+	generic (
+		width_g			:		positive	:= 8 							-- Width of data
+	);
+	port (
+		clk 		    : 		in std_logic;                       		-- the main clock to which all the internal logic of the Symbol Generator block is synchronized.
+		reset_n 	  	: 		in std_logic;                       		-- asynchronous reset
+		mux_din_a 		: 		in std_logic_vector(width_g-1 downto 0);    -- data from fifo_a
+		mux_din_b 		: 		in std_logic_vector(width_g-1 downto 0);    -- data from fifo_b
+		--mux_sel 	  	: 		in std_logic;                       		-- selection of enteries: mux_sel='0' -> mux_din_a , mux_sel='1' -> mux_din_b
+		rd_en_a 		: 		in std_logic; 								-- read enable to fifo a
+		rd_en_b 		: 		in std_logic; 								-- read enable to fifo b
+		mux_dout	  	: 		out std_logic_vector(width_g-1 downto 0)    -- data out to DC FIFO
+	);
   
 end entity mux2;
 
@@ -63,9 +67,9 @@ begin
 				-- mux_dout <= mux_din_b_i;
 			-- end if;
 			
-			if ( fifo_a_rd_en = '1' ) then
+			if ( rd_en_a = '1' ) then
 				mux_dout <= mux_din_a;
-			elsif ( fifo_b_rd_en = '1' ) then
+			elsif ( rd_en_b = '1' ) then
 				mux_dout <= mux_din_b;
 			else
 				mux_dout <= (others=>'0');

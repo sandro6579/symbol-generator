@@ -28,8 +28,8 @@ use ieee.numeric_std.all ;
 
 entity opcode_store is
   port (
-    clk : in std_logic;	 							-- clock in domain 133Mhz.
-    reset_n : in std_logic; 						-- asynchronous reset. 
+    clk : in std_logic;	 								-- clock in domain 133Mhz.
+    reset_n : in std_logic; 							-- asynchronous reset. 
     op_cnt : in std_logic_vector(9 downto 0);   		-- number of total changes X 3: 1 change (24 bits) = add/remove 1 symbol ( 24 bits are being sent in 3 packs of 8 bits)
     op_str_valid : in std_logic; 						-- connected from opcode_unite block, opu_wr_en signal
     op_str_data_in : in std_logic_vector(23 downto 0); 	-- connected from opcode_unite block, opu_data_out signal
@@ -37,7 +37,7 @@ entity opcode_store is
     ram_addr_wr : out std_logic_vector(8 downto 0);  	-- ram's address to be written into. 
     ram_wr_en : out std_logic;							-- ram write enable
     ram_data : out std_logic_vector(12 downto 0);		-- data sent to ram
-    mng_en : out std_logic;							-- activating Read_Manager 
+    mng_en : out std_logic;								-- activating Read_Manager 
     op_str_empty : out std_logic;						-- FIFO is empty (debug)
     op_str_full : out std_logic;						-- FIFO is full (debug)
     op_str_used : out std_logic_vector(9 downto 0)		-- current number of elements in FIFO (debug)
@@ -79,15 +79,15 @@ architecture opcode_store_rtl of opcode_store is
   signal start_trigger_2 : std_logic; 						-- The derivative of op_str_rd_start which connected to vsync (we check when it changes from 0 to 1) 
   signal start_trigger_3 : std_logic; 						-- The derivative of op_str_rd_start which connected to vsync (we check when it changes from 0 to 1) 
   signal start_trigger_4 : std_logic; 						-- The derivative of op_str_rd_start which connected to vsync (we check when it changes from 0 to 1) 
-  signal flush_fifo : std_logic; 							-- ???
-  signal din_fifo : std_logic_vector ( 23 downto 0 );	-- data to FIFO sent from opcode_unite  why he doesnt recognize 
+  signal flush_fifo : std_logic; 							-- FIFO flush data
+  signal din_fifo : std_logic_vector ( 23 downto 0 );		-- data to FIFO sent from opcode_unite  why he doesnt recognize 
   signal wr_en_fifo : std_logic;   							-- write enable FIFO	
   signal rd_en_fifo : std_logic;							-- read  enable FIFO
-  signal dout_fifo : std_logic_vector( 23 downto 0);			-- data sent to ram	
+  signal dout_fifo : std_logic_vector( 23 downto 0);		-- data sent to ram	
   signal dout_valid_fifo : std_logic;       				-- data valid
-  signal fifo_full : std_logic;   							
-  signal fifo_empty : std_logic;
-  signal rd_en_fifo_i : std_logic;
+  signal fifo_full : std_logic;   							-- FIFO is full
+  signal fifo_empty : std_logic;							-- FIFO is empty
+  signal rd_en_fifo_i : std_logic;							-- sampling of rd_en_fifo
   signal rd_mng_1 : std_logic; -- internal signal to create a delay of 2 clocks in mng_en
   signal rd_mng_2 : std_logic; -- internal signal to create a delay of 2 clocks in mng_en
   
@@ -109,19 +109,17 @@ begin
 		(
 			clk 				=> 		clk	,						-- Clock
 			rst 				=> 		reset_n,	 				-- Reset
-			din 				=> 		din_fifo	,   					-- Input Data
-			wr_en 				=> 		wr_en_fifo,
+			din 				=> 		din_fifo,		   			-- Input Data
+			wr_en 				=> 		wr_en_fifo,					-- Write Enable
 			rd_en 				=> 		rd_en_fifo, 				-- Read Enable (request for data)
 			flush				=> 		flush_fifo,					-- Flush data
 			dout 				=> 		dout_fifo, 					-- Output Data
-			dout_valid			=> 		dout_valid_fifo,  	-- Output data is valid
-			afull 				=> 		open,							-- FIFO is almost full
-			--full 				=> 		op_str_full 	, 					-- FIFO is full
-			full 				=> 		fifo_full,	-- olga
-			aempty 				=> 		open, 							-- FIFO is almost empty
-      --empty 				=> 		op_str_empty	, 					-- FIFO is empty
-			empty				=>		fifo_empty,	-- olga
-			used				=>  	op_str_used						-- Current number of elements in FIFO. Note the range. In case depth_g is 2^x, then the extra bit will be used
+			dout_valid			=> 		dout_valid_fifo,  			-- Output data is valid
+			afull 				=> 		open,						-- FIFO is almost full
+			full 				=> 		fifo_full,					-- FIFO is full
+			aempty 				=> 		open, 						-- FIFO is almost empty
+			empty				=>		fifo_empty,					-- FIFO is empty
+			used				=>  	op_str_used					-- Current number of elements in FIFO. Note the range. In case depth_g is 2^x, then the extra bit will be used
 		);
 	
 	------------------------------------------------------
@@ -131,21 +129,21 @@ begin
 	vsync_active_proc: process (clk, reset_n)
 	begin
 		if reset_n='0' then
-		  start_trigger <=  '0';
-		  start_trigger_1 <=  '0';			
-		  start_trigger_2 <=  '0';
-		  start_trigger_3 <=  '0';
-		  start_trigger_4 <=  '0';
+			start_trigger <=  '0';
+			start_trigger_1 <=  '0';			
+			start_trigger_2 <=  '0';
+			start_trigger_3 <=  '0';
+			start_trigger_4 <=  '0';
 		elsif rising_edge (clk) then
-		  start_trigger_1 <= op_str_rd_start;			--sampling start_trigger twice because start_trigger (VSYNC) operates at 40MHz and the clk 100MHz  
-		  start_trigger_2 <= start_trigger_1;
+			start_trigger_1 <= op_str_rd_start;			--sampling start_trigger twice because start_trigger (VSYNC) operates at 40MHz and the clk 100MHz  
+			start_trigger_2 <= start_trigger_1;
 			start_trigger_3 <= start_trigger_2; 
-		  start_trigger_4 <= start_trigger_3;
+			start_trigger_4 <= start_trigger_3;
 		 	if ( (start_trigger_1 = '0') and (start_trigger_2 = '0') ) and ( (start_trigger_3 = '1') and (start_trigger_4 = '1') ) then -- olga
-			start_trigger <= '1';
-		  else
-			start_trigger <= '0';
-		  end if; 
+				start_trigger <= '1';
+			else
+				start_trigger <= '0';
+			end if; 
 		end if;
 	end process vsync_active_proc;
   
@@ -189,7 +187,7 @@ begin
 			rd_mng_2 <= '0';
 			flush_fifo <= '1';
 		elsif rising_edge (clk) then
-		  flush_fifo <= '0';
+			flush_fifo <= '0';
 			if ( (start_trigger = '1') and (fifo_empty = '0') ) then
 				rd_en_fifo <='1';
 				counter <= counter + three_c;
@@ -225,7 +223,7 @@ begin
 			if (rd_en_fifo_i='1') then
 			  ram_wr_en <= '1';
 				ram_addr_wr <= std_logic_vector( to_unsigned(20*to_integer(unsigned( dout_fifo(8 downto 5))) + to_integer(unsigned( dout_fifo(4 downto 0))),9) );
-				-- bit 21 is the type bit: add or remove the symbol
+				-- bit 22 is the type bit: add or remove the symbol
 				if ( dout_fifo(22)='0' ) then 
 					ram_data <= (others => '0');
 				else 
@@ -241,4 +239,4 @@ begin
 	end process ram_write_proc;
     
   
-end opcode_store_rtl;  
+end architecture opcode_store_rtl;  

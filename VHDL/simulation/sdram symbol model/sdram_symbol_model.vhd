@@ -107,7 +107,7 @@ begin
 			wait for 10 ns;
 		end loop;  
 		
-		file_open(file_pointer,"memory.txt",READ_MODE);   
+		file_open(file_pointer,memory_file,READ_MODE);   
 		-- print("file open");
 		while not endfile(file_pointer) loop --till the end of file is reached continue.
 			readline (file_pointer,line_num);  --Read the whole line from the file

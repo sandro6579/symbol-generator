@@ -6,9 +6,9 @@
 -- Project		:	Symbol Generator Project
 ------------------------------------------------------------------------------------------------
 -- Description:
--- reading data from the RAM, sending it to SDRAM through WBM , receiving symbols from SDRAM 
+-- reading data from the RAM, sending a request to SDRAM through WBM , receiving symbols from SDRAM 
 -- through WBM, saving it in internal FIFOs, sending it to VESA according to certain algorithm.
--- The Read Manager block is the controlling "brain" of the Symbol Generator block.
+-- The Manager block is the controlling "brain" of the Symbol Generator block.
 -- The main functions of this block:
 -- 1.	Calculating the row in the RAM, from which it manages the read. Including asserting the RAM_rd_en signal for the RAM.
 -- 2.	Receiving the address of the symbol in the SDRAM from the RAM, and calculating the row and column in the SDRAM according to the current video row in the display frame.
@@ -17,14 +17,17 @@
 --
 ------------------------------------------------------------------------------------------------
 -- Revision:
---			Number		Date		       Name								                      Description			
---			1.00		  27.3.2012	   Olga Liberman and Yoav Shvartz		  Creation
---			1.10		  12.4.2012	   Olga Liberman						               Aesthetics: header, comments, ports and signals names, synchronic fsm
---    1.20    08.05.2012   Olga Liberman and Yoav Shvartz    
+--			Number		Date		    Name								  Description			
+--			1.00		27.3.2012	   	Olga Liberman and Yoav Shvartz		  Creation
+--			1.01		12.4.2012	   	Olga Liberman						  Aesthetics: header, comments, ports and signals names, synchronic fsm
+--    		1.02		08.05.2012   	Olga Liberman and Yoav Shvartz    
+--			1.03		16.07.2012		Olga Liberman						  Generics added
 ------------------------------------------------------------------------------------------------
 --	Todo:
 --	(1) rd_mng_fsm_proc: maybe to add "if (fifo_x_full='0') then wr_en='1'..." - to enable write to fifo only if it's not full
 --	(2) to sample req_in_trg, because it comes from another clock domain
+--	(3) when row_count reaches the max 480, need to reset the counter
+--	(4)	
 ------------------------------------------------------------------------------------------------
 
 library ieee;
@@ -33,6 +36,14 @@ use ieee.std_logic_unsigned.all;
 use ieee.numeric_std.all;
 
 entity manager is
+	generic(
+		row_count_g		: 		positive	:= 480; -- Total row count for the frame
+		sym_row_g		: 		positive	:= 15; 	-- Total symbol row count for the frame
+		sym_col_g		: 		positive	:= 20; 	-- Total symol column count for the frame
+		inside_row_g	: 		positive	:= 32; 	-- Total row count inside the symbol
+		sdram_burst_g	: 		positive	:= 16 	-- The length of the burst from SDRAM (in words = 16 bits)
+		
+	);
   port (
     clk 				: 		in std_logic; -- The main clock to which all the internal logic of the Symbol Generator block is synchronized.
     reset_n 			: 		in std_logic; -- Asynchronous reset 
@@ -43,14 +54,14 @@ entity manager is
 	--wbm_ack_i 		: 		in std_logic; -- This signal is sent from the SDARM. It is active when WBS acknowledges the read request, and the data from the SDRAM is valid.
 	--wbm_err_i 		: 		in std_logic; -- This signal is sent from the SDARM. It is active when an error occurred. 
 	req_in_trg 			: 		in std_logic; -- This is a signal from the VESA Generator block. It indicates when to start preparing valid data in the Dual Clk FIFO for a req_lines_g lines in advance. (In our case it is 1 line in advance).
-	mng_en 				: 		in std_logic; --
+	mng_en 				: 		in std_logic; -- trigger signal from opcode_store to start the FSM
 	sdram_data 			: 		in std_logic_vector (7 downto 0); --this signal gets the data from sdram 
 	sdram_data_valid	:		in std_logic; -- indicates when the data from the sdram is valid and we can store it in one of the fifos (a or b)
-	fifo_a_used			:		in std_logic_vector(10 downto 0); -- fifo a used signal
-	fifo_a_full			:		in std_logic; -- fifo a full indication
+	-- fifo_a_used		:		in std_logic_vector(10 downto 0); -- fifo a used signal
+	-- fifo_a_full		:		in std_logic; -- fifo a full indication
 	fifo_a_empty		:		in std_logic; -- fifo a empty indication
-	fifo_b_used			:		in std_logic_vector(10 downto 0); -- fifo b used signal
-	fifo_b_full			:		in std_logic; -- fifo b full indication
+	-- fifo_b_used		:		in std_logic_vector(10 downto 0); -- fifo b used signal
+	-- fifo_b_full		:		in std_logic; -- fifo b full indication
 	fifo_b_empty		:		in std_logic; -- fifo b empty indication
     ram_rd_en_out 		: 		out std_logic; -- This signal is sent to the RAM. It is an enable signal for reading from the RAM.
     ram_addr_rd 		: 		out std_logic_vector(8 downto 0); -- This signal is sent to the RAM. It indicates the row in the RAM from which we want to read.  
@@ -71,31 +82,31 @@ entity manager is
 	sdram_rd_en_out		:		out std_logic -- this signal is a valid signal for the sdram_addr_rd signal (for usage of WBS)
 	--mux_sel         	: 		out std_logic -- selection of mux 
   );
-end manager;
+end entity manager;
 
 architecture manager_rtl of manager is
 	
 	---------------------------- signals ---------------------------------------------
 	type state_t is (idle_st, write_a_st, read_b_st, write_a_read_b_st, read_a_write_b_st ); -- enum type for fsm states
 	signal current_sm 			: 	state_t;
-	--signal sdram_data 		: 	std_logic_vector (7 downto 0); --this signal gets the data from sdram 
-	signal row_count			: 	integer range -1 to 480; --counts current row of video frame
-	signal sym_row 				: 	integer range -1 to 15;  --the row in terms of symbols
-	signal sym_col 				: 	integer range -1 to 20;  --the col in terms of symbols
-	signal sym_col_i 			: 	integer range -1 to 20;  --the col in terms of symbols
-	signal inside_row 			: 	integer range -1 to 32;  --the row inside the current symbol
-	signal ram_rd_en  			: 	std_logic; --
+	--signal sdram_data 		: 	std_logic_vector (7 downto 0); 				--this signal gets the data from sdram 
+	signal row_count			: 	integer range 0 to row_count_g+1; 			--counts current row of video frame
+	signal sym_row 				: 	integer range 0 to sym_row_g;  			--the row in terms of symbols
+	signal sym_col 				: 	integer range 0 to sym_col_g+1;  			--the col in terms of symbols
+	signal sym_col_i 			: 	integer range 0 to sym_col_g+1;  			--the col in terms of symbols
+	signal inside_row 			: 	integer range 0 to inside_row_g+1;  			--the row inside the current symbol
+	signal ram_rd_en  			: 	std_logic; -- This signal is sent to the RAM. It is an enable signal for reading from the RAM.
 	signal ram_rd_en_i  		: 	std_logic; -- smapling ram_rd_en output port
 	--signal sdram_adr 			: 	std_logic_vector (23 downto 0); --this signal is the full address in SDRAM: "00--bank(2)--row(12)--col(8)"
 	signal sdram_rd_en			: 	std_logic; -- this signal is a valid signal for the sdram_addr_rd signal (for usage of WBS)
 	signal sdram_wait_counter	:	integer range 0 to 60;
   
 	---------------------------- constatnts -------------------------------------------
-	constant const_19_c  	: integer := 19; 
-	constant const_31_c  	: integer := 31;
-	constant const_14_c  	: integer := 14;
-	constant const_16_c  	: integer := 16;
-	constant const_480_c 	: integer := 479;
+	-- constant const_19_c  	: integer := 19; 
+	-- constant const_31_c  	: integer := 31;
+	-- constant const_14_c  	: integer := 14;
+	-- constant const_16_c  	: integer := 16;
+	-- constant const_480_c 	: integer := 479;
 	constant sdram_wait_c	: integer := 55; 	-- num. of clock to wait from one sdram request to another ( approx. 20 clks for SDRAM to respond + 32 pixels to deliver )
 	
 	-- not sure what it is:
@@ -178,9 +189,9 @@ begin
 						fifo_b_data_in <= (others =>'0');
 						fifo_b_wr_en <='0';
 					end if;
-					if ((req_in_trg='1')and(row_count /= const_480_c)) then
+					if ((req_in_trg='1')and(row_count /= row_count_g)) then
 						current_sm <= write_a_read_b_st;
-					elsif  ((req_in_trg='1')and(row_count = const_480_c)) then
+					elsif  ((req_in_trg='1')and(row_count = row_count_g)) then
 						current_sm <= read_b_st;
 					end if;
 					
@@ -254,36 +265,36 @@ begin
     begin
 		if (reset_n='0') then
 			sym_row <= 0; -- 0
-			sym_col <= -1; -- 0
-			sym_col_i <= -1;
-			inside_row <= -1;
-			row_count <= -1;
+			sym_col <= 0; -- 0
+			sym_col_i <= 0;
+			inside_row <= 0;
+			row_count <= 0;
 		elsif rising_edge (clk) then
 			if (current_sm = read_b_st) then
 				sym_row <= 0;
-				sym_col <= -1;
-				sym_col_i <= -1;
-				inside_row <= -1;
-				row_count <= -1;
+				sym_col <= 0;
+				sym_col_i <= 0;
+				inside_row <= 0;
+				row_count <= 0;
 			else	
-				--if ( ((mng_en='1') or (sdram_rd_en='1')) and (sym_col<19) ) then
-				if ( ((mng_en='1') or (sdram_wait_counter = sdram_wait_c)) and (sym_col<19) ) then
+				--if ( ((mng_en='1') or (sdram_rd_en='1')) and ( (sym_col-1) <19) ) then
+				if ( ((mng_en='1') or (sdram_wait_counter = sdram_wait_c)) and ( sym_col < sym_col_g ) ) then
 					sym_col <= sym_col + 1;
 				elsif (req_in_trg = '1') then
-					sym_col <= 0;
+					sym_col <= 1;
 				end if;
 				
 				if ( (req_in_trg = '1') or (mng_en='1') ) then --  means calculating address in the RAM and a new request to the sdram	
 					--sym_col <= sym_col + 1;
-					--if ( sym_col = const_19_c ) then -- maybe 20?
+					--if ( sym_col = sym_col_g ) then -- maybe 20?
 						--sym_col <= 0;
 						inside_row <= inside_row +1;
 						row_count <= row_count +1;
-						if ( inside_row = const_31_c ) then -- maybe 32?
-							inside_row <= 0;
+						if ( inside_row = inside_row_g ) then -- maybe 32?
+							inside_row <= 1;
 							sym_row <= sym_row + 1;
-							if ( sym_row = const_14_c ) then -- maybe 15?
-								sym_row <= 0;
+							if ( sym_row = sym_row_g-1 ) then -- maybe 15?
+								sym_row <= 1;
 							end if;
 						end if;
 					--end if;
@@ -311,7 +322,7 @@ begin
 		elsif rising_edge (clk) then
 			-- change of the symbol block
 			if (sym_col /= sym_col_i) then
-				ram_addr_rd <= std_logic_vector(to_unsigned(20*sym_row + sym_col,9));-- + std_logic_vector(to_unsigned(),9);-- 20*x + y
+				ram_addr_rd <= std_logic_vector(to_unsigned(20*sym_row + (sym_col-1),ram_addr_rd'length));-- + std_logic_vector(to_unsigned(),9);-- 20*x + y
 				ram_rd_en <='1';
 				sdram_rd_en <= '0';
 				sdram_addr_rd <= (others => '0');
@@ -320,11 +331,11 @@ begin
 				--wbm_start
 				sdram_rd_en <= '1';
 				-- 0 <= inside_row < 16
-				if ( inside_row < const_16_c ) then
-					sdram_addr_rd <= "00"&ram_data_out&'0'&( std_logic_vector(to_unsigned(const_16_c*inside_row , 8)) ); -- where to put the "00": LSB (end) or MSB (start) ???
+				if ( (inside_row-1) < sdram_burst_g ) then
+					sdram_addr_rd <= "00"&ram_data_out&'0'&( std_logic_vector(to_unsigned(sdram_burst_g*(inside_row-1) , 8)) ); -- where to put the "00": LSB (end) or MSB (start) ???
 				-- 16 <= inside_row < 32
 				else
-					sdram_addr_rd <= "00"&ram_data_out&'1'&( std_logic_vector(to_unsigned(const_16_c*(inside_row-const_16_c) , 8)) );
+					sdram_addr_rd <= "00"&ram_data_out&'1'&( std_logic_vector(to_unsigned(sdram_burst_g*((inside_row-1)-sdram_burst_g) , 8)) );
 				end if;
 			else
 				ram_addr_rd <= (others => '0');
@@ -338,5 +349,5 @@ begin
     
 	ram_rd_en_out <= ram_rd_en;
   
-end manager_rtl;
+end architecture manager_rtl;
   

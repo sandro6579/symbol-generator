@@ -23,8 +23,9 @@
 ------------------------------------------------------------------------------------------------
 -- Revision:
 --			Number		 Date		        Name								      Description			
---			1.00		   04.05.2012	   Olga Liberman		   Creation
--- 
+--			1.00		  	04.05.2012	   	Olga Liberman			Creation
+-- 			2.00			16.07.2012		Olga Liberman			The block is separated to 2 processes: write and read.
+--																	The reset was deleted from sensitivity list
 ------------------------------------------------------------------------------------------------
 --	Todo:
 --			(1) 
@@ -38,14 +39,14 @@ use ieee.numeric_std.all ;
 
 entity RAM_300 is
   port (
-    clk        : in  std_logic;	 						
-	reset_n    : in  std_logic; 						
-    ram_addr_wr    : in  std_logic_vector(8 downto 0);
-	ram_wr_en      : in  std_logic;
-	ram_data_in    : in  std_logic_vector(12 downto 0);
-	ram_rd_en      : in  std_logic;
-    ram_addr_rd    : in  std_logic_vector(8 downto 0);
-    ram_data_out   : out std_logic_vector(12 downto 0)
+    clk        : in  std_logic;	 							--System clock
+	reset_n    : in  std_logic; 							--System Reset
+    ram_addr_wr    : in  std_logic_vector(8 downto 0);		--Input address for write
+	ram_wr_en      : in  std_logic;							--Enable signal for write
+	ram_data_in    : in  std_logic_vector(12 downto 0);		--Input data for write
+	ram_rd_en      : in  std_logic;							--Enable signal for read
+    ram_addr_rd    : in  std_logic_vector(8 downto 0);		--Input address for read
+    ram_data_out   : out std_logic_vector(12 downto 0)		--Output data
   );
 end entity RAM_300;
 
@@ -56,22 +57,41 @@ architecture RAM_300_rtl of RAM_300 is
   
 begin
 
-    ram_proc: process(clk,reset_n) is
+    -- ram_proc: process(clk,reset_n) is
+    -- begin
+		-- if (reset_n='0') then
+			-- ram_data_out <= (others=>'0');
+			-- -- for i in 0 to 299 loop
+				-- -- mem(i) <= (others=>'0');
+			-- -- end loop;
+		-- elsif rising_edge(clk) then
+			-- if ( (ram_wr_en = '1') and ( to_integer(unsigned(ram_addr_wr)) < 300 ) ) then
+				-- mem(to_integer(unsigned(ram_addr_wr))) <= ram_data_in;
+			-- end if;
+			-- if ( (ram_rd_en = '1') and (to_integer(unsigned(ram_addr_rd)) < 300 ) )  then
+				-- ram_data_out <= mem(to_integer(unsigned(ram_addr_rd)));
+			-- end if;
+		-- end if;
+    -- end process ram_proc;
+	
+	write_proc: process(clk) is
     begin
-		if (reset_n='0') then
-			ram_data_out <= (others=>'0');
-			for i in 0 to 299 loop
-				mem(i) <= (others=>'0');
-			end loop;
-		elsif rising_edge(clk) then
+		if rising_edge(clk) then
 			if ( (ram_wr_en = '1') and ( to_integer(unsigned(ram_addr_wr)) < 300 ) ) then
 				mem(to_integer(unsigned(ram_addr_wr))) <= ram_data_in;
 			end if;
+		end if;
+	end process write_proc;
+	
+	read_proc: process(clk, reset_n) is
+    begin
+		if (reset_n='0') then
+			ram_data_out <= (others=>'0');
+		elsif rising_edge(clk) then
 			if ( (ram_rd_en = '1') and (to_integer(unsigned(ram_addr_rd)) < 300 ) )  then
 				ram_data_out <= mem(to_integer(unsigned(ram_addr_rd)));
 			end if;
 		end if;
-    end process ram_proc;
+	end process read_proc;
   
-end RAM_300_rtl;  
-    
+end architecture RAM_300_rtl;

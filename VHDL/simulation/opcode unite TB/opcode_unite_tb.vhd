@@ -30,8 +30,8 @@ architecture sim_opcode_unite_tb of opcode_unite_tb is
 component opcode_unite
 
 	port (
-			clk_133				: 	in 		std_logic; -- the main clock to which all the internal logic of the Symbol Generator block is synchronized.
-			reset_133_n			: 	in 		std_logic; -- asynchronous reset
+			clk				: 	in 		std_logic; -- the main clock to which all the internal logic of the Symbol Generator block is synchronized.
+			reset_n			: 	in 		std_logic; -- asynchronous reset
 			opu_data_in			: 	in 		std_logic_vector(7 downto 0); -- data from wbs
 			opu_data_in_valid	: 	in 		std_logic; -- valid signal for data from wbs
 			opu_data_in_cnt		: 	in 		std_logic_vector(9 downto 0); -- number of changes in bytes - 1, each change is 3 bytes
@@ -45,8 +45,8 @@ end component opcode_unite;
 --#############################	Signals ##############################################--
 
 --Clock and Reset
-signal clk_133				:	std_logic := '0';
-signal reset_133_n			:	std_logic := '1';
+signal clk				:	std_logic := '0';
+signal reset_n			:	std_logic := '1';
 -- data in
 signal opu_data_in			:	std_logic_vector(7 downto 0); -- data from wbs
 signal opu_data_in_valid	:	std_logic;
@@ -62,8 +62,8 @@ begin
 --#############################	Instantiaion ##############################################--
 opcode_unite_inst :  opcode_unite port map
 		(
-			clk_133 => clk_133,
-			reset_133_n => reset_133_n,
+			clk => clk,
+			reset_n => reset_n,
 			opu_data_in => opu_data_in,
 			opu_data_in_valid => opu_data_in_valid,
 			opu_data_in_cnt => opu_data_in_cnt,
@@ -73,10 +73,10 @@ opcode_unite_inst :  opcode_unite port map
 		);
 
 clk_proc:
-clk_133	<=	not clk_133 after 5 ns;
+clk	<=	not clk after 5 ns;
 
 rst_proc:
-reset_133_n	<=	'0', '1' after 20 ns;
+reset_n	<=	'0', '1' after 20 ns;
 
 			
 unite_proc: process 

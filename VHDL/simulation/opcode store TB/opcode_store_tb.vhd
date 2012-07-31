@@ -30,8 +30,8 @@ architecture sim_opcode_store_tb of opcode_store_tb is
 component opcode_store
 
 	port (
-			clk_133            : in    std_logic;	 					-- clock in domain 133Mhz.
-            reset_133_n        : in    std_logic; 						-- asynchronous reset. 
+			clk            : in    std_logic;	 					-- clock in domain 133Mhz.
+            reset_n        : in    std_logic; 						-- asynchronous reset. 
 			op_cnt             : in    std_logic_vector(9 downto 0);   	-- number of total changes X 3: 1 change (24 bits) = add/remove 1 symbol ( 24 bits are being sent in 3 packs of 8 bits)
 			op_str_valid       : in    std_logic; 						-- connected from opcode_unite block, opu_wr_en signal
 			op_str_data_in     : in    std_logic_vector(23 downto 0); 	-- connected from opcode_unite block, opu_data_out signal
@@ -50,8 +50,8 @@ end component opcode_store;
 --#############################	Signals ##############################################--
 
 --Clock and Reset
-signal clk_133				:	std_logic := '0';
-signal reset_133_n			:	std_logic := '1';
+signal clk				:	std_logic := '0';
+signal reset_n			:	std_logic := '1';
 -- data in
 signal op_cnt               :   std_logic_vector(9 downto 0);   	-- number of total changes X 3: 1 change (24 bits) = add/remove 1 symbol ( 24 bits are being sent in 3 packs of 8 bits)
 signal op_str_valid         :   std_logic; 						    -- connected from opcode_unite block, opu_wr_en signal
@@ -73,8 +73,8 @@ begin
 --#############################	Instantiaion ##############################################--
 opcode_store_inst :  opcode_store port map
 		(
-			clk_133            => clk_133,       
-            reset_133_n        => reset_133_n,     
+			clk            => clk,       
+            reset_n        => reset_n,     
 			op_cnt             => op_cnt,          
 			op_str_valid       => op_str_valid,     
 			op_str_data_in     => op_str_data_in,    
@@ -90,10 +90,10 @@ opcode_store_inst :  opcode_store port map
 		);
 
 clk_proc:
-clk_133	<=	not clk_133 after 5 ns;
+clk	<=	not clk after 5 ns;
 
 rst_proc:
-reset_133_n	<=	'0', '1' after 20 ns;
+reset_n	<=	'0', '1' after 20 ns;
 
 			
 store_proc: process 
