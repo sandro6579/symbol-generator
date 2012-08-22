@@ -12,8 +12,10 @@
 -- We write to the RAM only at start of the frame – when VSYNC of the VESA is active.
 ------------------------------------------------------------------------------------------------
 -- Revision:
---			Number		Date		Name								Description			
---			1.00		12.4.2012	Yoav Shvartz		            	Repairs 
+--			Number		Date		Name					Description			
+--			1.00		12.4.2012	Yoav Shvartz		    Repairs 
+--			2.00		22.08.2012	Olga Liberman			Addition of "vsync_out" port out to the File Log model
+--
 ------------------------------------------------------------------------------------------------
 --	Todo:
 --			(1) 
@@ -40,7 +42,8 @@ entity opcode_store is
     mng_en : out std_logic;								-- activating Read_Manager 
     op_str_empty : out std_logic;						-- FIFO is empty (debug)
     op_str_full : out std_logic;						-- FIFO is full (debug)
-    op_str_used : out std_logic_vector(9 downto 0)		-- current number of elements in FIFO (debug)
+    op_str_used : out std_logic_vector(9 downto 0);		-- current number of elements in FIFO (debug)
+	vsync_out	:	out std_logic
   );
 end entity opcode_store;
 
@@ -78,7 +81,6 @@ architecture opcode_store_rtl of opcode_store is
   signal start_trigger_1 : std_logic; 						-- The derivative of op_str_rd_start which connected to vsync (we check when it changes from 0 to 1) 
   signal start_trigger_2 : std_logic; 						-- The derivative of op_str_rd_start which connected to vsync (we check when it changes from 0 to 1) 
   signal start_trigger_3 : std_logic; 						-- The derivative of op_str_rd_start which connected to vsync (we check when it changes from 0 to 1) 
-  signal start_trigger_4 : std_logic; 						-- The derivative of op_str_rd_start which connected to vsync (we check when it changes from 0 to 1) 
   signal flush_fifo : std_logic; 							-- FIFO flush data
   signal din_fifo : std_logic_vector ( 23 downto 0 );		-- data to FIFO sent from opcode_unite  why he doesnt recognize 
   signal wr_en_fifo : std_logic;   							-- write enable FIFO	
@@ -133,20 +135,20 @@ begin
 			start_trigger_1 <=  '0';			
 			start_trigger_2 <=  '0';
 			start_trigger_3 <=  '0';
-			start_trigger_4 <=  '0';
 		elsif rising_edge (clk) then
 			start_trigger_1 <= op_str_rd_start;			--sampling start_trigger twice because start_trigger (VSYNC) operates at 40MHz and the clk 100MHz  
 			start_trigger_2 <= start_trigger_1;
 			start_trigger_3 <= start_trigger_2; 
-			start_trigger_4 <= start_trigger_3;
-		 	if ( (start_trigger_1 = '0') and (start_trigger_2 = '0') ) and ( (start_trigger_3 = '1') and (start_trigger_4 = '1') ) then -- olga
+		 	if ( (start_trigger_2 = '0')  and  (start_trigger_3 = '1')  ) then -- olga
 				start_trigger <= '1';
 			else
 				start_trigger <= '0';
 			end if; 
 		end if;
 	end process vsync_active_proc;
-  
+	
+	vsync_out <= start_trigger;
+	
 	------------------------
 	--writing data to fifo--
 	------------------------

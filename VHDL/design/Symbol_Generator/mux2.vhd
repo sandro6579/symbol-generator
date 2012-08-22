@@ -39,6 +39,9 @@ entity mux2 is
 		--mux_sel 	  	: 		in std_logic;                       		-- selection of enteries: mux_sel='0' -> mux_din_a , mux_sel='1' -> mux_din_b
 		rd_en_a 		: 		in std_logic; 								-- read enable to fifo a
 		rd_en_b 		: 		in std_logic; 								-- read enable to fifo b
+		fifo_a_dout_valid : in std_logic;
+		fifo_b_dout_valid : in std_logic;
+		mux_dout_valid: out std_logic;
 		mux_dout	  	: 		out std_logic_vector(width_g-1 downto 0)    -- data out to DC FIFO
 	);
   
@@ -48,11 +51,26 @@ architecture mux2_rtl of mux2 is
 
 	--signal mux_din_a_i : std_logic_vector(7 downto 0);
 	--signal mux_din_b_i : std_logic_vector(7 downto 0);
+	signal fifo_a_dout_valid_d : std_logic;
+	signal fifo_b_dout_valid_d : std_logic;
 
 begin
   --mux_din_a_i <= mux_din_a;
   --mux_din_b_i <= mux_din_b;
-  
+	
+	fifo_valid_proc : process(clk,reset_n)
+	begin
+		if (reset_n='0') then
+			fifo_a_dout_valid_d <= '0';
+			fifo_b_dout_valid_d <= '0';
+		elsif rising_edge(clk) then
+			fifo_a_dout_valid_d <= fifo_a_dout_valid;
+			fifo_b_dout_valid_d <= fifo_b_dout_valid;
+		end if;
+	end process fifo_valid_proc;
+	
+	mux_dout_valid <= ( fifo_a_dout_valid and fifo_a_dout_valid_d) or ( fifo_b_dout_valid and fifo_b_dout_valid_d);
+	
 	mux_proc: process(clk, reset_n)
     begin
 		if (reset_n='0') then

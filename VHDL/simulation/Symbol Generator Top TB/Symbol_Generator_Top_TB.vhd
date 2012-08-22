@@ -57,7 +57,8 @@ component opcode_store
 			mng_en          	: out   std_logic;						-- activating Read_Manager 
 			op_str_empty       	: out   std_logic;						-- FIFO is empty (debug)
 			op_str_full        	: out   std_logic;						-- FIFO is full (debug)
-			op_str_used        	: out   std_logic_vector(9 downto 0)		-- current number of elements in FIFO (debug)	
+			op_str_used        	: out   std_logic_vector(9 downto 0);		-- current number of elements in FIFO (debug)	
+			vsync_out			: out std_logic
 		);
 end component opcode_store;
 
@@ -160,11 +161,29 @@ component mux2 is
 		mux_din_a 			: in 	std_logic_vector(width_g-1 downto 0);  -- data from fifo_a
 		mux_din_b 			: in 	std_logic_vector(width_g-1 downto 0);  -- data from fifo_b
 		--mux_sel 	  		: in 	std_logic;                       		-- selection of enteries: mux_sel='0' -> mux_din_a , mux_sel='1' -> mux_din_b
-		rd_en_a 		: in	std_logic; 						-- read enable to fifo a
-		rd_en_b 		: in 	std_logic; 						-- read enable to fifo b
+		rd_en_a 			: in	std_logic; 						-- read enable to fifo a
+		rd_en_b 			: in 	std_logic; 						-- read enable to fifo b
+		fifo_a_dout_valid 	: in std_logic;
+		fifo_b_dout_valid 	: in std_logic;
+		mux_dout_valid		: out std_logic;
 		mux_dout	  		: out 	std_logic_vector(width_g-1 downto 0)  --data out to DC FIFO
 	);
 end component mux2;
+
+component file_log is
+generic(
+        log_file			:       string  := "log_file"
+    );
+	port(
+		clk					: 		in std_logic;
+		reset_n				: 		in std_logic;
+		-- fifo_a_rd_en 		: 		in std_logic; 						-- read enable to fifo a
+		-- fifo_b_rd_en 		: 		in std_logic; 						-- read enable to fifo b
+		mux_dout_valid		: 		in std_logic;
+		mux_dout	  		: 		in std_logic_vector(7 downto 0);    -- data out to DC FIFO
+		vsync				:		in std_logic
+	);
+end component file_log;
 
 --#############################	Signals ##############################################--
 
@@ -187,6 +206,7 @@ signal mng_en               :   std_logic;							-- activating Read_Manager
 signal op_str_empty         :   std_logic;							-- FIFO is empty (debug)
 signal op_str_full          :   std_logic;							-- FIFO is full (debug)
 signal op_str_used          :   std_logic_vector(9 downto 0);		-- current number of elements in FIFO (debug)	
+signal vsync_trigger		:	std_logic;
 
 signal ram_addr_rd          :   std_logic_vector(8 downto 0);
 signal ram_data_in          :   std_logic_vector(12 downto 0);
@@ -217,7 +237,12 @@ signal fifo_b_flush         :   std_logic := '0';
 signal fifo_a_dout			:	  std_logic_vector (7 downto 0);
 signal fifo_b_dout		    :	  std_logic_vector (7 downto 0);
 
-signal mux_dout             :   std_logic_vector(7 downto 0); 
+signal mux_dout             : std_logic_vector(7 downto 0); 
+signal fifo_a_dout_valid 	: std_logic;
+signal fifo_b_dout_valid 	: std_logic;
+-- signal fifo_a_dout_valid_d 	: std_logic;
+-- signal fifo_b_dout_valid_d 	: std_logic;
+signal mux_dout_valid		: std_logic;
 
 begin
 
@@ -248,7 +273,8 @@ port map(
 	mng_en          	=> mng_en,           
 	op_str_empty       	=> op_str_empty,
 	op_str_full        	=> op_str_full,
-	op_str_used        	=> op_str_used
+	op_str_used        	=> op_str_used,
+	vsync_out			=> vsync_trigger
 		);
 
 RAM_300_inst :  RAM_300
@@ -325,7 +351,7 @@ fifo_A : general_fifo
 		 rd_en 			=> 		fifo_a_rd_en,        -- Read Enable (request for data)
 		 flush			=> 		fifo_a_flush,		-- Flush data
 		 dout 			=> 		fifo_a_dout,	    	-- Output Data
-		 dout_valid		=> 		open,                -- Output data is valid
+		 dout_valid		=> 		fifo_a_dout_valid,                -- Output data is valid
 		 afull  		=> 		open,                -- FIFO is almost full
 		 full 			=>  	fifo_a_full,        -- FIFO is full
 		 aempty 		=> 		open,                -- FIFO is almost empty
@@ -351,7 +377,7 @@ fifo_B : general_fifo
 		 rd_en 			=> 		fifo_b_rd_en,        -- Read Enable (request for data)
 		 flush			=> 		fifo_b_flush,		-- Flush data
 		 dout 			=> 		fifo_b_dout,	    	-- Output Data
-		 dout_valid		=> 		open,                -- Output data is valid
+		 dout_valid		=> 		fifo_b_dout_valid,                -- Output data is valid
 		 afull  		=> 		open,                -- FIFO is almost full
 		 full 			=> 		fifo_b_full,         -- FIFO is full
 		 aempty 		=> 		open,                -- FIFO is almost empty
@@ -369,12 +395,27 @@ mux2_inst : mux2
 		mux_din_a 		=> 		fifo_a_dout,   -- data from fifo_a
 		mux_din_b 		=> 		fifo_b_dout,   -- data from fifo_b
 		--mux_sel 	  	=> 		mux_sel,     -- selection of enteries: mux_sel='0' -> mux_din_a , mux_sel='1' -> mux_din_b
-		rd_en_a	=> 		fifo_a_rd_en,
-		rd_en_b	=> 		fifo_b_rd_en,
+		rd_en_a			=> 		fifo_a_rd_en,
+		rd_en_b			=> 		fifo_b_rd_en,
+		fifo_a_dout_valid => fifo_a_dout_valid,
+		fifo_b_dout_valid => fifo_b_dout_valid,
+		mux_dout_valid	=>		mux_dout_valid,
 		mux_dout	  	=> 		mux_dout    	  --data out to DC FIFO
 	);
 
-
+file_log_inst: file_log
+	generic map(
+        log_file		=>      "log_file"
+    )
+	port map(
+		clk 		    => 		clk,          -- the main clock to which all the internal logic of the Symbol Generator block is synchronized.
+		reset_n 	  	=> 		reset_n,      
+		-- fifo_a_rd_en 	=> 		fifo_a_rd_en,		-- read enable to fifo a
+		-- fifo_b_rd_en 	=>		fifo_b_rd_en,		-- read enable to fifo b
+		mux_dout_valid	=>		mux_dout_valid,
+		mux_dout	  	=>		mux_dout,			-- data out to DC FIFO
+		vsync			=>		vsync_trigger
+	);
 
 
 --###############################process#########################################
@@ -466,7 +507,7 @@ begin
 			wait for 10 ns;
 			opu_data_in_valid <= '0';
 			wait for 10 ns;
-			opu_data_in <= "0000000"&row_loop(3);
+			opu_data_in <= "0000001"&row_loop(3);
 			opu_data_in_valid <= '1';
 			wait for 10 ns;
 			opu_data_in_valid <= '0';
@@ -502,14 +543,6 @@ begin
 	-- -- opu_data_in_valid <= '0';
 	-- -- wait for 10 ns;
 	
-	-- spike on the vsync, the signal is active for only one clock
-	-- check that manager doesn't react
-	wait for 50 ns;
-	op_str_rd_start  <= '1';
-	wait for 10 ns;
-	op_str_rd_start  <= '0';
-	
-	-- vsync active for more than one clock, manager should react and start updating the RAM
 	wait for 50 ns;
 	op_str_rd_start  <= '1';
 	wait for 20 ns;
@@ -529,7 +562,7 @@ begin
 	-- req_in_trg <= '0';
   
   -- loop to reach a new video frame
-	for i in 482 downto 0 loop
+	for i in 479 downto 0 loop
 		wait for 20000 ns;
 		req_in_trg <= '1';
 		wait for 10 ns;
