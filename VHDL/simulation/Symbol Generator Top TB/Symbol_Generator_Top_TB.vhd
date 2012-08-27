@@ -113,7 +113,7 @@ end component manager;
 
 component sdram_symbol_model is
   generic(
-    memory_file	: 	string :="memory.txt"
+    memory_file	: 	string :="memory_new.txt"
          );
   port(
 	clk        : in  std_logic;
@@ -405,7 +405,7 @@ mux2_inst : mux2
 
 file_log_inst: file_log
 	generic map(
-        log_file		=>      "log_file"
+        log_file		=>      "log_file_new"
     )
 	port map(
 		clk 		    => 		clk,          -- the main clock to which all the internal logic of the Symbol Generator block is synchronized.
@@ -421,7 +421,7 @@ file_log_inst: file_log
 --###############################process#########################################
 		
 clk_proc:
-clk	<=	not clk after 5 ns;
+clk	<=	not clk after 5 ns; -- 100 MHz clock (T=10ns)
 
 rst_proc:
 reset_n	<=	'0', '1' after 20 ns;
@@ -433,81 +433,22 @@ unite_proc: process
 begin
   -- ram_addr_rd <= "000000000";
 	op_str_rd_start  <= '0';
-	wait for 30 ns;
+	wait for 1 ms;
 	
-	-- -- packet of 9 bytes (= 3 opcodes)
-	-- op_cnt <= "0000001001"; -- 9
-	
-	-- -- add , addr = 7 , x = 3 , y = 2  
-	-- opu_data_in <= "01000000"; --MSB
-	-- opu_data_in_valid <= '1';
-	-- wait for 10 ns;
-	-- opu_data_in_valid <= '0';
-	-- wait for 10 ns;
-	-- opu_data_in <= "00001110";
-	-- opu_data_in_valid <= '1';
-	-- wait for 10 ns;
-	-- opu_data_in_valid <= '0';
-	-- wait for 10 ns;
-	-- opu_data_in <= "01100010"; --LSB
-	-- opu_data_in_valid <= '1';
-	-- wait for 10 ns;
-	-- opu_data_in_valid <= '0';
-	-- wait for 10 ns;
-	
-	-- -- add , addr = 3 , x = 5 , y = 1
-	-- opu_data_in <= "01000000"; 
-	-- opu_data_in_valid <= '1';
-	-- wait for 10 ns;
-	-- opu_data_in_valid <= '0';
-	-- wait for 10 ns;
-	-- opu_data_in <= "00000110";
-	-- opu_data_in_valid <= '1';
-	-- wait for 10 ns;
-	-- opu_data_in_valid <= '0';
-	-- wait for 10 ns;
-	-- opu_data_in <= "10100001";
-	-- opu_data_in_valid <= '1';
-	-- wait for 10 ns;
-	-- opu_data_in_valid <= '0';
-	-- wait for 10 ns;
-	
-	-- --reset_n	<=	'0';
-	
-	-- -- remove , addr = 3 , x = 5 , y = 1 
-	-- opu_data_in <= "00000000";
-	-- opu_data_in_valid <= '1';
-	-- wait for 10 ns;
-	-- opu_data_in_valid <= '0';
-	-- wait for 10 ns;
-	-- opu_data_in <= "00000110";
-	-- opu_data_in_valid <= '1';
-	-- wait for 10 ns;
-	-- opu_data_in_valid <= '0';
-	-- wait for 10 ns;
-	-- opu_data_in <= "10100001";
-	-- opu_data_in_valid <= '1';
-	-- wait for 10 ns;
-	-- opu_data_in_valid <= '0';
-	-- wait for 10 ns;
-	
-	-----------------------------------------------------------------------
-	-- initialize the screen with black symbols
-	
-	-- packet of 900 bytes (= 300 opcode)
+	------------------------ initialize black screen ---------------------------
+	wait for 200 ns;
 	op_cnt <= "1110000100"; -- 900
-	
 	for row in 0 to 14 loop
 		for col	in 0 to 19 loop
 			row_loop := std_logic_vector(to_unsigned(row,4));
 			col_loop := std_logic_vector(to_unsigned(col,5));
 			-- add , addr = 0 (means row 0-1 in SDRAM)
-			opu_data_in <= "01000000"; --MSB
+			opu_data_in <= "00000000"; --MSB
 			opu_data_in_valid <= '1';
 			wait for 10 ns;
 			opu_data_in_valid <= '0';
 			wait for 10 ns;
-			opu_data_in <= "0000001"&row_loop(3);
+			opu_data_in <= "0000101"&row_loop(3);
 			opu_data_in_valid <= '1';
 			wait for 10 ns;
 			opu_data_in_valid <= '0';
@@ -519,57 +460,489 @@ begin
 			wait for 10 ns;
 		end loop;
 	end loop;
-			   
-	-----------------------------------------------------------------------
-	
-	
-	-- -- -- packet of 3 bytes (= 1 opcode)
-	-- -- op_cnt <= "0000000011"; -- 3
-	
-	-- -- -- add , addr = 1 (means row 2-3 in SDRAM) , x = 0 , y = 0  
-	-- -- opu_data_in <= "01000000"; --MSB
-	-- -- opu_data_in_valid <= '1';
-	-- -- wait for 10 ns;
-	-- -- opu_data_in_valid <= '0';
-	-- -- wait for 10 ns;
-	-- -- opu_data_in <= "00000010";
-	-- -- opu_data_in_valid <= '1';
-	-- -- wait for 10 ns;
-	-- -- opu_data_in_valid <= '0';
-	-- -- wait for 10 ns;
-	-- -- opu_data_in <= "00000000"; --LSB
-	-- -- opu_data_in_valid <= '1';
-	-- -- wait for 10 ns;
-	-- -- opu_data_in_valid <= '0';
-	-- -- wait for 10 ns;
+  
+	wait for 500 us;
+	-- front porch apporx. 300 us
+	--wait for 1500 us;
 	
 	wait for 50 ns;
 	op_str_rd_start  <= '1';
 	wait for 20 ns;
 	op_str_rd_start  <= '0';
 	
-	-- wait for 100 ns;
-	-- ram_addr_rd <= "000111110";
-	-- wait for 10 ns;
-	-- ram_addr_rd <= "001100101";
-	-- wait for 10 ns;
-	-- ram_addr_rd <= "000010010";
+	wait for 500 us;
+	-- front porch apporx. 300 us
+	--wait for 1500 us;
 	
-	-- request from VESA Generator, start to request data from SDRAM
-	-- wait for 14000 ns;
-	-- req_in_trg <= '1';
-	-- wait for 10 ns;
-	-- req_in_trg <= '0';
-  
-  -- loop to reach a new video frame
+	  -- loop to reach a new video frame
 	for i in 479 downto 0 loop
-		wait for 20000 ns;
+		wait for 13 us;
 		req_in_trg <= '1';
 		wait for 10 ns;
 		req_in_trg <= '0';
 	end loop;
-
 	
+	------------------------------------------------------------------------
+	
+	-- packet of 9 bytes (= 3 opcodes)
+	op_cnt <= "0000001001"; -- 9
+	
+	-- add , addr = 7 , x = 3 , y = 2  
+	opu_data_in <= "01000000"; --MSB
+	opu_data_in_valid <= '1';
+	wait for 10 ns;
+	opu_data_in_valid <= '0';
+	wait for 10 ns;
+	opu_data_in <= "00011110";
+	opu_data_in_valid <= '1';
+	wait for 10 ns;
+	opu_data_in_valid <= '0';
+	wait for 10 ns;
+	opu_data_in <= "01100010"; --LSB
+	opu_data_in_valid <= '1';
+	wait for 10 ns;
+	opu_data_in_valid <= '0';
+	wait for 10 ns;
+	
+	-- add , addr = 3 , x = 5 , y = 1
+	opu_data_in <= "01000000"; 
+	opu_data_in_valid <= '1';
+	wait for 10 ns;
+	opu_data_in_valid <= '0';
+	wait for 10 ns;
+	opu_data_in <= "01100110";
+	opu_data_in_valid <= '1';
+	wait for 10 ns;
+	opu_data_in_valid <= '0';
+	wait for 10 ns;
+	opu_data_in <= "10100001";
+	opu_data_in_valid <= '1';
+	wait for 10 ns;
+	opu_data_in_valid <= '0';
+	wait for 10 ns;
+	
+	--reset_n	<=	'0';
+	
+	-- remove , addr = 3 , x = 5 , y = 1 
+	opu_data_in <= "00000000";
+	opu_data_in_valid <= '1';
+	wait for 10 ns;
+	opu_data_in_valid <= '0';
+	wait for 10 ns;
+	opu_data_in <= "00000110";
+	opu_data_in_valid <= '1';
+	wait for 10 ns;
+	opu_data_in_valid <= '0';
+	wait for 10 ns;
+	opu_data_in <= "10100001";
+	opu_data_in_valid <= '1';
+	wait for 10 ns;
+	opu_data_in_valid <= '0';
+	wait for 10 ns;
+	
+	wait for 500 us;
+	-- front porch apporx. 300 us
+	--wait for 1500 us;
+	
+	wait for 50 ns;
+	op_str_rd_start  <= '1';
+	wait for 20 ns;
+	op_str_rd_start  <= '0';
+	
+	wait for 500 us;
+	-- front porch apporx. 300 us
+	--wait for 1500 us;
+	
+	  -- loop to reach a new video frame
+	for i in 479 downto 0 loop
+		wait for 13 us;
+		req_in_trg <= '1';
+		wait for 10 ns;
+		req_in_trg <= '0';
+	end loop;
+	
+	-----------------------------------------------------------------------
+	-- -- -- initialize the screen with black symbols
+	
+	-- -- -- packet of 900 bytes (= 300 opcode)
+	-- -- op_cnt <= "1110000100"; -- 900
+	
+	-- -- for row in 0 to 14 loop
+		-- -- for col	in 0 to 19 loop
+			-- -- row_loop := std_logic_vector(to_unsigned(row,4));
+			-- -- col_loop := std_logic_vector(to_unsigned(col,5));
+			-- -- -- add , addr = 0 (means row 0-1 in SDRAM)
+			-- -- opu_data_in <= "01000000"; --MSB
+			-- -- opu_data_in_valid <= '1';
+			-- -- wait for 10 ns;
+			-- -- opu_data_in_valid <= '0';
+			-- -- wait for 10 ns;
+			-- -- opu_data_in <= "0001001"&row_loop(3);
+			-- -- opu_data_in_valid <= '1';
+			-- -- wait for 10 ns;
+			-- -- opu_data_in_valid <= '0';
+			-- -- wait for 10 ns;
+			-- -- opu_data_in <= row_loop(2 downto 0)&col_loop(4 downto 0); --LSB
+			-- -- opu_data_in_valid <= '1';
+			-- -- wait for 10 ns;
+			-- -- opu_data_in_valid <= '0';
+			-- -- wait for 10 ns;
+		-- -- end loop;
+	-- -- end loop;
+			   
+	-- -- -----------------------------------------------------------------------
+	
+	
+	-- -- -- -- -- packet of 3 bytes (= 1 opcode)
+	-- -- -- -- op_cnt <= "0000000011"; -- 3
+	
+	-- -- -- -- -- add , addr = 1 (means row 2-3 in SDRAM) , x = 0 , y = 0  
+	-- -- -- -- opu_data_in <= "01000000"; --MSB
+	-- -- -- -- opu_data_in_valid <= '1';
+	-- -- -- -- wait for 10 ns;
+	-- -- -- -- opu_data_in_valid <= '0';
+	-- -- -- -- wait for 10 ns;
+	-- -- -- -- opu_data_in <= "00000010";
+	-- -- -- -- opu_data_in_valid <= '1';
+	-- -- -- -- wait for 10 ns;
+	-- -- -- -- opu_data_in_valid <= '0';
+	-- -- -- -- wait for 10 ns;
+	-- -- -- -- opu_data_in <= "00000000"; --LSB
+	-- -- -- -- opu_data_in_valid <= '1';
+	-- -- -- -- wait for 10 ns;
+	-- -- -- -- opu_data_in_valid <= '0';
+	-- -- -- -- wait for 10 ns;
+	
+	-- -- wait for 50 ns;
+	-- -- op_str_rd_start  <= '1';
+	-- -- wait for 20 ns;
+	-- -- op_str_rd_start  <= '0';
+	
+	-- -- wait for 200 ns;
+	
+	-- -- op_cnt <= "1110000100"; -- 900
+	
+	-- -- for row in 0 to 14 loop
+		-- -- for col	in 0 to 19 loop
+			-- -- row_loop := std_logic_vector(to_unsigned(row,4));
+			-- -- col_loop := std_logic_vector(to_unsigned(col,5));
+			-- -- -- add , addr = 0 (means row 0-1 in SDRAM)
+			-- -- opu_data_in <= "01000000"; --MSB
+			-- -- opu_data_in_valid <= '1';
+			-- -- wait for 10 ns;
+			-- -- opu_data_in_valid <= '0';
+			-- -- wait for 10 ns;
+			-- -- opu_data_in <= "0000101"&row_loop(3);
+			-- -- opu_data_in_valid <= '1';
+			-- -- wait for 10 ns;
+			-- -- opu_data_in_valid <= '0';
+			-- -- wait for 10 ns;
+			-- -- opu_data_in <= row_loop(2 downto 0)&col_loop(4 downto 0); --LSB
+			-- -- opu_data_in_valid <= '1';
+			-- -- wait for 10 ns;
+			-- -- opu_data_in_valid <= '0';
+			-- -- wait for 10 ns;
+		-- -- end loop;
+	-- -- end loop;
+  
+  -- -- -- loop to reach a new video frame
+	-- -- for i in 479 downto 0 loop
+		-- -- wait for 13 us;
+		-- -- req_in_trg <= '1';
+		-- -- wait for 10 ns;
+		-- -- req_in_trg <= '0';
+	-- -- end loop;
+	
+	-- -- wait for 500 us;
+	-- -- -- front porch apporx. 300 us
+	-- -- --wait for 1500 us;
+	
+	-- -- wait for 50 ns;
+	-- -- op_str_rd_start  <= '1';
+	-- -- wait for 20 ns;
+	-- -- op_str_rd_start  <= '0';
+	
+	-- -- wait for 500 us;
+	-- -- -- front porch apporx. 300 us
+	-- -- --wait for 1500 us;
+	
+	  -- -- -- loop to reach a new video frame
+	-- -- for i in 479 downto 0 loop
+		-- -- wait for 13 us;
+		-- -- req_in_trg <= '1';
+		-- -- wait for 10 ns;
+		-- -- req_in_trg <= '0';
+	-- -- end loop;
+	
+	-- -- wait for 200 ns;
+	
+	-- -- ---------------------- remove the corners -------------------------
+	-- -- op_cnt <= "0000001100"; -- 12
+	-- -- --
+	-- -- row_loop := std_logic_vector(to_unsigned(0,4));
+	-- -- col_loop := std_logic_vector(to_unsigned(0,5));
+	-- -- opu_data_in <= "00000000"; --MSB
+	-- -- opu_data_in_valid <= '1';
+	-- -- wait for 10 ns;
+	-- -- opu_data_in_valid <= '0';
+	-- -- wait for 10 ns;
+	-- -- opu_data_in <= "0001111"&row_loop(3);
+	-- -- opu_data_in_valid <= '1';
+	-- -- wait for 10 ns;
+	-- -- opu_data_in_valid <= '0';
+	-- -- wait for 10 ns;
+	-- -- opu_data_in <= row_loop(2 downto 0)&col_loop(4 downto 0); --LSB
+	-- -- opu_data_in_valid <= '1';
+	-- -- wait for 10 ns;
+	-- -- opu_data_in_valid <= '0';
+	-- -- wait for 10 ns;
+	-- -- --
+	-- -- row_loop := std_logic_vector(to_unsigned(0,4));
+	-- -- col_loop := std_logic_vector(to_unsigned(19,5));
+	-- -- opu_data_in <= "00000000"; --MSB
+	-- -- opu_data_in_valid <= '1';
+	-- -- wait for 10 ns;
+	-- -- opu_data_in_valid <= '0';
+	-- -- wait for 10 ns;
+	-- -- opu_data_in <= "0011100"&row_loop(3);
+	-- -- opu_data_in_valid <= '1';
+	-- -- wait for 10 ns;
+	-- -- opu_data_in_valid <= '0';
+	-- -- wait for 10 ns;
+	-- -- opu_data_in <= row_loop(2 downto 0)&col_loop(4 downto 0); --LSB
+	-- -- opu_data_in_valid <= '1';
+	-- -- wait for 10 ns;
+	-- -- opu_data_in_valid <= '0';
+	-- -- wait for 10 ns;
+	-- -- --
+	-- -- row_loop := std_logic_vector(to_unsigned(14,4));
+	-- -- col_loop := std_logic_vector(to_unsigned(0,5));
+	-- -- opu_data_in <= "00000000"; --MSB
+	-- -- opu_data_in_valid <= '1';
+	-- -- wait for 10 ns;
+	-- -- opu_data_in_valid <= '0';
+	-- -- wait for 10 ns;
+	-- -- opu_data_in <= "0011100"&row_loop(3);
+	-- -- opu_data_in_valid <= '1';
+	-- -- wait for 10 ns;
+	-- -- opu_data_in_valid <= '0';
+	-- -- wait for 10 ns;
+	-- -- opu_data_in <= row_loop(2 downto 0)&col_loop(4 downto 0); --LSB
+	-- -- opu_data_in_valid <= '1';
+	-- -- wait for 10 ns;
+	-- -- opu_data_in_valid <= '0';
+	-- -- wait for 10 ns;
+	-- -- row_loop := std_logic_vector(to_unsigned(14,4));
+	-- -- col_loop := std_logic_vector(to_unsigned(19,5));
+	-- -- opu_data_in <= "00000000"; --MSB
+	-- -- opu_data_in_valid <= '1';
+	-- -- wait for 10 ns;
+	-- -- opu_data_in_valid <= '0';
+	-- -- wait for 10 ns;
+	-- -- opu_data_in <= "0010000"&row_loop(3);
+	-- -- opu_data_in_valid <= '1';
+	-- -- wait for 10 ns;
+	-- -- opu_data_in_valid <= '0';
+	-- -- wait for 10 ns;
+	-- -- opu_data_in <= row_loop(2 downto 0)&col_loop(4 downto 0); --LSB
+	-- -- opu_data_in_valid <= '1';
+	-- -- wait for 10 ns;
+	-- -- opu_data_in_valid <= '0';
+	-- -- wait for 10 ns;
+	
+	-- -- wait for 500 us;
+	-- -- -- front porch apporx. 300 us
+	-- -- --wait for 1500 us;
+	
+	-- -- wait for 50 ns;
+	-- -- op_str_rd_start  <= '1';
+	-- -- wait for 20 ns;
+	-- -- op_str_rd_start  <= '0';
+	
+	-- -- wait for 500 us;
+	-- -- -- front porch apporx. 300 us
+	-- -- --wait for 1500 us;
+	
+	  -- -- -- loop to reach a new video frame
+	-- -- for i in 479 downto 0 loop
+		-- -- wait for 13 us;
+		-- -- req_in_trg <= '1';
+		-- -- wait for 10 ns;
+		-- -- req_in_trg <= '0';
+	-- -- end loop;
+	
+	-- -- wait for 200 ns;
+	
+	-- -- --------------------- add 8 symbols ----------------------
+	-- -- op_cnt <= "0000011000"; -- 24
+	-- -- --
+	-- -- row_loop := std_logic_vector(to_unsigned(0,4));
+	-- -- col_loop := std_logic_vector(to_unsigned(1,5));
+	-- -- opu_data_in <= "01000000"; --MSB
+	-- -- opu_data_in_valid <= '1';
+	-- -- wait for 10 ns;
+	-- -- opu_data_in_valid <= '0';
+	-- -- wait for 10 ns;
+	-- -- opu_data_in <= "0000001"&row_loop(3);
+	-- -- opu_data_in_valid <= '1';
+	-- -- wait for 10 ns;
+	-- -- opu_data_in_valid <= '0';
+	-- -- wait for 10 ns;
+	-- -- opu_data_in <= row_loop(2 downto 0)&col_loop(4 downto 0); --LSB
+	-- -- opu_data_in_valid <= '1';
+	-- -- wait for 10 ns;
+	-- -- opu_data_in_valid <= '0';
+	-- -- wait for 10 ns;
+	-- -- --
+	-- -- row_loop := std_logic_vector(to_unsigned(1,4));
+	-- -- col_loop := std_logic_vector(to_unsigned(0,5));
+	-- -- opu_data_in <= "01000000"; --MSB
+	-- -- opu_data_in_valid <= '1';
+	-- -- wait for 10 ns;
+	-- -- opu_data_in_valid <= '0';
+	-- -- wait for 10 ns;
+	-- -- opu_data_in <= "0000010"&row_loop(3);
+	-- -- opu_data_in_valid <= '1';
+	-- -- wait for 10 ns;
+	-- -- opu_data_in_valid <= '0';
+	-- -- wait for 10 ns;
+	-- -- opu_data_in <= row_loop(2 downto 0)&col_loop(4 downto 0); --LSB
+	-- -- opu_data_in_valid <= '1';
+	-- -- wait for 10 ns;
+	-- -- opu_data_in_valid <= '0';
+	-- -- wait for 10 ns;
+	-- -- --
+	-- -- row_loop := std_logic_vector(to_unsigned(0,4));
+	-- -- col_loop := std_logic_vector(to_unsigned(18,5));
+	-- -- opu_data_in <= "01000000"; --MSB
+	-- -- opu_data_in_valid <= '1';
+	-- -- wait for 10 ns;
+	-- -- opu_data_in_valid <= '0';
+	-- -- wait for 10 ns;
+	-- -- opu_data_in <= "0000011"&row_loop(3);
+	-- -- opu_data_in_valid <= '1';
+	-- -- wait for 10 ns;
+	-- -- opu_data_in_valid <= '0';
+	-- -- wait for 10 ns;
+	-- -- opu_data_in <= row_loop(2 downto 0)&col_loop(4 downto 0); --LSB
+	-- -- opu_data_in_valid <= '1';
+	-- -- wait for 10 ns;
+	-- -- opu_data_in_valid <= '0';
+	-- -- wait for 10 ns;
+	-- -- --
+	-- -- row_loop := std_logic_vector(to_unsigned(1,4));
+	-- -- col_loop := std_logic_vector(to_unsigned(19,5));
+	-- -- opu_data_in <= "01000000"; --MSB
+	-- -- opu_data_in_valid <= '1';
+	-- -- wait for 10 ns;
+	-- -- opu_data_in_valid <= '0';
+	-- -- wait for 10 ns;
+	-- -- opu_data_in <= "0000100"&row_loop(3);
+	-- -- opu_data_in_valid <= '1';
+	-- -- wait for 10 ns;
+	-- -- opu_data_in_valid <= '0';
+	-- -- wait for 10 ns;
+	-- -- opu_data_in <= row_loop(2 downto 0)&col_loop(4 downto 0); --LSB
+	-- -- opu_data_in_valid <= '1';
+	-- -- wait for 10 ns;
+	-- -- opu_data_in_valid <= '0';
+	-- -- wait for 10 ns;
+	-- -- --
+	-- -- row_loop := std_logic_vector(to_unsigned(13,4));
+	-- -- col_loop := std_logic_vector(to_unsigned(0,5));
+	-- -- opu_data_in <= "01000000"; --MSB
+	-- -- opu_data_in_valid <= '1';
+	-- -- wait for 10 ns;
+	-- -- opu_data_in_valid <= '0';
+	-- -- wait for 10 ns;
+	-- -- opu_data_in <= "0001001"&row_loop(3);
+	-- -- opu_data_in_valid <= '1';
+	-- -- wait for 10 ns;
+	-- -- opu_data_in_valid <= '0';
+	-- -- wait for 10 ns;
+	-- -- opu_data_in <= row_loop(2 downto 0)&col_loop(4 downto 0); --LSB
+	-- -- opu_data_in_valid <= '1';
+	-- -- wait for 10 ns;
+	-- -- opu_data_in_valid <= '0';
+	-- -- wait for 10 ns;
+	-- -- --
+	-- -- row_loop := std_logic_vector(to_unsigned(14,4));
+	-- -- col_loop := std_logic_vector(to_unsigned(1,5));
+	-- -- opu_data_in <= "01000000"; --MSB
+	-- -- opu_data_in_valid <= '1';
+	-- -- wait for 10 ns;
+	-- -- opu_data_in_valid <= '0';
+	-- -- wait for 10 ns;
+	-- -- opu_data_in <= "0000110"&row_loop(3);
+	-- -- opu_data_in_valid <= '1';
+	-- -- wait for 10 ns;
+	-- -- opu_data_in_valid <= '0';
+	-- -- wait for 10 ns;
+	-- -- opu_data_in <= row_loop(2 downto 0)&col_loop(4 downto 0); --LSB
+	-- -- opu_data_in_valid <= '1';
+	-- -- wait for 10 ns;
+	-- -- opu_data_in_valid <= '0';
+	-- -- wait for 10 ns;
+	-- -- --
+	-- -- row_loop := std_logic_vector(to_unsigned(13,4));
+	-- -- col_loop := std_logic_vector(to_unsigned(19,5));
+	-- -- opu_data_in <= "01000000"; --MSB
+	-- -- opu_data_in_valid <= '1';
+	-- -- wait for 10 ns;
+	-- -- opu_data_in_valid <= '0';
+	-- -- wait for 10 ns;
+	-- -- opu_data_in <= "0000111"&row_loop(3);
+	-- -- opu_data_in_valid <= '1';
+	-- -- wait for 10 ns;
+	-- -- opu_data_in_valid <= '0';
+	-- -- wait for 10 ns;
+	-- -- opu_data_in <= row_loop(2 downto 0)&col_loop(4 downto 0); --LSB
+	-- -- opu_data_in_valid <= '1';
+	-- -- wait for 10 ns;
+	-- -- opu_data_in_valid <= '0';
+	-- -- wait for 10 ns;
+	-- -- --
+	-- -- row_loop := std_logic_vector(to_unsigned(14,4));
+	-- -- col_loop := std_logic_vector(to_unsigned(18,5));
+	-- -- opu_data_in <= "01000000"; --MSB
+	-- -- opu_data_in_valid <= '1';
+	-- -- wait for 10 ns;
+	-- -- opu_data_in_valid <= '0';
+	-- -- wait for 10 ns;
+	-- -- opu_data_in <= "0001000"&row_loop(3);
+	-- -- opu_data_in_valid <= '1';
+	-- -- wait for 10 ns;
+	-- -- opu_data_in_valid <= '0';
+	-- -- wait for 10 ns;
+	-- -- opu_data_in <= row_loop(2 downto 0)&col_loop(4 downto 0); --LSB
+	-- -- opu_data_in_valid <= '1';
+	-- -- wait for 10 ns;
+	-- -- opu_data_in_valid <= '0';
+	-- -- wait for 10 ns;
+	
+	-- -- wait for 500 us;
+	-- -- -- front porch apporx. 300 us
+	-- -- --wait for 1500 us;
+	
+	-- -- wait for 50 ns;
+	-- -- op_str_rd_start  <= '1';
+	-- -- wait for 20 ns;
+	-- -- op_str_rd_start  <= '0';
+	
+	-- -- wait for 500 us;
+	-- -- -- front porch apporx. 300 us
+	-- -- --wait for 1500 us;
+	
+	  -- -- -- loop to reach a new video frame
+	-- -- for i in 479 downto 0 loop
+		-- -- wait for 13 us;
+		-- -- req_in_trg <= '1';
+		-- -- wait for 10 ns;
+		-- -- req_in_trg <= '0';
+	-- -- end loop;
+	
+	-- -- wait for 200 ns;
+
 	wait;
 	
 end process unite_proc;
