@@ -1,0 +1,253 @@
+------------------------------------------
+----
+---- TEST_36 Simulation input file
+----
+---- Arbiter random arbitration test
+----
+------------------------------------------
+CMNT
+
+CMNT--------------------------------------
+---- Starting TEST #36 - Arbiter random arbitration test
+CMNT--------------------------------------
+
+CMNT---------------------------------
+-- Driving reset
+-------------------------------------
+RSET 0          -- drive reset
+WAIT 1000       -- wait for 1 us
+
+RSET 1          -- stop driving reset
+WAIT 100        -- wait some more
+CMNT
+
+CMNT---------------------------------
+-- Register configuration
+-------------------------------------
+WRTE 00 00	    	-- mode register
+WRTE 01 00		-- int_reqs registers
+WRTE 02 00		-- disable arbiter
+
+WRTE 03 00 	-- tick-value vectors invalidate
+WRRN 08 		-- arb_tick value
+WRTE 09 00 00 00 	-- arb_tick value
+WRTE 0C FF FF FF FF	-- msg_tick value		-- TODO: remove
+WRTE 03 03 	--  tick-value vectors validate
+
+WTRN 1000 	--  random wait
+CMNT
+
+CMNT---------------------------------
+-- Randomize requests and update random weights
+-------------------------------------
+RQMD random
+CMNT
+
+CMNT---------------------------------
+-- Iteration 01
+-------------------------------------
+WRRN 04 4	-- weights
+WTRN 100 	--  random wait
+WRTE 02 01      -- arbiter enable
+
+WTRN 1000000 	--  random wait
+CMNT
+
+CMNT---------------------------------
+-- Iteration 02
+-------------------------------------
+WRTE 02 00      -- arbiter disable
+WTRN 100 	--  random wait
+WRTE 02 01      -- arbiter enable
+
+WTRN 1000000 	--  random wait
+
+WRRN 04 4	-- weights
+WTRN 1000000 	--  random wait
+CMNT
+
+CMNT---------------------------------
+-- Iteration 03
+-------------------------------------
+
+WRTE 02 00      -- arbiter disable
+WTRN 100 	--  random wait
+WRTE 02 01      -- arbiter enable
+
+WTRN 1000000 	--  random wait
+
+WRRN 04 4	-- weights
+WTRN 1000000 	--  random wait
+CMNT
+
+CMNT---------------------------------
+-- Iteration 04
+-------------------------------------
+
+WRTE 02 00      -- arbiter disable
+WTRN 100 	--  random wait
+WRTE 02 01      -- arbiter enable
+
+WTRN 1000000 	--  random wait
+
+WRRN 04 4	-- weights
+WTRN 1000000 	--  random wait
+CMNT
+
+CMNT---------------------------------
+-- Iteration 05
+-------------------------------------
+
+WRTE 02 00      -- arbiter disable
+WTRN 100 	--  random wait
+WRTE 02 01      -- arbiter enable
+
+WTRN 1000000 	--  random wait
+
+WRRN 04 4	-- weights
+WTRN 1000000 	--  random wait
+CMNT
+
+CMNT---------------------------------
+-- Iteration 06
+-------------------------------------
+
+WRTE 02 00      -- arbiter disable
+WTRN 100 	--  random wait
+WRTE 02 01      -- arbiter enable
+
+WTRN 1000000 	--  random wait
+
+WRRN 04 4	-- weights
+WTRN 1000000 	--  random wait
+CMNT
+
+CMNT---------------------------------
+-- Iteration 07
+-------------------------------------
+
+WRTE 02 00      -- arbiter disable
+WTRN 100 	--  random wait
+WRTE 02 01      -- arbiter enable
+
+WTRN 1000000 	--  random wait
+
+WRRN 04 4	-- weights
+WTRN 1000000 	--  random wait
+CMNT
+
+CMNT---------------------------------
+-- Iteration 08
+-------------------------------------
+
+WRTE 02 00      -- arbiter disable
+WTRN 100 	--  random wait
+WRTE 02 01      -- arbiter enable
+
+WTRN 1000000 	--  random wait
+
+WRRN 04 4	-- weights
+WTRN 1000000 	--  random wait
+CMNT
+
+CMNT---------------------------------
+-- Iteration 09
+-------------------------------------
+
+WRTE 02 00      -- arbiter disable
+WTRN 100 	--  random wait
+WRTE 02 01      -- arbiter enable
+
+WTRN 1000000 	--  random wait
+
+WRRN 04 4	-- weights
+WTRN 1000000 	--  random wait
+CMNT
+
+CMNT---------------------------------
+-- Iteration 10
+-------------------------------------
+
+WRTE 02 00      -- arbiter disable
+WTRN 100 	--  random wait
+WRTE 02 01      -- arbiter enable
+
+WTRN 1000000 	--  random wait
+
+WRRN 04 4	-- weights
+WTRN 1000000 	--  random wait
+CMNT
+
+CMNT---------------------------------
+-- Iteration 11
+-------------------------------------
+
+WRTE 02 00      -- arbiter disable
+WTRN 100 	--  random wait
+WRTE 02 01      -- arbiter enable
+
+WTRN 1000000 	--  random wait
+
+WRRN 04 4	-- weights
+WTRN 1000000 	--  random wait
+CMNT
+
+CMNT---------------------------------
+-- Iteration 12
+-------------------------------------
+
+WRTE 02 00      -- arbiter disable
+WTRN 100 	--  random wait
+WRTE 02 01      -- arbiter enable
+
+WTRN 1000000 	--  random wait
+
+WRRN 04 4	-- weights
+WTRN 1000000 	--  random wait
+CMNT
+
+CMNT---------------------------------
+-- Iteration 13
+-------------------------------------
+
+WRTE 02 00      -- arbiter disable
+WTRN 100 	--  random wait
+WRTE 02 01      -- arbiter enable
+
+WTRN 1000000 	--  random wait
+
+WRRN 04 4	-- weights
+WTRN 1000000 	--  random wait
+CMNT
+
+CMNT---------------------------------
+-- Iteration 14
+-------------------------------------
+
+WRTE 02 00      -- arbiter disable
+WTRN 100 	--  random wait
+WRTE 02 01      -- arbiter enable
+
+WTRN 1000000 	--  random wait
+
+WRRN 04 4	-- weights
+WTRN 1000000 	--  random wait
+CMNT
+
+CMNT---------------------------------
+-- Iteration 15
+-------------------------------------
+
+WRTE 02 00      -- arbiter disable
+WTRN 100 	--  random wait
+WRTE 02 01      -- arbiter enable
+
+WTRN 1000000 	--  random wait
+
+WRRN 04 4	-- weights
+WTRN 1000000 	--  random wait
+
+
+
+DONE
+                                                                                                                                                                                                                                                    

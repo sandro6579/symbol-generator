@@ -15,7 +15,7 @@
 --			Number		Date		Name					Description			
 --			1.00		12.4.2012	Yoav Shvartz		    Repairs 
 --			2.00		22.08.2012	Olga Liberman			Addition of "vsync_out" port out to the File Log model
---
+--			2.01		27.10.2012	Olga Liberman			start_trigger signal is changed to find rising edge of vsync (instead of falling edge, like before)
 ------------------------------------------------------------------------------------------------
 --	Todo:
 --			(1) 
@@ -75,7 +75,7 @@ architecture opcode_store_rtl of opcode_store is
 	     );
 	end component general_fifo;
   
-  
+  signal op_cnt_i : std_logic_vector (9 downto 0);			-- internal register to sample the op_cnt input
   signal counter : std_logic_vector (9 downto 0);			-- counts number of changes 
   signal start_trigger   : std_logic; 						-- The derivative of op_str_rd_start which connected to vsync (we check when it changes from 0 to 1)  
   signal start_trigger_1 : std_logic; 						-- The derivative of op_str_rd_start which connected to vsync (we check when it changes from 0 to 1) 
@@ -139,7 +139,7 @@ begin
 			start_trigger_1 <= op_str_rd_start;			--sampling start_trigger twice because start_trigger (VSYNC) operates at 40MHz and the clk 100MHz  
 			start_trigger_2 <= start_trigger_1;
 			start_trigger_3 <= start_trigger_2; 
-		 	if ( (start_trigger_2 = '0')  and  (start_trigger_3 = '1')  ) then -- olga
+		 	if ( (start_trigger_2 = '1')  and  (start_trigger_3 = '0')  ) then -- olga
 				start_trigger <= '1';
 			else
 				start_trigger <= '0';
@@ -167,10 +167,24 @@ begin
 		end if;		
 	end process write_to_fifo_proc;
 	
-  fifo_status_proc:
+	fifo_status_proc:
 	op_str_full <= fifo_full;
 	op_str_empty <= fifo_empty;
- 
+	
+	-- sample op_cnt only when finished to read the current opcodes in fifo
+	op_cnt_proc: process (clk,reset_n)
+	begin
+		if reset_n='0' then
+			op_cnt_i <= (others => '0');
+		elsif rising_edge (clk) then
+			--if (counter = op_cnt_i) then
+			if (fifo_empty = '1') then
+				op_cnt_i <= op_cnt;
+			end if;
+		end if;
+	end process;
+	
+	
 	----------------------------------------------------------------------------------------------
 	--reading data from fifo to ram:
 	--first_n bit: indicating whether to remove ('0') or add ('1') the symbol 
@@ -190,11 +204,15 @@ begin
 			flush_fifo <= '1';
 		elsif rising_edge (clk) then
 			flush_fifo <= '0';
-			if ( (start_trigger = '1') and (fifo_empty = '0') ) then
+			if ( (start_trigger = '1') and (fifo_empty = '1') ) then -- new frame starts, but the display isn't changed
+				rd_mng_1 <= '1';
+			elsif ( (start_trigger = '1') and (fifo_empty = '0') ) then
 				rd_en_fifo <='1';
 				counter <= counter + three_c;
-			elsif ( (counter >0) and (counter <= op_cnt) and (fifo_empty = '0') ) then
-				if (counter = op_cnt) then
+			-- elsif ( (counter >0) and (counter <= op_cnt) and (fifo_empty = '0') ) then
+				-- if (counter = op_cnt) then
+			elsif ( (counter >0) and (counter <= op_cnt_i) and (fifo_empty = '0') ) then
+				if (counter = op_cnt_i) then
 					rd_en_fifo <='0';
 					counter <= (others => '0');
 					rd_mng_1 <= '1';
