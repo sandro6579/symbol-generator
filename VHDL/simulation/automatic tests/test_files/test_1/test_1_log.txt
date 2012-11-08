@@ -1,9 +1,0 @@
-##################### Log file for test: test_1 #####################
-frame 00: PASS
-***
-total frames: 1
-frames passed: 1
-frames failed: 0
-***
-final result:
-PASS

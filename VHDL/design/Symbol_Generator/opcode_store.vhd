@@ -16,11 +16,12 @@
 --			1.00		12.4.2012	Yoav Shvartz		    Repairs 
 --			2.00		22.08.2012	Olga Liberman			Addition of "vsync_out" port out to the File Log model
 --			2.01		27.10.2012	Olga Liberman			start_trigger signal is changed to find rising edge of vsync (instead of falling edge, like before)
+--			2.02		02.11.2012	Olga Liberman			fixing the bug with opcode packet that arrives during rising edge of vsync:
+--															the solution is to work with fifo_used signal, instead of op_cnt
+--
 ------------------------------------------------------------------------------------------------
 --	Todo:
 --			(1) 
---			(2)	
---			(3) 
 ------------------------------------------------------------------------------------------------
 
 library ieee;
@@ -76,24 +77,26 @@ architecture opcode_store_rtl of opcode_store is
 	end component general_fifo;
   
   signal op_cnt_i : std_logic_vector (9 downto 0);			-- internal register to sample the op_cnt input
-  signal counter : std_logic_vector (9 downto 0);			-- counts number of changes 
+  signal counter : std_logic_vector (9 downto 0);			-- counts number of changes in the current frame
   signal start_trigger   : std_logic; 						-- The derivative of op_str_rd_start which connected to vsync (we check when it changes from 0 to 1)  
   signal start_trigger_1 : std_logic; 						-- The derivative of op_str_rd_start which connected to vsync (we check when it changes from 0 to 1) 
   signal start_trigger_2 : std_logic; 						-- The derivative of op_str_rd_start which connected to vsync (we check when it changes from 0 to 1) 
   signal start_trigger_3 : std_logic; 						-- The derivative of op_str_rd_start which connected to vsync (we check when it changes from 0 to 1) 
   signal flush_fifo : std_logic; 							-- FIFO flush data
-  signal din_fifo : std_logic_vector ( 23 downto 0 );		-- data to FIFO sent from opcode_unite  why he doesnt recognize 
+  signal din_fifo : std_logic_vector ( 23 downto 0 );		-- data to FIFO sent from opcode_unite
   signal wr_en_fifo : std_logic;   							-- write enable FIFO	
   signal rd_en_fifo : std_logic;							-- read  enable FIFO
-  signal dout_fifo : std_logic_vector( 23 downto 0);		-- data sent to ram	
-  signal dout_valid_fifo : std_logic;       				-- data valid
+  signal dout_fifo : std_logic_vector( 23 downto 0);		-- data sent to RAM300
+  signal dout_valid_fifo : std_logic;       				-- data valid to RAM300
   signal fifo_full : std_logic;   							-- FIFO is full
   signal fifo_empty : std_logic;							-- FIFO is empty
   signal rd_en_fifo_i : std_logic;							-- sampling of rd_en_fifo
   signal rd_mng_1 : std_logic; -- internal signal to create a delay of 2 clocks in mng_en
   signal rd_mng_2 : std_logic; -- internal signal to create a delay of 2 clocks in mng_en
+  signal fifo_used : std_logic_vector(9 downto 0);		-- sample fifo_used signal at the begining of each vsync
+  signal fifo_used_s : std_logic_vector(9 downto 0);		-- sample fifo_used signal at the begining of each vsync
   
-  constant three_c : std_logic_vector ( 9 downto 0) := ("0000000011") ;
+  -- constant three_c : std_logic_vector ( 9 downto 0) := ("0000000011") ;
   
   
 begin
@@ -121,7 +124,7 @@ begin
 			full 				=> 		fifo_full,					-- FIFO is full
 			aempty 				=> 		open, 						-- FIFO is almost empty
 			empty				=>		fifo_empty,					-- FIFO is empty
-			used				=>  	op_str_used					-- Current number of elements in FIFO. Note the range. In case depth_g is 2^x, then the extra bit will be used
+			used				=>  	fifo_used					-- Current number of elements in FIFO. Note the range. In case depth_g is 2^x, then the extra bit will be used
 		);
 	
 	------------------------------------------------------
@@ -148,7 +151,6 @@ begin
 	end process vsync_active_proc;
 	
 	vsync_out <= start_trigger;
-	
 	------------------------
 	--writing data to fifo--
 	------------------------
@@ -184,7 +186,7 @@ begin
 		end if;
 	end process;
 	
-	
+	op_str_used <= fifo_used;
 	----------------------------------------------------------------------------------------------
 	--reading data from fifo to ram:
 	--first_n bit: indicating whether to remove ('0') or add ('1') the symbol 
@@ -202,23 +204,25 @@ begin
 			rd_mng_1 <= '0';
 			rd_mng_2 <= '0';
 			flush_fifo <= '1';
+			fifo_used_s <= (others => '0');
 		elsif rising_edge (clk) then
 			flush_fifo <= '0';
 			if ( (start_trigger = '1') and (fifo_empty = '1') ) then -- new frame starts, but the display isn't changed
 				rd_mng_1 <= '1';
 			elsif ( (start_trigger = '1') and (fifo_empty = '0') ) then
 				rd_en_fifo <='1';
-				counter <= counter + three_c;
-			-- elsif ( (counter >0) and (counter <= op_cnt) and (fifo_empty = '0') ) then
-				-- if (counter = op_cnt) then
-			elsif ( (counter >0) and (counter <= op_cnt_i) and (fifo_empty = '0') ) then
-				if (counter = op_cnt_i) then
+				counter <= counter + 1; --counter <= counter + three_c;
+				fifo_used_s <= fifo_used;
+			--elsif ( (counter >0) and (counter <= op_cnt_i) and (fifo_empty = '0') ) then
+			elsif ( (counter >0) and (counter <= fifo_used_s) and (fifo_empty = '0') ) then
+				--if (counter = op_cnt_i) then
+				if (counter = fifo_used_s) then
 					rd_en_fifo <='0';
 					counter <= (others => '0');
 					rd_mng_1 <= '1';
 				else
 					rd_en_fifo <='1';
-					counter <= counter + three_c;
+					counter <= counter + 1; --counter <= counter + three_c;
 				end if;
 			else
 				rd_en_fifo <= '0';

@@ -1,0 +1,12 @@
+##################### Log file for test: test_5 #####################
+frame 00: PASS
+frame 01: FAIL (line 143681 doesn't match)
+frame 02: FAIL (line 143681 doesn't match)
+frame 03: FAIL (line 143681 doesn't match)
+***
+total frames: 4
+frames passed: 1
+frames failed: 3
+***
+final result:
+FAIL
