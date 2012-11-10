@@ -518,7 +518,12 @@ function wait_Callback(hObject, eventdata, handles)
 if (handles.start==0)
     error('first click the start button');
 end
-    
+
+x=get(handles.x_loc,'String');
+y=get(handles.y_loc,'String');
+x=str2num(x);
+y=str2num(y);
+
 %checking bounds of x & y
 if ( (x>20)||(x<1)||(y>15)||(y<1) )
     error(' x or y are out of bounds ( x = [1,20] y = [1,15] )');
