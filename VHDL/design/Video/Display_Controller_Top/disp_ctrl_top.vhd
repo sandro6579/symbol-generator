@@ -10,6 +10,9 @@
 -- Revision:
 --			Number		Date		Name					Description			
 --			1.00		10.5.2011	Beeri Schreiber			Creation
+--			1.01		11.12.2012 	uri ran					nivun hadash
+--			1.02		05.01.2012	Olga Liberman			Addition of SG register in address 0x01
+--
 ------------------------------------------------------------------------------------------------
 --	Todo:
 --			(1)
@@ -20,9 +23,6 @@ use ieee.std_logic_1164.all;
 use ieee.std_logic_arith.all;
 use ieee.std_logic_unsigned.all;
 use ieee.math_real.all;
-
-library work ;
-use work.ram_generic_pkg.all;
 
 entity disp_ctrl_top is
 	generic (
@@ -60,7 +60,7 @@ entity disp_ctrl_top is
 			synth_bit_g				:	natural range 0 to 7 := 2;		--Relevant bit in type register, which represent Image from SDRAM ('0') or from Synthetic Pattern Generator ('1') 
 			
 			--Pixel Manager & RunLen-Exctractor generics
-			rep_size_g				:	positive	:= 7;				--2^7=128 => Maximum of 128 repetitions for pixel / line
+		--	rep_size_g				:	positive	:= 7;		--uri ran		--2^7=128 => Maximum of 128 repetitions for pixel / line
 			
 			--General FIFO Generics
 			fifo_depth_g 			: positive		:= 3840;			-- Maximum elements in FIFO
@@ -73,9 +73,9 @@ entity disp_ctrl_top is
 			);
 	port	(
 				--Clock and Reset
-				clk_133				:	in std_logic;							--SDRAM clock
+				clk_100				:	in std_logic;							--Systen clock
 				clk_40				:	in std_logic;							--VESA Clock
-				rst_133				:	in std_logic;							--Reset (133MHz)
+				rst_100				:	in std_logic;							--Reset (100MHz)
 				rst_40				:	in std_logic;							--Reset (40MHz)
 
 				-- Wishbone Slave (For Registers)
@@ -112,7 +112,10 @@ entity disp_ctrl_top is
 					
 				--Sync Signals			
 				hsync				:	out std_logic;										--HSync Signal
-				vsync				:	out std_logic										--VSync Signal
+				vsync				:	out std_logic;										--VSync Signal
+				
+				--Debug Port
+				dbg_type_reg		:	out std_logic_vector (7 downto 0)					--Type Register Value
 			);
 end entity disp_ctrl_top;
 
@@ -121,11 +124,14 @@ architecture rtl_disp_ctrl_top of disp_ctrl_top is
 --	###########################		Costants		##############################	--
 constant reg_width_c			:	positive 	:= 8;	--Width of registers
 constant reg_addr_width_c		:	positive 	:= 4;	--Width of registers' address
-constant type_reg_addr_c		:	natural		:= 1;	--Type register address
+constant type_reg_addr_c		:	natural		:= 14;	--Type register address (0xE)
 constant left_frame_reg_addr_c	:	natural		:= 5;	--Frame register address
 constant right_frame_reg_addr_c	:	natural		:= 6;	--Frame register address
 constant upper_frame_reg_addr_c	:	natural		:= 7;	--Frame register address
 constant lower_frame_reg_addr_c	:	natural		:= 8;	--Frame register address
+-- SG registers --
+constant opcode_unite_reg_addr_c	:	natural		:= 1;	--OpcodeUnite register address
+------------------
 
 --###########################	Signals		###################################--
 --40MHz Clock Domain Signals
@@ -148,7 +154,7 @@ signal r_in				:	std_logic_vector (red_width_g - 1 downto 0);	--RED   (From DC F
 signal g_in				:	std_logic_vector (green_width_g - 1 downto 0);	--GREEN (From DC FIFO)
 signal b_in				:	std_logic_vector (blue_width_g - 1 downto 0);	--BLUE  (From DC FIFO)
 
---133MHz Clock Domain Signals	
+--100MHz Clock Domain Signals	
 --FIFO
 signal wrusedw			:	std_logic_vector (11 downto 0);
 signal sc_fifo_full		:	std_logic;						--SC FIFO is full
@@ -161,11 +167,23 @@ signal dc_fifo_din		:	std_logic_vector (7 downto 0);	--Input FIFO data
 signal dc_fifo_wr_en	:	std_logic;						--Write enable to FIFO
 signal dc_fifo_aclr		:	std_logic;						--Clear to DC FIFO
 signal flush			:	std_logic;						--Flush data in FIFO, and go to rx state in decompressor
+signal sc_fifo_rd_req	:	std_logic;						--uri ran Read request to sc_fifo from dc_fifo
 --Registers
 signal left_frame_rg	:	std_logic_vector(integer(ceil(log(real(hor_active_pixels_g)) / log(2.0))) - 1 downto 0);	--Left frame border
 signal upper_frame_rg	:	std_logic_vector(integer(ceil(log(real(ver_active_lines_g)) / log(2.0))) - 1 downto 0);	--Upper frame border
 signal right_frame_rg	:	std_logic_vector(integer(ceil(log(real(hor_active_pixels_g)) / log(2.0))) - 1 downto 0);	--Right frame border
 signal lower_frame_rg	:	std_logic_vector(integer(ceil(log(real(ver_active_lines_g)) / log(2.0))) - 1 downto 0);	--Lower frame border
+--CDC Signals
+signal vesa_mux_d1		:	std_logic;
+signal left_frame_rg_d1	:	std_logic_vector(integer(ceil(log(real(hor_active_pixels_g)) / log(2.0))) - 1 downto 0);	--Left frame border
+signal upper_frame_rg_d1:	std_logic_vector(integer(ceil(log(real(ver_active_lines_g)) / log(2.0))) - 1 downto 0);	--Upper frame border
+signal right_frame_rg_d1:	std_logic_vector(integer(ceil(log(real(hor_active_pixels_g)) / log(2.0))) - 1 downto 0);	--Right frame border
+signal lower_frame_rg_d1:	std_logic_vector(integer(ceil(log(real(ver_active_lines_g)) / log(2.0))) - 1 downto 0);	--Lower frame border
+signal vesa_mux_d2		:	std_logic;
+signal left_frame_rg_d2	:	std_logic_vector(integer(ceil(log(real(hor_active_pixels_g)) / log(2.0))) - 1 downto 0);	--Left frame border
+signal upper_frame_rg_d2:	std_logic_vector(integer(ceil(log(real(ver_active_lines_g)) / log(2.0))) - 1 downto 0);	--Upper frame border
+signal right_frame_rg_d2:	std_logic_vector(integer(ceil(log(real(hor_active_pixels_g)) / log(2.0))) - 1 downto 0);	--Right frame border
+signal lower_frame_rg_d2:	std_logic_vector(integer(ceil(log(real(ver_active_lines_g)) / log(2.0))) - 1 downto 0);	--Lower frame border
 
 --WBS Signals
 signal wbs_reg_din_ack		:	std_logic;					--WBS Register din acknowledged
@@ -210,6 +228,17 @@ signal upper_frame		:	std_logic_vector(integer(ceil(log(real(ver_active_lines_g)
 signal right_frame		:	std_logic_vector(integer(ceil(log(real(hor_active_pixels_g)) / log(2.0))) - 1 downto 0);	--Right frame border
 signal lower_frame		:	std_logic_vector(integer(ceil(log(real(ver_active_lines_g)) / log(2.0))) - 1 downto 0);	--Lower frame border
 
+signal left_frame_m	:	std_logic_vector(integer(ceil(log(real(hor_active_pixels_g)) / log(2.0))) - 1 downto 0);	--Left frame border
+signal upper_frame_m	:	std_logic_vector(integer(ceil(log(real(ver_active_lines_g)) / log(2.0))) - 1 downto 0);	--Upper frame border
+signal right_frame_m	:	std_logic_vector(integer(ceil(log(real(hor_active_pixels_g)) / log(2.0))) - 1 downto 0);	--Right frame border
+signal lower_frame_m	:	std_logic_vector(integer(ceil(log(real(ver_active_lines_g)) / log(2.0))) - 1 downto 0);	--Lower frame border
+
+-- SG signals
+signal opcode_unite_reg_din_ack		:	std_logic;								--Data has been acknowledged
+signal opcode_unite_reg_rd_en		:	std_logic;								--Read Enable
+signal opcode_unite_reg_dout_valid	:	std_logic;								--Output data is valid
+signal opcode_unite_rg				:	std_logic_vector(reg_width_c-1 downto 0);	-- Opcode Unite register
+--------------
 --###########################	Components	###################################--
 
 component vesa_gen_ctrl 
@@ -366,8 +395,8 @@ component pixel_mng
 			screen_hor_pix_g	:	positive	:= 800;		--800X600 = Actual screen resolution
 			hor_pixels_g		:	positive	:= 640;		--640X480
 			ver_lines_g			:	positive	:= 480;		--640X480
-			req_lines_g			:	positive	:= 3;		--Number of lines to request from image transmitter, to hold in its FIFO
-			rep_size_g			:	positive	:= 7		--2^7=128 => Maximum of 128 repetitions for pixel / line
+			req_lines_g			:	positive	:= 3		--Number of lines to request from image transmitter, to hold in its FIFO
+--			rep_size_g			:	positive	:= 7		--uri ran 2^7=128 => Maximum of 128 repetitions for pixel / line  
            );
    port
    	   (
@@ -383,10 +412,14 @@ component pixel_mng
 		wbm_stb_o		:	out std_logic;						--Wishbone Strobe
 		wbm_adr_o		:	out std_logic_vector (9 downto 0);	--Wishbone Address
 		wbm_tga_o		:	out std_logic_vector (9 downto 0);	--Burst Length
+		wbm_tgc_o		:	out std_logic;						--'1': Restart from start of SDRAM
 		
 		--Signals to FIFO
 		fifo_wr_en		:	out std_logic;						--Write Enable to FIFO
 		fifo_flush		:	out std_logic;						--Flush FIFO
+		
+		--Signal to terminate cycle due to Debug Mode (Termination only before WBS_STALL_O negates)
+		term_cyc		:	in std_logic;						--Terminate cycle
 		
 		--Signals from VESA Generator (Clock Domain: 40MHz)
 		pixels_req		:	in std_logic_vector(integer(ceil(log(real(screen_hor_pix_g*req_lines_g)) / log(2.0))) - 1 downto 0); --Request for PIXELS*LINES pixels from FIFO
@@ -396,27 +429,28 @@ component pixel_mng
    	   );
 end component pixel_mng;
 
-component runlen_extractor 
-   generic (
-			reset_polarity_g	:	std_logic	:= '0';		--Reset active low
-			pixels_per_line_g	:	positive	:= 640;		--640X480
-			rep_size_g			:	positive	:= 7;		--2^7=128 => Maximum of 128 repetitions for pixel / line
-			width_g				:	positive	:= 8		--Input / output width
-           );
-   port
-   	   (
-   	     clk		:	in std_logic;       							--Input clock
-   	     rst		:	in std_logic;									--Reset
-		 fifo_full	:	in std_logic;									--Output FIFO is full
-		 fifo_empty	:	in std_logic;									--Input FIFO is empty
-		 flush		:	in std_logic;									--Restart component
-		 din		:	in std_logic_vector (width_g - 1 downto 0);		--Input data
-		 din_val	:	in std_logic;									--Input data is valid
-		 req_data	:	out std_logic;									--Request for data
-		 dout		:	out std_logic_vector (width_g - 1 downto 0);	--Output pixel
-		 dout_val	:	out std_logic									--Output data is valid
-   	   );
-end component runlen_extractor;
+--uri ran - delete component
+-- component runlen_extractor 
+   -- generic (
+			-- reset_polarity_g	:	std_logic	:= '0';		--Reset active low
+			-- pixels_per_line_g	:	positive	:= 640;		--640X480
+			-- rep_size_g			:	positive	:= 7;		--2^7=128 => Maximum of 128 repetitions for pixel / line
+			-- width_g				:	positive	:= 8		--Input / output width
+           -- );
+   -- port
+   	   -- (
+   	     -- clk		:	in std_logic;       							--Input clock
+   	     -- rst		:	in std_logic;									--Reset
+		 -- fifo_full	:	in std_logic;									--Output FIFO is full
+		 -- fifo_empty	:	in std_logic;									--Input FIFO is empty
+		 -- flush		:	in std_logic;									--Restart component
+		 -- din		:	in std_logic_vector (width_g - 1 downto 0);		--Input data
+		 -- din_val	:	in std_logic;									--Input data is valid
+		 -- req_data	:	out std_logic;									--Request for data
+		 -- dout		:	out std_logic_vector (width_g - 1 downto 0);	--Output pixel
+		 -- dout_val	:	out std_logic									--Output data is valid
+   	   -- );
+-- end component runlen_extractor;
 
 component gen_reg
 	generic	(
@@ -483,23 +517,29 @@ component wbs_reg
 end component wbs_reg;
 
 begin
+--uri ran - added mux
+--Mux implementation: read request to sc_fifo from dc_fifo
+	fifo_mux:	
+		sc_fifo_rd_req <= '1' when ((dc_fifo_full='0') and (sc_fifo_empty='0'))
+		else '0';
+	
 	--###########################	Hidden Processes	###########################--
 	--DC FIFO aclr
 	dc_fifo_aclr_gen1:
 	if (reset_polarity_g = '0') generate
 		dc_fifo_aclr_proc:
-		dc_fifo_aclr	<=	(not rst_133) or flush;
+		dc_fifo_aclr	<=	(not rst_100) or flush;
 	end generate dc_fifo_aclr_gen1;
 
 	dc_fifo_aclr_gen2:
 	if (reset_polarity_g = '1') generate
 		dc_fifo_aclr_proc:
-		dc_fifo_aclr	<=	rst_133 or flush;
+		dc_fifo_aclr	<=	rst_100 or flush;
 	end generate dc_fifo_aclr_gen2;
 
 	--VESA Data valid process
 	vesa_data_valid_proc:
-	vesa_data_valid	<=	vesa_data_valid_sy when type_reg_dout (synth_bit_g) = '1'
+	vesa_data_valid	<=	vesa_data_valid_sy when vesa_mux_d2 = '1'
 						else (not dc_fifo_empty);
 
 	--VSync process:
@@ -518,21 +558,17 @@ begin
 	-- dc_fifo_wr_en_log_proc:
 	-- dc_fifo_wr_en_log	<=	dc_fifo_wr_en and (not dc_fifo_full);	
 	
-	--New picture - Read from start of SDRAM (WBM_TGC_O)
-	wbm_tgc_o_proc:
-	wbm_tgc_o	<=	flush;	--'1' to start from the first image address
-
 	--RGB Processes:
 	r_in_proc:
-	r_in	<=	r_in_sy when type_reg_dout (synth_bit_g) = '1'
+	r_in	<=	r_in_sy when vesa_mux_d2 = '1'
 				else dc_fifo_dout;
 
 	g_in_proc:
-	g_in	<=	g_in_sy when type_reg_dout (synth_bit_g) = '1'
+	g_in	<=	g_in_sy when vesa_mux_d2 = '1'
 				else dc_fifo_dout;
 
 	b_in_proc:
-	b_in	<=	b_in_sy when type_reg_dout (synth_bit_g) = '1'
+	b_in	<=	b_in_sy when vesa_mux_d2 = '1'
 				else dc_fifo_dout;
 				
 	r_out_proc:
@@ -547,10 +583,14 @@ begin
 	--Frames
 	--ZERO all unused bits
 	left_frame_zero_proc:
-	left_frame_rg (left_frame_rg'left downto reg_width_c) <=	(others => '0');
+	--left_frame_rg (left_frame_rg'left downto reg_width_c) <=	(others => '0'); -- uri ran - uncomment for large resolution
+	left_frame_rg <= conv_std_logic_vector (336, left_frame_rg'high+1);
+
 
 	right_frame_zero_proc:
-	right_frame_rg (right_frame_rg'left downto reg_width_c) <=	(others => '0');
+	--right_frame_rg (right_frame_rg'left downto reg_width_c) <=	(others => '0'); -- uri ran - uncomment for large resolution
+	right_frame_rg <= conv_std_logic_vector (336, right_frame_rg'high+1);
+
 
 	upper_frame_zero_proc:
 	upper_frame_rg (upper_frame_rg'left downto reg_width_c) <=	(others => '0');
@@ -559,25 +599,56 @@ begin
 	lower_frame_rg (lower_frame_rg'left downto reg_width_c) <=	(others => '0');
 
 	--Connect frames
-	left_frame_proc:
-	left_frame	<=	left_frame_sy when type_reg_dout (synth_bit_g) = '1'
-					else left_frame_rg;
+	left_frame_m_proc:
+	left_frame_m	<=	left_frame_sy when vesa_mux_d2 = '1'
+					else left_frame_rg_d2;
 
-	right_frame_proc:
-	right_frame	<=	right_frame_sy when type_reg_dout (synth_bit_g) = '1'
-					else right_frame_rg;
+	right_frame_m_proc:
+	right_frame_m	<=	right_frame_sy when vesa_mux_d2 = '1'
+					else right_frame_rg_d2;
 
-	upper_frame_proc:
-	upper_frame	<=	upper_frame_sy when type_reg_dout (synth_bit_g) = '1'
-					else upper_frame_rg;
+	upper_frame_m_proc:
+	upper_frame_m	<=	upper_frame_sy when vesa_mux_d2 = '1'
+					else upper_frame_rg_d2;
 
-	lower_frame_proc:
-	lower_frame	<=	lower_frame_sy when type_reg_dout (synth_bit_g) = '1'
-					else lower_frame_rg;
+	lower_frame_m_proc:
+	lower_frame_m	<=	lower_frame_sy when vesa_mux_d2 = '1'
+					else lower_frame_rg_d2;
+					
+	--------------------------------------------------------------
+	------------- ff_frames_proc	------------------------------
+	--------------------------------------------------------------
+	-- The process samples the *_frame_m signal, in order to
+	-- improve timing
+	--------------------------------------------------------------
+	ff_frames_proc:	process (clk_40, rst_40)
+	begin
+		if (rst_40 = reset_polarity_g) then
+			left_frame	<=	(others => '0');
+			right_frame	<=	(others => '0');
+			upper_frame	<=	(others => '0');
+			lower_frame	<=	(others => '0');
+		elsif rising_edge (clk_40) then
+			left_frame		<=	left_frame_m;
+			right_frame     <=	right_frame_m;
+			upper_frame     <=	upper_frame_m;
+			lower_frame     <=	lower_frame_m;
+		end if;
+	end process ff_frames_proc;
 					
 	--Cycle is active for registers
 	wbs_reg_cyc_proc:
-	wbs_reg_cyc	<=	wbs_cyc_i and wbs_tgc_i;
+	wbs_reg_cyc	<=	wbs_cyc_i and wbs_tgc_i when
+					(conv_integer(wbs_adr_i (reg_addr_width_c - 1 downto 0)) = type_reg_addr_c) or
+					(conv_integer(wbs_adr_i (reg_addr_width_c - 1 downto 0)) = left_frame_reg_addr_c)	or
+	                (conv_integer(wbs_adr_i (reg_addr_width_c - 1 downto 0)) = right_frame_reg_addr_c)	or
+	                (conv_integer(wbs_adr_i (reg_addr_width_c - 1 downto 0)) = upper_frame_reg_addr_c)	or
+	                (conv_integer(wbs_adr_i (reg_addr_width_c - 1 downto 0)) = lower_frame_reg_addr_c)	or
+					(conv_integer(wbs_adr_i (reg_addr_width_c - 1 downto 0)) = opcode_unite_reg_addr_c)
+					else '0';
+	
+	
+	
 					
 	--MUX, to route addressed register data to the WBS
 	wbs_reg_dout_proc:
@@ -602,7 +673,8 @@ begin
 						or left_frame_reg_din_ack
 						or right_frame_reg_din_ack
 						or upper_frame_reg_din_ack
-						or lower_frame_reg_din_ack;
+						or lower_frame_reg_din_ack
+						or opcode_unite_reg_din_ack;
 						
 	--Read Enables processes:
 	type_reg_rd_en_proc:
@@ -624,6 +696,10 @@ begin
 	lower_frame_reg_rd_en_proc:
 	lower_frame_reg_rd_en	<=	'1' when (conv_integer(wbs_adr_i (reg_addr_width_c - 1 downto 0)) = lower_frame_reg_addr_c) and (reg_rd_en = '1')
 								else '0';
+								
+	opcode_unite_reg_rd_en_proc:
+	opcode_unite_reg_rd_en	<=	'1' when (conv_integer(wbs_adr_i (reg_addr_width_c - 1 downto 0)) = opcode_unite_reg_addr_c) and (reg_rd_en = '1')
+								else '0';
 
 --###########################	Instatiation	###################################--
 
@@ -635,13 +711,13 @@ pixel_mng_inst: pixel_mng generic map
 							screen_hor_pix_g	=>	hor_active_pixels_g,
 							hor_pixels_g		=>	hor_pres_pixels_g,
 							ver_lines_g			=>	ver_pres_lines_g,
-							req_lines_g			=>	req_lines_g,
-							rep_size_g			=>	rep_size_g
+							req_lines_g			=>	req_lines_g
+-- uri ran							rep_size_g			=>	rep_size_g
 						)
 						port map
 						(
-							clk_i				=>	clk_133,		
-							rst			        =>	rst_133,
+							clk_i				=>	clk_100,		
+							rst			        =>	rst_100,
 							wbm_ack_i	        =>	wbm_ack_i,
 							wbm_err_i	        =>	wbm_err_i	,
 							wbm_stall_i	        =>	wbm_stall_i	,
@@ -650,42 +726,44 @@ pixel_mng_inst: pixel_mng generic map
 							wbm_stb_o	        =>	wbm_stb_o	,
 							wbm_adr_o	        =>	wbm_adr_o	,
 							wbm_tga_o	        =>	wbm_tga_o	,
+							wbm_tgc_o			=>	wbm_tgc_o	,
 							fifo_wr_en	        =>	sc_fifo_wr_en,
 							fifo_flush	        =>	flush,
+							term_cyc			=>	type_reg_dout (0),	--Debug bit ('1' for debug mode, '0' for normal mode)
 							pixels_req	        =>	pixels_req,
 							req_ln_trig	        =>	req_ln_trig,
 							vsync		        =>	vsync_int		
 						);
-						
-runlen_extractor_inst :	runlen_extractor generic map
-						(
-							reset_polarity_g	=>	reset_polarity_g,	
-							pixels_per_line_g	=>	hor_pres_pixels_g,
-							rep_size_g			=>	rep_size_g,
-							width_g				=>	8
-						)
-					port map
-						(
-							 clk				=>	clk_133,
-							 rst				=>	rst_133,
-							 fifo_full			=>	dc_fifo_full,
-							 fifo_empty			=>	sc_fifo_empty,
-							 flush				=>	flush,
-							 din				=>	sc_fifo_dout,
-							 din_val			=>	sc_fifo_dout_val,
-							 req_data			=>	sc_fifo_rd_en,
-							 dout				=>	dc_fifo_din,
-							 dout_val			=>	dc_fifo_wr_en
-						);
+-- uri ran - remove instance						
+-- runlen_extractor_inst :	runlen_extractor generic map
+						-- (
+							-- reset_polarity_g	=>	reset_polarity_g,	
+							-- pixels_per_line_g	=>	hor_pres_pixels_g,
+							-- rep_size_g			=>	rep_size_g,
+							-- width_g				=>	8
+						-- )
+					-- port map
+						-- (
+							 -- clk				=>	clk_100,
+							 -- rst				=>	rst_100,
+							 -- fifo_full			=>	dc_fifo_full,
+							 -- fifo_empty			=>	sc_fifo_empty,
+							 -- flush				=>	flush,
+							 -- din				=>	sc_fifo_dout,
+							 -- din_val			=>	sc_fifo_dout_val,
+							 -- req_data			=>	sc_fifo_rd_en,
+							 -- dout				=>	dc_fifo_din,
+							 -- dout_val			=>	dc_fifo_wr_en
+						-- );
 
 dc_fifo_inst	:	dc_fifo port map
 						(
 							aclr				=>	dc_fifo_aclr,
-							data				=>	dc_fifo_din,
+							data				=>	sc_fifo_dout, -- uri ran
 							rdclk				=>	clk_40,
 							rdreq				=>	dc_rd_req,
-							wrclk				=>	clk_133,
-							wrreq				=>	dc_fifo_wr_en,
+							wrclk				=>	clk_100,
+							wrreq				=>	sc_fifo_dout_val, -- uri ran
 							q					=>	dc_fifo_dout,
 							rdempty				=>	dc_fifo_empty,
 							--wrfull				=>	dc_fifo_full,
@@ -701,11 +779,11 @@ sc_fifo_inst 	:	general_fifo generic map (
 						)
 						port map
 						(
-							 clk				=>	clk_133, 		
-							 rst 		        =>	rst_133,
+							 clk				=>	clk_100, 		
+							 rst 		        =>	rst_100,
 							 din 		        =>	wbm_dat_i,
 							 wr_en 		        =>	sc_fifo_wr_en,
-							 rd_en 		        =>	sc_fifo_rd_en,
+							 rd_en 		        =>	sc_fifo_rd_req, -- uri ran
 							 flush		        =>	flush,
 							 dout 		        =>	sc_fifo_dout,
 							 dout_valid	        =>	sc_fifo_dout_val,
@@ -808,8 +886,8 @@ gen_reg_type_inst	:	gen_reg generic map (
 							default_value_g		=>	0
 						)
 						port map (
-							clk					=>	clk_133,
-							reset		        =>	rst_133,
+							clk					=>	clk_100,
+							reset		        =>	rst_100,
 							addr		        =>	reg_addr,
 							din			        =>	reg_din,
 							wr_en		        =>	reg_wr_en,
@@ -819,54 +897,54 @@ gen_reg_type_inst	:	gen_reg generic map (
 							dout		        =>	type_reg_dout,
 							dout_valid	        =>	type_reg_dout_valid
 						);
-			
-gen_reg_left_frame_inst	:	gen_reg generic map (
-							reset_polarity_g	=>	reset_polarity_g,	
-							width_g				=>	reg_width_c,
-							addr_en_g			=>	true,
-							addr_val_g			=>	left_frame_reg_addr_c,
-							addr_width_g		=>	reg_addr_width_c,
-							read_en_g			=>	true,
-							write_en_g			=>	true,
-							clear_on_read_g		=>	false,
-							default_value_g		=>	(hor_active_pixels_g - hor_pres_pixels_g)/2
-						)
-						port map (
-							clk					=>	clk_133,
-							reset		        =>	rst_133,
-							addr		        =>	reg_addr,
-							din			        =>	reg_din,
-							wr_en		        =>	reg_wr_en,
-							clear		        =>	'0',
-							din_ack		        =>	left_frame_reg_din_ack,
-							rd_en				=>	left_frame_reg_rd_en,
-							dout		        =>	left_frame_rg (reg_width_c - 1 downto 0),
-							dout_valid	        =>	left_frame_reg_dout_valid
-						);
+-- uri ran			
+-- gen_reg_left_frame_inst	:	gen_reg generic map (
+							-- reset_polarity_g	=>	reset_polarity_g,	
+							-- width_g				=>	reg_width_c,
+							-- addr_en_g			=>	true,
+							-- addr_val_g			=>	left_frame_reg_addr_c,
+							-- addr_width_g		=>	reg_addr_width_c,
+							-- read_en_g			=>	true,
+							-- write_en_g			=>	true,
+							-- clear_on_read_g		=>	false,
+							-- default_value_g		=>	(hor_active_pixels_g - hor_pres_pixels_g)/2
+						-- )
+						-- port map (
+							-- clk					=>	clk_100,
+							-- reset		        =>	rst_100,
+							-- addr		        =>	reg_addr,
+							-- din			        =>	reg_din,
+							-- wr_en		        =>	reg_wr_en,
+							-- clear		        =>	'0',
+							-- din_ack		        =>	left_frame_reg_din_ack,
+							-- rd_en				=>	left_frame_reg_rd_en,
+							-- dout		        =>	left_frame_rg (reg_width_c - 1 downto 0),
+							-- dout_valid	        =>	left_frame_reg_dout_valid
+						-- );
 						
-gen_reg_right_frame_inst	:	gen_reg generic map (
-							reset_polarity_g	=>	reset_polarity_g,	
-							width_g				=>	reg_width_c,
-							addr_en_g			=>	true,
-							addr_val_g			=>	right_frame_reg_addr_c,
-							addr_width_g		=>	reg_addr_width_c,
-							read_en_g			=>	true,
-							write_en_g			=>	true,                                
-							clear_on_read_g		=>	false,                               	
-							default_value_g		=>	(hor_active_pixels_g - hor_pres_pixels_g)/2
-						)
-						port map (
-							clk					=>	clk_133,
-							reset		        =>	rst_133,
-							addr		        =>	reg_addr,
-							din			        =>	reg_din,
-							wr_en		        =>	reg_wr_en,
-							clear		        =>	'0',
-							din_ack		        =>	right_frame_reg_din_ack,
-							rd_en				=>	right_frame_reg_rd_en,
-							dout		        =>	right_frame_rg (reg_width_c - 1 downto 0),
-							dout_valid	        =>	right_frame_reg_dout_valid
-						);
+-- gen_reg_right_frame_inst	:	gen_reg generic map (
+							-- reset_polarity_g	=>	reset_polarity_g,	
+							-- width_g				=>	reg_width_c,
+							-- addr_en_g			=>	true,
+							-- addr_val_g			=>	right_frame_reg_addr_c,
+							-- addr_width_g		=>	reg_addr_width_c,
+							-- read_en_g			=>	true,
+							-- write_en_g			=>	true,                                
+							-- clear_on_read_g		=>	false,                               	
+							-- default_value_g		=>	(hor_active_pixels_g - hor_pres_pixels_g)/2
+						-- )
+						-- port map (
+							-- clk					=>	clk_100,
+							-- reset		        =>	rst_100,
+							-- addr		        =>	reg_addr,
+							-- din			        =>	reg_din,
+							-- wr_en		        =>	reg_wr_en,
+							-- clear		        =>	'0',
+							-- din_ack		        =>	right_frame_reg_din_ack,
+							-- rd_en				=>	right_frame_reg_rd_en,
+							-- dout		        =>	right_frame_rg (reg_width_c - 1 downto 0),
+							-- dout_valid	        =>	right_frame_reg_dout_valid
+						-- );
 						
 gen_reg_upper_frame_inst	:	gen_reg generic map (
 							reset_polarity_g	=>	reset_polarity_g,	
@@ -880,8 +958,8 @@ gen_reg_upper_frame_inst	:	gen_reg generic map (
 							default_value_g		=>	(ver_active_lines_g - ver_pres_lines_g)/2
 						)
 						port map (
-							clk					=>	clk_133,
-							reset		        =>	rst_133,
+							clk					=>	clk_100,
+							reset		        =>	rst_100,
 							addr		        =>	reg_addr,
 							din			        =>	reg_din,
 							wr_en		        =>	reg_wr_en,
@@ -904,8 +982,8 @@ gen_reg_lower_frame_inst	:	gen_reg generic map (
 							default_value_g		=>	(ver_active_lines_g - ver_pres_lines_g)/2
 						)
 						port map (
-							clk					=>	clk_133,
-							reset		        =>	rst_133,
+							clk					=>	clk_100,
+							reset		        =>	rst_100,
 							addr		        =>	reg_addr,
 							din			        =>	reg_din,
 							wr_en		        =>	reg_wr_en,
@@ -916,14 +994,41 @@ gen_reg_lower_frame_inst	:	gen_reg generic map (
 							dout_valid	        =>	lower_frame_reg_dout_valid
 						);
 						
+						
+-- SG - opcode unite register						
+gen_reg_opcode_unite_inst	:	gen_reg generic map (
+							reset_polarity_g	=>	reset_polarity_g,	
+							width_g				=>	reg_width_c,
+							addr_en_g			=>	true,
+							addr_val_g			=>	opcode_unite_reg_addr_c,
+							addr_width_g		=>	reg_addr_width_c,
+							read_en_g			=>	true,
+							write_en_g			=>	true,
+							clear_on_read_g		=>	false,
+							default_value_g		=>	42
+						)
+						port map (
+							clk					=>	clk_100,
+							reset		        =>	rst_100,
+							addr		        =>	reg_addr,
+							din			        =>	reg_din,
+							wr_en		        =>	reg_wr_en,
+							clear		        =>	'0',
+							din_ack		        =>	opcode_unite_reg_din_ack,
+							rd_en				=>	opcode_unite_reg_rd_en,
+							dout		        =>	opcode_unite_rg (reg_width_c - 1 downto 0),
+							dout_valid	        =>	opcode_unite_reg_dout_valid
+						);					
+------------------------------
+						
 wbs_reg_inst	:	wbs_reg generic map (
 							reset_polarity_g=>	reset_polarity_g,
 							width_g			=>	reg_width_c,
 							addr_width_g	=>	reg_addr_width_c
 						)
 						port map (
-							rst				=>	rst_133,
-							clk_i			=> 	clk_133,
+							rst				=>	rst_100,
+							clk_i			=> 	clk_100,
 							wbs_cyc_i	    =>	wbs_reg_cyc,	
 							wbs_stb_i	    => 	wbs_stb_i,	
 							wbs_adr_i	    =>	wbs_adr_i (reg_addr_width_c - 1 downto 0),	
@@ -944,5 +1049,38 @@ wbs_reg_inst	:	wbs_reg generic map (
 							
 --WBS_ERR_O
 wbs_err_o_proc:
-wbs_err_o	<=	'0';							
+wbs_err_o	<=	'0';				
+
+--------------------------	CDC Process	-----------------------
+cdc_proc : process (clk_40, rst_40)
+begin
+	if (rst_40 = reset_polarity_g) then
+		left_frame_rg_d1	<=	(others => '0');
+		upper_frame_rg_d1   <=	(others => '0');
+	    right_frame_rg_d1   <=	(others => '0');
+	    lower_frame_rg_d1   <=	(others => '0');
+		left_frame_rg_d2	<=	(others => '0');
+		upper_frame_rg_d2   <=	(others => '0');
+	    right_frame_rg_d2   <=	(others => '0');
+	    lower_frame_rg_d2   <=	(others => '0');
+		vesa_mux_d1			<=	'0';
+	elsif rising_edge(clk_40) then
+		vesa_mux_d1			<=	type_reg_dout (synth_bit_g);
+		left_frame_rg_d1	<=	left_frame_rg	;
+	    upper_frame_rg_d1   <=  upper_frame_rg   ;
+	    right_frame_rg_d1   <=  right_frame_rg   ;
+	    lower_frame_rg_d1   <=  lower_frame_rg   ;
+		
+		vesa_mux_d2			<=	vesa_mux_d1;
+		left_frame_rg_d2	<=	left_frame_rg_d1	;
+	    upper_frame_rg_d2   <=  upper_frame_rg_d1    ;
+	    right_frame_rg_d2   <=  right_frame_rg_d1    ;
+	    lower_frame_rg_d2   <=  lower_frame_rg_d1    ;
+	end if;
+end process cdc_proc;
+
+-------------------------------	Debug Process--------------------------
+dbg_type_reg_proc:
+dbg_type_reg	<=	type_reg_dout;
+			
 end architecture rtl_disp_ctrl_top;

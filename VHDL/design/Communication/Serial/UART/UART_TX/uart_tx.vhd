@@ -24,12 +24,10 @@
 -- Revision:
 --			Number		Date		Name				Description
 --			1.00		27.11.2010	Alon Yavich			Creation
---			1.1			22.11.2012	Dor Obstbaum		Fix parrity_odd bug (line 190)
 ------------------------------------------------------------------------------------------------
 ------------------------------------------------------------------------------------------------
 --	Todo:
 --			 
---------
 ------------------------------------------------------------------------------------------------
 
 library ieee ;
@@ -187,7 +185,7 @@ begin
 					if parity_en_g = 0 then
 						sr(databits_g + 1) <= uart_idle_g;							--Stop bit
 					else
-						if (parity_odd_g = false) then
+						if parity_odd_g then
 							sr(databits_g + 1) <= xor_reduce(din(databits_g -1 downto 0)); --Calculate parity
 						else
 							sr(databits_g + 1) <= xnor_reduce(din(databits_g -1 downto 0));--Calculate parity
