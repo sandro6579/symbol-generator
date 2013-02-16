@@ -42,7 +42,7 @@ for x=0:19
         fprintf(fid, '%02X\r\n',part1);
         fprintf(fid, '%02X\r\n',part2);
         fprintf(fid, '%02X\r\n',part3);
-        crc_sum = part1 + part2 + part3;
+        crc_sum = crc_sum + part1 + part2 + part3;
     end
 end
 
@@ -86,7 +86,7 @@ part3 = bin2dec(strcat(y_bin(2:4),x_bin));
 fprintf(fid, '%02X\r\n',part1);
 fprintf(fid, '%02X\r\n',part2);
 fprintf(fid, '%02X\r\n',part3);
-crc_sum = part1 + part2 + part3;
+crc_sum = crc_sum + part1 + part2 + part3;
 
 % change
 add = 1; % 0=romove , 1=add
@@ -103,7 +103,7 @@ part3 = bin2dec(strcat(y_bin(2:4),x_bin));
 fprintf(fid, '%02X\r\n',part1);
 fprintf(fid, '%02X\r\n',part2);
 fprintf(fid, '%02X\r\n',part3);
-crc_sum = part1 + part2 + part3;
+crc_sum = crc_sum + part1 + part2 + part3;
 
 % change
 add = 1; % 0=romove , 1=add
@@ -120,7 +120,7 @@ part3 = bin2dec(strcat(y_bin(2:4),x_bin));
 fprintf(fid, '%02X\r\n',part1);
 fprintf(fid, '%02X\r\n',part2);
 fprintf(fid, '%02X\r\n',part3);
-crc_sum = part1 + part2 + part3;
+crc_sum = crc_sum + part1 + part2 + part3;
 
 % change
 add = 1; % 0=romove , 1=add
@@ -137,7 +137,7 @@ part3 = bin2dec(strcat(y_bin(2:4),x_bin));
 fprintf(fid, '%02X\r\n',part1);
 fprintf(fid, '%02X\r\n',part2);
 fprintf(fid, '%02X\r\n',part3);
-crc_sum = part1 + part2 + part3;
+crc_sum = crc_sum + part1 + part2 + part3;
 
 fprintf(fid, '#CRC\r\n'); %write #CRC
 crc = mod(crc_sum,256); % calcultae crc = (type +length + address + payload) mod 256
@@ -179,7 +179,7 @@ part3 = bin2dec(strcat(y_bin(2:4),x_bin));
 fprintf(fid, '%02X\r\n',part1);
 fprintf(fid, '%02X\r\n',part2);
 fprintf(fid, '%02X\r\n',part3);
-crc_sum = part1 + part2 + part3;
+crc_sum = crc_sum + part1 + part2 + part3;
 
 % change
 add = 1; % 0=romove , 1=add
@@ -196,7 +196,7 @@ part3 = bin2dec(strcat(y_bin(2:4),x_bin));
 fprintf(fid, '%02X\r\n',part1);
 fprintf(fid, '%02X\r\n',part2);
 fprintf(fid, '%02X\r\n',part3);
-crc_sum = part1 + part2 + part3;
+crc_sum = crc_sum + part1 + part2 + part3;
 
 % change
 add = 1; % 0=romove , 1=add
@@ -213,7 +213,7 @@ part3 = bin2dec(strcat(y_bin(2:4),x_bin));
 fprintf(fid, '%02X\r\n',part1);
 fprintf(fid, '%02X\r\n',part2);
 fprintf(fid, '%02X\r\n',part3);
-crc_sum = part1 + part2 + part3;
+crc_sum = crc_sum + part1 + part2 + part3;
 
 % change
 add = 1; % 0=romove , 1=add
@@ -230,7 +230,7 @@ part3 = bin2dec(strcat(y_bin(2:4),x_bin));
 fprintf(fid, '%02X\r\n',part1);
 fprintf(fid, '%02X\r\n',part2);
 fprintf(fid, '%02X\r\n',part3);
-crc_sum = part1 + part2 + part3;
+crc_sum = crc_sum + part1 + part2 + part3;
 
 fprintf(fid, '#CRC\r\n'); %write #CRC
 crc = mod(crc_sum,256); % calcultae crc = (type +length + address + payload) mod 256

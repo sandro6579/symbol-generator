@@ -18,10 +18,11 @@
 --			2.01		27.10.2012	Olga Liberman			start_trigger signal is changed to find rising edge of vsync (instead of falling edge, like before)
 --			2.02		02.11.2012	Olga Liberman			fixing the bug with opcode packet that arrives during rising edge of vsync:
 --															the solution is to work with fifo_used signal, instead of op_cnt
+--			2.03		16.02.2013	Olga & Yoav				the depth of the fifo was increased from 300 to 400
 --
 ------------------------------------------------------------------------------------------------
 --	Todo:
---			(1) 
+--			(1) define what is the optimal fifo depth. 
 ------------------------------------------------------------------------------------------------
 
 library ieee;
@@ -105,7 +106,7 @@ begin
     generic map (
 		  reset_polarity_g	=> '0',		-- Reset Polarity
 		  width_g			=> 24, 				-- Width of data
-		  depth_g 			=> 300,					-- Maximum elements in FIFO
+		  depth_g 			=> 400,					-- Maximum elements in FIFO -------------------------------------------------16.02.2013
 		  log_depth_g		=> 9,			-- Logarithm of depth_g (Number of bits to represent depth_g. 2^9=512 > 300)
 		  almost_full_g		=> 8, 				-- Rise almost full flag at this number of elements in FIFO
 		  almost_empty_g	=> 1 			-- Rise almost empty flag at this number of elements in FIFO
