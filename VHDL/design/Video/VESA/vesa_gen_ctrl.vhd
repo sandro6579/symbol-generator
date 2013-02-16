@@ -58,7 +58,7 @@
 --			1.00		13.01.2011	Beeri Schreiber		Creation
 --			1.01		29.05.2011	Beeri Schreiber		req_pixels is valid until next change
 --			1.02		07.01.2012	Beeri Schreiber		req_pixels bug fixed (right frame was not considered)
---			1.03		28.10.2012	Olga Liberman		req_lines_trigger_proc process is changed to work with generic value req_lines_g=1
+--			1.03		07.01.2012	Olga Liberman		req_lines_trigger_proc process is changed to work with generic value req_lines_g=1
 ------------------------------------------------------------------------------------------------
 --	Todo:
 --			(1) 
@@ -312,7 +312,11 @@ begin
 					req_lines_cnt 	<= 1;
 					req_ln_trig		<= '0';
 				--elsif (req_lines_cnt = 1) then
-				elsif (req_lines_cnt = 1)and(vcnt <= lower_frame_i) and (vcnt >= upper_frame_i-1) then
+				elsif (req_lines_cnt = 1)and(vcnt <= lower_frame_i) and (vcnt >= upper_frame_i-1) then ------------- original
+				--elsif (req_lines_cnt = 1)and(vcnt <= lower_frame_i-1) and (vcnt >= upper_frame_i-2) then -- try 1 ------ 11.02.2013
+				--elsif (req_lines_cnt = 1)and(vcnt <= lower_frame_i+1) and (vcnt >= upper_frame_i-2) then -- try 2 ------ 11.02.2013
+				--elsif (req_lines_cnt = 1)and(vcnt <= lower_frame_i+1) and (vcnt >= upper_frame_i-1) then -- try 3 ------ 11.02.2013
+				--elsif (req_lines_cnt = 1)and(vcnt <= lower_frame_i-1) and (vcnt >= upper_frame_i) then -- try 4 ------ 11.02.2013
 					req_lines_cnt 	<= req_lines_g;
 					req_ln_trig		<= '1';
 					pixels_req		<= conv_std_logic_vector((hor_active_pixels_g - conv_integer(left_frame)- conv_integer(right_frame)) * req_lines_g, integer(ceil(log(real(hor_active_pixels_g * req_lines_g)) / log(2.0))));

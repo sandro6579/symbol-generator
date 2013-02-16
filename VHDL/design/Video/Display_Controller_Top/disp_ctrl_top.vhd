@@ -11,7 +11,13 @@
 --			Number		Date		Name					Description			
 --			1.00		10.5.2011	Beeri Schreiber			Creation
 --			1.01		11.12.2012 	uri ran					nivun hadash
---			1.02		05.01.2012	Olga Liberman			Addition of SG register in address 0x01
+--			1.02		05.01.2013	Olga Liberman			Addition of SG register in address 0x01
+--			1.03		08.01.2013	Olga					Addition of: Symbol_Generator_Top, opcode_parser, sdram_symbol_model
+--															connecting the output of SG to dc_fifo input
+--    		1.04		13.02.2013	olga&Yoav				adding DC FIFO flush on the falling edge of Blank signal
+--			2.00		14.02.2013	Olga&Yoav				New generic: reg_addr_width_g (Width of registers' address)
+--															Changing the address of SG register to 16 (decimal), with address space of 900: [16,...,915]
+--			2.01		15.02.2013	Olga&Yoav				Connecting gen_reg_opcode_unite_inst (=SG register) to Symbol_Generator_Top block
 --
 ------------------------------------------------------------------------------------------------
 --	Todo:
@@ -27,7 +33,7 @@ use ieee.math_real.all;
 entity disp_ctrl_top is
 	generic (
 			reset_polarity_g		:	std_logic 	:= '0';				--Reset Polarity. '0' = Reset
-			
+
 			--VESA Generics
 			hsync_polarity_g		:	std_logic 	:= '1';				--Positive HSync
 			vsync_polarity_g		:	std_logic 	:= '1';				--Positive VSync
@@ -36,17 +42,16 @@ entity disp_ctrl_top is
 			red_default_color_g		:	natural 	:= 0;				--Default Red pixel for Frame
 			green_default_color_g	:	natural 	:= 0;				--Default Green pixel for Frame
 			blue_default_color_g	:	natural 	:= 0;				--Default Blue pixel for Frame
-			
+
 			red_width_g				:	positive 	:= 8;				--Default std_logic_vector size of Red Pixels
 			green_width_g			:	positive 	:= 8;				--Default std_logic_vector size of Green Pixels
 			blue_width_g			:	positive 	:= 8;				--Default std_logic_vector size of Blue Pixels
 			req_delay_g				:	positive	:= 1;				--Number of clocks between the "req_data" request to the "data_valid" answer
-			req_lines_g				:	positive	:= 3;				--Number of lines to request from image transmitter, to hold in its FIFO
-							
+			req_lines_g				:	positive	:= 3;				--Number of lines to request from image transmitter, to hold in its FIFO	
 			hor_active_pixels_g		:	positive	:= 800;				--800 active pixels per line
 			ver_active_lines_g		:	positive	:= 600;				--600 active lines
 			hor_left_border_g		:	natural		:= 0;				--Horizontal Left Border (Pixels)
-			hor_right_border_g		:	natural		:= 0;				--Horizontal Right Border (Pixels)
+			hor_right_border_g		:	natural		:= 0;				--Horizontal Right Border (Pixels)		
 			hor_back_porch_g		:	integer		:= 88;				--Horizontal Back Porch (Pixels)
 			hor_front_porch_g		:	integer		:= 40;				--Horizontal Front Porch (Pixels)
 			hor_sync_time_g			:	integer		:= 128;				--Horizontal Sync Time (Pixels)
@@ -55,7 +60,7 @@ entity disp_ctrl_top is
 			ver_back_porch_g		:	integer		:= 23;				--Vertical Back Porch (Lines)
 			ver_front_porch_g		:	integer		:= 1;				--Vertical Front Porch (Lines)
 			ver_sync_time_g			:	integer		:= 4;				--Vertical Sync Time (Lines)
-			
+
 			--Type Register Generics
 			synth_bit_g				:	natural range 0 to 7 := 2;		--Relevant bit in type register, which represent Image from SDRAM ('0') or from Synthetic Pattern Generator ('1') 
 			
@@ -66,10 +71,11 @@ entity disp_ctrl_top is
 			fifo_depth_g 			: positive		:= 3840;			-- Maximum elements in FIFO
 			fifo_log_depth_g		: natural		:= 10;				-- Logarithm of depth_g (Number of bits to represent depth_g. 2^10=1024)
 			
-			--Synthetic Fram Generator
+			--Synthetic Frame Generator
 			change_frame_clk_g		:	positive	:= 120000000;		--Change frame position each 'change_frame_clk_g' clocks
 			hor_pres_pixels_g		:	positive	:= 640;				--640X480 Pixels in frame
-			ver_pres_lines_g		:	positive	:= 480				--640X480 Pixels in frame
+			ver_pres_lines_g		:	positive	:= 480;				--640X480 Pixels in frame
+			reg_addr_width_g		:	positive	:= 4				--Width of registers' address, supports address space of 2^(reg_addr_width_g) ------ 14.02.2013
 			);
 	port	(
 				--Clock and Reset
@@ -123,14 +129,15 @@ architecture rtl_disp_ctrl_top of disp_ctrl_top is
 
 --	###########################		Costants		##############################	--
 constant reg_width_c			:	positive 	:= 8;	--Width of registers
-constant reg_addr_width_c		:	positive 	:= 4;	--Width of registers' address
+--constant reg_addr_width_c		:	positive 	:= 4;	--Width of registers' address ----------------- 14.02.2013
 constant type_reg_addr_c		:	natural		:= 14;	--Type register address (0xE)
 constant left_frame_reg_addr_c	:	natural		:= 5;	--Frame register address
 constant right_frame_reg_addr_c	:	natural		:= 6;	--Frame register address
 constant upper_frame_reg_addr_c	:	natural		:= 7;	--Frame register address
 constant lower_frame_reg_addr_c	:	natural		:= 8;	--Frame register address
 -- SG registers --
-constant opcode_unite_reg_addr_c	:	natural		:= 1;	--OpcodeUnite register address
+constant opcode_unite_reg_addr_c:	natural		:= 16;	--OpcodeUnite register address ----------------- 14.02.2013
+constant SG_reg_addr_space_c	:	natural		:= 900;	--OpcodeUnite register address ----------------- 14.02.2013
 ------------------
 
 --###########################	Signals		###################################--
@@ -192,7 +199,7 @@ signal wbs_reg_dout_valid	:   std_logic;					--WBS Register dout_valid
 signal wbs_reg_cyc			:	std_logic;					--Cycle for Registers
 
 --Signals to registers
-signal reg_addr			:	std_logic_vector (reg_addr_width_c - 1 downto 0);	--Address to register. Relevant only when addr_en_g = true
+signal reg_addr			:	std_logic_vector (reg_addr_width_g - 1 downto 0);	--Address to register. Relevant only when addr_en_g = true
 signal reg_din			:	std_logic_vector (reg_width_c - 1 downto 0);		--Input data
 signal reg_wr_en		:	std_logic;											--Input data is valid
 signal reg_rd_en		:	std_logic;											--Request for data from registers
@@ -238,6 +245,22 @@ signal opcode_unite_reg_din_ack		:	std_logic;								--Data has been acknowledge
 signal opcode_unite_reg_rd_en		:	std_logic;								--Read Enable
 signal opcode_unite_reg_dout_valid	:	std_logic;								--Output data is valid
 signal opcode_unite_rg				:	std_logic_vector(reg_width_c-1 downto 0);	-- Opcode Unite register
+constant clk_half_period_g			:	time := 5 ns;	-- the length in time of half period of the main clock of the system
+signal opu_data_in		    		:	std_logic_vector(7 downto 0); -- data from wbs
+signal opu_data_in_valid			:	std_logic;
+signal op_cnt              			:  	std_logic_vector(9 downto 0);   	-- number of total changes X 3: 1 change (24 bits) = add/remove 1 symbol ( 24 bits are being sent in 3 packs of 8 bits)
+signal sdram_data           		:	std_logic_vector (7 downto 0):= (others=>'0'); --this signal gets the data from sdram 
+signal sdram_data_valid     		:	std_logic:= '0'; -- indicates when the data from the sdram is valid and we can store it in one of the fifos (a or b)
+signal sdram_addr_rd 				:	std_logic_vector (23 downto 0):= (others=>'0'); --this signal is the full address in SDRAM: "00--bank(2)--row(12)--col(8)"
+signal sdram_rd_en					:	std_logic:= '0'; -- this signal is a valid signal for the sdram_addr_rd signal (for usage of WBS)
+signal mux_dout             		:	std_logic_vector(7 downto 0); 
+signal mux_dout_valid				:	std_logic;
+signal vsync_trigger				:	std_logic;
+
+signal blank_i						:	std_logic;
+signal blank_d						:	std_logic;
+signal mux_flush					:	std_logic;
+
 --------------
 --###########################	Components	###################################--
 
@@ -462,7 +485,8 @@ component gen_reg
 			read_en_g			:	boolean		:= true;				--Enabling read
 			write_en_g			:	boolean		:= true;				--Enabling write
 			clear_on_read_g		:	boolean		:= false;				--TRUE: Clear on read (set to default value), FALSE otherwise
-			default_value_g		:	natural		:= 0					--Default value of register
+			default_value_g		:	natural		:= 0;					--Default value of register
+			addr_space_g		:	natural		:= 1					-- the address space of the register -------- 14.02.2013
 			);
 	port	(
 			--Clock and Reset
@@ -516,6 +540,75 @@ component wbs_reg
 			);
 end component wbs_reg;
 
+component Symbol_Generator_Top
+	generic(
+		-- generic values for resolution 640x480 @ 60 Hz
+		hor_active_pixels_g		:	positive	:= 640;				--640 active pixels per line
+		ver_active_lines_g		:	positive	:= 480;				--480 active lines
+		hor_left_border_g		:	natural		:= 0;				--Horizontal Left Border (Pixels)
+		hor_right_border_g		:	natural		:= 0;				--Horizontal Right Border (Pixels)
+		hor_back_porch_g		:	integer		:= 48;				--Horizontal Back Porch (Pixels)
+		hor_front_porch_g		:	integer		:= 16;				--Horizontal Front Porch (Pixels)
+		hor_sync_time_g			:	integer		:= 96;				--Horizontal Sync Time (Pixels)
+		ver_top_border_g		:	natural		:= 0;				--Vertical Top Border (Lines)
+		ver_buttom_border_g		:	natural		:= 0;				--Vertical Bottom Border (Lines)
+		ver_back_porch_g		:	integer		:= 31;				--Vertical Back Porch (Lines)
+		ver_front_porch_g		:	integer		:= 11;				--Vertical Front Porch (Lines)
+		ver_sync_time_g			:	integer		:= 2				--Vertical Sync Time (Lines)
+	);
+	port (
+		-- clock and reset
+		clk					:	in std_logic; -- the main clock to which all the internal logic of the Symbol Generator block is synchronized.
+		reset_n				:	in std_logic; -- asynchronous reset
+		-- opcode_unite
+		opu_data_in			:	in std_logic_vector(7 downto 0); -- data from wbs
+		opu_data_in_valid	:	in std_logic; -- valid signal for data from wbs
+		-- opcode_store
+		op_cnt             	:	in std_logic_vector(9 downto 0); -- number of total changes X 3: 1 change (24 bits) = add/remove 1 symbol ( 24 bits are being sent in 3 packs of 8 bits)
+		op_str_rd_start		:	in std_logic; -- connected from VESA controller, vsync signal
+		vsync_trigger		:	out std_logic; -- rising edge of the vsync from VESA
+		-- manager
+		req_in_trg			:	in std_logic; -- This is a signal from the VESA Generator block. It indicates when to start preparing valid data in the Dual Clk FIFO for a req_lines_g lines in advance. (In our case it is 1 line in advance).
+		sdram_data 			:	in std_logic_vector (7 downto 0); --this signal gets the data from sdram 
+		sdram_data_valid	:	in std_logic; -- indicates when the data from the sdram is valid and we can store it in one of the fifos (a or b)
+		sdram_addr_rd 		: 	out std_logic_vector (23 downto 0); --this signal is the full address in SDRAM: "00--bank(2)--row(12)--col(8)"
+		sdram_rd_en			:	out std_logic; -- this signal is a valid signal for the sdram_addr_rd signal (for usage of WBS)
+		-- mux2
+		mux_dout_valid		:	out std_logic;
+		mux_dout	  		:	out std_logic_vector(7 downto 0)
+	);
+end component Symbol_Generator_Top;
+	
+	component opcode_parser
+		generic(
+			opcode_text_file_g	: 	string := "test_001.txt";
+			clk_half_period_g		:	time	:= 5 ns
+		);
+		port (
+			clk : in std_logic; -- the main clock to which all the internal logic of the Symbol Generator block is synchronized.
+			reset_n : in std_logic; -- asynchronous reset
+			data_out : out std_logic_vector(7 downto 0);
+			data_valid : out std_logic;
+			opcode_count : out std_logic_vector(9 downto 0)
+		);
+	end component opcode_parser;
+		
+	component sdram_symbol_model is
+		generic(
+			memory_file_g	: 	string := "memory_new.txt"
+		);
+		port(
+			clk        : in  std_logic;
+			reset_n    : in  std_logic;
+			rd_addr    : in  std_logic_vector (23 downto 0);
+			rd_en      : in  std_logic;
+			data_out   : out std_logic_vector(7 downto 0);
+			valid      : out std_logic
+		);
+	end component sdram_symbol_model;
+	
+
+	
 begin
 --uri ran - added mux
 --Mux implementation: read request to sc_fifo from dc_fifo
@@ -528,13 +621,13 @@ begin
 	dc_fifo_aclr_gen1:
 	if (reset_polarity_g = '0') generate
 		dc_fifo_aclr_proc:
-		dc_fifo_aclr	<=	(not rst_100) or flush;
+		dc_fifo_aclr	<=	(not rst_100) or flush or mux_flush;
 	end generate dc_fifo_aclr_gen1;
 
 	dc_fifo_aclr_gen2:
 	if (reset_polarity_g = '1') generate
 		dc_fifo_aclr_proc:
-		dc_fifo_aclr	<=	rst_100 or flush;
+		dc_fifo_aclr	<=	rst_100 or flush or mux_flush;
 	end generate dc_fifo_aclr_gen2;
 
 	--VESA Data valid process
@@ -584,12 +677,13 @@ begin
 	--ZERO all unused bits
 	left_frame_zero_proc:
 	--left_frame_rg (left_frame_rg'left downto reg_width_c) <=	(others => '0'); -- uri ran - uncomment for large resolution
-	left_frame_rg <= conv_std_logic_vector (336, left_frame_rg'high+1);
-
+	--left_frame_rg <= conv_std_logic_vector (336, left_frame_rg'high+1); -- uri ran
+	left_frame_rg <= conv_std_logic_vector (80, left_frame_rg'high+1); -- olga yoav
 
 	right_frame_zero_proc:
 	--right_frame_rg (right_frame_rg'left downto reg_width_c) <=	(others => '0'); -- uri ran - uncomment for large resolution
-	right_frame_rg <= conv_std_logic_vector (336, right_frame_rg'high+1);
+	--right_frame_rg <= conv_std_logic_vector (336, right_frame_rg'high+1); -- uri ran
+	right_frame_rg <= conv_std_logic_vector (80, right_frame_rg'high+1); -- olga yoav
 
 
 	upper_frame_zero_proc:
@@ -639,24 +733,24 @@ begin
 	--Cycle is active for registers
 	wbs_reg_cyc_proc:
 	wbs_reg_cyc	<=	wbs_cyc_i and wbs_tgc_i when
-					(conv_integer(wbs_adr_i (reg_addr_width_c - 1 downto 0)) = type_reg_addr_c) or
-					(conv_integer(wbs_adr_i (reg_addr_width_c - 1 downto 0)) = left_frame_reg_addr_c)	or
-	                (conv_integer(wbs_adr_i (reg_addr_width_c - 1 downto 0)) = right_frame_reg_addr_c)	or
-	                (conv_integer(wbs_adr_i (reg_addr_width_c - 1 downto 0)) = upper_frame_reg_addr_c)	or
-	                (conv_integer(wbs_adr_i (reg_addr_width_c - 1 downto 0)) = lower_frame_reg_addr_c)	or
-					(conv_integer(wbs_adr_i (reg_addr_width_c - 1 downto 0)) = opcode_unite_reg_addr_c)
+					(conv_integer(wbs_adr_i (reg_addr_width_g - 1 downto 0)) = type_reg_addr_c) or
+					(conv_integer(wbs_adr_i (reg_addr_width_g - 1 downto 0)) = left_frame_reg_addr_c)	or
+	                (conv_integer(wbs_adr_i (reg_addr_width_g - 1 downto 0)) = right_frame_reg_addr_c)	or
+	                (conv_integer(wbs_adr_i (reg_addr_width_g - 1 downto 0)) = upper_frame_reg_addr_c)	or
+	                (conv_integer(wbs_adr_i (reg_addr_width_g - 1 downto 0)) = lower_frame_reg_addr_c)	or
+					( (conv_integer(wbs_adr_i (reg_addr_width_g - 1 downto 0)) >= opcode_unite_reg_addr_c) and
+						(conv_integer(wbs_adr_i (reg_addr_width_g - 1 downto 0)) < (opcode_unite_reg_addr_c + SG_reg_addr_space_c)) )
 					else '0';
-	
 	
 	
 					
 	--MUX, to route addressed register data to the WBS
 	wbs_reg_dout_proc:
-	wbs_reg_dout	<=	type_reg_dout when ((wbs_reg_cyc = '1') and (conv_integer(wbs_adr_i (reg_addr_width_c - 1 downto 0)) = type_reg_addr_c)) 
-						else left_frame (reg_width_c - 1 downto 0) 		when ((wbs_reg_cyc = '1') and (conv_integer(wbs_adr_i (reg_addr_width_c - 1 downto 0)) = left_frame_reg_addr_c)) 
-						else right_frame (reg_width_c - 1 downto 0) 	when ((wbs_reg_cyc = '1') and (conv_integer(wbs_adr_i (reg_addr_width_c - 1 downto 0)) = right_frame_reg_addr_c)) 
-						else upper_frame (reg_width_c - 1 downto 0) 	when ((wbs_reg_cyc = '1') and (conv_integer(wbs_adr_i (reg_addr_width_c - 1 downto 0)) = upper_frame_reg_addr_c)) 
-						else lower_frame (reg_width_c - 1 downto 0) 	when ((wbs_reg_cyc = '1') and (conv_integer(wbs_adr_i (reg_addr_width_c - 1 downto 0)) = lower_frame_reg_addr_c)) 
+	wbs_reg_dout	<=	type_reg_dout when ((wbs_reg_cyc = '1') and (conv_integer(wbs_adr_i (reg_addr_width_g - 1 downto 0)) = type_reg_addr_c)) 
+						else left_frame (reg_width_c - 1 downto 0) 		when ((wbs_reg_cyc = '1') and (conv_integer(wbs_adr_i (reg_addr_width_g - 1 downto 0)) = left_frame_reg_addr_c)) 
+						else right_frame (reg_width_c - 1 downto 0) 	when ((wbs_reg_cyc = '1') and (conv_integer(wbs_adr_i (reg_addr_width_g - 1 downto 0)) = right_frame_reg_addr_c)) 
+						else upper_frame (reg_width_c - 1 downto 0) 	when ((wbs_reg_cyc = '1') and (conv_integer(wbs_adr_i (reg_addr_width_g - 1 downto 0)) = upper_frame_reg_addr_c)) 
+						else lower_frame (reg_width_c - 1 downto 0) 	when ((wbs_reg_cyc = '1') and (conv_integer(wbs_adr_i (reg_addr_width_g - 1 downto 0)) = lower_frame_reg_addr_c)) 
 						else (others => '0');
 
 	--MUX, to route addressed register dout_valid to the WBS
@@ -678,29 +772,48 @@ begin
 						
 	--Read Enables processes:
 	type_reg_rd_en_proc:
-	type_reg_rd_en	<=	'1' when (conv_integer(wbs_adr_i (reg_addr_width_c - 1 downto 0)) = type_reg_addr_c) and (reg_rd_en = '1')
+	type_reg_rd_en	<=	'1' when (conv_integer(wbs_adr_i (reg_addr_width_g - 1 downto 0)) = type_reg_addr_c) and (reg_rd_en = '1')
 						else '0';
 					
 	left_frame_reg_rd_en_proc:
-	left_frame_reg_rd_en	<=	'1' when (conv_integer(wbs_adr_i (reg_addr_width_c - 1 downto 0)) = left_frame_reg_addr_c) and (reg_rd_en = '1')
+	left_frame_reg_rd_en	<=	'1' when (conv_integer(wbs_adr_i (reg_addr_width_g - 1 downto 0)) = left_frame_reg_addr_c) and (reg_rd_en = '1')
 								else '0';
 
 	right_frame_reg_rd_en_proc:
-	right_frame_reg_rd_en	<=	'1' when (conv_integer(wbs_adr_i (reg_addr_width_c - 1 downto 0)) = right_frame_reg_addr_c) and (reg_rd_en = '1')
+	right_frame_reg_rd_en	<=	'1' when (conv_integer(wbs_adr_i (reg_addr_width_g - 1 downto 0)) = right_frame_reg_addr_c) and (reg_rd_en = '1')
 								else '0';
 
 	upper_frame_reg_rd_en_proc:
-	upper_frame_reg_rd_en	<=	'1' when (conv_integer(wbs_adr_i (reg_addr_width_c - 1 downto 0)) = upper_frame_reg_addr_c) and (reg_rd_en = '1')
+	upper_frame_reg_rd_en	<=	'1' when (conv_integer(wbs_adr_i (reg_addr_width_g - 1 downto 0)) = upper_frame_reg_addr_c) and (reg_rd_en = '1')
 								else '0';
 
 	lower_frame_reg_rd_en_proc:
-	lower_frame_reg_rd_en	<=	'1' when (conv_integer(wbs_adr_i (reg_addr_width_c - 1 downto 0)) = lower_frame_reg_addr_c) and (reg_rd_en = '1')
+	lower_frame_reg_rd_en	<=	'1' when (conv_integer(wbs_adr_i (reg_addr_width_g - 1 downto 0)) = lower_frame_reg_addr_c) and (reg_rd_en = '1')
 								else '0';
 								
 	opcode_unite_reg_rd_en_proc:
-	opcode_unite_reg_rd_en	<=	'1' when (conv_integer(wbs_adr_i (reg_addr_width_c - 1 downto 0)) = opcode_unite_reg_addr_c) and (reg_rd_en = '1')
+	opcode_unite_reg_rd_en	<=	'1' when ( (conv_integer(wbs_adr_i (reg_addr_width_g - 1 downto 0)) >= opcode_unite_reg_addr_c) and
+						(conv_integer(wbs_adr_i (reg_addr_width_g - 1 downto 0)) < (opcode_unite_reg_addr_c + SG_reg_addr_space_c)) ) and (reg_rd_en = '1')
 								else '0';
+	
+	-- Yoav & Olga
+	blank <= blank_i;
+	process (clk_40, rst_40)
+	begin
+		if (rst_40 = reset_polarity_g) then
+			mux_flush <= '0';
+		elsif rising_edge (clk_40) then
+			blank_d <= blank_i;
+			if (blank_d='1')and(blank_i='0') then
+				mux_flush <= '1';
+			else
+				mux_flush <= '0';
+			end if;
+		end if;
+	end process;
+	
 
+	
 --###########################	Instatiation	###################################--
 
 
@@ -759,17 +872,24 @@ pixel_mng_inst: pixel_mng generic map
 dc_fifo_inst	:	dc_fifo port map
 						(
 							aclr				=>	dc_fifo_aclr,
-							data				=>	sc_fifo_dout, -- uri ran
+							
+--							data				=>	sc_fifo_dout, -- uri ran
+							data				=>	mux_dout,
+							
 							rdclk				=>	clk_40,
 							rdreq				=>	dc_rd_req,
 							wrclk				=>	clk_100,
-							wrreq				=>	sc_fifo_dout_val, -- uri ran
+							
+--							wrreq				=>	sc_fifo_dout_val, -- uri ran
+							wrreq				=>	mux_dout_valid,
+							
 							q					=>	dc_fifo_dout,
 							rdempty				=>	dc_fifo_empty,
 							--wrfull				=>	dc_fifo_full,
 							wrusedw(12)			=>	dc_fifo_full,
 							wrusedw(11 downto 0)=>	wrusedw (11 downto 0)
 						);
+
 
 sc_fifo_inst 	:	general_fifo generic map (	 
 							reset_polarity_g	=>	reset_polarity_g,
@@ -839,7 +959,7 @@ vesa_gen_ctrl_inst 	:	vesa_gen_ctrl generic map(
 							r_out		=>	r_out (red_width_g + 1 downto 2),
 							g_out		=>	g_out (green_width_g + 1 downto 2),
 							b_out		=>	b_out (blue_width_g + 1 downto 2),
-							blank		=>	blank,
+							blank		=>	blank_i, -- 13.2.13 blank_i instead of blank
 							hsync		=>	hsync_int,
 							vsync		=>	vsync_int
 	);
@@ -879,7 +999,7 @@ gen_reg_type_inst	:	gen_reg generic map (
 							width_g				=>	reg_width_c,
 							addr_en_g			=>	true,
 							addr_val_g			=>	type_reg_addr_c,
-							addr_width_g		=>	reg_addr_width_c,
+							addr_width_g		=>	reg_addr_width_g,
 							read_en_g			=>	true,
 							write_en_g			=>	true,
 							clear_on_read_g		=>	false,
@@ -951,7 +1071,7 @@ gen_reg_upper_frame_inst	:	gen_reg generic map (
 							width_g				=>	reg_width_c,
 							addr_en_g			=>	true,
 							addr_val_g			=>	upper_frame_reg_addr_c,
-							addr_width_g		=>	reg_addr_width_c,
+							addr_width_g		=>	reg_addr_width_g,
 							read_en_g			=>	true,
 							write_en_g			=>	true,
 							clear_on_read_g		=>	false,
@@ -975,7 +1095,7 @@ gen_reg_lower_frame_inst	:	gen_reg generic map (
 							width_g				=>	reg_width_c,
 							addr_en_g			=>	true,
 							addr_val_g			=>	lower_frame_reg_addr_c,
-							addr_width_g		=>	reg_addr_width_c,
+							addr_width_g		=>	reg_addr_width_g,
 							read_en_g			=>	true,
 							write_en_g			=>	true,
 							clear_on_read_g		=>	false,
@@ -1001,11 +1121,12 @@ gen_reg_opcode_unite_inst	:	gen_reg generic map (
 							width_g				=>	reg_width_c,
 							addr_en_g			=>	true,
 							addr_val_g			=>	opcode_unite_reg_addr_c,
-							addr_width_g		=>	reg_addr_width_c,
+							addr_width_g		=>	reg_addr_width_g,
 							read_en_g			=>	true,
 							write_en_g			=>	true,
 							clear_on_read_g		=>	false,
-							default_value_g		=>	42
+							default_value_g		=>	42,
+							addr_space_g		=> 900
 						)
 						port map (
 							clk					=>	clk_100,
@@ -1024,14 +1145,14 @@ gen_reg_opcode_unite_inst	:	gen_reg generic map (
 wbs_reg_inst	:	wbs_reg generic map (
 							reset_polarity_g=>	reset_polarity_g,
 							width_g			=>	reg_width_c,
-							addr_width_g	=>	reg_addr_width_c
+							addr_width_g	=>	reg_addr_width_g
 						)
 						port map (
 							rst				=>	rst_100,
 							clk_i			=> 	clk_100,
 							wbs_cyc_i	    =>	wbs_reg_cyc,	
 							wbs_stb_i	    => 	wbs_stb_i,	
-							wbs_adr_i	    =>	wbs_adr_i (reg_addr_width_c - 1 downto 0),	
+							wbs_adr_i	    =>	wbs_adr_i (reg_addr_width_g - 1 downto 0),	
 							wbs_we_i	    => 	wbs_we_i,	
 							wbs_dat_i	    => 	wbs_dat_i,	
 							wbs_dat_o	    => 	wbs_dat_o,	
@@ -1082,5 +1203,53 @@ end process cdc_proc;
 -------------------------------	Debug Process--------------------------
 dbg_type_reg_proc:
 dbg_type_reg	<=	type_reg_dout;
-			
+
+op_cnt_proc:
+op_cnt <= wbs_tga_i + 1; ------- 15.02.2013
+
+Symbol_Generator_Top_inst : Symbol_Generator_Top
+	port map(
+		clk         		=> 		clk_100,   
+		reset_n     		=> 		rst_100,
+		opu_data_in        	=> 		opcode_unite_rg,
+		opu_data_in_valid  	=> 		opcode_unite_reg_din_ack,
+		op_cnt             	=> 		op_cnt,      
+		op_str_rd_start    	=> 		vsync_int,
+		vsync_trigger    	=> 		vsync_trigger,
+		req_in_trg			=> 		req_ln_trig,
+		sdram_data			=> 		sdram_data,
+		sdram_data_valid	=> 		sdram_data_valid,
+		sdram_addr_rd		=> 		sdram_addr_rd,
+		sdram_rd_en			=> 		sdram_rd_en,
+		mux_dout_valid		=>		mux_dout_valid,
+		mux_dout	  		=> 		mux_dout    	  --data out to DC FIFO
+	);
+
+opcode_parser_inst :  opcode_parser 
+		generic map(
+			opcode_text_file_g	=>	"VHDL/SG/test_3.txt",
+			clk_half_period_g	=>	clk_half_period_g
+		)
+		port map
+		(
+			clk => clk_100,
+			reset_n => rst_100,
+			data_out => opu_data_in,
+			data_valid => opu_data_in_valid,
+			opcode_count => open
+		);
+		
+sdram_symbol_model_inst : sdram_symbol_model
+	generic map(
+			memory_file_g	=> "VHDL/SG/memory_new.txt"
+		)
+	port map(
+		clk         => clk_100,   
+		reset_n     => rst_100,   
+		rd_addr     => sdram_addr_rd, 
+		rd_en       => sdram_rd_en,  
+		data_out    => sdram_data,
+		valid       => sdram_data_valid
+	);
+
 end architecture rtl_disp_ctrl_top;

@@ -15,7 +15,7 @@
 --			2.00		13.06.2012		Olga Liberman and Yoav Shvartz		added the inputs: fifo_a_rd_en and fifo_b_rd_en
 --			2.01		16.07.2012		Olga Liberman						fifo_a_rd_en and fifo_b_rd_en names are chamged to rd_en_a and rd_en_b
 --																			width_g generic is added
---
+--			2.02		13.02.2013		Olga & Yoav							adding another sample of data_valid from fifos A and B 
 ------------------------------------------------------------------------------------------------
 --	Todo:
 --	(1) maybe need to delay in 1-2 clocks the mux_dout (sample the fifo_x_rd_en signal), because of the fifo delay.
@@ -53,6 +53,8 @@ architecture mux2_rtl of mux2 is
 	--signal mux_din_b_i : std_logic_vector(7 downto 0);
 	signal fifo_a_dout_valid_d : std_logic;
 	signal fifo_b_dout_valid_d : std_logic;
+	signal fifo_a_dout_valid_dd : std_logic;
+	signal fifo_b_dout_valid_dd : std_logic;
 
 begin
   --mux_din_a_i <= mux_din_a;
@@ -63,13 +65,22 @@ begin
 		if (reset_n='0') then
 			fifo_a_dout_valid_d <= '0';
 			fifo_b_dout_valid_d <= '0';
+			fifo_a_dout_valid_dd <= '0';
+			fifo_b_dout_valid_dd <= '0';
+			
 		elsif rising_edge(clk) then
 			fifo_a_dout_valid_d <= fifo_a_dout_valid;
 			fifo_b_dout_valid_d <= fifo_b_dout_valid;
+			
+			fifo_a_dout_valid_dd <= fifo_a_dout_valid_d; ------------- 13.02.2013
+			fifo_b_dout_valid_dd <= fifo_b_dout_valid_d; ------------- 13.02.2013
+			
 		end if;
 	end process fifo_valid_proc;
 	
-	mux_dout_valid <= ( fifo_a_dout_valid and fifo_a_dout_valid_d) or ( fifo_b_dout_valid and fifo_b_dout_valid_d);
+	--mux_dout_valid <= ( fifo_a_dout_valid and fifo_a_dout_valid_d) or ( fifo_b_dout_valid and fifo_b_dout_valid_d); -- original
+	mux_dout_valid <= ( fifo_a_dout_valid_d or  fifo_a_dout_valid_dd) or ( fifo_b_dout_valid_d or fifo_b_dout_valid_dd); ------------- 13.02.2013
+	
 	
 	mux_proc: process(clk, reset_n)
     begin

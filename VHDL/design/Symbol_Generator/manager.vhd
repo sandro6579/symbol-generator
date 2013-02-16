@@ -24,7 +24,7 @@
 --			1.03		16.07.2012		Olga Liberman						  Generics added
 --			1.04		27.10.2012		Olga Liberman						  req_in_trg is from another clock domain - it is filtered and we use its rising edge only
 --			1.05		28.10.2012		Olga Liberman						  new signal req_in_trg_counter is added: counts the req_in_trg that arrive from VESA
---
+--			1.06        13.02.2013     Olga Liberman and Yoav Shvartz 		  in process counters_proc: changing the conditions for increasing the counters 
 ------------------------------------------------------------------------------------------------
 --	Todo:
 --	(1) rd_mng_fsm_proc: maybe to add "if (fifo_x_full='0') then wr_en='1'..." - to enable write to fifo only if it's not full
@@ -122,6 +122,8 @@ architecture manager_rtl of manager is
 	signal req_in_trg_counter	: integer := 0 ;
 	signal req_in_trg_dev_active   	: std_logic; 
 	
+	signal req_cnt : integer range 0 to 511;
+	
 	---------------------------- constatnts -------------------------------------------
 	-- constant const_19_c  	: integer := 19; 
 	-- constant const_31_c  	: integer := 31;
@@ -170,6 +172,21 @@ begin
 			else
 				req_in_trg_dev <= '0';
 			end if; 
+		end if;
+	end process;
+	
+	
+	-- count num of re_in_trig in one frame
+	req_count: process (clk, reset_n)
+	begin
+		if reset_n='0' then
+			req_cnt <= 0;
+		elsif rising_edge (clk) then
+			if (mng_en = '1') then
+				req_cnt <= 0;
+			elsif ( (req_in_trg_dev = '1') and (req_cnt < 480) ) then
+				req_cnt <= req_cnt + 1;
+			end if;
 		end if;
 	end process;
 	
@@ -239,9 +256,9 @@ begin
 						fifo_b_data_in <= (others =>'0');
 						fifo_b_wr_en <='0';
 					end if;
-					if ((req_in_trg_dev='1')and(row_count /= ver_active_lines_g)) then
+					if ((req_in_trg_dev='1')and(row_count /= ver_active_lines_g)) then 
 						current_sm <= write_a_read_b_st;
-					elsif  ((req_in_trg_dev='1')and(row_count = ver_active_lines_g)) then
+					elsif  ((req_in_trg_dev='1')and(row_count = ver_active_lines_g)) then 
 						current_sm <= read_b_st;
 					end if;
 					
@@ -330,11 +347,12 @@ begin
 				--if ( ((mng_en='1') or (sdram_rd_en='1')) and ( (sym_col-1) <19) ) then
 				if ( ((mng_en='1') or (sdram_wait_counter = sdram_wait_c)) and ( sym_col < sym_col_g ) ) then
 					sym_col <= sym_col + 1;
-				elsif (req_in_trg_dev = '1') then
+				elsif ( ( (req_in_trg_dev = '1') or (mng_en='1') ) and (req_cnt < 480) ) then 
 					sym_col <= 1;
 				end if;
 				
-				if ( (req_in_trg_dev = '1') or (mng_en='1') ) then --  means calculating address in the RAM and a new request to the sdram	
+				if ( (current_sm = idle_st) and (mng_en='1')) or ( (current_sm /= idle_st) and (req_in_trg_dev = '1') ) then 
+				--if ( ((req_in_trg_dev = '1') or (mng_en='1'))) then --  means calculating address in the RAM and a new request to the sdram
 					--sym_col <= sym_col + 1;
 					--if ( sym_col = sym_col_g ) then -- maybe 20?
 						--sym_col <= 0;

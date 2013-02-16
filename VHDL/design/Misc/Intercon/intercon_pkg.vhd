@@ -11,7 +11,8 @@
 -- Revision :
 --			Number		Date		Name				Description
 --			1.00		23.04.2012	Beeri Schreiber		Creation
---			1.01		05.01.2013	Olga Liberman		Addition of reg address 13 to display controller
+--			1.01		05.01.2013	Olga Liberman		Addition of reg address 1 to display controller
+--			1.02		14.02.2013	Olga & Yoav			Function get_wbs: address space for SG in Display Controller
 --
 ------------------------------------------------------------------------------------------------
 --	Todo:
@@ -36,6 +37,9 @@ package body intercon_pkg is
 						adr	:	in std_logic_vector (9 downto 0)
 					) return natural is
 	variable adrint	:	natural;
+	variable SG_BASE_ADDR : natural := 16;
+	variable SG_ADDR_SPACE : natural := 900;
+	
 	begin
 		adrint	:=	conv_integer (adr);
 		case id is
@@ -55,9 +59,13 @@ package body intercon_pkg is
 							return 2;
 							
 						when others =>
-							report "INTERCON (" & id & "): Unknown INTERCON address: 0x" & integer'image(adrint)
-							severity failure;
-							return 0;
+							if ( (adrint >= SG_BASE_ADDR) and (adrint < (SG_BASE_ADDR + SG_ADDR_SPACE) ) ) then--display controller ---------- 14.02.2013
+								return 1; ---------- 14.02.2013
+							else
+								report "INTERCON (" & id & "): Unknown INTERCON address: 0x" & integer'image(adrint)
+								severity failure;
+								return 0;
+							end if;
 					end case;
 				end if;
 			

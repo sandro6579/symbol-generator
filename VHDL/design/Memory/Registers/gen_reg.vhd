@@ -18,6 +18,9 @@
 -- Revision:
 --			Number		Date		Name					Description			
 --			1.00		10.5.2011	Beeri Schreiber			Creation
+--			2.00		14.02.2013	Olga & Yoav				New generic: addr_space_g, means the address range of the register is
+--															[addr_val_g,...,addr_val_g+addr_space_g-1]
+--
 ------------------------------------------------------------------------------------------------
 --	Todo:
 --			(1) 
@@ -38,7 +41,8 @@ entity gen_reg is
 			read_en_g			:	boolean		:= true;				--Enabling read
 			write_en_g			:	boolean		:= true;				--Enabling write
 			clear_on_read_g		:	boolean		:= false;				--TRUE: Clear on read (set to default value), FALSE otherwise
-			default_value_g		:	natural		:= 0					--Default value of register
+			default_value_g		:	natural		:= 0;					--Default value of register
+			addr_space_g		:	natural		:=	1					-- the address space of the register -------- 14.02.2013
 			);
 	port	(
 			--Clock and Reset
@@ -83,7 +87,8 @@ begin
 			reg_data			<=	conv_std_logic_vector (default_value_g, width_g);
 			din_ack				<=	'0';
 		elsif rising_edge(clk) then
-			if (addr = conv_std_logic_vector(addr_val_g, addr_width_g)) or (not addr_en_g) then
+			--if (addr = conv_std_logic_vector(addr_val_g, addr_width_g)) or (not addr_en_g) then
+			if ((addr >= conv_std_logic_vector(addr_val_g, addr_width_g)) and (addr < conv_std_logic_vector(addr_val_g+addr_space_g, addr_width_g))) or (not addr_en_g) then ---------- 14.02.2013
 				if (clear = '1') then							--Clear register's value
 					reg_data	<=	conv_std_logic_vector (default_value_g, width_g);
 					din_ack		<=	'1';						--Command has been accepted
@@ -110,8 +115,8 @@ begin
 	-- The process controls the dout_valid signal
 	------------------------------------------------------------------------------
 	dout_val_proc: 
-	dout_valid	<=	'1' when (((addr = conv_std_logic_vector(addr_val_g, addr_width_g)) or (not addr_en_g)) and (rd_en = '1') and read_en_g)
-					else '0';
+	dout_valid	<=	'1' when ((((addr >= conv_std_logic_vector(addr_val_g, addr_width_g)) and (addr < conv_std_logic_vector(addr_val_g+addr_space_g, addr_width_g))) or (not addr_en_g)) and (rd_en = '1') and read_en_g)
+					else '0'; --------- 14.02.2013
 
 end architecture rtl_gen_reg;
 			

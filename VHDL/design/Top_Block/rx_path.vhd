@@ -12,6 +12,9 @@
 --			Number		Date		Name				Description
 --			1.00		4.4.2011	Alon Yavich			Creation
 --			1.01		28.5.2011	Beeri Schreiber		Debbuged, Added Type states
+--			1.02		15.02.2013	Olga&Yoav			When register transaction via Uart: disabling the write to TX_Path, cause the address width is different now (change of type_reg_clients_c to value 2, 3 means with TX_Path)
+--														addr_reg signal length is 10 bits
+--
 ------------------------------------------------------------------------------------------------
 --	Todo:	
 --			(1) Separate Wishbone into different entity
@@ -89,7 +92,8 @@ type wbm_states is
 ----------------------------------------------------------------------------------
 --	###########################		Costants		##############################	--
 	constant base_type_reg_addr_c	:	natural		:= 13;	--Type register Base address (0xD) 
-	constant type_reg_clients_c		:	natural		:= 3;	--Clients: mem_mng, disp_ctrl, tx_path
+	--constant type_reg_clients_c		:	natural		:= 3;	--Clients: mem_mng, disp_ctrl, tx_path
+	constant type_reg_clients_c		:	natural		:= 2;	--Clients: mem_mng, disp_ctrl, tx_path ---- 15.02.2013 - without tx
 ---------------------------------  Components		------------------------------
 component ram_simple
 	generic (
@@ -454,7 +458,8 @@ begin
 					ram_bytes_left	<= ram_bytes_left;
 					wbm_cur_st		<= wbm_tx_st;
 					wbm_tga_o		<= datalen;
-					wbm_adr_internal<= "00" & addr_reg (7 downto 0);
+					--wbm_adr_internal<= "00" & addr_reg (7 downto 0);
+					wbm_adr_internal<= addr_reg (9 downto 0); ---------- 14.02.2013
 	
 				when wbm_tx_st =>
 					wbm_cyc_internal<= '1';

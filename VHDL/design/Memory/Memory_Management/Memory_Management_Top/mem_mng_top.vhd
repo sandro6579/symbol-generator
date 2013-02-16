@@ -10,6 +10,9 @@
 -- Revision:
 --			Number		Date		Name					Description			
 --			1.00		10.5.2011	Beeri Schreiber			Creation
+--			1.10		13.2.2012	Beeri Schreiber			Added another clock domain
+--			1.11		14.02.2013	Olga&Yoav				gen_reg components declaration: new generic addr_space_g
+--
 ------------------------------------------------------------------------------------------------
 --	Todo:
 --			(1)
@@ -21,9 +24,6 @@ use ieee.std_logic_arith.all;
 use ieee.std_logic_unsigned.all;
 use ieee.math_real.all;
 
-library work ;
-use work.ram_generic_pkg.all;
-
 entity mem_mng_top is
 	generic (
 				reset_polarity_g 	: 	std_logic 					:= '0';
@@ -33,9 +33,11 @@ entity mem_mng_top is
 				img_ver_lines_g		:	positive					:= 480	--480 active lines
 			);
 	port	(
-				--Clock and Reset
-				clk_i				:	in std_logic;							--Wishbone clock
-				rst					:	in std_logic;							--Reset
+				-- Clocks and Reset 
+				clk_sdram			:	in std_logic;	--Wishbone input clock for SDRAM (133MHz)
+				clk_sys				:	in std_logic;	--System clock
+				rst_sdram			:	in std_logic;	--Reset for SDRAM Clock domain
+				rst_sys				:	in std_logic;	--Reset for System Clock domain
 
 				-- Wishbone Slave (mem_ctrl_wr)
 				wr_wbs_adr_i		:	in std_logic_vector (9 downto 0);		--Address in internal RAM
@@ -71,7 +73,14 @@ entity mem_mng_top is
 				wbm_we_o			:	out std_logic;							--Write Enable
 				wbm_tga_o			:	out std_logic_vector (7 downto 0);		--Address Tag : Read/write burst length-1 (0 represents 1 word, FF represents 256 words)
 				wbm_cyc_o			:	out std_logic;							--Cycle Command to interface
-				wbm_stb_o			:	out std_logic							--Strobe Command to interface
+				wbm_stb_o			:	out std_logic;							--Strobe Command to interface
+
+				--Debug Port
+				dbg_type_reg		:	out std_logic_vector (7 downto 0);		--Type Register Value
+				dbg_wr_bank_val		:	out std_logic;							--Expected Write SDRAM Bank Value
+				dbg_rd_bank_val     :	out std_logic;							--Expected Read SDRAM Bank Value
+				dbg_actual_wr_bank	:	out std_logic;							--Actual read bank
+				dbg_actual_rd_bank	:	out std_logic							--Actual Written bank
 			);
 end entity mem_mng_top;
 
@@ -81,7 +90,7 @@ architecture rtl_mem_mng_top of mem_mng_top is
 	constant reg_width_c		:	positive 	:= 8;	--Width of registers
 	constant reg_addr_width_c	:	positive 	:= 4;	--Width of registers' address
 	constant dbg_reg_depth_c	:	positive	:= 3;	--3*8 = 24 bits
-	constant type_reg_addr_c	:	natural		:= 1;	--Type register address
+	constant type_reg_addr_c	:	natural		:= 13;	--Type register address (0xD)
 	
 	--Debug SDRAM register address range: 2-->4 (Total of 24 bits)
 	constant dbg_reg_addr_c		:	natural		:= 2;	--Debug SDRAM address (read / write)
@@ -98,7 +107,8 @@ component gen_reg
 			read_en_g			:	boolean		:= true;				--Enabling read
 			write_en_g			:	boolean		:= true;				--Enabling write
 			clear_on_read_g		:	boolean		:= false;				--TRUE: Clear on read (set to default value), FALSE otherwise
-			default_value_g		:	natural		:= 0					--Default value of register
+			default_value_g		:	natural		:= 0;					--Default value of register
+			addr_space_g		:	natural		:= 1					-- the address space of the register -------- 14.02.2013
 			);
 	port	(
 			--Clock and Reset
@@ -163,8 +173,10 @@ component mem_ctrl_wr
 		);
   port (
 		-- Clocks and Reset 
-		clk_i		:	in std_logic;	--Wishbone input clock
-		rst			:	in std_logic;	--Reset
+		clk_sdram	:	in std_logic;	--Wishbone input clock for SDRAM (133MHz)
+		clk_sys		:	in std_logic;	--System clock
+		rst_sdram	:	in std_logic;	--Reset for SDRAM Clock domain
+		rst_sys		:	in std_logic;	--Reset for System Clock domain
 
 		-- Wishbone Slave signals
 		wbs_adr_i	:	in std_logic_vector (9 downto 0);		--Address in internal RAM
@@ -201,7 +213,10 @@ component mem_ctrl_wr
 		
 		-- Mem_Ctrl_Read signals
 		wr_cnt_val	:	out std_logic_vector(integer(ceil(log(real(img_hor_pixels_g*img_ver_lines_g)) / log(2.0))) - 1 downto 0);	--wr_cnt value
-		wr_cnt_en	:	out std_logic							--wr_cnt write enable flag (Active for 1 clock)
+		wr_cnt_en	:	out std_logic;							--wr_cnt write enable flag (Active for 1 clock)
+		
+		--Debug Signals
+		dbg_wr_bank	:	out std_logic							--Current bank, which is written to.
 		); 
 end component mem_ctrl_wr;
 
@@ -215,8 +230,10 @@ component mem_ctrl_rd
 		);
   port (
 		-- Clocks and Reset 
-		clk_i		:	in std_logic;	--Wishbone input clock
-		rst			:	in std_logic;	--Reset
+		clk_sdram	:	in std_logic;	--Wishbone input clock for SDRAM (133MHz)
+		clk_sys		:	in std_logic;	--System clock
+		rst_sdram	:	in std_logic;	--Reset for SDRAM Clock domain
+		rst_sys		:	in std_logic;	--Reset for System Clock domain
 
 		-- Wishbone Slave signals
 		wbs_adr_i	:	in std_logic_vector (9 downto 0);		--Address in internal RAM
@@ -253,7 +270,10 @@ component mem_ctrl_rd
 		
 		-- mem_ctrl_write signals
 		wr_cnt_val	:	in std_logic_vector(integer(ceil(log(real(img_hor_pixels_g*img_ver_lines_g)) / log(2.0))) - 1 downto 0);	--wr_cnt value
-		wr_cnt_en	:	in std_logic							--wr_cnt write enable flag (Active for 1 clock)
+		wr_cnt_en	:	in std_logic;							--wr_cnt write enable flag (Active for 1 clock)
+
+		--Debug Signals
+		dbg_rd_bank	:	out std_logic							--Current bank, which is Read from.
 		); 
 end component mem_ctrl_rd;
 
@@ -384,7 +404,12 @@ begin
 	
 	--Cycle is active for registers
 	wr_wbs_reg_cyc_proc:
-	wr_wbs_reg_cyc	<=	wr_wbs_cyc_i and wr_wbs_tgc_i;
+	wr_wbs_reg_cyc	<=	wr_wbs_cyc_i and wr_wbs_tgc_i when
+						(conv_integer(wr_wbs_adr_i (reg_addr_width_c - 1 downto 0)) = type_reg_addr_c) or
+						(conv_integer(wr_wbs_adr_i (reg_addr_width_c - 1 downto 0)) = dbg_reg_addr_c + 2) or
+						(conv_integer(wr_wbs_adr_i (reg_addr_width_c - 1 downto 0)) = dbg_reg_addr_c + 1) or
+						(conv_integer(wr_wbs_adr_i (reg_addr_width_c - 1 downto 0)) = dbg_reg_addr_c)
+						else '0';
 	
 	--Cycle is active for components
 	wr_wbs_cmp_cyc_proc:
@@ -446,12 +471,12 @@ begin
 	---------------------------------------------------------------------------------------
 	-- The process switches between the two double banks when fine image has been received.
 	---------------------------------------------------------------------------------------
-	bank_val_proc: process (clk_i, rst)
+	bank_val_proc: process (clk_sdram, rst_sdram)
 	begin
-		if (rst = reset_polarity_g) then
+		if (rst_sdram = reset_polarity_g) then
 			wr_bank_val <= '0';
-			rd_bank_val <= '0';
-		elsif rising_edge (clk_i) then
+			rd_bank_val <= '1';
+		elsif rising_edge (clk_sdram) then
 			if (bank_switch = '1') then
 				wr_bank_val <= not wr_bank_val;
 				rd_bank_val <= not rd_bank_val;
@@ -474,8 +499,10 @@ begin
 									port map
 										(
 										-- Clocks and Reset 
-										clk_i	=> clk_i,		
-										rst		=> rst,
+										clk_sdram	=> clk_sdram,
+                                        clk_sys		=> clk_sys,		
+										rst_sdram	=> rst_sdram,			
+										rst_sys		=> rst_sys,		
 
 										-- Wishbone Slave signals
 										wbs_adr_i	=> wr_wbs_adr_i,
@@ -512,15 +539,18 @@ begin
 										
 										-- Mem_Ctrl_Read signals
 										wr_cnt_val	=> wr_cnt_val,	
-										wr_cnt_en	=> wr_cnt_en	
+										wr_cnt_en	=> wr_cnt_en,
+
+										--Debug Signals
+										dbg_wr_bank	=> dbg_actual_wr_bank	
 										); 
 									
 	arbiter_inst : mem_mng_arbiter generic map 
 										(reset_polarity_g => reset_polarity_g)
 									port map
 										(
-										clk				=>	clk_i,			
-										reset			=>	rst,
+										clk				=>	clk_sdram,			
+										reset			=>	rst_sdram,
 														
 										wr_req			=>	arb_wr_req,
 										rd_req			=>	arb_rd_req,
@@ -568,8 +598,10 @@ begin
 									port map
 									(
 										-- Clocks and Reset 
-										clk_i			=>	clk_i,
-										rst				=>	rst,
+										clk_sdram		=>	clk_sdram	,
+										clk_sys			=>	clk_sys		,
+										rst_sdram		=>	rst_sdram	,
+										rst_sys			=>	rst_sys		,
 
 										-- Wishbone Slave signals
 										wbs_adr_i		=>	rd_wbs_adr_i,
@@ -606,7 +638,10 @@ begin
 										
 										-- mem_ctrl_write signals
 										wr_cnt_val		=>	wr_cnt_val,	
-										wr_cnt_en	    =>  wr_cnt_en
+										wr_cnt_en	    =>  wr_cnt_en,
+										
+										--Debug Signals
+										dbg_rd_bank		=> dbg_actual_rd_bank	
 									);
 								
 	gen_reg_type_inst	:	gen_reg generic map (
@@ -621,8 +656,8 @@ begin
 										default_value_g		=>	0
 									)
 									port map (
-										clk					=>	clk_i,
-									    reset		        =>	rst,
+										clk					=>	clk_sys,
+									    reset		        =>	rst_sys,
 									    addr		        =>	reg_addr,
 									    din			        =>	reg_din,
 									    wr_en		        =>	reg_wr_en,
@@ -647,8 +682,8 @@ begin
 										default_value_g		=>	0
 									)
 									port map (
-										clk					=>	clk_i,
-									    reset		        =>	rst,
+										clk					=>	clk_sys,
+									    reset		        =>	rst_sys,
 									    addr		        =>	reg_addr,
 									    din			        =>	reg_din,
 									    wr_en		        =>	reg_wr_en,
@@ -666,8 +701,8 @@ begin
 										addr_width_g	=>	reg_addr_width_c
 									)
 									port map (
-										rst				=>	rst,
-										clk_i			=> 	clk_i,
+										rst				=>	rst_sys,
+										clk_i			=> 	clk_sys,
 									    wbs_cyc_i	    =>	wr_wbs_reg_cyc,
 									    wbs_stb_i	    => 	wr_wbs_reg_stb,
 									    wbs_adr_i	    =>	wr_wbs_adr_i (reg_addr_width_c - 1 downto 0), 
@@ -686,4 +721,14 @@ begin
 										wr_en		    =>	reg_wr_en
 									);
 	
+-------------------------------	Debug Process--------------------------
+dbg_type_reg_proc:
+dbg_type_reg	<=	type_reg_dout;
+
+dbg_wr_bank_val_proc:
+dbg_wr_bank_val	<=	wr_bank_val;
+
+dbg_rd_bank_val_proc:
+dbg_rd_bank_val <=	rd_bank_val;  
+
 end architecture rtl_mem_mng_top;

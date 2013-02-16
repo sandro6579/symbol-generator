@@ -406,5 +406,4 @@ begin
 			mux_dout	  	=> 		mux_dout    	  --data out to DC FIFO
 		);
 
-	
 end architecture rtl_Symbol_Generator_Top;
