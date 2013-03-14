@@ -21,6 +21,9 @@
 -- Revision:
 --			Number		Date		Name					Description			
 --			1.00		19.4.2011	Beeri Schreiber			Creation
+--			2.00		11.03.2013	Olga Liberman			condition of SDRAM read: when signal we_i='0' (read)
+--															In FSM, state wbs_wait_ram_rdy_st: if no data is read from SDRAM and cyc is low, then end the cycle
+--
 ------------------------------------------------------------------------------------------------
 --	Todo:
 --			(1) 
@@ -51,6 +54,7 @@ entity mem_ctrl_rd_wbs is
 		wbs_stall_o	:	out std_logic;							--Slave is not ready to receive new data (Internal RAM has not been written YET to SDRAM)
 		wbs_ack_o	:	out std_logic;							--Input data has been successfuly acknowledged
 		wbs_err_o	:	out std_logic;							--Error: Address should be incremental, but receives address was not as expected (0 --> 1023)
+		wbs_we_i	:	in std_logic;							--Write Enable					-- Yoav & Olga 10.03.2013
 		
 		-- Signals from registers
 		type_reg	:	in std_logic_vector (7 downto 0);		--Type Register
@@ -110,7 +114,7 @@ architecture rtl_mem_ctrl_rd_wbs of mem_ctrl_rd_wbs is
 	
 	--Acknowledge to Data Requester (WBS_ACK_O)
 	wbs_ack_o_proc:
-	wbs_ack_o	<=	ack_o_sr and wbs_cyc_i;
+	wbs_ack_o	<=	ack_o_sr and wbs_cyc_i and not(wbs_we_i);
 
 	--STALL to Data Requester (WBS_STALL_O)
 	wbs_stall_o_proc:
@@ -135,7 +139,7 @@ architecture rtl_mem_ctrl_rd_wbs of mem_ctrl_rd_wbs is
 		elsif rising_edge(clk_i) then
 			case wbs_cur_st is
 				when wbs_idle_st =>
-					if (wbs_cyc_i = '1') then 
+					if (wbs_cyc_i = '1')and(wbs_we_i='0') then 						-- Olga 11.03.2013
 						if (restart_i = '1') then	--Restart from start of bank
 							wbs_cur_st		<= wbs_wait_end_cyc_st;
 						elsif ((wbm_busy = '0') and (rd_cnt_zero = '0')) 	--WBS Start of cycle
@@ -149,7 +153,7 @@ architecture rtl_mem_ctrl_rd_wbs of mem_ctrl_rd_wbs is
 					end if;
 				
 				when wbs_init_sdram_rx_st => 
-					if (wbs_cyc_i = '0') then
+					if (wbs_cyc_i = '0')or(wbs_we_i='1') then			-- Olga 11.03.2013
 						wbs_cur_st		<=	wbs_idle_st;
 					elsif (restart_i = '1') then	--Restart from start of bank
 						wbs_cur_st		<= wbs_wait_end_cyc_st;
@@ -158,7 +162,8 @@ architecture rtl_mem_ctrl_rd_wbs of mem_ctrl_rd_wbs is
 					end if;
 					
 				when wbs_wait_ram_rdy_st =>
-					if (restart_i = '1') then	--Restart from start of bank
+					-- -- if (restart_i = '1') then	--Restart from start of bank
+					if (restart_i = '1')or(wbs_cyc_i = '0') then	--Restart from start of bank -- Olga 11.03.2013
 						wbs_cur_st		<= wbs_wait_end_cyc_st;
 					elsif (ram_ready = '1') then
 						wbs_cur_st	<= wbs_ram_delay_st;
@@ -176,7 +181,7 @@ architecture rtl_mem_ctrl_rd_wbs of mem_ctrl_rd_wbs is
 				when wbs_tx_st =>
 					if (restart_i = '1') then	--Restart from start of bank
 						wbs_cur_st		<= wbs_wait_end_cyc_st;
-					elsif (wbs_cyc_i = '1') and (wbs_stb_i = '1') then
+					elsif (wbs_cyc_i = '1') and (wbs_stb_i = '1')and(wbs_we_i='0') then			-- Olga 11.03.2013
 						if (ram_expect_adr = "1111111111") then				--End of RAM addresses
 							wbs_cur_st		<= wbs_wait_end_cyc_st;			--Wait for end of cycle
 						else
@@ -187,7 +192,7 @@ architecture rtl_mem_ctrl_rd_wbs of mem_ctrl_rd_wbs is
 					end if;
 				
 				when wbs_wait_end_cyc_st =>
-					if (wbs_cyc_i = '1') then
+					if (wbs_cyc_i = '1')and(wbs_we_i='0') then				-- Olga 11.03.2013
 						wbs_cur_st		<= wbs_cur_st;            	    
 					else
 						wbs_cur_st		<= wbs_done_st;             	    
@@ -234,7 +239,7 @@ architecture rtl_mem_ctrl_rd_wbs of mem_ctrl_rd_wbs is
 		if (rst = reset_polarity_g) then
 			wbs_err_o	<= '0';
 		elsif rising_edge (clk_i) then
-			if (wbs_cyc_i = '1') then
+			if (wbs_cyc_i = '1')and(wbs_we_i='0') then				-- Olga 11.03.2013
 				if (wbs_stb_i = '1') then
 					if (wbs_cur_st = wbs_wait_end_cyc_st)
 					or ((wbs_cur_st = wbs_tx_st) and (ram_expect_adr /= wbs_adr_i)) then
@@ -297,7 +302,7 @@ architecture rtl_mem_ctrl_rd_wbs of mem_ctrl_rd_wbs is
 		elsif rising_edge (clk_i) then
 			if (wbs_cur_st = wbs_idle_st) then
 				ram_expect_adr	<= (others => '0');
-			elsif (wbs_cur_st = wbs_tx_st) and (wbs_cyc_i = '1') then
+			elsif (wbs_cur_st = wbs_tx_st) and (wbs_cyc_i = '1')and(wbs_we_i='0') then			-- Olga 11.03.2013
 				if (ram_expect_adr = wbs_adr_i) then				--Expected and received address are the same
 					ram_expect_adr	<= ram_expect_adr + '1';		--Increment expected address
 				else												--ERROR: Expected and received addresses are mismatch
@@ -339,7 +344,7 @@ architecture rtl_mem_ctrl_rd_wbs of mem_ctrl_rd_wbs is
 		if (rst = reset_polarity_g) then
 			ack_o_sr	<= '0';
 		elsif rising_edge (clk_i) then
-			if (wbs_cyc_i = '1') and 
+			if (wbs_cyc_i = '1') and (wbs_we_i='0') and 			-- Olga 11.03.2013
 				(((ram_expect_adr = wbs_adr_i) and (wbs_stall_o_int = '0'))
 				or ((restart_i = '1') and (wbs_cur_st = wbs_wait_end_cyc_st))) then
 				ack_o_sr <= wbs_stb_i;
@@ -361,7 +366,7 @@ architecture rtl_mem_ctrl_rd_wbs of mem_ctrl_rd_wbs is
 		if (rst = reset_polarity_g) then
 			restart_i	<= '1';
 		elsif rising_edge (clk_i) then
-			if (wbs_cyc_i = '1') and (wbs_tgc_i = '1') then
+			if (wbs_cyc_i = '1') and (wbs_tgc_i = '1') and (wbs_we_i='0') then			-- Olga 11.03.2013
 				restart_i <= '1';
 			else
 				restart_i <= '0';

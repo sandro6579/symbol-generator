@@ -21,6 +21,7 @@
 -- Revision:
 --			Number		Date		Name					Description			
 --			1.00		19.4.2011	Beeri Schreiber			Creation
+--			1.01		10.03.2013	Olga&Yoav				Add wbs_we_i port to WBS IF
 ------------------------------------------------------------------------------------------------
 --	Todo:
 --			(1) 
@@ -57,6 +58,7 @@ entity mem_ctrl_rd is
 		wbs_stall_o	:	out std_logic;							--Slave is not ready to receive new data (Internal RAM has not been written YET to SDRAM)
 		wbs_ack_o	:	out std_logic;							--Input data has been successfuly acknowledged
 		wbs_err_o	:	out std_logic;							--Error: Address should be incremental, but receives address was not as expected (0 --> 1023)
+		wbs_we_i	:	in std_logic;							--Write Enable					-- Yoav & Olga 10.03.2013
 		
 		-- Wishbone Master signals to SDRAM
 		wbm_adr_o	:	out std_logic_vector (21 downto 0);		--Address (Bank, Row, Col)
@@ -126,6 +128,7 @@ component mem_ctrl_rd_wbs
 		wbs_stall_o	:	out std_logic;							--Slave is not ready to receive new data (Internal RAM has not been written YET to SDRAM)
 		wbs_ack_o	:	out std_logic;							--Input data has been successfuly acknowledged
 		wbs_err_o	:	out std_logic;							--Error: Address should be incremental, but receives address was not as expected (0 --> 1023)
+		wbs_we_i	:	in std_logic;							--Write Enable					-- Yoav & Olga 10.03.2013
 		
 		-- Signals from registers
 		type_reg	:	in std_logic_vector (7 downto 0);		--Type Register
@@ -301,7 +304,8 @@ end component mem_ctrl_rd_wbm;
 					wbs_stall_o	    =>	wbs_stall_o	,
 					wbs_ack_o	    =>	wbs_ack_o	,
 					wbs_err_o	    =>	wbs_err_o	,
-					                
+					wbs_we_i		=> 	wbs_we_i, -- Yoav & Olga 10.03.2013
+					
 					type_reg		=>	type_reg,
 					rd_addr_reg		=>	rd_addr_reg,
 

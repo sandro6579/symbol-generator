@@ -92,10 +92,11 @@ architecture opcode_store_rtl of opcode_store is
   signal fifo_full : std_logic;   							-- FIFO is full
   signal fifo_empty : std_logic;							-- FIFO is empty
   signal rd_en_fifo_i : std_logic;							-- sampling of rd_en_fifo
-  signal rd_mng_1 : std_logic; -- internal signal to create a delay of 2 clocks in mng_en
-  signal rd_mng_2 : std_logic; -- internal signal to create a delay of 2 clocks in mng_en
-  signal fifo_used : std_logic_vector(9 downto 0);		-- sample fifo_used signal at the begining of each vsync
+  signal rd_mng_1 : std_logic; 								-- internal signal to create a delay of 2 clocks in mng_en
+  signal rd_mng_2 : std_logic; 								-- internal signal to create a delay of 2 clocks in mng_en
+  signal fifo_used : std_logic_vector(9 downto 0);			-- sample fifo_used signal at the begining of each vsync
   signal fifo_used_s : std_logic_vector(9 downto 0);		-- sample fifo_used signal at the begining of each vsync
+
   
   -- constant three_c : std_logic_vector ( 9 downto 0) := ("0000000011") ;
   
@@ -152,6 +153,8 @@ begin
 	end process vsync_active_proc;
 	
 	vsync_out <= start_trigger;
+
+	
 	------------------------
 	--writing data to fifo--
 	------------------------

@@ -12,7 +12,9 @@
 --			1.00		10.5.2011	Beeri Schreiber			Creation
 --			1.10		13.2.2012	Beeri Schreiber			Added another clock domain
 --			1.11		14.02.2013	Olga&Yoav				gen_reg components declaration: new generic addr_space_g
---
+--			1.12		09.03.2013	Olga&Yoav				Add RD_WBS ports: rd_wbs_dat_i & rd_wbs_we_i
+--															Add the ability to write through Read WBS IF (from Display Controller, through intercon Y)
+--			1.13		10.03.2013	Olga&Yoav				Add rd_wbs_we_i to mem_ctrl_rd ports
 ------------------------------------------------------------------------------------------------
 --	Todo:
 --			(1)
@@ -62,6 +64,8 @@ entity mem_mng_top is
 				rd_wbs_stall_o		:	out std_logic;							--Slave is not ready to receive new data (Internal RAM has not been written YET to SDRAM)
 				rd_wbs_ack_o		:   out std_logic;							--Input data has been successfuly acknowledged
 				rd_wbs_err_o		:   out std_logic;							--Error: Address should be incremental, but receives address was not as expected (0 --> 1023)
+				rd_wbs_dat_i		:	in std_logic_vector (7 downto 0);		--Data In (8 bits) 				-- Yoav & Olga 3.3.13
+				rd_wbs_we_i			:	in std_logic;							--Write Enable					-- Yoav & Olga 3.3.13
 				
 				-- Wishbone Master to SDRAM Controller from Arbiter
 				wbm_dat_i			:	in std_logic_vector (15 downto 0);		--Data in (16 bits)
@@ -245,6 +249,7 @@ component mem_ctrl_rd
 		wbs_stall_o	:	out std_logic;							--Slave is not ready to receive new data (Internal RAM has not been written YET to SDRAM)
 		wbs_ack_o	:	out std_logic;							--Input data has been successfuly acknowledged
 		wbs_err_o	:	out std_logic;							--Error: Address should be incremental, but receives address was not as expected (0 --> 1023)
+		wbs_we_i	:	in std_logic;							--Write Enable					-- Yoav & Olga 3.3.13
 		
 		-- Wishbone Master signals to SDRAM
 		wbm_adr_o	:	out std_logic_vector (21 downto 0);		--Address (Bank, Row, Col)
@@ -397,6 +402,22 @@ signal dbg_reg_din_ack		:	std_logic_vector (dbg_reg_depth_c - 1 downto 0);	--Dat
 signal dbg_reg_rd_en		:	std_logic_vector (dbg_reg_depth_c - 1 downto 0);	--Read Enable
 signal dbg_reg_dout			:	std_logic_vector (dbg_reg_depth_c * reg_width_c - 1 downto 0);		--Output data
 signal dbg_reg_dout_valid	:	std_logic_vector (dbg_reg_depth_c - 1 downto 0);					--Output data is valid
+
+-- Wishbone Slave (mem_ctrl_rd)  Yoav & Olga 3.3.13
+
+signal rd_wbs_reg_cyc		:	std_logic;						--'1': Cycle to register is active
+signal rd_wbs_reg_stb		:	std_logic;						--WBS_STB_O to registers
+-- wishbone slave signals after mux of read or write 
+signal wbs_reg_cyc			:	std_logic;						--'1': Cycle to register is active
+signal wbs_reg_stb			:	std_logic;						--WBS_STB_O to registers
+signal wbs_adr				:	std_logic_vector (9 downto 0);		--Address (Bank, Row, Col)	
+signal wbs_we				:	std_logic;							--Write Enable
+signal wbs_dat_i			:   std_logic_vector (7 downto 0);		--Data In (16 bits)
+signal wbs_dat_o			:	std_logic_vector (7 downto 0);		--Data Out (16 bits)
+
+signal rd_wbs_cmp_dat_o		:	std_logic_vector (7 downto 0);		--Data Out (16 bits)
+signal rd_wbs_cmp_stall_o	:	std_logic;						--WBS_STALL_O from component read
+signal rd_wbs_cmp_ack_o		:	std_logic;						--WBS_ACK_O from component read
 
 --	###########################		Implementation		##############################	--
 
@@ -609,10 +630,16 @@ begin
 										wbs_cyc_i	    =>  rd_wbs_cyc_i,	
 										wbs_tgc_i	    =>  rd_wbs_tgc_i,
 										wbs_stb_i	    =>  rd_wbs_stb_i,	
-										wbs_dat_o	    =>  rd_wbs_dat_o,
-										wbs_stall_o	    =>  rd_wbs_stall_o,	
-										wbs_ack_o	    =>  rd_wbs_ack_o,	
+										
+										--wbs_dat_o	    =>  rd_wbs_dat_o, -- 09.03.2013
+										wbs_dat_o	    =>  rd_wbs_cmp_dat_o, -- 09.03.2013
+										--wbs_stall_o	    =>  rd_wbs_stall_o,	-- 09.03.2013
+										wbs_stall_o	    =>  rd_wbs_cmp_stall_o,	-- 09.03.2013
+										--wbs_ack_o	    =>  rd_wbs_ack_o, -- 09.03.2013
+										wbs_ack_o	    =>  rd_wbs_cmp_ack_o, -- 09.03.2013
+										
 										wbs_err_o	    =>  rd_wbs_err_o,	
+										wbs_we_i		=>	rd_wbs_we_i, -- 10.03.2013
 										
 										-- Wishbone Master signals to SDRAM
 										wbm_adr_o		=>	rd_wbm_adr_o,	
@@ -703,12 +730,12 @@ begin
 									port map (
 										rst				=>	rst_sys,
 										clk_i			=> 	clk_sys,
-									    wbs_cyc_i	    =>	wr_wbs_reg_cyc,
-									    wbs_stb_i	    => 	wr_wbs_reg_stb,
-									    wbs_adr_i	    =>	wr_wbs_adr_i (reg_addr_width_c - 1 downto 0), 
-									    wbs_we_i	    => 	wr_wbs_we_i,
-									    wbs_dat_i	    => 	wr_wbs_dat_i,
-									    wbs_dat_o	    => 	wr_wbs_dat_o,
+									    wbs_cyc_i	    =>	wbs_reg_cyc,
+									    wbs_stb_i	    => 	wbs_reg_stb,
+									    wbs_adr_i	    =>	wbs_adr (reg_addr_width_c - 1 downto 0), 
+									    wbs_we_i	    => 	wbs_we,
+									    wbs_dat_i	    => 	wbs_dat_i,
+									    wbs_dat_o	    => 	wbs_dat_o, -- 09.03.2013
 									    wbs_ack_o	    => 	wbs_reg_ack_o,
 										wbs_stall_o		=>	wbs_reg_stall_o,
 										
@@ -720,6 +747,47 @@ begin
 										rd_en		    =>	reg_rd_en,
 										wr_en		    =>	reg_wr_en
 									);
+
+-------------------------------	SG Process-------------------------- Yoav & Olga 3.3.13
+
+--Cycle is active for registers
+	rd_wbs_reg_cyc_proc:
+	rd_wbs_reg_cyc	<=	rd_wbs_cyc_i and rd_wbs_tgc_i when
+						(conv_integer(rd_wbs_adr_i (reg_addr_width_c - 1 downto 0)) = type_reg_addr_c) or
+						(conv_integer(rd_wbs_adr_i (reg_addr_width_c - 1 downto 0)) = dbg_reg_addr_c + 2) or
+						(conv_integer(rd_wbs_adr_i (reg_addr_width_c - 1 downto 0)) = dbg_reg_addr_c + 1) or
+						(conv_integer(rd_wbs_adr_i (reg_addr_width_c - 1 downto 0)) = dbg_reg_addr_c)
+						else '0';
+	
+	
+	--Strobe is active for registers
+	rd_wbs_reg_stb_proc:
+	rd_wbs_reg_stb	<=	rd_wbs_stb_i and rd_wbs_tgc_i;
+	
+	wbs_reg_cyc <= wr_wbs_reg_cyc	when ( wr_wbs_reg_cyc = '1') else rd_wbs_reg_cyc;					
+	wbs_reg_stb <= wr_wbs_reg_stb	when ( wr_wbs_reg_cyc = '1') else rd_wbs_reg_stb;	
+	wbs_adr 	<= wr_wbs_adr_i		when ( wr_wbs_reg_cyc = '1') else rd_wbs_adr_i;
+	wbs_we 		<= wr_wbs_we_i		when ( wr_wbs_reg_cyc = '1') else rd_wbs_we_i;
+	wbs_dat_i 	<=  wr_wbs_dat_i	when ( wr_wbs_reg_cyc = '1') else rd_wbs_dat_i;
+	
+	--RD_WBS_DAT_O -- 09.03.2013
+	rd_wbs_dat_o_proc:
+	rd_wbs_dat_o	<=	wbs_dat_o when (rd_wbs_reg_cyc = '1')
+						else rd_wbs_cmp_dat_o;
+	
+	--RD_WBS_STALL_O -- 09.03.2013
+	rd_wbs_stall_o_proc:
+	rd_wbs_stall_o	<=	wbs_reg_stall_o when (rd_wbs_reg_cyc = '1')
+						else rd_wbs_cmp_stall_o;
+	
+	--RD_WBS_ACK_O -- 09.03.2013
+	rd_wbs_ack_o_proc:
+	rd_wbs_ack_o	<= 	wbs_reg_ack_o when (rd_wbs_reg_cyc = '1')
+						else rd_wbs_cmp_ack_o;
+	
+	--WR_WBS_DAT_O -- 09.03.2013
+	wr_wbs_dat_o_proc:
+	wr_wbs_dat_o	<=	wbs_dat_o;
 	
 -------------------------------	Debug Process--------------------------
 dbg_type_reg_proc:

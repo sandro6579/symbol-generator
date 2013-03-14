@@ -12,9 +12,8 @@
 --			Number		Date		Name				Description
 --			1.00		4.4.2011	Alon Yavich			Creation
 --			1.01		28.5.2011	Beeri Schreiber		Debbuged, Added Type states
---			1.02		15.02.2013	Olga&Yoav			When register transaction via Uart: disabling the write to TX_Path, cause the address width is different now (change of type_reg_clients_c to value 2, 3 means with TX_Path)
---														addr_reg signal length is 10 bits
---
+--			1.02		14.2.2013	Yoav & Olga			Changing signal wbm_adr_internal value in wbm_neg_st state from ("00" & addr_reg (7 downto 0)) to  (addr_reg (9 downto 0)) for expanding registers' addresses
+--			1.03		15.2.2013	Yoav & Olga			Changing type_reg_clients_c from 3 to 2, so client tx_path is removed
 ------------------------------------------------------------------------------------------------
 --	Todo:	
 --			(1) Separate Wishbone into different entity

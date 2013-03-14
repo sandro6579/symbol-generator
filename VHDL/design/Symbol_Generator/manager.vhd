@@ -17,14 +17,16 @@
 --
 ------------------------------------------------------------------------------------------------
 -- Revision:
---			Number		Date		    Name								  Description			
---			1.00		27.3.2012	   	Olga Liberman and Yoav Shvartz		  Creation
---			1.01		12.4.2012	   	Olga Liberman						  Aesthetics: header, comments, ports and signals names, synchronic fsm
+--			Number		Date		    Name									Description			
+--			1.00		27.3.2012	   	Olga Liberman and Yoav Shvartz			Creation
+--			1.01		12.4.2012	   	Olga Liberman							Aesthetics: header, comments, ports and signals names, synchronic fsm
 --    		1.02		08.05.2012   	Olga Liberman and Yoav Shvartz    
---			1.03		16.07.2012		Olga Liberman						  Generics added
---			1.04		27.10.2012		Olga Liberman						  req_in_trg is from another clock domain - it is filtered and we use its rising edge only
---			1.05		28.10.2012		Olga Liberman						  new signal req_in_trg_counter is added: counts the req_in_trg that arrive from VESA
---			1.06        13.02.2013     Olga Liberman and Yoav Shvartz 		  in process counters_proc: changing the conditions for increasing the counters 
+--			1.03		16.07.2012		Olga Liberman							Generics added
+--			1.04		27.10.2012		Olga Liberman							req_in_trg is from another clock domain - it is filtered and we use its rising edge only
+--			1.05		28.10.2012		Olga Liberman							new signal req_in_trg_counter is added: counts the req_in_trg that arrive from VESA
+--			1.06        13.02.2013     	Olga Liberman and Yoav Shvartz			in process counters_proc: changing the conditions for increasing the counters 
+--			1.07		11.03.2013		Olga									I changed the value of sdram_wait_c from 55 to 100
+--			1.08		12.03.2013		Olga & Yoav								integration changes with beeri external environment. 
 ------------------------------------------------------------------------------------------------
 --	Todo:
 --	(1) rd_mng_fsm_proc: maybe to add "if (fifo_x_full='0') then wr_en='1'..." - to enable write to fifo only if it's not full
@@ -113,7 +115,7 @@ architecture manager_rtl of manager is
 	signal ram_rd_en_i  		: 	std_logic; -- smapling ram_rd_en output port
 	--signal sdram_adr 			: 	std_logic_vector (23 downto 0); --this signal is the full address in SDRAM: "00--bank(2)--row(12)--col(8)"
 	signal sdram_rd_en			: 	std_logic; -- this signal is a valid signal for the sdram_addr_rd signal (for usage of WBS)
-	signal sdram_wait_counter	:	integer range 0 to 60;
+	signal sdram_wait_counter	:	integer range 0 to 150;
 	
 	signal req_in_trg_dev   	: std_logic; -- The derivative of req_in_trg (change from 0 to 1)
 	signal req_in_trg_1 		: std_logic; -- sampling req_in_trg input
@@ -122,7 +124,12 @@ architecture manager_rtl of manager is
 	signal req_in_trg_counter	: integer := 0 ;
 	signal req_in_trg_dev_active   	: std_logic; 
 	
-	signal req_cnt : integer range 0 to 511;
+	signal req_cnt : integer range 0 to 600;
+	constant req_cnt_min_c : integer := 80;
+	constant req_cnt_max_c : integer := 560;
+	signal mng_en_internal : std_logic;
+	signal req_cnt_small : std_logic;
+	signal req_cnt_small_d : std_logic;
 	
 	---------------------------- constatnts -------------------------------------------
 	-- constant const_19_c  	: integer := 19; 
@@ -130,7 +137,7 @@ architecture manager_rtl of manager is
 	-- constant const_14_c  	: integer := 14;
 	-- constant const_16_c  	: integer := 16;
 	-- constant const_480_c 	: integer := 479;
-	constant sdram_wait_c	: integer := 55; 	-- num. of clock to wait from one sdram request to another ( approx. 20 clks for SDRAM to respond + 32 pixels to deliver )
+	constant sdram_wait_c	: integer := 75; 	-- num. of clock to wait from one sdram request to another ( approx. 20 clks for SDRAM to respond + 32 pixels to deliver )
 	
 	-- not sure what it is:
   -- signal counter : unsigned(9 downto 0);
@@ -181,14 +188,35 @@ begin
 	begin
 		if reset_n='0' then
 			req_cnt <= 0;
+			req_cnt_small <= '0';
+			req_cnt_small_d <= '0';
+			mng_en_internal <= '0';
 		elsif rising_edge (clk) then
+			
 			if (mng_en = '1') then
-				req_cnt <= 0;
-			elsif ( (req_in_trg_dev = '1') and (req_cnt < 480) ) then
 				req_cnt <= req_cnt + 1;
+			elsif ( (req_in_trg_dev = '1') and (req_cnt > 0) and (req_cnt < req_cnt_max_c) ) then
+				req_cnt <= req_cnt + 1;
+			elsif (req_cnt > req_cnt_max_c) then
+				req_cnt <= 0;
 			end if;
+			
+			if (req_cnt < req_cnt_min_c) then
+				req_cnt_small <= '1';
+			else
+				req_cnt_small <= '0';
+			end if;
+			req_cnt_small_d <= req_cnt_small;
+			
+			if ( (req_cnt_small_d='1') and (req_cnt_small='0') ) then
+				mng_en_internal <= '1';
+			else
+				mng_en_internal <= '0';
+			end if;
+			
 		end if;
 	end process;
+	
 	
 	
 	---------------------------------------------------------------------------------
@@ -220,7 +248,8 @@ begin
 					fifo_b_rd_en <='0';
 					fifo_b_wr_en <='0';
 					fifo_b_data_in <= (others =>'0');
-					if (mng_en='1') then
+					-- -- if (mng_en='1') then -- 12.03.2013
+					if (mng_en_internal='1') then -- 12.03.2013
 						current_sm <= write_a_st;
 					end if;
 				
@@ -344,14 +373,15 @@ begin
 				inside_row <= 0;
 				row_count <= 0;
 			else	
-				--if ( ((mng_en='1') or (sdram_rd_en='1')) and ( (sym_col-1) <19) ) then
-				if ( ((mng_en='1') or (sdram_wait_counter = sdram_wait_c)) and ( sym_col < sym_col_g ) ) then
+				-- if ( ((mng_en='1') or (sdram_wait_counter = sdram_wait_c)) and ( sym_col < sym_col_g ) ) then --12.03.2013
+				if ( ((mng_en_internal='1') or (sdram_wait_counter = sdram_wait_c)) and ( sym_col < sym_col_g ) ) then --12.03.2013
 					sym_col <= sym_col + 1;
-				elsif ( ( (req_in_trg_dev = '1') or (mng_en='1') ) and (req_cnt < 480) ) then 
+				elsif ( ( (req_in_trg_dev = '1') or (mng_en='1') ) and (req_cnt < req_cnt_max_c) ) then 
 					sym_col <= 1;
 				end if;
 				
-				if ( (current_sm = idle_st) and (mng_en='1')) or ( (current_sm /= idle_st) and (req_in_trg_dev = '1') ) then 
+				-- if ( (current_sm = idle_st) and (mng_en='1')) or ( (current_sm /= idle_st) and (req_in_trg_dev = '1') ) then --12.03.2013
+				if ( (current_sm = idle_st) and (mng_en_internal='1')) or ( (current_sm /= idle_st) and (req_in_trg_dev = '1') ) then --12.03.2013
 				--if ( ((req_in_trg_dev = '1') or (mng_en='1'))) then --  means calculating address in the RAM and a new request to the sdram
 					--sym_col <= sym_col + 1;
 					--if ( sym_col = sym_col_g ) then -- maybe 20?

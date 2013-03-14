@@ -15,6 +15,7 @@
 --			1.3			08.01.2013	olga					in disp_ctrl_top inst: the active area is 640x480 pixels (generics value)
 --			1.4			15.02.2013	Olga&Yoav				Working with rx_path instanciation with address depth generic of 2 (the address length is 2 bytes)
 --															Working with disp_ctrl_top instanciation with register address width of 10 bits
+--			1.5			09.03.2013	Olga & Yoav				Add WB signals we and dat from display to mem_mng through intercon Y
 --
 ------------------------------------------------------------------------------------------------
 --	Todo:
@@ -101,7 +102,6 @@ constant num_of_wbs_y_c	:	natural := 1;	--1 WBS to INTERCON Y
 constant num_of_wbm_y_c :	natural := 2;	--2 WBM to INTERCON Y
 
 constant reg_addr_width_c		:	positive 	:= 10;	--Width of registers' address ----------------- 14.02.2013
-
 
 --#############################	Components	##############################################--
 component tx_path
@@ -396,6 +396,8 @@ component mem_mng_top
 				rd_wbs_stall_o		:	out std_logic;							--Slave is not ready to receive new data (Internal RAM has not been written YET to SDRAM)
 				rd_wbs_ack_o		:   out std_logic;							--Input data has been successfuly acknowledged
 				rd_wbs_err_o		:   out std_logic;							--Error: Address should be incremental, but receives address was not as expected (0 --> 1023)
+				rd_wbs_dat_i		:	in std_logic_vector (7 downto 0);		--Data In (8 bits) 				-- Yoav & Olga 	-- 09.03.2013
+				rd_wbs_we_i			:	in std_logic;							--Write Enable					-- Yoav & Olga 	-- 09.03.2013
 				
 				-- Wishbone Master to SDRAM Controller from Arbiter
 				wbm_dat_i			:	in std_logic_vector (15 downto 0);		--Data in (16 bits)
@@ -464,7 +466,7 @@ component disp_ctrl_top is
 			change_frame_clk_g		:	positive	:= 120000000;		--Change frame position each 'change_frame_clk_g' clocks
 			hor_pres_pixels_g		:	positive	:= 640;				--640X480 Pixels in frame
 			ver_pres_lines_g		:	positive	:= 480;				--640X480 Pixels in frame
-			reg_addr_width_g		:	positive	:= 4				--Width of registers' address, supports address space of 2^(reg_addr_width_g)
+			reg_addr_width_g		:	positive	:= 4				--Width of registers' address, supports address space of 2^(reg_addr_width_g) ------ 14.02.2013
 			);
 	port	(
 				--Clock and Reset
@@ -496,7 +498,10 @@ component disp_ctrl_top is
 				wbm_cyc_o			:	out std_logic;							--Cycle command from WBM
 				wbm_stb_o			:	out std_logic;							--Strobe command from WBM
 				wbm_tgc_o			:	out std_logic;							--Cycle Tag
-
+				-- Yoav & Olga 3.3.13
+				wbm_dat_o			:	out std_logic_vector (7 downto 0);		--Data Out for reading registers (8 bits) 
+				wbm_we_o			:	out std_logic;							--Write Enable
+				
 				--Output RGB
 				r_out				:	out std_logic_vector(red_width_g + 1 downto 0);		--Output R Pixel
 				g_out				:	out std_logic_vector(green_width_g + 1 downto 0);   --Output G Pixel
@@ -612,7 +617,9 @@ signal icy_disp_wbm_stb_o	:	std_logic;							--Strobe to INTERCON
 signal icy_disp_wbm_tgc_o	:	std_logic;							--'1': Read from the beginning of the MEM_CTRL_RD (Restart counter), '1' - continuous read from MEM_CTRL_RD
 signal OPEN_disp_dat_o		:	std_logic_vector (7 downto 0);		--Irrelevant signal, for instatiation only
 signal OPEN_disp_we_o		:	std_logic;							--Irrelevant signal, for instatiation only
-
+signal icy_disp_wbm_dat_o	:	std_logic_vector (7 downto 0); -- yoav & olga 09.03.2013
+signal icy_disp_wbm_we_o	:	std_logic; -- yoav & olga 09.03.2013
+				
 --INTERCON Z:
 	--Signals from INTERCON to WBS
 signal ic_wbs_adr_i		:	std_logic_vector (num_of_wbs_z_c * 10 - 1 downto 0);					--Address in internal RAM
@@ -663,6 +670,9 @@ signal rd_wbs_dat_o 	:  	std_logic_vector (7 downto 0);		--Data Out (8 bits)
 signal rd_wbs_stall_o	:	std_logic;							--Slave is not ready to receive new data (Internal RAM has not been written YET to SDRAM)
 signal rd_wbs_ack_o		:   std_logic;							--Input data has been successfuly acknowledged
 signal rd_wbs_err_o		:   std_logic;							--Error: Address should be incremental, but receives address was not as expected (0 --> 1023)
+-- Yoav & Olga 09.03.2013
+signal rd_wbs_dat_i 	:  	std_logic_vector (7 downto 0);		--Data In (8 bits)
+signal rd_wbs_we_i		:   std_logic;							--Write Enable
 
 	-- Wishbone Master to SDRAM Controller
 signal wbm_dat_i		:	std_logic_vector (15 downto 0);		--Data in (16 bits)
@@ -802,10 +812,13 @@ intercon_y_inst		:	intercon generic map
 				--Signals from INTERCON to WBS
 				ic_wbs_adr_i		=>	rd_wbs_adr_i,	
 				ic_wbs_tga_i		=>	rd_wbs_tga_i,	
-				ic_wbs_dat_i		=>	OPEN,	--Not relevant. Mem_Ctrl_Rd has no WBM_DAT_I
+				--ic_wbs_dat_i		=>	OPEN,	--Not relevant. Mem_Ctrl_Rd has no WBM_DAT_I
+				ic_wbs_dat_i		=>	rd_wbs_dat_i,	-- yoav & olga 09.03.2013
 				ic_wbs_cyc_i (num_of_wbs_y_c - 1)		=>	rd_wbs_cyc_i,	
 				ic_wbs_stb_i (num_of_wbs_y_c - 1)		=>	rd_wbs_stb_i,	
-				ic_wbs_we_i			=>	OPEN	,	--Always reading from Mem_Ctrl_Rd
+				--ic_wbs_we_i			=>	OPEN	,	--Always reading from Mem_Ctrl_Rd
+				ic_wbs_we_i(num_of_wbs_y_c - 1)			=>	rd_wbs_we_i	,	-- yoav & olga 09.03.2013
+
 				ic_wbs_tgc_i (num_of_wbs_y_c - 1)		=>	rd_wbs_tgc_i,	
 				
 				--Signals from INTERCON to WBM 
@@ -823,17 +836,19 @@ intercon_y_inst		:	intercon generic map
 				ic_wbm_adr_o (19 downto 10)	=>	icxy_wbm_adr_o (9 downto 0),		
 				ic_wbm_tga_o (9 downto 0)	=>	icy_disp_wbm_tga_o,		
 				ic_wbm_tga_o (19 downto 10)	=>	icxy_wbm_tga_o (9 downto 0),		
-				ic_wbm_dat_o (7 downto 0)	=>	OPEN_disp_dat_o,		
+				--ic_wbm_dat_o (7 downto 0)	=>	OPEN_disp_dat_o,	-- yoav & olga 09.03.2013
+				ic_wbm_dat_o (7 downto 0)	=>	icy_disp_wbm_dat_o,	-- yoav & olga 09.03.2013
 				ic_wbm_dat_o (15 downto 8)	=>	icxy_wbm_dat_o (7 downto 0),		
 				ic_wbm_cyc_o(0)				=>	icy_disp_wbm_cyc_o,		
 				ic_wbm_cyc_o(1)				=>	icxy_wbm_cyc_o,		
 				ic_wbm_stb_o(0)				=>	icy_disp_wbm_stb_o,		
 				ic_wbm_stb_o(1)				=>	icxy_wbm_stb_o,		
-				ic_wbm_we_o(0)				=>	OPEN_disp_we_o,		
+				--ic_wbm_we_o(0)				=>	OPEN_disp_we_o,	-- yoav & olga 09.03.2013
+				ic_wbm_we_o(0)				=>	icy_disp_wbm_we_o,	-- yoav & olga 09.03.2013
 				ic_wbm_we_o(1)				=>	icxy_wbm_we_o,		
 				ic_wbm_tgc_o(0)				=>	icy_disp_wbm_tgc_o,		
 				ic_wbm_tgc_o(1)				=>	icxy_wbm_tgc_o,		
-				
+
 				--Signals from WBS to INTERCON
 				ic_wbs_dat_o		=>	rd_wbs_dat_o,	
 				ic_wbs_stall_o (num_of_wbs_y_c - 1)		=>	rd_wbs_stall_o,	
@@ -926,6 +941,8 @@ mem_mng_inst 	:	 mem_mng_top generic map
 				rd_wbs_stall_o	=>	rd_wbs_stall_o	,	
 				rd_wbs_ack_o	=>	rd_wbs_ack_o	,	
 				rd_wbs_err_o	=>	rd_wbs_err_o	,	
+				rd_wbs_dat_i	=>	rd_wbs_dat_i	,	-- yoav & olga 09.03.2013
+				rd_wbs_we_i		=>	rd_wbs_we_i	,		-- yoav & olga 09.03.2013
 				
 				wbm_dat_i		=>	wbm_dat_i		,	
 				wbm_stall_i		=>	wbm_stall_i		,	
@@ -947,29 +964,14 @@ mem_mng_inst 	:	 mem_mng_top generic map
 disp_ctrl_inst :	 disp_ctrl_top	
 			generic map
 			(	
--- 08.01.2013 - Olga - change the image resiolution to 640x480 pixels
-				-- hor_active_pixels_g		=> 640,				--active pixels per line
-				-- ver_active_lines_g		=> 480,				--active lines
-				-- hor_left_border_g		=> 0,				--Horizontal Left Border
-				-- hor_right_border_g		=> 0,				--Horizontal Right Border
-				-- hor_back_porch_g		=> 48,				--Horizontal Back Porch (Pixels)
-				-- hor_front_porch_g		=> 16,				--Horizontal Front Porch (Pixels)
-				-- hor_sync_time_g			=> 96,				--Horizontal Sync Time (Pixels)
-				-- ver_top_border_g		=> 0,				--Vertical Top Border
-				-- ver_buttom_border_g		=> 0,				--Vertical Buttom Border
-				-- ver_back_porch_g		=> 31,				--Vertical Back Porch (Lines)
-				-- ver_front_porch_g		=> 11,				--Vertical Front Porch (Lines)
-				-- ver_sync_time_g			=> 2,				--Vertical Sync Time (Lines)
----------------------------------------------------------------------
-				--synth_bit_g => 0,
 				-- uri ran
 				--rep_size_g	=>	rep_size_g
-				-------------hor_pres_pixels_g	=>	128,										--************************************-
-				-------------ver_pres_lines_g	=>	96											--************************************-
-				hor_pres_pixels_g	=>	640,										--************************************-
-				ver_pres_lines_g	=>	480,
-				req_lines_g			=> 	1,
-				reg_addr_width_g	=> reg_addr_width_c
+				 -- -- hor_pres_pixels_g	=>	128,										--************************************-
+				-- -- ver_pres_lines_g	=>	96,											--************************************-
+				hor_pres_pixels_g	=>	640,	-- 12.03.2013
+				ver_pres_lines_g	=>	480,	-- 12.03.2013
+				req_lines_g			=>	1,		-- 12.03.2013
+				reg_addr_width_g	=> reg_addr_width_c				
 			)
 			port map
 			(
@@ -999,6 +1001,9 @@ disp_ctrl_inst :	 disp_ctrl_top
 				wbm_cyc_o	=>	icy_disp_wbm_cyc_o,		
 				wbm_stb_o	=>	icy_disp_wbm_stb_o,		
 				wbm_tgc_o	=>	icy_disp_wbm_tgc_o,
+				wbm_dat_o	=>	icy_disp_wbm_dat_o, -- yoav & olga 09.03.2013
+				wbm_we_o	=>	icy_disp_wbm_we_o, -- yoav & olga 09.03.2013
+				
 				r_out		=>	r_out,		
 				g_out		=>	g_out,		
 				b_out		=>	b_out,		

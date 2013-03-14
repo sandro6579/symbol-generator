@@ -22,9 +22,11 @@
 -- Revision:
 --			Number		Date		Name					Description			
 --			1.00		19.4.2011	Beeri Schreiber			Creation
+--			1.01		12.03.2013	Olga & Yoav				Write in debug mode is cancled
+--
 ------------------------------------------------------------------------------------------------
 --	Todo:
---			(1)
+--			(1) 
 ------------------------------------------------------------------------------------------------
 
 library ieee;
@@ -369,7 +371,8 @@ architecture rtl_mem_ctrl_wr of mem_ctrl_wr is
 			ram_num_words_d1	<=	ram_num_words;
 			ram_num_words_d2	<=	ram_num_words_d1;
 			type_reg_wbm_d1		<=	type_reg_wbm;
-			type_reg_wbm_d2		<=	type_reg_wbm_d1;
+			-- type_reg_wbm_d2		<=	type_reg_wbm_d1; -- 12.03.2013
+			type_reg_wbm_d2		<=	type_reg_wbm_d1(7 downto 1)&'0'; -- 12.03.2013 cancle the debug mode in write
 			wr_addr_reg_wbm_d1	<=	wr_addr_reg_wbm;
 			wr_addr_reg_wbm_d2	<=	wr_addr_reg_wbm_d1;
 		end if;

@@ -11,7 +11,8 @@
 -- Revision :
 --			Number		Date		Name				Description
 --			1.00		4.4.2011	Alon Yavich			Creation
---			1.01		10.8.20011	Alon Yavich			Continuation
+--			1.01		10.8.2011	Alon Yavich			Continuation
+--			1.02		14.2.2013	Yoav & Olga			Adding addr_space_g	generic to gen_reg component
 ------------------------------------------------------------------------------------------------
 --	Todo:	 		
 ------------------------------------------------------------------------------------------------
@@ -265,7 +266,8 @@ component gen_reg
 			read_en_g			:	boolean		:= true;				--Enabling read
 			write_en_g			:	boolean		:= true;				--Enabling write
 			clear_on_read_g		:	boolean		:= false;				--TRUE: Clear on read (set to default value), FALSE otherwise
-			default_value_g		:	natural		:= 0					--Default value of register
+			default_value_g		:	natural		:= 0;					--Default value of register
+			addr_space_g		:	natural		:= 1					-- the address space of the register -------- 14.02.2013
 			);
 	port	(
 			--Clock and Reset

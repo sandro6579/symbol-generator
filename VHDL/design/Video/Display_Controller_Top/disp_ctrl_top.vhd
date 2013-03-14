@@ -18,6 +18,7 @@
 --			2.00		14.02.2013	Olga&Yoav				New generic: reg_addr_width_g (Width of registers' address)
 --															Changing the address of SG register to 16 (decimal), with address space of 900: [16,...,915]
 --			2.01		15.02.2013	Olga&Yoav				Connecting gen_reg_opcode_unite_inst (=SG register) to Symbol_Generator_Top block
+--			3.00		09.03.2013	Olga&Yoav				Add WBM ports: wbm_dat_o & wbm_we_o
 --
 ------------------------------------------------------------------------------------------------
 --	Todo:
@@ -107,7 +108,10 @@ entity disp_ctrl_top is
 				wbm_cyc_o			:	out std_logic;							--Cycle command from WBM
 				wbm_stb_o			:	out std_logic;							--Strobe command from WBM
 				wbm_tgc_o			:	out std_logic;							--Cycle Tag
-
+				-- Yoav & Olga 3.3.13
+				wbm_dat_o			:	out std_logic_vector (7 downto 0);		--Data Out for reading registers (8 bits) 
+				wbm_we_o			:	out std_logic;							--Write Enable
+				
 				--Output RGB
 				r_out				:	out std_logic_vector(red_width_g + 1 downto 0);		--Output R Pixel
 				g_out				:	out std_logic_vector(green_width_g + 1 downto 0);   --Output G Pixel
@@ -121,7 +125,7 @@ entity disp_ctrl_top is
 				vsync				:	out std_logic;										--VSync Signal
 				
 				--Debug Port
-				dbg_type_reg		:	out std_logic_vector (7 downto 0)					--Type Register Value
+				dbg_type_reg		:	out std_logic_vector (7 downto 0)				--Type Register Value
 			);
 end entity disp_ctrl_top;
 
@@ -260,6 +264,10 @@ signal vsync_trigger				:	std_logic;
 signal blank_i						:	std_logic;
 signal blank_d						:	std_logic;
 signal mux_flush					:	std_logic;
+
+-- 09.03.2013
+signal zero_s : std_logic := '0';
+signal zeros_s : std_logic_vector(7 downto 0) := "00000000";
 
 --------------
 --###########################	Components	###################################--
@@ -607,7 +615,36 @@ end component Symbol_Generator_Top;
 		);
 	end component sdram_symbol_model;
 	
-
+component SG_WBM_IF is
+	generic(
+		read_length_g		:	integer range 1 to 1024 := 32 			-- read length equals to num of pixels in 1 row of symbol
+	);
+	port (
+		-- clock and reset
+		clk					:	in std_logic; 							-- main clock
+		reset_n				:	in std_logic; 							-- asynchronous reset
+		-- vsync
+		vsync				:	in std_logic;
+		-- Wishbone Master to Memory Management block
+		wbm_dat_i			:	in std_logic_vector (7 downto 0);		--Data in (8 bits)
+		wbm_stall_i			:	in std_logic;							--Slave is not ready to receive new data 
+		wbm_ack_i			:	in std_logic;							--Input data has been successfuly acknowledged
+		wbm_err_i			:	in std_logic;							--Error: Address should be incremental, but receives address was not as expected (0 --> 1023)
+		wbm_adr_o			:	out std_logic_vector (9 downto 0);		--Address
+		wbm_tga_o			:	out std_logic_vector (9 downto 0);		--Address Tag : Read burst length-1 (0 represents 1 byte, 3FF represents 1023 bytes)
+		wbm_cyc_o			:	out std_logic;							--Cycle command from WBM
+		wbm_stb_o			:	out std_logic;							--Strobe command from WBM
+		wbm_tgc_o			:	out std_logic;							--Cycle Tag
+		wbm_dat_o			:	out std_logic_vector (7 downto 0);		--Data Out for writing to registers (8 bits) 
+		wbm_we_o			:	out std_logic;							--Write Enable
+		-- SDRAM read address from SG_Top
+		sdram_addr_rd 		: 	in std_logic_vector (23 downto 0); 		--SDRAM address: "00--bank(2)--row(12)--col(8)"
+		sdram_rd_en			:	in std_logic; 							--SDRAM address is valid
+		-- SDRAM data to SG_Top
+		sdram_data 			:	out std_logic_vector (7 downto 0); 		--SDRAM data
+		sdram_data_valid	:	out std_logic 							--SDRAM data valid
+	);
+end component SG_WBM_IF;
 	
 begin
 --uri ran - added mux
@@ -677,13 +714,13 @@ begin
 	--ZERO all unused bits
 	left_frame_zero_proc:
 	--left_frame_rg (left_frame_rg'left downto reg_width_c) <=	(others => '0'); -- uri ran - uncomment for large resolution
-	--left_frame_rg <= conv_std_logic_vector (336, left_frame_rg'high+1); -- uri ran
-	left_frame_rg <= conv_std_logic_vector (80, left_frame_rg'high+1); -- olga yoav
+	-- -- left_frame_rg <= conv_std_logic_vector (336, left_frame_rg'high+1); -- uri ran
+	left_frame_rg <= conv_std_logic_vector (80, left_frame_rg'high+1); -- olga yoav 2013
 
 	right_frame_zero_proc:
 	--right_frame_rg (right_frame_rg'left downto reg_width_c) <=	(others => '0'); -- uri ran - uncomment for large resolution
-	--right_frame_rg <= conv_std_logic_vector (336, right_frame_rg'high+1); -- uri ran
-	right_frame_rg <= conv_std_logic_vector (80, right_frame_rg'high+1); -- olga yoav
+	-- -- right_frame_rg <= conv_std_logic_vector (336, right_frame_rg'high+1); -- uri ran
+	right_frame_rg <= conv_std_logic_vector (80, right_frame_rg'high+1); -- olga yoav 2013
 
 
 	upper_frame_zero_proc:
@@ -831,15 +868,29 @@ pixel_mng_inst: pixel_mng generic map
 						(
 							clk_i				=>	clk_100,		
 							rst			        =>	rst_100,
-							wbm_ack_i	        =>	wbm_ack_i,
-							wbm_err_i	        =>	wbm_err_i	,
-							wbm_stall_i	        =>	wbm_stall_i	,
-							wbm_dat_i	        =>	wbm_dat_i	,
-							wbm_cyc_o	        =>	wbm_cyc_o	,
-							wbm_stb_o	        =>	wbm_stb_o	,
-							wbm_adr_o	        =>	wbm_adr_o	,
-							wbm_tga_o	        =>	wbm_tga_o	,
-							wbm_tgc_o			=>	wbm_tgc_o	,
+							
+							-- -- if pixel_mng is connected then open this
+							-- -- wbm_ack_i	        =>	wbm_ack_i,
+							-- -- wbm_err_i	        =>	wbm_err_i	,
+							-- -- wbm_stall_i	        =>	wbm_stall_i	,
+							-- -- wbm_dat_i	        =>	wbm_dat_i	,
+							-- -- wbm_cyc_o	        =>	wbm_cyc_o	,
+							-- -- wbm_stb_o	        =>	wbm_stb_o	,
+							-- -- wbm_adr_o	        =>	wbm_adr_o	,
+							-- -- wbm_tga_o	        =>	wbm_tga_o	,
+							-- -- wbm_tgc_o			=>	wbm_tgc_o	,
+							
+							-- -- else, open this
+							wbm_ack_i	        =>	zero_s, 
+							wbm_err_i	        =>	zero_s	, 
+							wbm_stall_i	        =>	zero_s	,
+							wbm_dat_i	        =>	zeros_s	,
+							wbm_cyc_o	        =>	open	, 
+							wbm_stb_o	        =>	open	, 
+							wbm_adr_o	        =>	open	, 
+							wbm_tga_o	        =>	open	, 
+							wbm_tgc_o			=>	open	, 
+							
 							fifo_wr_en	        =>	sc_fifo_wr_en,
 							fifo_flush	        =>	flush,
 							term_cyc			=>	type_reg_dout (0),	--Debug bit ('1' for debug mode, '0' for normal mode)
@@ -847,6 +898,38 @@ pixel_mng_inst: pixel_mng generic map
 							req_ln_trig	        =>	req_ln_trig,
 							vsync		        =>	vsync_int		
 						);
+						
+	-- -- if pixel_mng is connected then open this
+	-- -- wbm_dat_o <= (others => '0');
+	-- -- wbm_we_o <= '0';
+------------------------------------------------------------------------------------------------
+SG_WBM_IF_inst : SG_WBM_IF
+	generic map(
+			read_length_g	=> 32
+		)
+	port map(
+		clk         => clk_100,
+		reset_n     => rst_100,
+		vsync		=>	vsync_trigger,
+		wbm_dat_i	=>	wbm_dat_i,
+		wbm_stall_i =>	wbm_stall_i,
+		wbm_ack_i	=>	wbm_ack_i,
+		wbm_err_i	=>	wbm_err_i,
+		wbm_adr_o	=>	wbm_adr_o,
+		wbm_tga_o	=>	wbm_tga_o,
+		wbm_cyc_o	=>	wbm_cyc_o,
+		wbm_stb_o	=>	wbm_stb_o,
+		wbm_tgc_o	=>	wbm_tgc_o,
+		wbm_dat_o	=>	wbm_dat_o,
+		wbm_we_o	=>	wbm_we_o,
+							
+		sdram_addr_rd => sdram_addr_rd, 
+		sdram_rd_en => sdram_rd_en,  
+		sdram_data  => sdram_data,
+		sdram_data_valid => sdram_data_valid
+	);
+------------------------------------------------------------------------------------------------
+	
 -- uri ran - remove instance						
 -- runlen_extractor_inst :	runlen_extractor generic map
 						-- (
@@ -1225,31 +1308,32 @@ Symbol_Generator_Top_inst : Symbol_Generator_Top
 		mux_dout	  		=> 		mux_dout    	  --data out to DC FIFO
 	);
 
-opcode_parser_inst :  opcode_parser 
-		generic map(
-			opcode_text_file_g	=>	"VHDL/SG/test_3.txt",
-			clk_half_period_g	=>	clk_half_period_g
-		)
-		port map
-		(
-			clk => clk_100,
-			reset_n => rst_100,
-			data_out => opu_data_in,
-			data_valid => opu_data_in_valid,
-			opcode_count => open
-		);
+-- -- opcode_parser_inst :  opcode_parser 
+		-- -- generic map(
+			-- -- opcode_text_file_g	=>	"VHDL/SG/test_3.txt",
+			-- -- clk_half_period_g	=>	clk_half_period_g
+		-- -- )
+		-- -- port map
+		-- -- (
+			-- -- clk => clk_100,
+			-- -- reset_n => rst_100,
+			-- -- data_out => opu_data_in,
+			-- -- data_valid => opu_data_in_valid,
+			-- -- opcode_count => open
+		-- -- );
 		
-sdram_symbol_model_inst : sdram_symbol_model
-	generic map(
-			memory_file_g	=> "VHDL/SG/memory_new.txt"
-		)
-	port map(
-		clk         => clk_100,   
-		reset_n     => rst_100,   
-		rd_addr     => sdram_addr_rd, 
-		rd_en       => sdram_rd_en,  
-		data_out    => sdram_data,
-		valid       => sdram_data_valid
-	);
+-- -- sdram_symbol_model_inst : sdram_symbol_model
+	-- -- generic map(
+			-- -- memory_file_g	=> "VHDL/SG/memory_new.txt"
+		-- -- )
+	-- -- port map(
+		-- -- clk         => clk_100,   
+		-- -- reset_n     => rst_100,   
+		-- -- rd_addr     => sdram_addr_rd, 
+		-- -- rd_en       => sdram_rd_en,  
+		-- -- data_out    => sdram_data,
+		-- -- valid       => sdram_data_valid
+	-- -- );
 
+	
 end architecture rtl_disp_ctrl_top;
