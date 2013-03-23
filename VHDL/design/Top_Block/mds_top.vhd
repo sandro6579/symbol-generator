@@ -16,7 +16,7 @@
 --			1.4			15.02.2013	Olga&Yoav				Working with rx_path instanciation with address depth generic of 2 (the address length is 2 bytes)
 --															Working with disp_ctrl_top instanciation with register address width of 10 bits
 --			1.5			09.03.2013	Olga & Yoav				Add WB signals we and dat from display to mem_mng through intercon Y
---
+--			2.00		22.03.2013	Olga&Yoav				Add the output port: programming_indication_led
 ------------------------------------------------------------------------------------------------
 --	Todo:
 --			(1) ADD img_man including adding ports to wishbone intercon
@@ -88,7 +88,8 @@ entity mds_top is
 				dbg_wr_bank_val		:	out std_logic;							--Expected Write SDRAM Bank Value
 				dbg_rd_bank_val     :	out std_logic;							--Expected Read SDRAM Bank Value
 				dbg_actual_wr_bank	:	out std_logic;							--Actual read bank
-				dbg_actual_rd_bank	:	out std_logic							--Actual Written bank
+				dbg_actual_rd_bank	:	out std_logic;							--Actual Written bank
+				programming_indication_led 	: out std_logic -- blinks at a predefiened frequency - an indication for successfull programming on FPGA
 			);
 end entity mds_top;
 
@@ -557,6 +558,19 @@ component sdram_controller is
    ); 
 end component sdram_controller;
 
+component led is
+	generic(
+		reset_polarity_g	:	std_logic := '0'; -- reset polarity: '0' active low, '1' active high
+		timer_freq_g		:	positive :=100000000;    -- timer_tick will raise for 1 sys_clk period every timer_freq_g. units: [Hz]
+		clk_freq_g			:	positive :=100000000 -- the clock input to the block. this is the clock used in the system containing the timer unit. units: [Hz]
+	);
+	port(
+		clk					:	in std_logic;	--System clock
+		reset				:	in std_logic;	--System Reset
+		enable        		:	in std_logic; --determines if the led is enabled
+		led_out				:	out std_logic --this signals activates the led: '1' led is turned on, '0' led is turned off 
+	);
+end component led;
 
 --#############################	Signals	##############################################--
 
@@ -909,10 +923,10 @@ intercon_x_inst		:	intercon_mux generic map
 mem_mng_inst 	:	 mem_mng_top generic map
 				(
 					-- uri ran
-					img_hor_pixels_g	 => 128,                                         --************************************-
-				    img_ver_lines_g	     => 96                                        --************************************-
-					--img_hor_pixels_g	 => 640,
-				    --img_ver_lines_g	     => 480
+					--img_hor_pixels_g	 => 128,                                         --************************************-
+				    --img_ver_lines_g	     => 96                                        --************************************-
+					img_hor_pixels_g	 => 640,
+				    img_ver_lines_g	     => 480
 				)	
 				port map
 				(
@@ -1068,7 +1082,7 @@ tx_path_inst: tx_path
 			generic map (
 				clkrate_g			=>	sys_clk_g,
 				baudrate_g			=>	baudrate_g
-				--addr_d_g			=> 2 ---------- 15.02.2013 - not used
+				--addr_d_g			=> 2 ---------- 15.02.2013
 			)
 			port map (
 				uart_serial_out		=>	uart_serial_out,
@@ -1100,6 +1114,21 @@ tx_path_inst: tx_path
 				dbg_type_reg		=>	dbg_type_reg_tx
 			);
 
+
+led_inst: led
+	generic map(
+		reset_polarity_g	=>	'0', -- reset polarity: '0' active low, '1' active high
+		timer_freq_g		=>	1,    -- timer_tick will raise for 1 sys_clk period every 1Hz
+		clk_freq_g			=>	100000000 -- the clock input to the block. this is the clock used in the system containing the timer unit. units: [Hz]
+	)
+	port map(
+		clk					=>	clk_100,	--System clock
+		reset				=>	rst_100,	--System Reset
+		enable				=>	'1', --determines if the led is enabled
+		led_out				=>	programming_indication_led --this signals activates the led: '1' led is turned on, '0' led is turned off 
+	);
+
+	
 -----------------------------	Debug Ports	-----------------------
 --WBM_CYC_O from RX_Path to INTERCON_Z state
 dbg_rx_path_cyc_proc:
@@ -1112,5 +1141,6 @@ dbg_sdram_acive	<=	wbm_cyc_o;
 --WBM_CYC_O from disp_ctrl_top to INTERCON_Y state
 dbg_disp_active_proc:
 dbg_disp_active	<=	icy_disp_wbm_cyc_o;
-			
+
+
 end architecture rtl_mds_top;

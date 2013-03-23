@@ -365,7 +365,9 @@ end component tx_path_wbm;
 
 --------------------------------- Constants   ------------------------------------
 constant reg_width_c		:	positive 	:= 8;	--Width of registers
+
 constant reg_addr_width_c	:	positive 	:= 4;	--Width of registers' address
+--constant reg_addr_width_c	:	positive 	:= 10;	--Width of registers' address -- 22.03.2013 olga
 constant type_reg_addr_c	:	natural		:= 15;	--Type register address
 constant rd_burst_reg_addr_c:	natural		:= 9;	--Number of bytes to read from SDRAM/ bytes from Registers
 constant rd_burst_reg_depth_c:	natural		:= 2;	--2*8 = 16 bits

@@ -11,7 +11,7 @@
 --			Number		Date		Name					Description			
 --			1.00		10.5.2011	Beeri Schreiber			Creation
 --			1.01		11.12.2012 	uri ran					nivun hadash
---			1.02		05.01.2013	Olga Liberman			Addition of SG register in address 0x01
+--			1.02		05.01.2013	Olga Liberman			Addition of SG register in address 16
 --			1.03		08.01.2013	Olga					Addition of: Symbol_Generator_Top, opcode_parser, sdram_symbol_model
 --															connecting the output of SG to dc_fifo input
 --    		1.04		13.02.2013	olga&Yoav				adding DC FIFO flush on the falling edge of Blank signal
@@ -19,6 +19,7 @@
 --															Changing the address of SG register to 16 (decimal), with address space of 900: [16,...,915]
 --			2.01		15.02.2013	Olga&Yoav				Connecting gen_reg_opcode_unite_inst (=SG register) to Symbol_Generator_Top block
 --			3.00		09.03.2013	Olga&Yoav				Add WBM ports: wbm_dat_o & wbm_we_o
+--			3.01		20.03.2013	Olga&Yoav				Addition of SG version register in address 0x01
 --
 ------------------------------------------------------------------------------------------------
 --	Todo:
@@ -142,6 +143,7 @@ constant lower_frame_reg_addr_c	:	natural		:= 8;	--Frame register address
 -- SG registers --
 constant opcode_unite_reg_addr_c:	natural		:= 16;	--OpcodeUnite register address ----------------- 14.02.2013
 constant SG_reg_addr_space_c	:	natural		:= 900;	--OpcodeUnite register address ----------------- 14.02.2013
+constant version_reg_addr_c		:	natural		:= 1;	--OpcodeUnite register address ----------------- 20.03.2013
 ------------------
 
 --###########################	Signals		###################################--
@@ -268,7 +270,13 @@ signal mux_flush					:	std_logic;
 -- 09.03.2013
 signal zero_s : std_logic := '0';
 signal zeros_s : std_logic_vector(7 downto 0) := "00000000";
-
+-- SG version register
+signal version_reg_din_ack			:	std_logic;								--Data has been acknowledged
+signal version_reg_rd_en			:	std_logic;								--Read Enable
+signal version_rg					:	std_logic_vector(reg_width_c-1 downto 0);	-- SG version register
+signal version_reg_dout_valid		:	std_logic;								--Output data is valid
+							
+							
 --------------
 --###########################	Components	###################################--
 
@@ -776,7 +784,8 @@ begin
 	                (conv_integer(wbs_adr_i (reg_addr_width_g - 1 downto 0)) = upper_frame_reg_addr_c)	or
 	                (conv_integer(wbs_adr_i (reg_addr_width_g - 1 downto 0)) = lower_frame_reg_addr_c)	or
 					( (conv_integer(wbs_adr_i (reg_addr_width_g - 1 downto 0)) >= opcode_unite_reg_addr_c) and
-						(conv_integer(wbs_adr_i (reg_addr_width_g - 1 downto 0)) < (opcode_unite_reg_addr_c + SG_reg_addr_space_c)) )
+						(conv_integer(wbs_adr_i (reg_addr_width_g - 1 downto 0)) < (opcode_unite_reg_addr_c + SG_reg_addr_space_c)) ) or
+					(conv_integer(wbs_adr_i (reg_addr_width_g - 1 downto 0)) = version_reg_addr_c)
 					else '0';
 	
 	
@@ -788,6 +797,7 @@ begin
 						else right_frame (reg_width_c - 1 downto 0) 	when ((wbs_reg_cyc = '1') and (conv_integer(wbs_adr_i (reg_addr_width_g - 1 downto 0)) = right_frame_reg_addr_c)) 
 						else upper_frame (reg_width_c - 1 downto 0) 	when ((wbs_reg_cyc = '1') and (conv_integer(wbs_adr_i (reg_addr_width_g - 1 downto 0)) = upper_frame_reg_addr_c)) 
 						else lower_frame (reg_width_c - 1 downto 0) 	when ((wbs_reg_cyc = '1') and (conv_integer(wbs_adr_i (reg_addr_width_g - 1 downto 0)) = lower_frame_reg_addr_c)) 
+						else version_rg (reg_width_c - 1 downto 0) 		when ((wbs_reg_cyc = '1') and (conv_integer(wbs_adr_i (reg_addr_width_g - 1 downto 0)) = version_reg_addr_c)) 
 						else (others => '0');
 
 	--MUX, to route addressed register dout_valid to the WBS
@@ -796,7 +806,8 @@ begin
 							or left_frame_reg_dout_valid 
 							or right_frame_reg_dout_valid 
 							or upper_frame_reg_dout_valid 
-							or lower_frame_reg_dout_valid;
+							or lower_frame_reg_dout_valid
+							or version_reg_dout_valid;
 
 	--MUX, to route addressed register din_ack to the WBS
 	wbs_reg_din_ack_proc:
@@ -805,7 +816,8 @@ begin
 						or right_frame_reg_din_ack
 						or upper_frame_reg_din_ack
 						or lower_frame_reg_din_ack
-						or opcode_unite_reg_din_ack;
+						or opcode_unite_reg_din_ack
+						or version_reg_din_ack;
 						
 	--Read Enables processes:
 	type_reg_rd_en_proc:
@@ -833,6 +845,11 @@ begin
 						(conv_integer(wbs_adr_i (reg_addr_width_g - 1 downto 0)) < (opcode_unite_reg_addr_c + SG_reg_addr_space_c)) ) and (reg_rd_en = '1')
 								else '0';
 	
+	version_reg_rd_en_proc:
+	version_reg_rd_en	<=	'1' when ( conv_integer(wbs_adr_i (reg_addr_width_g - 1 downto 0)) = version_reg_addr_c) and (reg_rd_en = '1')
+								else '0';
+								
+								
 	-- Yoav & Olga
 	blank <= blank_i;
 	process (clk_40, rst_40)
@@ -1198,7 +1215,7 @@ gen_reg_lower_frame_inst	:	gen_reg generic map (
 						);
 						
 						
--- SG - opcode unite register						
+-- SG - opcode unite register
 gen_reg_opcode_unite_inst	:	gen_reg generic map (
 							reset_polarity_g	=>	reset_polarity_g,	
 							width_g				=>	reg_width_c,
@@ -1224,6 +1241,33 @@ gen_reg_opcode_unite_inst	:	gen_reg generic map (
 							dout_valid	        =>	opcode_unite_reg_dout_valid
 						);					
 ------------------------------
+
+-- SG - version register
+gen_reg_version_inst	:	gen_reg generic map (
+							reset_polarity_g	=>	reset_polarity_g,	
+							width_g				=>	reg_width_c,
+							addr_en_g			=>	true,
+							addr_val_g			=>	version_reg_addr_c,
+							addr_width_g		=>	reg_addr_width_g,
+							read_en_g			=>	true,
+							write_en_g			=>	true,
+							clear_on_read_g		=>	false,
+							default_value_g		=>	218							-- SG version - DA
+						)
+						port map (
+							clk					=>	clk_100,
+							reset		        =>	rst_100,
+							addr		        =>	reg_addr,
+							din			        =>	reg_din,
+							wr_en		        =>	reg_wr_en,
+							clear		        =>	'0',
+							din_ack		        =>	version_reg_din_ack,
+							rd_en				=>	version_reg_rd_en,
+							dout		        =>	version_rg (reg_width_c - 1 downto 0),
+							dout_valid	        =>	version_reg_dout_valid
+						);					
+------------------------------
+
 						
 wbs_reg_inst	:	wbs_reg generic map (
 							reset_polarity_g=>	reset_polarity_g,

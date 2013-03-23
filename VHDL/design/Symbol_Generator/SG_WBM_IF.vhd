@@ -13,8 +13,9 @@
 --
 ------------------------------------------------------------------------------------------------
 -- Revision:
---			Number		 Date			Name				Description			
---			1.00		 09.03.2013		Olga Liberman		Creation
+--			Number		Date			Name				Description			
+--			1.00		09.03.2013		Olga Liberman		Creation - use tmp address for SDRAM read
+--			1.01		17.03.2013		Olga Liberman		Use real SDRAM address for read, and not tmp
 --
 ------------------------------------------------------------------------------------------------
 --	Todo:
@@ -81,8 +82,7 @@ architecture rtl_SG_WBM_IF of SG_WBM_IF is
 							end_cyc_st,		--Wait for end of cycle, to negate CYC_O
 							wbm_undbg_type_st,
 							wbm_undbg_type_end_cyc_st,
-							restart_st,	--Restart from start of SDRAM
-							restart_wack_st	--Wait for first ACK 
+							restart_st	--Restart from start of SDRAM
 						);
 	
 	------------------------------	Signals	------------------------------------
@@ -97,7 +97,7 @@ architecture rtl_SG_WBM_IF of SG_WBM_IF is
 	signal dbg_adr 			: 	std_logic_vector (23 downto 0);		--
 	signal dbg_cnt			:	natural;
 	
-	signal vsync_cnt : integer range 0 to 3;
+	signal vsync_cnt : integer range 0 to 15;
 	signal vsync_en : std_logic;
 	
 begin
@@ -110,7 +110,7 @@ begin
 			vsync_cnt <= 0;
 			vsync_en <= '0';
 		elsif rising_edge (clk) then
-			if (vsync_cnt > 2) then
+			if (vsync_cnt > 4) then
 				vsync_en <= '1';
 				vsync_cnt <= vsync_cnt;
 			elsif (vsync = '1') then
@@ -178,8 +178,8 @@ begin
 					cnt := 0;
 					dbg_adr <= (others => '0');
 					if (sdram_rd_en='1') then
-						------dbg_adr <= sdram_addr_rd; -- latch the debug address
-						dbg_adr <= tmp_sdram_adr; -- latch the debug address
+						dbg_adr <= sdram_addr_rd; -- latch the debug address
+						-- -- -- dbg_adr <= tmp_sdram_adr; -- latch the debug address
 						--wbm_dat_o <= sdram_addr_rd(8*cnt+7 downto 8*cnt);
 						--wbm_dat_o <= tmp_sdram_adr(8*cnt+7 downto 8*cnt);
 						adr_internal <= dbg_reg_adr_c;
@@ -198,8 +198,8 @@ begin
 						cyc_internal <= '0';
 						stb_internal	<=	'0';
 						cnt := 0;
-						------dbg_adr <= sdram_addr_rd; -- latch the debug address
-						dbg_adr <= tmp_sdram_adr; -- latch the debug address
+						dbg_adr <= sdram_addr_rd; -- latch the debug address
+						-- -- -- dbg_adr <= tmp_sdram_adr; -- latch the debug address
 						adr_internal <= dbg_reg_adr_c;
 						cur_st <= wbm_dbg_adr_st;
 					elsif (wbm_stall_i='0') then
@@ -221,8 +221,8 @@ begin
 						cyc_internal <= '0';
 						stb_internal	<=	'0';
 						cnt := 0;
-						------dbg_adr <= sdram_addr_rd; -- latch the debug address
-						dbg_adr <= tmp_sdram_adr; -- latch the debug address
+						dbg_adr <= sdram_addr_rd; -- latch the debug address
+						-- -- -- dbg_adr <= tmp_sdram_adr; -- latch the debug address
 						adr_internal <= dbg_reg_adr_c;
 						cur_st <= wbm_dbg_adr_st;
 					elsif (err_i_status = '1') then					--An error has occured
@@ -249,8 +249,8 @@ begin
 						cyc_internal <= '0';
 						stb_internal	<=	'0';
 						cnt := 0;
-						------dbg_adr <= sdram_addr_rd; -- latch the debug address
-						dbg_adr <= tmp_sdram_adr; -- latch the debug address
+						dbg_adr <= sdram_addr_rd; -- latch the debug address
+						-- -- -- dbg_adr <= tmp_sdram_adr; -- latch the debug address
 						adr_internal <= dbg_reg_adr_c;
 						cur_st <= wbm_dbg_adr_st;
 					elsif (wbm_stall_i='0') then
@@ -263,8 +263,8 @@ begin
 						cyc_internal <= '0';
 						stb_internal	<=	'0';
 						cnt := 0;
-						------dbg_adr <= sdram_addr_rd; -- latch the debug address
-						dbg_adr <= tmp_sdram_adr; -- latch the debug address
+						dbg_adr <= sdram_addr_rd; -- latch the debug address
+						-- -- -- dbg_adr <= tmp_sdram_adr; -- latch the debug address
 						adr_internal <= dbg_reg_adr_c;
 						cur_st <= wbm_dbg_adr_st;
 					elsif (err_i_status = '1') then --An error has occured
@@ -294,8 +294,8 @@ begin
 						cyc_internal <= '0';
 						stb_internal	<=	'0';
 						cnt := 0;
-						------dbg_adr <= sdram_addr_rd; -- latch the debug address
-						dbg_adr <= tmp_sdram_adr; -- latch the debug address
+						dbg_adr <= sdram_addr_rd; -- latch the debug address
+						-- -- -- dbg_adr <= tmp_sdram_adr; -- latch the debug address
 						adr_internal <= dbg_reg_adr_c;
 						cur_st <= wbm_dbg_adr_st;
 					elsif (err_i_status='1') then
@@ -328,8 +328,8 @@ begin
 						cyc_internal <= '0';
 						stb_internal	<=	'0';
 						cnt := 0;
-						------dbg_adr <= sdram_addr_rd; -- latch the debug address
-						dbg_adr <= tmp_sdram_adr; -- latch the debug address
+						dbg_adr <= sdram_addr_rd; -- latch the debug address
+						-- -- -- dbg_adr <= tmp_sdram_adr; -- latch the debug address
 						adr_internal <= dbg_reg_adr_c;
 						cur_st <= wbm_dbg_adr_st;
 					elsif (wbm_stall_i='0') then
@@ -342,8 +342,8 @@ begin
 						cyc_internal <= '0';
 						stb_internal	<=	'0';
 						cnt := 0;
-						------dbg_adr <= sdram_addr_rd; -- latch the debug address
-						dbg_adr <= tmp_sdram_adr; -- latch the debug address
+						dbg_adr <= sdram_addr_rd; -- latch the debug address
+						-- -- -- dbg_adr <= tmp_sdram_adr; -- latch the debug address
 						adr_internal <= dbg_reg_adr_c;
 						cur_st <= wbm_dbg_adr_st;
 					elsif (err_i_status = '1') then --An error has occured

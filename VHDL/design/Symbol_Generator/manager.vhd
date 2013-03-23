@@ -27,6 +27,8 @@
 --			1.06        13.02.2013     	Olga Liberman and Yoav Shvartz			in process counters_proc: changing the conditions for increasing the counters 
 --			1.07		11.03.2013		Olga									I changed the value of sdram_wait_c from 55 to 100
 --			1.08		12.03.2013		Olga & Yoav								integration changes with beeri external environment. 
+--			1.09		19.03.2013		Olga									In process sdram_wait_proc: using counter only for backup, but counting the data valid for most of the time
+--
 ------------------------------------------------------------------------------------------------
 --	Todo:
 --	(1) rd_mng_fsm_proc: maybe to add "if (fifo_x_full='0') then wr_en='1'..." - to enable write to fifo only if it's not full
@@ -116,6 +118,9 @@ architecture manager_rtl of manager is
 	--signal sdram_adr 			: 	std_logic_vector (23 downto 0); --this signal is the full address in SDRAM: "00--bank(2)--row(12)--col(8)"
 	signal sdram_rd_en			: 	std_logic; -- this signal is a valid signal for the sdram_addr_rd signal (for usage of WBS)
 	signal sdram_wait_counter	:	integer range 0 to 150;
+	signal sdram_wait_counter_tmp	:	integer range 0 to 150;
+	signal sdram_wait_count_en	: 	std_logic;
+	signal sdram_ready			: 	std_logic;
 	
 	signal req_in_trg_dev   	: std_logic; -- The derivative of req_in_trg (change from 0 to 1)
 	signal req_in_trg_1 		: std_logic; -- sampling req_in_trg input
@@ -125,8 +130,8 @@ architecture manager_rtl of manager is
 	signal req_in_trg_dev_active   	: std_logic; 
 	
 	signal req_cnt : integer range 0 to 600;
-	constant req_cnt_min_c : integer := 80;
-	constant req_cnt_max_c : integer := 560;
+	constant req_cnt_min_c : integer := 83; -- was 80
+	constant req_cnt_max_c : integer := 563; -- was 560
 	signal mng_en_internal : std_logic;
 	signal req_cnt_small : std_logic;
 	signal req_cnt_small_d : std_logic;
@@ -137,7 +142,7 @@ architecture manager_rtl of manager is
 	-- constant const_14_c  	: integer := 14;
 	-- constant const_16_c  	: integer := 16;
 	-- constant const_480_c 	: integer := 479;
-	constant sdram_wait_c	: integer := 75; 	-- num. of clock to wait from one sdram request to another ( approx. 20 clks for SDRAM to respond + 32 pixels to deliver )
+	constant sdram_wait_c	: integer := 100; 	-- num. of clock to wait from one sdram request to another ( approx. 20 clks for SDRAM to respond + 32 pixels to deliver )
 	
 	-- not sure what it is:
   -- signal counter : unsigned(9 downto 0);
@@ -194,11 +199,11 @@ begin
 		elsif rising_edge (clk) then
 			
 			if (mng_en = '1') then
-				req_cnt <= req_cnt + 1;
+				req_cnt <= 1; -- 17.03.2013 olga
 			elsif ( (req_in_trg_dev = '1') and (req_cnt > 0) and (req_cnt < req_cnt_max_c) ) then
 				req_cnt <= req_cnt + 1;
-			elsif (req_cnt > req_cnt_max_c) then
-				req_cnt <= 0;
+			-- elsif (req_cnt > req_cnt_max_c) then -- 17.03.2013 olga
+				-- req_cnt <= 0; -- 17.03.2013 olga
 			end if;
 			
 			if (req_cnt < req_cnt_min_c) then
@@ -337,17 +342,44 @@ begin
 	end process rd_mng_fsm_proc;
 	
 	-- implement a wait SDRAM counter, according to the sdram_wait_c constant
+	-- -- -- sdram_wait_proc: process(clk, reset_n)
+    -- -- -- begin
+		-- -- -- if (reset_n='0') then
+			-- -- -- sdram_wait_counter <= 0;
+		-- -- -- elsif rising_edge (clk) then
+			-- -- -- if ( (sdram_rd_en = '1') and (sdram_wait_counter = 0) ) then
+				-- -- -- sdram_wait_counter <= sdram_wait_counter + 1;
+			-- -- -- elsif ( (sdram_wait_counter > 0) and (sdram_wait_counter < sdram_wait_c) ) then
+				-- -- -- sdram_wait_counter <= sdram_wait_counter + 1;
+			-- -- -- else
+				-- -- -- sdram_wait_counter <= 0;
+			-- -- -- end if;
+		-- -- -- end if;
+	-- -- -- end process sdram_wait_proc;
 	sdram_wait_proc: process(clk, reset_n)
     begin
 		if (reset_n='0') then
+			sdram_wait_count_en <= '0';
 			sdram_wait_counter <= 0;
+			sdram_wait_counter_tmp <= 0;
+			sdram_ready <= '0';
 		elsif rising_edge (clk) then
-			if ( (sdram_rd_en = '1') and (sdram_wait_counter = 0) ) then
-				sdram_wait_counter <= sdram_wait_counter + 1;
-			elsif ( (sdram_wait_counter > 0) and (sdram_wait_counter < sdram_wait_c) ) then
-				sdram_wait_counter <= sdram_wait_counter + 1;
-			else
+			if (sdram_rd_en = '1') then
+				sdram_wait_count_en <= '1';
 				sdram_wait_counter <= 0;
+				sdram_wait_counter_tmp <= 0;
+				sdram_ready <= '0';
+			elsif (sdram_wait_count_en = '1') then
+				sdram_wait_counter_tmp <= sdram_wait_counter_tmp + 1;
+				if (sdram_wait_counter = 32)or(sdram_wait_counter_tmp = sdram_wait_c) then
+					sdram_ready <= '1';
+					sdram_wait_count_en <= '0';
+					sdram_wait_counter <= 0;
+				elsif (sdram_data_valid='1') then
+					sdram_wait_counter <= sdram_wait_counter + 1;
+				end if;
+			elsif (sdram_ready='1') then
+				sdram_ready <= '0';
 			end if;
 		end if;
 	end process sdram_wait_proc;
@@ -374,7 +406,8 @@ begin
 				row_count <= 0;
 			else	
 				-- if ( ((mng_en='1') or (sdram_wait_counter = sdram_wait_c)) and ( sym_col < sym_col_g ) ) then --12.03.2013
-				if ( ((mng_en_internal='1') or (sdram_wait_counter = sdram_wait_c)) and ( sym_col < sym_col_g ) ) then --12.03.2013
+				-- -- if ( ((mng_en_internal='1' and req_cnt /= req_cnt_min_c) or (sdram_wait_counter = sdram_wait_c)) and ( sym_col < sym_col_g ) ) then --12.03.2013
+				if ( ((mng_en_internal='1' and req_cnt /= req_cnt_min_c) or (sdram_ready = '1')) and ( sym_col < sym_col_g ) ) then -- 19.03.2013
 					sym_col <= sym_col + 1;
 				elsif ( ( (req_in_trg_dev = '1') or (mng_en='1') ) and (req_cnt < req_cnt_max_c) ) then 
 					sym_col <= 1;
@@ -429,7 +462,10 @@ begin
 				--wbm_start
 				sdram_rd_en <= '1';
 				-- 0 <= inside_row < 16
-				if ( (inside_row-1) < sdram_burst_g ) then
+				if (inside_row=0) then																	-- 20.03.2013 olga
+					sdram_addr_rd <= "00"&ram_data_out&'0'&( std_logic_vector(to_unsigned(0 , 8)) );	-- 20.03.2013 olga
+				elsif ( (inside_row-1) < sdram_burst_g ) then											-- 20.03.2013 olga
+				-- -- if ( (inside_row-1) < sdram_burst_g ) then
 					sdram_addr_rd <= "00"&ram_data_out&'0'&( std_logic_vector(to_unsigned(sdram_burst_g*(inside_row-1) , 8)) ); -- where to put the "00": LSB (end) or MSB (start) ???
 				-- 16 <= inside_row < 32
 				else

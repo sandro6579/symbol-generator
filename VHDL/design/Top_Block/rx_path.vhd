@@ -91,8 +91,8 @@ type wbm_states is
 ----------------------------------------------------------------------------------
 --	###########################		Costants		##############################	--
 	constant base_type_reg_addr_c	:	natural		:= 13;	--Type register Base address (0xD) 
-	--constant type_reg_clients_c		:	natural		:= 3;	--Clients: mem_mng, disp_ctrl, tx_path
-	constant type_reg_clients_c		:	natural		:= 2;	--Clients: mem_mng, disp_ctrl, tx_path ---- 15.02.2013 - without tx
+	constant type_reg_clients_c		:	natural		:= 3;	--Clients: mem_mng, disp_ctrl, tx_path
+	--constant type_reg_clients_c		:	natural		:= 2;	--Clients: mem_mng, disp_ctrl, tx_path ---- 15.02.2013 - without tx
 ---------------------------------  Components		------------------------------
 component ram_simple
 	generic (

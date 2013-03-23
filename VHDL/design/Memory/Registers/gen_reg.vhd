@@ -88,7 +88,7 @@ begin
 			din_ack				<=	'0';
 		elsif rising_edge(clk) then
 			--if (addr = conv_std_logic_vector(addr_val_g, addr_width_g)) or (not addr_en_g) then
-			if ((addr >= conv_std_logic_vector(addr_val_g, addr_width_g)) and (addr < conv_std_logic_vector(addr_val_g+addr_space_g, addr_width_g))) or (not addr_en_g) then ---------- 14.02.2013
+			if ((addr_space_g=1)and(addr = conv_std_logic_vector(addr_val_g, addr_width_g)))or((addr_space_g>1)and(addr >= conv_std_logic_vector(addr_val_g, addr_width_g)) and (addr < conv_std_logic_vector(addr_val_g+addr_space_g, addr_width_g))) or (not addr_en_g) then ---------- 14.02.2013
 				if (clear = '1') then							--Clear register's value
 					reg_data	<=	conv_std_logic_vector (default_value_g, width_g);
 					din_ack		<=	'1';						--Command has been accepted

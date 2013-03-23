@@ -10,9 +10,12 @@
 -- Revision:
 --			Number		Date		Name					Description			
 --			1.00		25.5.2011	Beeri Schreiber			Creation
+--			2.00		20.03.2013	Olga Liberman			New generics: uart_tx_file_g and output_dir_g
+--			2.01		22.03.2013	Olga Liberman			mds_top: new output port 'programming_indication_led'
+--
 ------------------------------------------------------------------------------------------------
 --	Todo:
---			(1) olga: to set the opcode_unite register address space of 900 bytes
+--			(1)
 ------------------------------------------------------------------------------------------------
 
 library ieee;
@@ -23,7 +26,9 @@ use ieee.std_logic_unsigned.all;
 entity mds_top_tb is
 	generic (
 			uart_tx_delay_g		:	positive	:= 133333;			--Clock cycles between two transmissions
-			file_max_idx_g		:	positive 	:= 2				-- uri ran Maximum file index
+			file_max_idx_g		:	positive 	:= 4;				-- uri ran Maximum file index
+			uart_tx_file_g		:	string 		:= "H:/Project/SG_Project/test_files/test_random_2/uart_tx/uart_tx"; 	--File name to be transmitted -- 20.03.2013 olga
+			output_dir_g		:	string		:= "H:\Project\SG_Project\test_files\test_random_2\output\"	--Name of the output directory -- 20.03.2013 olga
 		);
 end entity mds_top_tb;
 
@@ -91,7 +96,8 @@ component mds_top
 				dbg_wr_bank_val		:	out std_logic;							--Write SDRAM Bank Value
 				dbg_rd_bank_val     :	out std_logic;							--Expected Read SDRAM Bank Value
 				dbg_actual_wr_bank	:	out std_logic;							--Actual read bank
-				dbg_actual_rd_bank	:	out std_logic							--Actual Written bank
+				dbg_actual_rd_bank	:	out std_logic;							--Actual Written bank
+				programming_indication_led 	: out std_logic -- blinks at a predefiened frequency - an indication for successfull programming on FPGA
 			);
 end component mds_top;
 
@@ -242,6 +248,8 @@ signal dbg_rd_bank_val  :	std_logic;							--Expected Read SDRAM Bank Value
 signal dbg_actual_wr_bank  :	std_logic;						--Actual Read SDRAM Bank Value
 signal dbg_actual_rd_bank  :	std_logic;						--Actual Read SDRAM Bank Value
 
+signal programming_indication_led	:	std_logic; -- 22.03.2013
+
 --#############################	Instantiaion ##############################################--
 begin
 
@@ -261,7 +269,7 @@ rst_40	<=	'0', '1' after 20 ns;
 
 
 uart_gen_inst :  uart_tx_gen_model generic map (
-			file_name_g			=> "H:/Project/SG_Project/Matlab/uart_tx", 		--File name to be transmitted
+			file_name_g			=> uart_tx_file_g, 		--File name to be transmitted
 			file_extension_g	=> "txt",			--File extension
 			file_max_idx_g		=> file_max_idx_g,--Maximum file index.
 			clock_period_g		=> uart_period_c,	--Uart clock
@@ -315,52 +323,13 @@ mds_top_inst	: mds_top
 				dbg_wr_bank_val 	=>	dbg_wr_bank_val,
 				dbg_rd_bank_val 	=>	dbg_rd_bank_val,
 				dbg_actual_wr_bank	=>	dbg_actual_wr_bank,
-				dbg_actual_rd_bank  =>	dbg_actual_rd_bank
+				dbg_actual_rd_bank  =>	dbg_actual_rd_bank,
+				programming_indication_led => programming_indication_led
 			);                      
 		
 vesa_pic_col_inst : vesa_pic_col	generic map
 			(
-			-- Original values:
-			--hor_active_pixels_g		:	positive	:= 800;				--800 active pixels per line
-			--ver_active_lines_g		:	positive	:= 600;				--600 active lines
-			--hor_left_border_g		:	natural		:= 0;				--Horizontal Left Border
-			--hor_right_border_g		:	natural		:= 0;				--Horizontal Right Border
-			--hor_back_porch_g		:	integer		:= 88;				--Horizontal Back Porch (Pixels)
-			--hor_front_porch_g		:	integer		:= 40;				--Horizontal Front Porch (Pixels)
-			--hor_sync_time_g			:	integer		:= 128;				--Horizontal Sync Time (Pixels)
-			--ver_top_border_g		:	natural		:= 0;				--Vertical Top Border
-			--ver_buttom_border_g		:	natural		:= 0;				--Vertical Buttom Border
-			--ver_back_porch_g		:	integer		:= 23;				--Vertical Back Porch (Lines)
-			--ver_front_porch_g		:	integer		:= 1;				--Vertical Front Porch (Lines)
-			--ver_sync_time_g			:	integer		:= 4;				--Vertical Sync Time (Lines)
--- Yoav
-			hor_active_pixels_g		=> 800,				--800 active pixels per line
-			ver_active_lines_g			=> 600,			--600 active lines
-			hor_left_border_g				=> 0,				--Horizontal Left Border
-			hor_right_border_g				=> 0,				--Horizontal Right Border
-			hor_back_porch_g			=> 88,				--Horizontal Back Porch (Pixels)
-			hor_front_porch_g			=> 40,				--Horizontal Front Porch (Pixels)
-			hor_sync_time_g					=> 128,				--Horizontal Sync Time (Pixels)
-			ver_top_border_g				=> 0,				--Vertical Top Border
-			ver_buttom_border_g				=> 0,				--Vertical Buttom Border
-			ver_back_porch_g				=> 23,				--Vertical Back Porch (Lines)
-			ver_front_porch_g			=> 1,				--Vertical Front Porch (Lines)
-			ver_sync_time_g					=> 4,				--Vertical Sync Time (Lines)
--- 08.01.2013 - Olga - change the image resiolution to 640x480 pixels
-				-- hor_active_pixels_g		=> 640,				--active pixels per line
-				-- ver_active_lines_g		=> 480,				--active lines
-				-- hor_left_border_g		=> 0,				--Horizontal Left Border
-				-- hor_right_border_g		=> 0,				--Horizontal Right Border
-				-- hor_back_porch_g		=> 48,				--Horizontal Back Porch (Pixels)
-				-- hor_front_porch_g		=> 16,				--Horizontal Front Porch (Pixels)
-				-- hor_sync_time_g			=> 96,				--Horizontal Sync Time (Pixels)
-				-- ver_top_border_g		=> 0,				--Vertical Top Border
-				-- ver_buttom_border_g		=> 0,				--Vertical Buttom Border
-				-- ver_back_porch_g		=> 31,				--Vertical Back Porch (Lines)
-				-- ver_front_porch_g		=> 11,				--Vertical Front Porch (Lines)
-				-- ver_sync_time_g			=> 2,				--Vertical Sync Time (Lines)
----------------------------------------------------------------------
-				file_dir_g				=> "H:\Project\SG_Project\output_files\",
+				file_dir_g				=> output_dir_g,
 				file_prefix_g			=> "out_img"			--Image Prefix
 			)
 		port map
