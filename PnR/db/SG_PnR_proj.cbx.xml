@@ -1,0 +1,24 @@
+<?xml version="1.0" ?>
+<LOG_ROOT>
+	<PROJECT NAME="SG_PnR_proj">
+		<CBX_INST_ENTRY INSTANCE_NAME="|top_synthesis|mds_top:mds_top_inst|disp_ctrl_top:disp_ctrl_inst|Symbol_Generator_Top:Symbol_Generator_Top_inst|general_fifoZ1_Symbol_Generator_Top_inst_fifo_A_1:fifo_B|altsyncram:mem_34_I_1" CBX_FILE_NAME="altsyncram_eak1.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|top_synthesis|mds_top:mds_top_inst|tx_path:tx_path_inst|ram_simple_1:ram_inst1|altsyncram:ram_data_cZ" CBX_FILE_NAME="altsyncram_38m1.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|top_synthesis|mds_top:mds_top_inst|disp_ctrl_top:disp_ctrl_inst|Symbol_Generator_Top:Symbol_Generator_Top_inst|RAM_300:RAM_300_inst|altsyncram:mem_cZ" CBX_FILE_NAME="altsyncram_ium1.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|top_synthesis|mds_top:mds_top_inst|disp_ctrl_top:disp_ctrl_inst|Symbol_Generator_Top:Symbol_Generator_Top_inst|opcode_store:opcode_store_inst|lpm_mult:un6_ram_addr_wr_8_0_" CBX_FILE_NAME="mult_fpr.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|top_synthesis|mds_top:mds_top_inst|disp_ctrl_top:disp_ctrl_inst|dc_fifo:dc_fifo_inst|dcfifo:dcfifo_component" CBX_FILE_NAME="dcfifo_7kl1.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|top_synthesis|mds_top:mds_top_inst|tx_path:tx_path_inst|general_fifoZ3:fifo_inst1|altsyncram:mem_34_I_1" CBX_FILE_NAME="altsyncram_h1k1.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|top_synthesis|sld_signaltap:stp|sld_signaltap_impl:sld_signaltap_body|altsyncram:\stp_non_zero_ram_gen:stp_buffer_ram" CBX_FILE_NAME="altsyncram_gs14.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|top_synthesis|sld_signaltap:stp|sld_signaltap_impl:sld_signaltap_body|sld_offload_buffer_mgr:\stp_non_zero_depth_offload_gen:stp_offload_buff_mgr_inst|LPM_COUNTER:status_advance_pointer_counter" CBX_FILE_NAME="cntr_0ci.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|top_synthesis|mds_top:mds_top_inst|mem_mng_top:mem_mng_inst|mem_ctrl_rd:mem_ctrl_rd_inst|altera_16to8_dc_ram:ram1_inst|altsyncram:altsyncram_component" CBX_FILE_NAME="altsyncram_b4l1.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|top_synthesis|mds_top:mds_top_inst|rx_path:rx_path_inst|ram_simple:ram_inst1|altsyncram:ram_data_34_I_1" CBX_FILE_NAME="altsyncram_ojj1.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|top_synthesis|sld_signaltap:stp|sld_signaltap_impl:sld_signaltap_body|altdpram:\stp_non_zero_ram_gen:attribute_mem_gen:attribute_mem|lpm_mux:mux" CBX_FILE_NAME="mux_doc.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|top_synthesis|sld_signaltap:stp|sld_signaltap_impl:sld_signaltap_body|sld_offload_buffer_mgr:\stp_non_zero_depth_offload_gen:stp_offload_buff_mgr_inst|LPM_COUNTER:\adv_point_3_and_more:advance_pointer_counter" CBX_FILE_NAME="cntr_1ci.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|top_synthesis|mds_top:mds_top_inst|disp_ctrl_top:disp_ctrl_inst|Symbol_Generator_Top:Symbol_Generator_Top_inst|general_fifoZ1_Symbol_Generator_Top_inst_fifo_A:fifo_A|altsyncram:mem_34_I_1" CBX_FILE_NAME="altsyncram_eak1.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|top_synthesis|mds_top:mds_top_inst|disp_ctrl_top:disp_ctrl_inst|Symbol_Generator_Top:Symbol_Generator_Top_inst|manager:manager_inst|lpm_mult:un1_ram_addr_rd_8_0_" CBX_FILE_NAME="mult_fpr.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|top_synthesis|sld_signaltap:stp|sld_signaltap_impl:sld_signaltap_body|altdpram:\stp_non_zero_ram_gen:attribute_mem_gen:attribute_mem|lpm_decode:wdecoder" CBX_FILE_NAME="decode_rqf.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|top_synthesis|sld_signaltap:stp|sld_signaltap_impl:sld_signaltap_body|sld_offload_buffer_mgr:\stp_non_zero_depth_offload_gen:stp_offload_buff_mgr_inst|LPM_COUNTER:status_read_pointer_counter" CBX_FILE_NAME="cntr_gui.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|top_synthesis|mds_top:mds_top_inst|disp_ctrl_top:disp_ctrl_inst|Symbol_Generator_Top:Symbol_Generator_Top_inst|opcode_store:opcode_store_inst|general_fifoZ0:general_fifo_inst|altsyncram:mem_98" CBX_FILE_NAME="altsyncram_dak1.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|top_synthesis|mds_top:mds_top_inst|mem_mng_top:mem_mng_inst|mem_ctrl_wr:mem_ctrl_wr_inst|altera_8to16_dc_ram:ram1_inst|altsyncram:altsyncram_component" CBX_FILE_NAME="altsyncram_a4l1.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|top_synthesis|sld_signaltap:stp|sld_signaltap_impl:sld_signaltap_body|sld_offload_buffer_mgr:\stp_non_zero_depth_offload_gen:stp_offload_buff_mgr_inst|LPM_COUNTER:read_pointer_counter" CBX_FILE_NAME="cntr_65j.tdf"/>
+	</PROJECT>
+</LOG_ROOT>

@@ -1,0 +1,77 @@
+#
+# Synplicity Verification Interface File
+# Generated using Synplify-pro
+#
+# Copyright (C) 1994-2010, Synopsys Inc.  All Rights Reserved
+
+# All rights reserved
+#
+
+# Set logfile options
+vif_set_result_file  top_synthesis.vlf
+
+# Set technology for TCL script
+vif_set_technology -architecture FPGA -vendor Altera
+
+# RTL and technology files
+vif_add_file -original -vhdl -lib work ../../SG_Project/VHDL/SG/Symbol_Generator_Top.vhd
+vif_add_file -original -vhdl -lib work ../../SG_Project/VHDL/SG/SG_WBM_IF.vhd
+vif_add_file -original -vhdl -lib work ../../SG_Project/VHDL/SG/RAM_300.vhd
+vif_add_file -original -vhdl -lib work ../../SG_Project/VHDL/SG/opcode_unite.vhd
+vif_add_file -original -vhdl -lib work ../../SG_Project/VHDL/SG/opcode_store.vhd
+vif_add_file -original -vhdl -lib work ../../SG_Project/VHDL/SG/mux2.vhd
+vif_add_file -original -vhdl -lib work ../../SG_Project/VHDL/SG/manager.vhd
+vif_add_file -original -vhdl -lib work ../../SG_Project/VHDL/SG/led.vhd
+vif_add_file -original -vhdl -lib work ../../SG_Project/VHDL/SG/general_fifo.vhd
+vif_add_file -original -vhdl -lib work ../../SG_Project/VHDL/altera_8to16_dc_ram.vhd
+vif_add_file -original -vhdl -lib work ../../SG_Project/VHDL/altera_16to8_dc_ram.vhd
+vif_add_file -original -vhdl -lib work ../../SG_Project/VHDL/checksum_calc.vhd
+vif_add_file -original -vhdl -lib work ../../SG_Project/VHDL/clk_blk_top.vhd
+vif_add_file -original -vhdl -lib work ../../SG_Project/VHDL/dc_fifo.vhd
+vif_add_file -original -vhdl -lib work ../../SG_Project/VHDL/dec_generic.vhd
+vif_add_file -original -vhdl -lib work ../../SG_Project/VHDL/disp_ctrl_top.vhd
+vif_add_file -original -vhdl -lib work ../../SG_Project/VHDL/gen_reg.vhd
+vif_add_file -original -vhdl -lib work ../../SG_Project/VHDL/global_nets_top.vhd
+vif_add_file -original -vhdl -lib work ../../SG_Project/VHDL/Hexss.vhd
+vif_add_file -original -vhdl -lib work ../../SG_Project/VHDL/intercon.vhd
+vif_add_file -original -vhdl -lib work ../../SG_Project/VHDL/intercon_mux.vhd
+vif_add_file -original -vhdl -lib work ../../SG_Project/VHDL/intercon_pkg.vhd
+vif_add_file -original -vhdl -lib work ../../SG_Project/VHDL/mds_top.vhd
+vif_add_file -original -vhdl -lib work ../../SG_Project/VHDL/mem_ctrl_rd.vhd
+vif_add_file -original -vhdl -lib work ../../SG_Project/VHDL/mem_ctrl_rd_wbm.vhd
+vif_add_file -original -vhdl -lib work ../../SG_Project/VHDL/mem_ctrl_rd_wbs.vhd
+vif_add_file -original -vhdl -lib work ../../SG_Project/VHDL/mem_ctrl_wr.vhd
+vif_add_file -original -vhdl -lib work ../../SG_Project/VHDL/mem_ctrl_wr_wbm.vhd
+vif_add_file -original -vhdl -lib work ../../SG_Project/VHDL/mem_ctrl_wr_wbs.vhd
+vif_add_file -original -vhdl -lib work ../../SG_Project/VHDL/mem_mng_arbiter.vhd
+vif_add_file -original -vhdl -lib work ../../SG_Project/VHDL/mem_mng_top.vhd
+vif_add_file -original -vhdl -lib work ../../SG_Project/VHDL/mp_dec.vhd
+vif_add_file -original -vhdl -lib work ../../SG_Project/VHDL/mp_enc.vhd
+vif_add_file -original -vhdl -lib work ../../SG_Project/VHDL/mux_generic.vhd
+vif_add_file -original -vhdl -lib work ../../SG_Project/VHDL/pixel_mng.vhd
+vif_add_file -original -vhdl -lib work ../../SG_Project/VHDL/pll.vhd
+vif_add_file -original -vhdl -lib work ../../SG_Project/VHDL/ram_generic.vhd
+vif_add_file -original -vhdl -lib work ../../SG_Project/VHDL/ram_generic_pkg.vhd
+vif_add_file -original -vhdl -lib work ../../SG_Project/VHDL/ram_simple.vhd
+vif_add_file -original -vhdl -lib work ../../SG_Project/VHDL/rd_wr_ctr.vhd
+vif_add_file -original -vhdl -lib work ../../SG_Project/VHDL/reset_blk_top.vhd
+vif_add_file -original -vhdl -lib work ../../SG_Project/VHDL/reset_debouncer.vhd
+vif_add_file -original -vhdl -lib work ../../SG_Project/VHDL/rx_path.vhd
+vif_add_file -original -vhdl -lib work ../../SG_Project/VHDL/sdram_controller.vhd
+vif_add_file -original -vhdl -lib work ../../SG_Project/VHDL/sdram_model.vhd
+vif_add_file -original -vhdl -lib work ../../SG_Project/VHDL/sdram_rw.vhd
+vif_add_file -original -vhdl -lib work ../../SG_Project/VHDL/sync_rst_gen.vhd
+vif_add_file -original -vhdl -lib work ../../SG_Project/VHDL/synthetic_frame_generator.vhd
+vif_add_file -original -vhdl -lib work ../../SG_Project/VHDL/top_synthesis.vhd
+vif_add_file -original -vhdl -lib work ../../SG_Project/VHDL/tx_path.vhd
+vif_add_file -original -vhdl -lib work ../../SG_Project/VHDL/tx_path_wbm.vhd
+vif_add_file -original -vhdl -lib work ../../SG_Project/VHDL/txt_util_pkg.vhd
+vif_add_file -original -vhdl -lib work ../../SG_Project/VHDL/uart_rx.vhd
+vif_add_file -original -vhdl -lib work ../../SG_Project/VHDL/uart_tx.vhd
+vif_add_file -original -vhdl -lib work ../../SG_Project/VHDL/vesa_gen_ctrl.vhd
+vif_add_file -original -vhdl -lib work ../../SG_Project/VHDL/wbs_reg.vhd
+vif_set_top_module -original -top top_synthesis
+ 
+vif_add_library -translated $env(QUARTUS_ROOTDIR)/eda/fv_lib/verilog
+vif_add_file -translated -verilog top_synthesis.vqm
+vif_set_top_module -translated -top top_synthesis 

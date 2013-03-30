@@ -168,6 +168,7 @@ begin
 			dbg_adr <= (others => '0');
 			we_internal <= '0';
 			dbg_cnt <= 0;
+			cnt := 0;
 		elsif rising_edge (clk) then
 			case cur_st is
 				when wbm_idle_st =>

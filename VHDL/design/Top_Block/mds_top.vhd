@@ -89,7 +89,8 @@ entity mds_top is
 				dbg_rd_bank_val     :	out std_logic;							--Expected Read SDRAM Bank Value
 				dbg_actual_wr_bank	:	out std_logic;							--Actual read bank
 				dbg_actual_rd_bank	:	out std_logic;							--Actual Written bank
-				programming_indication_led 	: out std_logic -- blinks at a predefiened frequency - an indication for successfull programming on FPGA
+				programming_indication_led 	: out std_logic; -- blinks at a predefiened frequency - an indication for successfull programming on FPGA
+				dbg_version_reg		:	out std_logic_vector (7 downto 0)				--Version Register Value
 			);
 end entity mds_top;
 
@@ -516,7 +517,8 @@ component disp_ctrl_top is
 				vsync				:	out std_logic;										--VSync Signal
 
 				--Debug Ports
-				dbg_type_reg		:	out std_logic_vector (7 downto 0)					--Type Register Value
+				dbg_type_reg		:	out std_logic_vector (7 downto 0);					--Type Register Value
+				dbg_version_reg		:	out std_logic_vector (7 downto 0)					--Version Register Value
 			);
 end component disp_ctrl_top;
 
@@ -1024,7 +1026,8 @@ disp_ctrl_inst :	 disp_ctrl_top
 				blank		=>	blank,		
 				hsync		=>	hsync,		
 				vsync		=>	vsync,
-				dbg_type_reg=>	dbg_type_reg_disp
+				dbg_type_reg=>	dbg_type_reg_disp,
+				dbg_version_reg => dbg_version_reg
 			);
 
 sdr_ctrl :	sdram_controller  port map

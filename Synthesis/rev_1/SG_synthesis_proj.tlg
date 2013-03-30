@@ -1,0 +1,757 @@
+@N: CD231 :"C:\Synopsys\fpga_D201003SP1\lib\vhd\std_logic_textio.vhd":79:15:79:16|Using onehot encoding for type mvl9plus ('U'="1000000000")
+@N: CD630 :"H:\Project\SG_Project\VHDL\top_synthesis.vhd":23:7:23:19|Synthesizing work.top_synthesis.top_synthesis_rtl 
+@N: CD630 :"H:\Project\SG_Project\VHDL\Hexss.vhd":23:7:23:11|Synthesizing work.hexss.arc_hexss 
+Post processing for work.hexss.arc_hexss
+@N: CD630 :"H:\Project\SG_Project\VHDL\mds_top.vhd":31:7:31:13|Synthesizing work.mds_top.rtl_mds_top 
+@N: CD630 :"H:\Project\SG_Project\VHDL\SG\led.vhd":26:7:26:9|Synthesizing work.led.led_rtl 
+Post processing for work.led.led_rtl
+@N: CD630 :"H:\Project\SG_Project\VHDL\tx_path.vhd":25:7:25:13|Synthesizing work.tx_path.arc_tx_path 
+@W: CD326 :"H:\Project\SG_Project\VHDL\tx_path.vhd":624:1:624:10|Port used of entity work.general_fifo is unconnected
+@W: CD326 :"H:\Project\SG_Project\VHDL\tx_path.vhd":624:1:624:10|Port aempty of entity work.general_fifo is unconnected
+@W: CD326 :"H:\Project\SG_Project\VHDL\tx_path.vhd":624:1:624:10|Port afull of entity work.general_fifo is unconnected
+@N: CD630 :"H:\Project\SG_Project\VHDL\tx_path_wbm.vhd":25:7:25:17|Synthesizing work.tx_path_wbm.rtl_tx_path_wbm 
+@N: CD233 :"H:\Project\SG_Project\VHDL\tx_path_wbm.vhd":69:17:69:18|Using sequential encoding for type wbm_states
+@N: CD364 :"H:\Project\SG_Project\VHDL\tx_path_wbm.vhd":170:6:170:16|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\tx_path_wbm.vhd":181:6:181:16|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\tx_path_wbm.vhd":182:6:182:18|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\tx_path_wbm.vhd":194:7:194:17|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\tx_path_wbm.vhd":195:7:195:19|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\tx_path_wbm.vhd":196:7:196:20|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\tx_path_wbm.vhd":202:5:202:15|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\tx_path_wbm.vhd":203:5:203:17|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\tx_path_wbm.vhd":204:5:204:18|Removed redundant assignment
+@W: CD604 :"H:\Project\SG_Project\VHDL\tx_path_wbm.vhd":221:4:221:17|OTHERS clause is not synthesized 
+@N: CD364 :"H:\Project\SG_Project\VHDL\tx_path_wbm.vhd":249:4:249:12|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\tx_path_wbm.vhd":251:4:251:17|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\tx_path_wbm.vhd":263:4:263:12|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\tx_path_wbm.vhd":265:4:265:17|Removed redundant assignment
+Post processing for work.tx_path_wbm.rtl_tx_path_wbm
+@N: CD630 :"H:\Project\SG_Project\VHDL\wbs_reg.vhd":26:7:26:13|Synthesizing work.wbs_reg.rtl_wbs_reg 
+Post processing for work.wbs_reg.rtl_wbs_reg
+@N: CD630 :"H:\Project\SG_Project\VHDL\gen_reg.vhd":34:7:34:13|Synthesizing work.gen_reg.rtl_gen_reg 
+@N: CD364 :"H:\Project\SG_Project\VHDL\gen_reg.vhd":102:5:102:12|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\gen_reg.vhd":106:4:106:11|Removed redundant assignment
+Post processing for work.gen_reg.rtl_gen_reg
+@N: CD630 :"H:\Project\SG_Project\VHDL\gen_reg.vhd":34:7:34:13|Synthesizing work.gen_reg.rtl_gen_reg 
+@N: CD364 :"H:\Project\SG_Project\VHDL\gen_reg.vhd":102:5:102:12|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\gen_reg.vhd":106:4:106:11|Removed redundant assignment
+Post processing for work.gen_reg.rtl_gen_reg
+@N: CD630 :"H:\Project\SG_Project\VHDL\gen_reg.vhd":34:7:34:13|Synthesizing work.gen_reg.rtl_gen_reg 
+@N: CD364 :"H:\Project\SG_Project\VHDL\gen_reg.vhd":102:5:102:12|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\gen_reg.vhd":106:4:106:11|Removed redundant assignment
+Post processing for work.gen_reg.rtl_gen_reg
+@N: CD630 :"H:\Project\SG_Project\VHDL\gen_reg.vhd":34:7:34:13|Synthesizing work.gen_reg.rtl_gen_reg 
+@N: CD364 :"H:\Project\SG_Project\VHDL\gen_reg.vhd":102:5:102:12|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\gen_reg.vhd":106:4:106:11|Removed redundant assignment
+Post processing for work.gen_reg.rtl_gen_reg
+@N: CD630 :"H:\Project\SG_Project\VHDL\gen_reg.vhd":34:7:34:13|Synthesizing work.gen_reg.rtl_gen_reg 
+@N: CD364 :"H:\Project\SG_Project\VHDL\gen_reg.vhd":102:5:102:12|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\gen_reg.vhd":106:4:106:11|Removed redundant assignment
+Post processing for work.gen_reg.rtl_gen_reg
+@N: CD630 :"H:\Project\SG_Project\VHDL\SG\general_fifo.vhd":61:7:61:18|Synthesizing work.general_fifo.arc_general_fifo 
+@N: CD364 :"H:\Project\SG_Project\VHDL\SG\general_fifo.vhd":245:6:245:10|Removed redundant assignment
+Post processing for work.general_fifo.arc_general_fifo
+@N: CL134 :"H:\Project\SG_Project\VHDL\SG\general_fifo.vhd":96:7:96:9|Found RAM mem, depth=9, width=8
+@N: CL177 :"H:\Project\SG_Project\VHDL\SG\general_fifo.vhd":136:2:136:3|Sharing sequential element read_addr_dup.
+@N: CD630 :"H:\Project\SG_Project\VHDL\ram_simple.vhd":45:7:45:16|Synthesizing work.ram_simple.arc_ram_simple 
+Post processing for work.ram_simple.arc_ram_simple
+@N: CL134 :"H:\Project\SG_Project\VHDL\ram_simple.vhd":69:7:69:14|Found RAM ram_data, depth=1024, width=8
+@N: CD630 :"H:\Project\SG_Project\VHDL\checksum_calc.vhd":62:7:62:19|Synthesizing work.checksum_calc.arc_checksum_calc 
+@W: CG296 :"H:\Project\SG_Project\VHDL\checksum_calc.vhd":120:24:120:30|Incomplete sensitivity list - assuming completeness
+@W: CG290 :"H:\Project\SG_Project\VHDL\checksum_calc.vhd":123:15:123:31|Referenced variable checksum_init_val is not in sensitivity list
+Post processing for work.checksum_calc.arc_checksum_calc
+@W: CL170 :"H:\Project\SG_Project\VHDL\checksum_calc.vhd":122:1:122:2|Pruning bit <8> of checksum_i(8 downto 0) - not in use ... 
+@N: CD630 :"H:\Project\SG_Project\VHDL\mp_enc.vhd":44:7:44:12|Synthesizing work.mp_enc.rtl_mp_enc 
+@N: CD231 :"H:\Project\SG_Project\VHDL\mp_enc.vhd":101:23:101:24|Using onehot encoding for type mp_encoder_states (idle_st="100000000")
+@N: CD364 :"H:\Project\SG_Project\VHDL\mp_enc.vhd":327:7:327:12|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\mp_enc.vhd":329:7:329:16|Removed redundant assignment
+@W: CD604 :"H:\Project\SG_Project\VHDL\mp_enc.vhd":377:5:377:18|OTHERS clause is not synthesized 
+@N: CD364 :"H:\Project\SG_Project\VHDL\mp_enc.vhd":384:4:384:9|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\mp_enc.vhd":386:4:386:13|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\mp_enc.vhd":387:4:387:10|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\mp_enc.vhd":450:5:450:11|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\mp_enc.vhd":451:5:451:13|Removed redundant assignment
+Post processing for work.mp_enc.rtl_mp_enc
+@W: CL190 :"H:\Project\SG_Project\VHDL\mp_enc.vhd":174:2:174:3|Optimizing register bit eof_blk(0) to a constant 0
+@W: CL190 :"H:\Project\SG_Project\VHDL\mp_enc.vhd":174:2:174:3|Optimizing register bit eof_blk(1) to a constant 0
+@W: CL190 :"H:\Project\SG_Project\VHDL\mp_enc.vhd":174:2:174:3|Optimizing register bit eof_blk(2) to a constant 0
+@W: CL190 :"H:\Project\SG_Project\VHDL\mp_enc.vhd":174:2:174:3|Optimizing register bit eof_blk(4) to a constant 0
+@W: CL190 :"H:\Project\SG_Project\VHDL\mp_enc.vhd":174:2:174:3|Optimizing register bit eof_blk(5) to a constant 0
+@W: CL190 :"H:\Project\SG_Project\VHDL\mp_enc.vhd":174:2:174:3|Optimizing register bit sof_blk(0) to a constant 0
+@W: CL190 :"H:\Project\SG_Project\VHDL\mp_enc.vhd":174:2:174:3|Optimizing register bit sof_blk(1) to a constant 0
+@W: CL190 :"H:\Project\SG_Project\VHDL\mp_enc.vhd":174:2:174:3|Optimizing register bit sof_blk(3) to a constant 0
+@W: CL190 :"H:\Project\SG_Project\VHDL\mp_enc.vhd":174:2:174:3|Optimizing register bit sof_blk(4) to a constant 0
+@W: CL190 :"H:\Project\SG_Project\VHDL\mp_enc.vhd":174:2:174:3|Optimizing register bit sof_blk(7) to a constant 0
+@W: CL260 :"H:\Project\SG_Project\VHDL\mp_enc.vhd":174:2:174:3|Pruning Register bit 5 of eof_blk(7 downto 0)  
+@W: CL260 :"H:\Project\SG_Project\VHDL\mp_enc.vhd":174:2:174:3|Pruning Register bit 4 of eof_blk(7 downto 0)  
+@W: CL260 :"H:\Project\SG_Project\VHDL\mp_enc.vhd":174:2:174:3|Pruning Register bit 2 of eof_blk(7 downto 0)  
+@W: CL260 :"H:\Project\SG_Project\VHDL\mp_enc.vhd":174:2:174:3|Pruning Register bit 1 of eof_blk(7 downto 0)  
+@W: CL260 :"H:\Project\SG_Project\VHDL\mp_enc.vhd":174:2:174:3|Pruning Register bit 0 of eof_blk(7 downto 0)  
+@W: CL260 :"H:\Project\SG_Project\VHDL\mp_enc.vhd":174:2:174:3|Pruning Register bit 7 of sof_blk(7 downto 0)  
+@W: CL260 :"H:\Project\SG_Project\VHDL\mp_enc.vhd":174:2:174:3|Pruning Register bit 4 of sof_blk(7 downto 0)  
+@W: CL260 :"H:\Project\SG_Project\VHDL\mp_enc.vhd":174:2:174:3|Pruning Register bit 3 of sof_blk(7 downto 0)  
+@W: CL260 :"H:\Project\SG_Project\VHDL\mp_enc.vhd":174:2:174:3|Pruning Register bit 1 of sof_blk(7 downto 0)  
+@W: CL260 :"H:\Project\SG_Project\VHDL\mp_enc.vhd":174:2:174:3|Pruning Register bit 0 of sof_blk(7 downto 0)  
+@N: CD630 :"H:\Project\SG_Project\VHDL\uart_tx.vhd":39:7:39:13|Synthesizing work.uart_tx.arc_uart_tx 
+@N: CD233 :"H:\Project\SG_Project\VHDL\uart_tx.vhd":70:24:70:25|Using sequential encoding for type uart_tx_fsm_states
+@N: CD364 :"H:\Project\SG_Project\VHDL\uart_tx.vhd":157:7:157:13|Removed redundant assignment
+@W: CD604 :"H:\Project\SG_Project\VHDL\uart_tx.vhd":162:5:162:18|OTHERS clause is not synthesized 
+Post processing for work.uart_tx.arc_uart_tx
+Post processing for work.tx_path.arc_tx_path
+@N: CD630 :"H:\Project\SG_Project\VHDL\rx_path.vhd":26:7:26:13|Synthesizing work.rx_path.rtl_rx_path 
+@N: CD231 :"H:\Project\SG_Project\VHDL\rx_path.vhd":82:16:82:17|Using onehot encoding for type wbm_states (wbm_idle_st="100000")
+@W: CD326 :"H:\Project\SG_Project\VHDL\rx_path.vhd":270:1:270:9|Port parity_err of entity work.uart_rx is unconnected
+@N: CD364 :"H:\Project\SG_Project\VHDL\rx_path.vhd":457:5:457:18|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\rx_path.vhd":466:6:466:21|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\rx_path.vhd":472:7:472:18|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\rx_path.vhd":473:7:473:22|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\rx_path.vhd":474:7:474:20|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\rx_path.vhd":481:7:481:18|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\rx_path.vhd":487:6:487:17|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\rx_path.vhd":488:6:488:21|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\rx_path.vhd":490:6:490:15|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\rx_path.vhd":494:5:494:20|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\rx_path.vhd":495:5:495:16|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\rx_path.vhd":496:5:496:18|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\rx_path.vhd":500:6:500:21|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\rx_path.vhd":519:5:519:20|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\rx_path.vhd":526:6:526:20|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\rx_path.vhd":527:6:527:15|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\rx_path.vhd":535:6:535:21|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\rx_path.vhd":548:6:548:21|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\rx_path.vhd":549:6:549:15|Removed redundant assignment
+@W: CD604 :"H:\Project\SG_Project\VHDL\rx_path.vhd":552:4:552:17|OTHERS clause is not synthesized 
+@N: CD364 :"H:\Project\SG_Project\VHDL\rx_path.vhd":578:4:578:15|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\rx_path.vhd":582:5:582:16|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\rx_path.vhd":586:4:586:15|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\rx_path.vhd":587:4:587:15|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\rx_path.vhd":617:4:617:12|Removed redundant assignment
+@N: CD630 :"H:\Project\SG_Project\VHDL\mp_dec.vhd":52:7:52:12|Synthesizing work.mp_dec.rtl_mp_dec 
+@N: CD231 :"H:\Project\SG_Project\VHDL\mp_dec.vhd":108:19:108:20|Using onehot encoding for type mp_dec_states (sof_st="1000000")
+@W: CD604 :"H:\Project\SG_Project\VHDL\mp_dec.vhd":310:5:310:18|OTHERS clause is not synthesized 
+@N: CD364 :"H:\Project\SG_Project\VHDL\mp_dec.vhd":337:5:337:11|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\mp_dec.vhd":340:4:340:10|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\mp_dec.vhd":445:4:445:12|Removed redundant assignment
+@W: CD638 :"H:\Project\SG_Project\VHDL\mp_dec.vhd":152:7:152:12|Signal sof_sr is undriven 
+@W: CD638 :"H:\Project\SG_Project\VHDL\mp_dec.vhd":153:7:153:16|Signal sof_sr_cnt is undriven 
+Post processing for work.mp_dec.rtl_mp_dec
+@W: CL190 :"H:\Project\SG_Project\VHDL\mp_dec.vhd":328:2:328:3|Optimizing register bit eof_blk(0) to a constant 0
+@W: CL190 :"H:\Project\SG_Project\VHDL\mp_dec.vhd":328:2:328:3|Optimizing register bit eof_blk(1) to a constant 0
+@W: CL190 :"H:\Project\SG_Project\VHDL\mp_dec.vhd":328:2:328:3|Optimizing register bit eof_blk(2) to a constant 0
+@W: CL190 :"H:\Project\SG_Project\VHDL\mp_dec.vhd":328:2:328:3|Optimizing register bit eof_blk(4) to a constant 0
+@W: CL190 :"H:\Project\SG_Project\VHDL\mp_dec.vhd":328:2:328:3|Optimizing register bit eof_blk(5) to a constant 0
+@W: CL260 :"H:\Project\SG_Project\VHDL\mp_dec.vhd":328:2:328:3|Pruning Register bit 5 of eof_blk(7 downto 0)  
+@W: CL260 :"H:\Project\SG_Project\VHDL\mp_dec.vhd":328:2:328:3|Pruning Register bit 4 of eof_blk(7 downto 0)  
+@W: CL260 :"H:\Project\SG_Project\VHDL\mp_dec.vhd":328:2:328:3|Pruning Register bit 2 of eof_blk(7 downto 0)  
+@W: CL260 :"H:\Project\SG_Project\VHDL\mp_dec.vhd":328:2:328:3|Pruning Register bit 1 of eof_blk(7 downto 0)  
+@W: CL260 :"H:\Project\SG_Project\VHDL\mp_dec.vhd":328:2:328:3|Pruning Register bit 0 of eof_blk(7 downto 0)  
+@N: CD630 :"H:\Project\SG_Project\VHDL\uart_rx.vhd":46:7:46:13|Synthesizing work.uart_rx.arc_uart_rx 
+@N: CD231 :"H:\Project\SG_Project\VHDL\uart_rx.vhd":74:24:74:25|Using onehot encoding for type uart_rx_fsm_states (idle_st="10000")
+@N: CD364 :"H:\Project\SG_Project\VHDL\uart_rx.vhd":162:8:162:17|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\uart_rx.vhd":231:7:231:16|Removed redundant assignment
+@W: CD604 :"H:\Project\SG_Project\VHDL\uart_rx.vhd":302:4:302:17|OTHERS clause is not synthesized 
+Post processing for work.uart_rx.arc_uart_rx
+@W: CL190 :"H:\Project\SG_Project\VHDL\uart_rx.vhd":119:2:119:3|Optimizing register bit parity_bit to a constant 0
+@W: CL169 :"H:\Project\SG_Project\VHDL\uart_rx.vhd":119:2:119:3|Pruning Register parity_bit  
+Post processing for work.rx_path.rtl_rx_path
+@N: CD630 :"H:\Project\SG_Project\VHDL\sdram_controller.vhd":42:7:42:22|Synthesizing work.sdram_controller.rtl_sdram_controller 
+@N: CD231 :"H:\Project\SG_Project\VHDL\sdram_controller.vhd":127:18:127:19|Using onehot encoding for type main_states (idle_st="1000000000000000")
+@N: CD231 :"H:\Project\SG_Project\VHDL\sdram_controller.vhd":116:18:116:19|Using onehot encoding for type init_states (init_idle_st="10000000")
+@N: CD364 :"H:\Project\SG_Project\VHDL\sdram_controller.vhd":456:4:456:12|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\sdram_controller.vhd":559:3:559:16|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\sdram_controller.vhd":592:4:592:12|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\sdram_controller.vhd":597:4:597:12|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\sdram_controller.vhd":603:4:603:12|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\sdram_controller.vhd":633:4:633:14|Removed redundant assignment
+Post processing for work.sdram_controller.rtl_sdram_controller
+@N: CD630 :"H:\Project\SG_Project\VHDL\disp_ctrl_top.vhd":35:7:35:19|Synthesizing work.disp_ctrl_top.rtl_disp_ctrl_top 
+@W: CD326 :"H:\Project\SG_Project\VHDL\disp_ctrl_top.vhd":974:0:974:11|Port wrfull of entity work.dc_fifo is unconnected
+@W: CD326 :"H:\Project\SG_Project\VHDL\disp_ctrl_top.vhd":996:0:996:11|Port used of entity work.general_fifo is unconnected
+@W: CD326 :"H:\Project\SG_Project\VHDL\disp_ctrl_top.vhd":996:0:996:11|Port aempty of entity work.general_fifo is unconnected
+@W: CD326 :"H:\Project\SG_Project\VHDL\disp_ctrl_top.vhd":996:0:996:11|Port afull of entity work.general_fifo is unconnected
+@W: CD638 :"H:\Project\SG_Project\VHDL\disp_ctrl_top.vhd":157:7:157:23|Signal dc_fifo_wr_en_log is undriven 
+@W: CD638 :"H:\Project\SG_Project\VHDL\disp_ctrl_top.vhd":178:7:178:19|Signal sc_fifo_rd_en is undriven 
+@W: CD638 :"H:\Project\SG_Project\VHDL\disp_ctrl_top.vhd":180:7:180:17|Signal dc_fifo_din is undriven 
+@W: CD638 :"H:\Project\SG_Project\VHDL\disp_ctrl_top.vhd":181:7:181:19|Signal dc_fifo_wr_en is undriven 
+@W: CD638 :"H:\Project\SG_Project\VHDL\disp_ctrl_top.vhd":221:7:221:28|Signal left_frame_reg_din_ack is undriven 
+@W: CD638 :"H:\Project\SG_Project\VHDL\disp_ctrl_top.vhd":223:7:223:31|Signal left_frame_reg_dout_valid is undriven 
+@W: CD638 :"H:\Project\SG_Project\VHDL\disp_ctrl_top.vhd":224:7:224:29|Signal right_frame_reg_din_ack is undriven 
+@W: CD638 :"H:\Project\SG_Project\VHDL\disp_ctrl_top.vhd":226:7:226:32|Signal right_frame_reg_dout_valid is undriven 
+@W: CD638 :"H:\Project\SG_Project\VHDL\disp_ctrl_top.vhd":256:7:256:17|Signal opu_data_in is undriven 
+@W: CD638 :"H:\Project\SG_Project\VHDL\disp_ctrl_top.vhd":257:7:257:23|Signal opu_data_in_valid is undriven 
+@W: CD638 :"H:\Project\SG_Project\VHDL\disp_ctrl_top.vhd":272:7:272:12|Signal zero_s is undriven 
+@W: CD638 :"H:\Project\SG_Project\VHDL\disp_ctrl_top.vhd":273:7:273:13|Signal zeros_s is undriven 
+@N: CD630 :"H:\Project\SG_Project\VHDL\SG\Symbol_Generator_Top.vhd":23:7:23:26|Synthesizing work.symbol_generator_top.rtl_symbol_generator_top 
+@W: CD638 :"H:\Project\SG_Project\VHDL\SG\Symbol_Generator_Top.vhd":208:8:208:22|Signal opu_data_in_cnt is undriven 
+@W: CD638 :"H:\Project\SG_Project\VHDL\SG\Symbol_Generator_Top.vhd":239:8:239:19|Signal fifo_a_flush is undriven 
+@W: CD638 :"H:\Project\SG_Project\VHDL\SG\Symbol_Generator_Top.vhd":240:8:240:19|Signal fifo_b_flush is undriven 
+@N: CD630 :"H:\Project\SG_Project\VHDL\SG\mux2.vhd":30:7:30:10|Synthesizing work.mux2.mux2_rtl 
+Post processing for work.mux2.mux2_rtl
+@N: CD630 :"H:\Project\SG_Project\VHDL\SG\general_fifo.vhd":61:7:61:18|Synthesizing work.general_fifo.arc_general_fifo 
+@N: CD364 :"H:\Project\SG_Project\VHDL\SG\general_fifo.vhd":245:6:245:10|Removed redundant assignment
+Post processing for work.general_fifo.arc_general_fifo
+@N: CL134 :"H:\Project\SG_Project\VHDL\SG\general_fifo.vhd":96:7:96:9|Found RAM mem, depth=640, width=8
+@N: CL177 :"H:\Project\SG_Project\VHDL\SG\general_fifo.vhd":136:2:136:3|Sharing sequential element read_addr_dup.
+@N: CD630 :"H:\Project\SG_Project\VHDL\SG\manager.vhd":45:7:45:13|Synthesizing work.manager.manager_rtl 
+@N: CD231 :"H:\Project\SG_Project\VHDL\SG\manager.vhd":108:14:108:15|Using onehot encoding for type state_t (idle_st="10000")
+@W: CD604 :"H:\Project\SG_Project\VHDL\SG\manager.vhd":331:4:331:17|OTHERS clause is not synthesized 
+Post processing for work.manager.manager_rtl
+@W: CL169 :"H:\Project\SG_Project\VHDL\SG\manager.vhd":164:2:164:3|Pruning Register req_in_trg_dev_active  
+@W: CL169 :"H:\Project\SG_Project\VHDL\SG\manager.vhd":164:2:164:3|Pruning Register req_in_trg_counter(31 downto 0)  
+@W: CL190 :"H:\Project\SG_Project\VHDL\SG\manager.vhd":447:2:447:3|Optimizing register bit sdram_addr_rd(22) to a constant 0
+@W: CL190 :"H:\Project\SG_Project\VHDL\SG\manager.vhd":447:2:447:3|Optimizing register bit sdram_addr_rd(23) to a constant 0
+@W: CL260 :"H:\Project\SG_Project\VHDL\SG\manager.vhd":447:2:447:3|Pruning Register bit 23 of sdram_addr_rd(23 downto 0)  
+@W: CL260 :"H:\Project\SG_Project\VHDL\SG\manager.vhd":447:2:447:3|Pruning Register bit 22 of sdram_addr_rd(23 downto 0)  
+@N: CD630 :"H:\Project\SG_Project\VHDL\SG\RAM_300.vhd":40:7:40:13|Synthesizing work.ram_300.ram_300_rtl 
+Post processing for work.ram_300.ram_300_rtl
+@N: CL134 :"H:\Project\SG_Project\VHDL\SG\RAM_300.vhd":56:9:56:11|Found RAM mem, depth=300, width=13
+@N: CD630 :"H:\Project\SG_Project\VHDL\SG\opcode_store.vhd":33:7:33:18|Synthesizing work.opcode_store.opcode_store_rtl 
+@N: CD630 :"H:\Project\SG_Project\VHDL\SG\general_fifo.vhd":61:7:61:18|Synthesizing work.general_fifo.arc_general_fifo 
+@N: CD364 :"H:\Project\SG_Project\VHDL\SG\general_fifo.vhd":245:6:245:10|Removed redundant assignment
+Post processing for work.general_fifo.arc_general_fifo
+@N: CL134 :"H:\Project\SG_Project\VHDL\SG\general_fifo.vhd":96:7:96:9|Found RAM mem, depth=400, width=24
+@N: CL177 :"H:\Project\SG_Project\VHDL\SG\general_fifo.vhd":136:2:136:3|Sharing sequential element read_addr_dup.
+Post processing for work.opcode_store.opcode_store_rtl
+@W: CL169 :"H:\Project\SG_Project\VHDL\SG\opcode_store.vhd":183:2:183:3|Pruning Register op_cnt_i(9 downto 0)  
+@N: CD630 :"H:\Project\SG_Project\VHDL\SG\opcode_unite.vhd":37:7:37:18|Synthesizing work.opcode_unite.opcode_unite_rtl 
+@N: CD233 :"H:\Project\SG_Project\VHDL\SG\opcode_unite.vhd":64:14:64:15|Using sequential encoding for type state_t
+@W: CD604 :"H:\Project\SG_Project\VHDL\SG\opcode_unite.vhd":151:6:151:19|OTHERS clause is not synthesized 
+Post processing for work.opcode_unite.opcode_unite_rtl
+@W: CL169 :"H:\Project\SG_Project\VHDL\SG\opcode_unite.vhd":96:2:96:3|Pruning Register counter_i(9 downto 0)  
+Post processing for work.symbol_generator_top.rtl_symbol_generator_top
+@N: CD630 :"H:\Project\SG_Project\VHDL\wbs_reg.vhd":26:7:26:13|Synthesizing work.wbs_reg.rtl_wbs_reg 
+Post processing for work.wbs_reg.rtl_wbs_reg
+@N: CD630 :"H:\Project\SG_Project\VHDL\gen_reg.vhd":34:7:34:13|Synthesizing work.gen_reg.rtl_gen_reg 
+@N: CD364 :"H:\Project\SG_Project\VHDL\gen_reg.vhd":102:5:102:12|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\gen_reg.vhd":106:4:106:11|Removed redundant assignment
+Post processing for work.gen_reg.rtl_gen_reg
+@N: CD630 :"H:\Project\SG_Project\VHDL\gen_reg.vhd":34:7:34:13|Synthesizing work.gen_reg.rtl_gen_reg 
+@N: CD364 :"H:\Project\SG_Project\VHDL\gen_reg.vhd":102:5:102:12|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\gen_reg.vhd":106:4:106:11|Removed redundant assignment
+Post processing for work.gen_reg.rtl_gen_reg
+@N: CD630 :"H:\Project\SG_Project\VHDL\gen_reg.vhd":34:7:34:13|Synthesizing work.gen_reg.rtl_gen_reg 
+@N: CD364 :"H:\Project\SG_Project\VHDL\gen_reg.vhd":102:5:102:12|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\gen_reg.vhd":106:4:106:11|Removed redundant assignment
+Post processing for work.gen_reg.rtl_gen_reg
+@N: CD630 :"H:\Project\SG_Project\VHDL\gen_reg.vhd":34:7:34:13|Synthesizing work.gen_reg.rtl_gen_reg 
+@N: CD364 :"H:\Project\SG_Project\VHDL\gen_reg.vhd":102:5:102:12|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\gen_reg.vhd":106:4:106:11|Removed redundant assignment
+Post processing for work.gen_reg.rtl_gen_reg
+@N: CD630 :"H:\Project\SG_Project\VHDL\gen_reg.vhd":34:7:34:13|Synthesizing work.gen_reg.rtl_gen_reg 
+@N: CD364 :"H:\Project\SG_Project\VHDL\gen_reg.vhd":102:5:102:12|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\gen_reg.vhd":106:4:106:11|Removed redundant assignment
+Post processing for work.gen_reg.rtl_gen_reg
+@N: CD630 :"H:\Project\SG_Project\VHDL\synthetic_frame_generator.vhd":25:7:25:31|Synthesizing work.synthetic_frame_generator.rtl_synthetic_frame_generator 
+@N: CD364 :"H:\Project\SG_Project\VHDL\synthetic_frame_generator.vhd":154:4:154:14|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\synthetic_frame_generator.vhd":184:6:184:9|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\synthetic_frame_generator.vhd":185:6:185:9|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\synthetic_frame_generator.vhd":192:5:192:8|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\synthetic_frame_generator.vhd":193:5:193:8|Removed redundant assignment
+Post processing for work.synthetic_frame_generator.rtl_synthetic_frame_generator
+@W: CL190 :"H:\Project\SG_Project\VHDL\synthetic_frame_generator.vhd":107:2:107:3|Optimizing register bit lower_frame(0) to a constant 0
+@W: CL190 :"H:\Project\SG_Project\VHDL\synthetic_frame_generator.vhd":107:2:107:3|Optimizing register bit lower_frame(1) to a constant 0
+@W: CL190 :"H:\Project\SG_Project\VHDL\synthetic_frame_generator.vhd":107:2:107:3|Optimizing register bit lower_frame(7) to a constant 0
+@W: CL190 :"H:\Project\SG_Project\VHDL\synthetic_frame_generator.vhd":107:2:107:3|Optimizing register bit lower_frame(8) to a constant 0
+@W: CL190 :"H:\Project\SG_Project\VHDL\synthetic_frame_generator.vhd":107:2:107:3|Optimizing register bit lower_frame(9) to a constant 0
+@W: CL190 :"H:\Project\SG_Project\VHDL\synthetic_frame_generator.vhd":107:2:107:3|Optimizing register bit right_frame(0) to a constant 0
+@W: CL190 :"H:\Project\SG_Project\VHDL\synthetic_frame_generator.vhd":107:2:107:3|Optimizing register bit right_frame(1) to a constant 0
+@W: CL190 :"H:\Project\SG_Project\VHDL\synthetic_frame_generator.vhd":107:2:107:3|Optimizing register bit right_frame(2) to a constant 0
+@W: CL190 :"H:\Project\SG_Project\VHDL\synthetic_frame_generator.vhd":107:2:107:3|Optimizing register bit right_frame(3) to a constant 0
+@W: CL190 :"H:\Project\SG_Project\VHDL\synthetic_frame_generator.vhd":107:2:107:3|Optimizing register bit right_frame(8) to a constant 0
+@W: CL190 :"H:\Project\SG_Project\VHDL\synthetic_frame_generator.vhd":107:2:107:3|Optimizing register bit right_frame(9) to a constant 0
+@W: CL260 :"H:\Project\SG_Project\VHDL\synthetic_frame_generator.vhd":107:2:107:3|Pruning Register bit 9 of lower_frame(9 downto 0)  
+@W: CL260 :"H:\Project\SG_Project\VHDL\synthetic_frame_generator.vhd":107:2:107:3|Pruning Register bit 8 of lower_frame(9 downto 0)  
+@W: CL260 :"H:\Project\SG_Project\VHDL\synthetic_frame_generator.vhd":107:2:107:3|Pruning Register bit 7 of lower_frame(9 downto 0)  
+@W: CL260 :"H:\Project\SG_Project\VHDL\synthetic_frame_generator.vhd":107:2:107:3|Pruning Register bit 1 of lower_frame(9 downto 0)  
+@W: CL260 :"H:\Project\SG_Project\VHDL\synthetic_frame_generator.vhd":107:2:107:3|Pruning Register bit 0 of lower_frame(9 downto 0)  
+@W: CL260 :"H:\Project\SG_Project\VHDL\synthetic_frame_generator.vhd":107:2:107:3|Pruning Register bit 9 of right_frame(9 downto 0)  
+@W: CL260 :"H:\Project\SG_Project\VHDL\synthetic_frame_generator.vhd":107:2:107:3|Pruning Register bit 8 of right_frame(9 downto 0)  
+@W: CL260 :"H:\Project\SG_Project\VHDL\synthetic_frame_generator.vhd":107:2:107:3|Pruning Register bit 3 of right_frame(9 downto 0)  
+@W: CL260 :"H:\Project\SG_Project\VHDL\synthetic_frame_generator.vhd":107:2:107:3|Pruning Register bit 2 of right_frame(9 downto 0)  
+@W: CL260 :"H:\Project\SG_Project\VHDL\synthetic_frame_generator.vhd":107:2:107:3|Pruning Register bit 1 of right_frame(9 downto 0)  
+@W: CL260 :"H:\Project\SG_Project\VHDL\synthetic_frame_generator.vhd":107:2:107:3|Pruning Register bit 0 of right_frame(9 downto 0)  
+@N: CD630 :"H:\Project\SG_Project\VHDL\vesa_gen_ctrl.vhd":75:7:75:19|Synthesizing work.vesa_gen_ctrl.rtl_vesa_gen_ctrl 
+@N: CD364 :"H:\Project\SG_Project\VHDL\vesa_gen_ctrl.vhd":279:5:279:17|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\vesa_gen_ctrl.vhd":280:5:280:13|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\vesa_gen_ctrl.vhd":281:5:281:16|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\vesa_gen_ctrl.vhd":282:5:282:17|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\vesa_gen_ctrl.vhd":283:5:283:17|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\vesa_gen_ctrl.vhd":284:5:284:17|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\vesa_gen_ctrl.vhd":325:5:325:17|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\vesa_gen_ctrl.vhd":329:4:329:16|Removed redundant assignment
+Post processing for work.vesa_gen_ctrl.rtl_vesa_gen_ctrl
+@N: CD630 :"H:\Project\SG_Project\VHDL\SG\general_fifo.vhd":61:7:61:18|Synthesizing work.general_fifo.arc_general_fifo 
+@N: CD364 :"H:\Project\SG_Project\VHDL\SG\general_fifo.vhd":245:6:245:10|Removed redundant assignment
+Post processing for work.general_fifo.arc_general_fifo
+@N: CL134 :"H:\Project\SG_Project\VHDL\SG\general_fifo.vhd":96:7:96:9|Found RAM mem, depth=4864, width=8
+@N: CL177 :"H:\Project\SG_Project\VHDL\SG\general_fifo.vhd":136:2:136:3|Sharing sequential element read_addr_dup.
+@N: CD630 :"H:\Project\SG_Project\VHDL\dc_fifo.vhd":42:7:42:13|Synthesizing work.dc_fifo.syn 
+@N: CD630 :"H:\Project\SG_Project\VHDL\dc_fifo.vhd":68:11:68:16|Synthesizing altera_mf.dcfifo_work_top_synthesis_top_synthesis_rtl_1.syn_black_box 
+Post processing for altera_mf.dcfifo_work_top_synthesis_top_synthesis_rtl_1.syn_black_box
+Post processing for work.dc_fifo.syn
+@N: CD630 :"H:\Project\SG_Project\VHDL\SG\SG_WBM_IF.vhd":30:7:30:15|Synthesizing work.sg_wbm_if.rtl_sg_wbm_if 
+@N: CD231 :"H:\Project\SG_Project\VHDL\SG\SG_WBM_IF.vhd":74:17:74:18|Using onehot encoding for type wbm_states (wbm_idle_st="10000000000")
+@N: CD364 :"H:\Project\SG_Project\VHDL\SG\SG_WBM_IF.vhd":116:4:116:12|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\SG\SG_WBM_IF.vhd":238:6:238:11|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\SG\SG_WBM_IF.vhd":279:6:279:11|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\SG\SG_WBM_IF.vhd":358:6:358:11|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\SG\SG_WBM_IF.vhd":399:5:399:11|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\SG\SG_WBM_IF.vhd":402:4:402:10|Removed redundant assignment
+Post processing for work.sg_wbm_if.rtl_sg_wbm_if
+@W: CL169 :"H:\Project\SG_Project\VHDL\SG\SG_WBM_IF.vhd":161:2:161:3|Pruning Register dbg_cnt(30 downto 0)  
+@W: CL190 :"H:\Project\SG_Project\VHDL\SG\SG_WBM_IF.vhd":161:2:161:3|Optimizing register bit wbm_tga_o(0) to a constant 0
+@W: CL190 :"H:\Project\SG_Project\VHDL\SG\SG_WBM_IF.vhd":161:2:161:3|Optimizing register bit wbm_tga_o(2) to a constant 0
+@W: CL190 :"H:\Project\SG_Project\VHDL\SG\SG_WBM_IF.vhd":161:2:161:3|Optimizing register bit wbm_tga_o(3) to a constant 0
+@W: CL190 :"H:\Project\SG_Project\VHDL\SG\SG_WBM_IF.vhd":161:2:161:3|Optimizing register bit wbm_tga_o(4) to a constant 0
+@W: CL190 :"H:\Project\SG_Project\VHDL\SG\SG_WBM_IF.vhd":161:2:161:3|Optimizing register bit wbm_tga_o(6) to a constant 0
+@W: CL190 :"H:\Project\SG_Project\VHDL\SG\SG_WBM_IF.vhd":161:2:161:3|Optimizing register bit wbm_tga_o(7) to a constant 0
+@W: CL190 :"H:\Project\SG_Project\VHDL\SG\SG_WBM_IF.vhd":161:2:161:3|Optimizing register bit wbm_tga_o(8) to a constant 0
+@W: CL190 :"H:\Project\SG_Project\VHDL\SG\SG_WBM_IF.vhd":161:2:161:3|Optimizing register bit wbm_tga_o(9) to a constant 0
+@W: CL260 :"H:\Project\SG_Project\VHDL\SG\SG_WBM_IF.vhd":161:2:161:3|Pruning Register bit 9 of wbm_tga_o(9 downto 0)  
+@W: CL260 :"H:\Project\SG_Project\VHDL\SG\SG_WBM_IF.vhd":161:2:161:3|Pruning Register bit 8 of wbm_tga_o(9 downto 0)  
+@W: CL260 :"H:\Project\SG_Project\VHDL\SG\SG_WBM_IF.vhd":161:2:161:3|Pruning Register bit 7 of wbm_tga_o(9 downto 0)  
+@W: CL260 :"H:\Project\SG_Project\VHDL\SG\SG_WBM_IF.vhd":161:2:161:3|Pruning Register bit 6 of wbm_tga_o(9 downto 0)  
+@W: CL260 :"H:\Project\SG_Project\VHDL\SG\SG_WBM_IF.vhd":161:2:161:3|Pruning Register bit 4 of wbm_tga_o(9 downto 0)  
+@W: CL260 :"H:\Project\SG_Project\VHDL\SG\SG_WBM_IF.vhd":161:2:161:3|Pruning Register bit 3 of wbm_tga_o(9 downto 0)  
+@W: CL260 :"H:\Project\SG_Project\VHDL\SG\SG_WBM_IF.vhd":161:2:161:3|Pruning Register bit 2 of wbm_tga_o(9 downto 0)  
+@W: CL260 :"H:\Project\SG_Project\VHDL\SG\SG_WBM_IF.vhd":161:2:161:3|Pruning Register bit 0 of wbm_tga_o(9 downto 0)  
+@N: CD630 :"H:\Project\SG_Project\VHDL\pixel_mng.vhd":30:7:30:15|Synthesizing work.pixel_mng.rtl_pixel_mng 
+@N: CD231 :"H:\Project\SG_Project\VHDL\pixel_mng.vhd":77:17:77:18|Using onehot encoding for type wbm_states (wbm_idle_st="100000")
+@N: CD364 :"H:\Project\SG_Project\VHDL\pixel_mng.vhd":237:6:237:11|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\pixel_mng.vhd":264:7:264:12|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\pixel_mng.vhd":280:6:280:11|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\pixel_mng.vhd":298:6:298:11|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\pixel_mng.vhd":318:6:318:11|Removed redundant assignment
+@W: CD604 :"H:\Project\SG_Project\VHDL\pixel_mng.vhd":321:4:321:17|OTHERS clause is not synthesized 
+@N: CD364 :"H:\Project\SG_Project\VHDL\pixel_mng.vhd":345:5:345:15|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\pixel_mng.vhd":349:4:349:14|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\pixel_mng.vhd":370:4:370:10|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\pixel_mng.vhd":375:5:375:15|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\pixel_mng.vhd":380:4:380:14|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\pixel_mng.vhd":385:5:385:11|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\pixel_mng.vhd":390:4:390:14|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\pixel_mng.vhd":395:5:395:11|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\pixel_mng.vhd":399:4:399:10|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\pixel_mng.vhd":400:4:400:14|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\pixel_mng.vhd":421:5:421:10|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\pixel_mng.vhd":427:4:427:9|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\pixel_mng.vhd":473:4:473:14|Removed redundant assignment
+Post processing for work.pixel_mng.rtl_pixel_mng
+Post processing for work.disp_ctrl_top.rtl_disp_ctrl_top
+@W: CL240 :"H:\Project\SG_Project\VHDL\disp_ctrl_top.vhd":226:7:226:32|right_frame_reg_dout_valid is not assigned a value (floating) - a simulation mismatch is possible 
+@W: CL240 :"H:\Project\SG_Project\VHDL\disp_ctrl_top.vhd":224:7:224:29|right_frame_reg_din_ack is not assigned a value (floating) - a simulation mismatch is possible 
+@W: CL240 :"H:\Project\SG_Project\VHDL\disp_ctrl_top.vhd":223:7:223:31|left_frame_reg_dout_valid is not assigned a value (floating) - a simulation mismatch is possible 
+@W: CL240 :"H:\Project\SG_Project\VHDL\disp_ctrl_top.vhd":221:7:221:28|left_frame_reg_din_ack is not assigned a value (floating) - a simulation mismatch is possible 
+@W: CL168 :"H:\Project\SG_Project\VHDL\disp_ctrl_top.vhd":996:0:996:11|Pruning instance sc_fifo_inst - not in use ... 
+@W: CL111 :"H:\Project\SG_Project\VHDL\disp_ctrl_top.vhd":1307:1:1307:2|All reachable assignments to upper_frame_rg_d1(8) assign '0', register removed by optimization
+@W: CL111 :"H:\Project\SG_Project\VHDL\disp_ctrl_top.vhd":1307:1:1307:2|All reachable assignments to upper_frame_rg_d1(9) assign '0', register removed by optimization
+@W: CL111 :"H:\Project\SG_Project\VHDL\disp_ctrl_top.vhd":1307:1:1307:2|All reachable assignments to right_frame_rg_d1(0) assign '0', register removed by optimization
+@W: CL111 :"H:\Project\SG_Project\VHDL\disp_ctrl_top.vhd":1307:1:1307:2|All reachable assignments to right_frame_rg_d1(1) assign '0', register removed by optimization
+@W: CL111 :"H:\Project\SG_Project\VHDL\disp_ctrl_top.vhd":1307:1:1307:2|All reachable assignments to right_frame_rg_d1(2) assign '0', register removed by optimization
+@W: CL111 :"H:\Project\SG_Project\VHDL\disp_ctrl_top.vhd":1307:1:1307:2|All reachable assignments to right_frame_rg_d1(3) assign '0', register removed by optimization
+@W: CL111 :"H:\Project\SG_Project\VHDL\disp_ctrl_top.vhd":1307:1:1307:2|All reachable assignments to right_frame_rg_d1(5) assign '0', register removed by optimization
+@W: CL111 :"H:\Project\SG_Project\VHDL\disp_ctrl_top.vhd":1307:1:1307:2|All reachable assignments to right_frame_rg_d1(7) assign '0', register removed by optimization
+@W: CL111 :"H:\Project\SG_Project\VHDL\disp_ctrl_top.vhd":1307:1:1307:2|All reachable assignments to right_frame_rg_d1(8) assign '0', register removed by optimization
+@W: CL111 :"H:\Project\SG_Project\VHDL\disp_ctrl_top.vhd":1307:1:1307:2|All reachable assignments to right_frame_rg_d1(9) assign '0', register removed by optimization
+@W: CL111 :"H:\Project\SG_Project\VHDL\disp_ctrl_top.vhd":1307:1:1307:2|All reachable assignments to lower_frame_rg_d1(8) assign '0', register removed by optimization
+@W: CL111 :"H:\Project\SG_Project\VHDL\disp_ctrl_top.vhd":1307:1:1307:2|All reachable assignments to lower_frame_rg_d1(9) assign '0', register removed by optimization
+@W: CL111 :"H:\Project\SG_Project\VHDL\disp_ctrl_top.vhd":1307:1:1307:2|All reachable assignments to left_frame_rg_d1(0) assign '0', register removed by optimization
+@W: CL111 :"H:\Project\SG_Project\VHDL\disp_ctrl_top.vhd":1307:1:1307:2|All reachable assignments to left_frame_rg_d1(1) assign '0', register removed by optimization
+@W: CL111 :"H:\Project\SG_Project\VHDL\disp_ctrl_top.vhd":1307:1:1307:2|All reachable assignments to left_frame_rg_d1(2) assign '0', register removed by optimization
+@W: CL111 :"H:\Project\SG_Project\VHDL\disp_ctrl_top.vhd":1307:1:1307:2|All reachable assignments to left_frame_rg_d1(3) assign '0', register removed by optimization
+@W: CL111 :"H:\Project\SG_Project\VHDL\disp_ctrl_top.vhd":1307:1:1307:2|All reachable assignments to left_frame_rg_d1(5) assign '0', register removed by optimization
+@W: CL111 :"H:\Project\SG_Project\VHDL\disp_ctrl_top.vhd":1307:1:1307:2|All reachable assignments to left_frame_rg_d1(7) assign '0', register removed by optimization
+@W: CL111 :"H:\Project\SG_Project\VHDL\disp_ctrl_top.vhd":1307:1:1307:2|All reachable assignments to left_frame_rg_d1(8) assign '0', register removed by optimization
+@W: CL111 :"H:\Project\SG_Project\VHDL\disp_ctrl_top.vhd":1307:1:1307:2|All reachable assignments to left_frame_rg_d1(9) assign '0', register removed by optimization
+@N: CL177 :"H:\Project\SG_Project\VHDL\disp_ctrl_top.vhd":1307:1:1307:2|Sharing sequential element left_frame_rg_d1.
+@N: CL177 :"H:\Project\SG_Project\VHDL\disp_ctrl_top.vhd":1307:1:1307:2|Sharing sequential element left_frame_rg_d1.
+@W: CL190 :"H:\Project\SG_Project\VHDL\disp_ctrl_top.vhd":1307:1:1307:2|Optimizing register bit left_frame_rg_d2(0) to a constant 0
+@W: CL190 :"H:\Project\SG_Project\VHDL\disp_ctrl_top.vhd":1307:1:1307:2|Optimizing register bit left_frame_rg_d2(1) to a constant 0
+@W: CL190 :"H:\Project\SG_Project\VHDL\disp_ctrl_top.vhd":1307:1:1307:2|Optimizing register bit left_frame_rg_d2(2) to a constant 0
+@W: CL190 :"H:\Project\SG_Project\VHDL\disp_ctrl_top.vhd":1307:1:1307:2|Optimizing register bit left_frame_rg_d2(3) to a constant 0
+@W: CL190 :"H:\Project\SG_Project\VHDL\disp_ctrl_top.vhd":1307:1:1307:2|Optimizing register bit left_frame_rg_d2(5) to a constant 0
+@W: CL190 :"H:\Project\SG_Project\VHDL\disp_ctrl_top.vhd":1307:1:1307:2|Optimizing register bit left_frame_rg_d2(7) to a constant 0
+@W: CL190 :"H:\Project\SG_Project\VHDL\disp_ctrl_top.vhd":1307:1:1307:2|Optimizing register bit left_frame_rg_d2(8) to a constant 0
+@W: CL190 :"H:\Project\SG_Project\VHDL\disp_ctrl_top.vhd":1307:1:1307:2|Optimizing register bit left_frame_rg_d2(9) to a constant 0
+@W: CL190 :"H:\Project\SG_Project\VHDL\disp_ctrl_top.vhd":1307:1:1307:2|Optimizing register bit lower_frame_rg_d2(8) to a constant 0
+@W: CL190 :"H:\Project\SG_Project\VHDL\disp_ctrl_top.vhd":1307:1:1307:2|Optimizing register bit lower_frame_rg_d2(9) to a constant 0
+@W: CL190 :"H:\Project\SG_Project\VHDL\disp_ctrl_top.vhd":1307:1:1307:2|Optimizing register bit right_frame_rg_d2(0) to a constant 0
+@W: CL190 :"H:\Project\SG_Project\VHDL\disp_ctrl_top.vhd":1307:1:1307:2|Optimizing register bit right_frame_rg_d2(1) to a constant 0
+@W: CL190 :"H:\Project\SG_Project\VHDL\disp_ctrl_top.vhd":1307:1:1307:2|Optimizing register bit right_frame_rg_d2(2) to a constant 0
+@W: CL190 :"H:\Project\SG_Project\VHDL\disp_ctrl_top.vhd":1307:1:1307:2|Optimizing register bit right_frame_rg_d2(3) to a constant 0
+@W: CL190 :"H:\Project\SG_Project\VHDL\disp_ctrl_top.vhd":1307:1:1307:2|Optimizing register bit right_frame_rg_d2(5) to a constant 0
+@W: CL190 :"H:\Project\SG_Project\VHDL\disp_ctrl_top.vhd":1307:1:1307:2|Optimizing register bit right_frame_rg_d2(7) to a constant 0
+@W: CL190 :"H:\Project\SG_Project\VHDL\disp_ctrl_top.vhd":1307:1:1307:2|Optimizing register bit right_frame_rg_d2(8) to a constant 0
+@W: CL190 :"H:\Project\SG_Project\VHDL\disp_ctrl_top.vhd":1307:1:1307:2|Optimizing register bit right_frame_rg_d2(9) to a constant 0
+@W: CL190 :"H:\Project\SG_Project\VHDL\disp_ctrl_top.vhd":1307:1:1307:2|Optimizing register bit upper_frame_rg_d2(8) to a constant 0
+@W: CL190 :"H:\Project\SG_Project\VHDL\disp_ctrl_top.vhd":1307:1:1307:2|Optimizing register bit upper_frame_rg_d2(9) to a constant 0
+@W: CL260 :"H:\Project\SG_Project\VHDL\disp_ctrl_top.vhd":1307:1:1307:2|Pruning Register bit 9 of left_frame_rg_d2(9 downto 0)  
+@W: CL260 :"H:\Project\SG_Project\VHDL\disp_ctrl_top.vhd":1307:1:1307:2|Pruning Register bit 8 of left_frame_rg_d2(9 downto 0)  
+@W: CL260 :"H:\Project\SG_Project\VHDL\disp_ctrl_top.vhd":1307:1:1307:2|Pruning Register bit 7 of left_frame_rg_d2(9 downto 0)  
+@W: CL260 :"H:\Project\SG_Project\VHDL\disp_ctrl_top.vhd":1307:1:1307:2|Pruning Register bit 5 of left_frame_rg_d2(9 downto 0)  
+@W: CL260 :"H:\Project\SG_Project\VHDL\disp_ctrl_top.vhd":1307:1:1307:2|Pruning Register bit 3 of left_frame_rg_d2(9 downto 0)  
+@W: CL260 :"H:\Project\SG_Project\VHDL\disp_ctrl_top.vhd":1307:1:1307:2|Pruning Register bit 2 of left_frame_rg_d2(9 downto 0)  
+@W: CL260 :"H:\Project\SG_Project\VHDL\disp_ctrl_top.vhd":1307:1:1307:2|Pruning Register bit 1 of left_frame_rg_d2(9 downto 0)  
+@W: CL260 :"H:\Project\SG_Project\VHDL\disp_ctrl_top.vhd":1307:1:1307:2|Pruning Register bit 0 of left_frame_rg_d2(9 downto 0)  
+@W: CL260 :"H:\Project\SG_Project\VHDL\disp_ctrl_top.vhd":1307:1:1307:2|Pruning Register bit 9 of lower_frame_rg_d2(9 downto 0)  
+@W: CL260 :"H:\Project\SG_Project\VHDL\disp_ctrl_top.vhd":1307:1:1307:2|Pruning Register bit 8 of lower_frame_rg_d2(9 downto 0)  
+@W: CL260 :"H:\Project\SG_Project\VHDL\disp_ctrl_top.vhd":1307:1:1307:2|Pruning Register bit 9 of right_frame_rg_d2(9 downto 0)  
+@W: CL260 :"H:\Project\SG_Project\VHDL\disp_ctrl_top.vhd":1307:1:1307:2|Pruning Register bit 8 of right_frame_rg_d2(9 downto 0)  
+@W: CL260 :"H:\Project\SG_Project\VHDL\disp_ctrl_top.vhd":1307:1:1307:2|Pruning Register bit 7 of right_frame_rg_d2(9 downto 0)  
+@W: CL260 :"H:\Project\SG_Project\VHDL\disp_ctrl_top.vhd":1307:1:1307:2|Pruning Register bit 5 of right_frame_rg_d2(9 downto 0)  
+@W: CL260 :"H:\Project\SG_Project\VHDL\disp_ctrl_top.vhd":1307:1:1307:2|Pruning Register bit 3 of right_frame_rg_d2(9 downto 0)  
+@W: CL260 :"H:\Project\SG_Project\VHDL\disp_ctrl_top.vhd":1307:1:1307:2|Pruning Register bit 2 of right_frame_rg_d2(9 downto 0)  
+@W: CL260 :"H:\Project\SG_Project\VHDL\disp_ctrl_top.vhd":1307:1:1307:2|Pruning Register bit 1 of right_frame_rg_d2(9 downto 0)  
+@W: CL260 :"H:\Project\SG_Project\VHDL\disp_ctrl_top.vhd":1307:1:1307:2|Pruning Register bit 0 of right_frame_rg_d2(9 downto 0)  
+@W: CL260 :"H:\Project\SG_Project\VHDL\disp_ctrl_top.vhd":1307:1:1307:2|Pruning Register bit 9 of upper_frame_rg_d2(9 downto 0)  
+@W: CL260 :"H:\Project\SG_Project\VHDL\disp_ctrl_top.vhd":1307:1:1307:2|Pruning Register bit 8 of upper_frame_rg_d2(9 downto 0)  
+@N: CD630 :"H:\Project\SG_Project\VHDL\mem_mng_top.vhd":29:7:29:17|Synthesizing work.mem_mng_top.rtl_mem_mng_top 
+@N: CD364 :"H:\Project\SG_Project\VHDL\mem_mng_top.vhd":505:4:505:14|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\mem_mng_top.vhd":506:4:506:14|Removed redundant assignment
+@N: CD630 :"H:\Project\SG_Project\VHDL\gen_reg.vhd":34:7:34:13|Synthesizing work.gen_reg.rtl_gen_reg 
+@N: CD364 :"H:\Project\SG_Project\VHDL\gen_reg.vhd":102:5:102:12|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\gen_reg.vhd":106:4:106:11|Removed redundant assignment
+Post processing for work.gen_reg.rtl_gen_reg
+@N: CD630 :"H:\Project\SG_Project\VHDL\gen_reg.vhd":34:7:34:13|Synthesizing work.gen_reg.rtl_gen_reg 
+@N: CD364 :"H:\Project\SG_Project\VHDL\gen_reg.vhd":102:5:102:12|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\gen_reg.vhd":106:4:106:11|Removed redundant assignment
+Post processing for work.gen_reg.rtl_gen_reg
+@N: CD630 :"H:\Project\SG_Project\VHDL\gen_reg.vhd":34:7:34:13|Synthesizing work.gen_reg.rtl_gen_reg 
+@N: CD364 :"H:\Project\SG_Project\VHDL\gen_reg.vhd":102:5:102:12|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\gen_reg.vhd":106:4:106:11|Removed redundant assignment
+Post processing for work.gen_reg.rtl_gen_reg
+@N: CD630 :"H:\Project\SG_Project\VHDL\gen_reg.vhd":34:7:34:13|Synthesizing work.gen_reg.rtl_gen_reg 
+@N: CD364 :"H:\Project\SG_Project\VHDL\gen_reg.vhd":102:5:102:12|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\gen_reg.vhd":106:4:106:11|Removed redundant assignment
+Post processing for work.gen_reg.rtl_gen_reg
+@N: CD630 :"H:\Project\SG_Project\VHDL\mem_ctrl_rd.vhd":36:7:36:17|Synthesizing work.mem_ctrl_rd.rtl_mem_ctrl_rd 
+@N: CD630 :"H:\Project\SG_Project\VHDL\mem_ctrl_rd_wbm.vhd":35:7:35:21|Synthesizing work.mem_ctrl_rd_wbm.rtl_mem_ctrl_rd_wbm 
+@N: CD231 :"H:\Project\SG_Project\VHDL\mem_ctrl_rd_wbm.vhd":97:17:97:18|Using onehot encoding for type wbm_states (wbm_idle_st="10000")
+@N: CD364 :"H:\Project\SG_Project\VHDL\mem_ctrl_rd_wbm.vhd":219:7:219:17|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\mem_ctrl_rd_wbm.vhd":226:6:226:16|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\mem_ctrl_rd_wbm.vhd":231:5:231:18|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\mem_ctrl_rd_wbm.vhd":232:5:232:15|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\mem_ctrl_rd_wbm.vhd":233:5:233:17|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\mem_ctrl_rd_wbm.vhd":266:6:266:18|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\mem_ctrl_rd_wbm.vhd":267:6:267:18|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\mem_ctrl_rd_wbm.vhd":268:6:268:16|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\mem_ctrl_rd_wbm.vhd":279:6:279:18|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\mem_ctrl_rd_wbm.vhd":284:7:284:20|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\mem_ctrl_rd_wbm.vhd":298:8:298:20|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\mem_ctrl_rd_wbm.vhd":308:7:308:19|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\mem_ctrl_rd_wbm.vhd":309:7:309:17|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\mem_ctrl_rd_wbm.vhd":310:7:310:20|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\mem_ctrl_rd_wbm.vhd":311:7:311:19|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\mem_ctrl_rd_wbm.vhd":317:5:317:15|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\mem_ctrl_rd_wbm.vhd":318:5:318:18|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\mem_ctrl_rd_wbm.vhd":323:6:323:18|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\mem_ctrl_rd_wbm.vhd":347:6:347:21|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\mem_ctrl_rd_wbm.vhd":386:5:386:18|Removed redundant assignment
+@W: CD604 :"H:\Project\SG_Project\VHDL\mem_ctrl_rd_wbm.vhd":394:4:394:17|OTHERS clause is not synthesized 
+@N: CD364 :"H:\Project\SG_Project\VHDL\mem_ctrl_rd_wbm.vhd":419:4:419:11|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\mem_ctrl_rd_wbm.vhd":473:4:473:12|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\mem_ctrl_rd_wbm.vhd":492:4:492:9|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\mem_ctrl_rd_wbm.vhd":530:5:530:17|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\mem_ctrl_rd_wbm.vhd":594:4:594:16|Removed redundant assignment
+Post processing for work.mem_ctrl_rd_wbm.rtl_mem_ctrl_rd_wbm
+@N: CD630 :"H:\Project\SG_Project\VHDL\mem_ctrl_rd_wbs.vhd":37:7:37:21|Synthesizing work.mem_ctrl_rd_wbs.rtl_mem_ctrl_rd_wbs 
+@N: CD231 :"H:\Project\SG_Project\VHDL\mem_ctrl_rd_wbs.vhd":83:17:83:18|Using onehot encoding for type wbs_states (wbs_idle_st="1000000")
+@N: CD364 :"H:\Project\SG_Project\VHDL\mem_ctrl_rd_wbs.vhd":149:7:149:16|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\mem_ctrl_rd_wbs.vhd":152:6:152:15|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\mem_ctrl_rd_wbs.vhd":171:6:171:15|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\mem_ctrl_rd_wbs.vhd":188:7:188:16|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\mem_ctrl_rd_wbs.vhd":196:6:196:15|Removed redundant assignment
+@W: CD604 :"H:\Project\SG_Project\VHDL\mem_ctrl_rd_wbs.vhd":204:4:204:17|OTHERS clause is not synthesized 
+@N: CD364 :"H:\Project\SG_Project\VHDL\mem_ctrl_rd_wbs.vhd":309:5:309:18|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\mem_ctrl_rd_wbs.vhd":314:4:314:17|Removed redundant assignment
+Post processing for work.mem_ctrl_rd_wbs.rtl_mem_ctrl_rd_wbs
+@N: CD630 :"H:\Project\SG_Project\VHDL\altera_16to8_dc_ram.vhd":42:7:42:25|Synthesizing work.altera_16to8_dc_ram.syn 
+@N: CD630 :"H:\Project\SG_Project\VHDL\altera_16to8_dc_ram.vhd":62:11:62:20|Synthesizing altera_mf.altsyncram_work_top_synthesis_top_synthesis_rtl_1.syn_black_box 
+Post processing for altera_mf.altsyncram_work_top_synthesis_top_synthesis_rtl_1.syn_black_box
+Post processing for work.altera_16to8_dc_ram.syn
+Post processing for work.mem_ctrl_rd.rtl_mem_ctrl_rd
+@W: CL169 :"H:\Project\SG_Project\VHDL\mem_ctrl_rd.vhd":382:2:382:3|Pruning Register rd_addr_reg_d2(21 downto 0)  
+@W: CL169 :"H:\Project\SG_Project\VHDL\mem_ctrl_rd.vhd":382:2:382:3|Pruning Register type_reg_d2(7 downto 0)  
+@W: CL169 :"H:\Project\SG_Project\VHDL\mem_ctrl_rd.vhd":382:2:382:3|Pruning Register rd_addr_reg_d1(21 downto 0)  
+@W: CL169 :"H:\Project\SG_Project\VHDL\mem_ctrl_rd.vhd":382:2:382:3|Pruning Register type_reg_d1(7 downto 0)  
+@N: CD630 :"H:\Project\SG_Project\VHDL\mem_mng_arbiter.vhd":30:7:30:21|Synthesizing work.mem_mng_arbiter.rtl_mem_mng_arbiter 
+Post processing for work.mem_mng_arbiter.rtl_mem_mng_arbiter
+@N: CD630 :"H:\Project\SG_Project\VHDL\mem_ctrl_wr.vhd":41:7:41:17|Synthesizing work.mem_ctrl_wr.rtl_mem_ctrl_wr 
+@N: CD630 :"H:\Project\SG_Project\VHDL\mem_ctrl_wr_wbm.vhd":34:7:34:21|Synthesizing work.mem_ctrl_wr_wbm.rtl_mem_ctrl_wr_wbm 
+@N: CD231 :"H:\Project\SG_Project\VHDL\mem_ctrl_wr_wbm.vhd":93:17:93:18|Using onehot encoding for type wbm_states (wbm_idle_st="1000000000")
+@N: CD364 :"H:\Project\SG_Project\VHDL\mem_ctrl_wr_wbm.vhd":217:8:217:18|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\mem_ctrl_wr_wbm.vhd":224:7:224:17|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\mem_ctrl_wr_wbm.vhd":228:6:228:16|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\mem_ctrl_wr_wbm.vhd":233:5:233:18|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\mem_ctrl_wr_wbm.vhd":235:5:235:15|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\mem_ctrl_wr_wbm.vhd":255:6:255:19|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\mem_ctrl_wr_wbm.vhd":256:6:256:18|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\mem_ctrl_wr_wbm.vhd":257:6:257:16|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\mem_ctrl_wr_wbm.vhd":265:6:265:19|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\mem_ctrl_wr_wbm.vhd":266:6:266:18|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\mem_ctrl_wr_wbm.vhd":271:7:271:20|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\mem_ctrl_wr_wbm.vhd":272:7:272:20|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\mem_ctrl_wr_wbm.vhd":275:7:275:22|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\mem_ctrl_wr_wbm.vhd":296:7:296:20|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\mem_ctrl_wr_wbm.vhd":297:7:297:17|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\mem_ctrl_wr_wbm.vhd":298:7:298:20|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\mem_ctrl_wr_wbm.vhd":299:7:299:19|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\mem_ctrl_wr_wbm.vhd":305:5:305:18|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\mem_ctrl_wr_wbm.vhd":306:5:306:15|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\mem_ctrl_wr_wbm.vhd":307:5:307:18|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\mem_ctrl_wr_wbm.vhd":319:6:319:21|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\mem_ctrl_wr_wbm.vhd":347:5:347:15|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\mem_ctrl_wr_wbm.vhd":349:5:349:18|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\mem_ctrl_wr_wbm.vhd":358:5:358:15|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\mem_ctrl_wr_wbm.vhd":359:5:359:18|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\mem_ctrl_wr_wbm.vhd":362:6:362:19|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\mem_ctrl_wr_wbm.vhd":368:6:368:18|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\mem_ctrl_wr_wbm.vhd":371:6:371:18|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\mem_ctrl_wr_wbm.vhd":385:5:385:18|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\mem_ctrl_wr_wbm.vhd":387:5:387:15|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\mem_ctrl_wr_wbm.vhd":395:5:395:18|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\mem_ctrl_wr_wbm.vhd":397:5:397:15|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\mem_ctrl_wr_wbm.vhd":408:5:408:18|Removed redundant assignment
+@W: CD604 :"H:\Project\SG_Project\VHDL\mem_ctrl_wr_wbm.vhd":415:4:415:17|OTHERS clause is not synthesized 
+@N: CD364 :"H:\Project\SG_Project\VHDL\mem_ctrl_wr_wbm.vhd":471:4:471:15|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\mem_ctrl_wr_wbm.vhd":514:5:514:16|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\mem_ctrl_wr_wbm.vhd":518:4:518:15|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\mem_ctrl_wr_wbm.vhd":525:6:525:17|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\mem_ctrl_wr_wbm.vhd":528:5:528:16|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\mem_ctrl_wr_wbm.vhd":536:4:536:15|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\mem_ctrl_wr_wbm.vhd":537:4:537:15|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\mem_ctrl_wr_wbm.vhd":574:4:574:12|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\mem_ctrl_wr_wbm.vhd":597:4:597:9|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\mem_ctrl_wr_wbm.vhd":645:4:645:13|Removed redundant assignment
+Post processing for work.mem_ctrl_wr_wbm.rtl_mem_ctrl_wr_wbm
+@N: CL177 :"H:\Project\SG_Project\VHDL\mem_ctrl_wr_wbm.vhd":459:2:459:3|Sharing sequential element wr_cnt_en.
+@N: CD630 :"H:\Project\SG_Project\VHDL\mem_ctrl_wr_wbs.vhd":25:7:25:21|Synthesizing work.mem_ctrl_wr_wbs.rtl_mem_ctrl_wr_wbs 
+@N: CD231 :"H:\Project\SG_Project\VHDL\mem_ctrl_wr_wbs.vhd":67:17:67:18|Using onehot encoding for type wbs_states (wbs_idle_st="10000")
+@N: CD364 :"H:\Project\SG_Project\VHDL\mem_ctrl_wr_wbs.vhd":131:5:131:18|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\mem_ctrl_wr_wbs.vhd":159:7:159:20|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\mem_ctrl_wr_wbs.vhd":176:6:176:19|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\mem_ctrl_wr_wbs.vhd":181:5:181:18|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\mem_ctrl_wr_wbs.vhd":200:6:200:15|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\mem_ctrl_wr_wbs.vhd":205:5:205:18|Removed redundant assignment
+@W: CD604 :"H:\Project\SG_Project\VHDL\mem_ctrl_wr_wbs.vhd":207:4:207:17|OTHERS clause is not synthesized 
+@N: CD364 :"H:\Project\SG_Project\VHDL\mem_ctrl_wr_wbs.vhd":228:4:228:14|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\mem_ctrl_wr_wbs.vhd":306:4:306:11|Removed redundant assignment
+Post processing for work.mem_ctrl_wr_wbs.rtl_mem_ctrl_wr_wbs
+@N: CD630 :"H:\Project\SG_Project\VHDL\altera_8to16_dc_ram.vhd":42:7:42:25|Synthesizing work.altera_8to16_dc_ram.syn 
+@N: CD630 :"H:\Project\SG_Project\VHDL\altera_8to16_dc_ram.vhd":62:11:62:20|Synthesizing altera_mf.altsyncram_work_top_synthesis_top_synthesis_rtl_3.syn_black_box 
+Post processing for altera_mf.altsyncram_work_top_synthesis_top_synthesis_rtl_3.syn_black_box
+Post processing for work.altera_8to16_dc_ram.syn
+Post processing for work.mem_ctrl_wr.rtl_mem_ctrl_wr
+@W: CL170 :"H:\Project\SG_Project\VHDL\mem_ctrl_wr.vhd":355:2:355:3|Pruning bit <0> of type_reg_wbm_d1(7 downto 0) - not in use ... 
+@W: CL111 :"H:\Project\SG_Project\VHDL\mem_ctrl_wr.vhd":355:2:355:3|All reachable assignments to type_reg_wbm_d2(0) assign '0', register removed by optimization
+Post processing for work.mem_mng_top.rtl_mem_mng_top
+@N: CD630 :"H:\Project\SG_Project\VHDL\intercon_mux.vhd":24:7:24:18|Synthesizing work.intercon_mux.intercon_mux_rtl 
+Post processing for work.intercon_mux.intercon_mux_rtl
+@N: CD630 :"H:\Project\SG_Project\VHDL\intercon.vhd":35:7:35:14|Synthesizing work.intercon.intercon_rtl 
+@N: CD233 :"H:\Project\SG_Project\VHDL\intercon.vhd":98:22:98:23|Using sequential encoding for type intercon_states
+@N: CD364 :"H:\Project\SG_Project\VHDL\intercon.vhd":175:6:175:12|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\intercon.vhd":184:6:184:11|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\intercon.vhd":191:5:191:11|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\intercon.vhd":192:5:192:11|Removed redundant assignment
+@W: CD604 :"H:\Project\SG_Project\VHDL\intercon.vhd":194:4:194:19|OTHERS clause is not synthesized 
+Post processing for work.intercon.intercon_rtl
+@N: CD630 :"H:\Project\SG_Project\VHDL\intercon.vhd":35:7:35:14|Synthesizing work.intercon.intercon_rtl 
+@N: CD233 :"H:\Project\SG_Project\VHDL\intercon.vhd":98:22:98:23|Using sequential encoding for type intercon_states
+@N: CD364 :"H:\Project\SG_Project\VHDL\intercon.vhd":175:6:175:12|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\intercon.vhd":184:6:184:11|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\intercon.vhd":191:5:191:11|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\intercon.vhd":192:5:192:11|Removed redundant assignment
+@W: CD604 :"H:\Project\SG_Project\VHDL\intercon.vhd":194:4:194:19|OTHERS clause is not synthesized 
+Post processing for work.intercon.intercon_rtl
+Post processing for work.mds_top.rtl_mds_top
+@N: CD630 :"H:\Project\SG_Project\VHDL\global_nets_top.vhd":37:7:37:21|Synthesizing work.global_nets_top.rtl_global_nets_top 
+@N: CD630 :"H:\Project\SG_Project\VHDL\reset_blk_top.vhd":38:7:38:19|Synthesizing work.reset_blk_top.rtl_reset_blk_top 
+@N: CD630 :"H:\Project\SG_Project\VHDL\sync_rst_gen.vhd":22:7:22:18|Synthesizing work.sync_rst_gen.rtl_sync_rst_gen 
+Post processing for work.sync_rst_gen.rtl_sync_rst_gen
+@N: CD630 :"H:\Project\SG_Project\VHDL\reset_debouncer.vhd":30:7:30:21|Synthesizing work.reset_debouncer.rtl_reset_debouncer 
+@N: CD364 :"H:\Project\SG_Project\VHDL\reset_debouncer.vhd":87:4:87:11|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\reset_debouncer.vhd":109:4:109:9|Removed redundant assignment
+Post processing for work.reset_debouncer.rtl_reset_debouncer
+Post processing for work.reset_blk_top.rtl_reset_blk_top
+@N: CD630 :"H:\Project\SG_Project\VHDL\clk_blk_top.vhd":32:7:32:17|Synthesizing work.clk_blk_top.rtl_clk_blk_top 
+@N: CD630 :"H:\Project\SG_Project\VHDL\pll.vhd":42:7:42:9|Synthesizing work.pll.syn 
+@N: CD630 :"H:\Project\SG_Project\VHDL\pll.vhd":68:11:68:16|Synthesizing altera_mf.altpll_work_top_synthesis_top_synthesis_rtl_1.syn_black_box 
+Post processing for altera_mf.altpll_work_top_synthesis_top_synthesis_rtl_1.syn_black_box
+Post processing for work.pll.syn
+Post processing for work.clk_blk_top.rtl_clk_blk_top
+Post processing for work.global_nets_top.rtl_global_nets_top
+Post processing for work.top_synthesis.top_synthesis_rtl
+@W: CL138 :"H:\Project\SG_Project\VHDL\intercon.vhd":167:2:167:3|Register 'wbs_gnt' is only assigned 0 or its old value; the register will be removed
+@N: CL201 :"H:\Project\SG_Project\VHDL\mem_ctrl_wr_wbs.vhd":119:2:119:3|Trying to extract state machine for register wbs_cur_st
+Extracted state machine for register wbs_cur_st
+State machine has 5 reachable states with original encodings of:
+   00001
+   00010
+   00100
+   01000
+   10000
+@W: CL247 :"H:\Project\SG_Project\VHDL\mem_ctrl_wr_wbs.vhd":37:2:37:10|Input port bit 0 of wbs_tga_i(9 downto 0) is unused 
+@N: CL201 :"H:\Project\SG_Project\VHDL\mem_ctrl_wr_wbm.vhd":187:2:187:3|Trying to extract state machine for register wbm_cur_st
+Extracted state machine for register wbm_cur_st
+State machine has 10 reachable states with original encodings of:
+   0000000001
+   0000000010
+   0000000100
+   0000001000
+   0000010000
+   0000100000
+   0001000000
+   0010000000
+   0100000000
+   1000000000
+@W: CL246 :"H:\Project\SG_Project\VHDL\mem_ctrl_wr_wbm.vhd":68:2:68:9|Input port bits 7 to 2 of type_reg(7 downto 0) are unused 
+@N: CL135 :"H:\Project\SG_Project\VHDL\mem_ctrl_wr.vhd":355:2:355:3|Found seqShift ram_ready_d3, depth=3, width=1
+@N: CL201 :"H:\Project\SG_Project\VHDL\mem_ctrl_rd_wbs.vhd":136:2:136:3|Trying to extract state machine for register wbs_cur_st
+Extracted state machine for register wbs_cur_st
+State machine has 7 reachable states with original encodings of:
+   0000001
+   0000010
+   0000100
+   0001000
+   0010000
+   0100000
+   1000000
+@W: CL247 :"H:\Project\SG_Project\VHDL\mem_ctrl_rd_wbs.vhd":49:2:49:10|Input port bit 0 of wbs_tga_i(9 downto 0) is unused 
+@N: CL201 :"H:\Project\SG_Project\VHDL\mem_ctrl_rd_wbm.vhd":188:2:188:3|Trying to extract state machine for register wbm_cur_st
+Extracted state machine for register wbm_cur_st
+State machine has 5 reachable states with original encodings of:
+   00001
+   00010
+   00100
+   01000
+   10000
+@W: CL246 :"H:\Project\SG_Project\VHDL\mem_ctrl_rd_wbm.vhd":80:2:80:9|Input port bits 7 to 1 of type_reg(7 downto 0) are unused 
+@N: CL135 :"H:\Project\SG_Project\VHDL\mem_ctrl_rd.vhd":382:2:382:3|Found seqShift init_rd_d3, depth=3, width=1
+@N: CL135 :"H:\Project\SG_Project\VHDL\mem_ctrl_rd.vhd":382:2:382:3|Found seqShift restart_rd_d3, depth=3, width=1
+@N: CL135 :"H:\Project\SG_Project\VHDL\mem_ctrl_rd.vhd":456:2:456:3|Found seqShift ram_ready_d3, depth=3, width=1
+@N: CL135 :"H:\Project\SG_Project\VHDL\pixel_mng.vhd":181:2:181:3|Found seqShift vsync_sig, depth=3, width=1
+@N: CL201 :"H:\Project\SG_Project\VHDL\pixel_mng.vhd":216:2:216:3|Trying to extract state machine for register cur_st
+Extracted state machine for register cur_st
+State machine has 6 reachable states with original encodings of:
+   000001
+   000010
+   000100
+   001000
+   010000
+   100000
+@W: CL159 :"H:\Project\SG_Project\VHDL\pixel_mng.vhd":49:2:49:10|Input wbm_dat_i is unused
+@W: CL159 :"H:\Project\SG_Project\VHDL\pixel_mng.vhd":61:2:61:9|Input term_cyc is unused
+@N: CL201 :"H:\Project\SG_Project\VHDL\SG\SG_WBM_IF.vhd":161:2:161:3|Trying to extract state machine for register cur_st
+Extracted state machine for register cur_st
+State machine has 10 reachable states with original encodings of:
+   00000000001
+   00000000010
+   00000000100
+   00000001000
+   00000010000
+   00000100000
+   00001000000
+   00010000000
+   00100000000
+   01000000000
+@N: CL201 :"H:\Project\SG_Project\VHDL\synthetic_frame_generator.vhd":107:2:107:3|Trying to extract state machine for register frame_state
+Extracted state machine for register frame_state
+State machine has 5 reachable states with original encodings of:
+   000
+   001
+   010
+   011
+   100
+@W: CL260 :"H:\Project\SG_Project\VHDL\synthetic_frame_generator.vhd":107:2:107:3|Pruning Register bit 7 of right_frame(7 downto 4)  
+@W: CL260 :"H:\Project\SG_Project\VHDL\synthetic_frame_generator.vhd":107:2:107:3|Pruning Register bit 6 of right_frame(7 downto 4)  
+@W: CL260 :"H:\Project\SG_Project\VHDL\synthetic_frame_generator.vhd":107:2:107:3|Pruning Register bit 5 of lower_frame(6 downto 2)  
+@W: CL260 :"H:\Project\SG_Project\VHDL\synthetic_frame_generator.vhd":107:2:107:3|Pruning Register bit 4 of lower_frame(6 downto 2)  
+@W: CL159 :"H:\Project\SG_Project\VHDL\wbs_reg.vhd":33:3:33:5|Input rst is unused
+@W: CL159 :"H:\Project\SG_Project\VHDL\wbs_reg.vhd":36:3:36:7|Input clk_i is unused
+@N: CL201 :"H:\Project\SG_Project\VHDL\SG\opcode_unite.vhd":96:2:96:3|Trying to extract state machine for register current_sm
+Extracted state machine for register current_sm
+State machine has 3 reachable states with original encodings of:
+   00
+   01
+   10
+@W: CL159 :"H:\Project\SG_Project\VHDL\SG\opcode_store.vhd":37:4:37:9|Input op_cnt is unused
+@W: CL260 :"H:\Project\SG_Project\VHDL\SG\manager.vhd":447:2:447:3|Pruning Register bit 3 of sdram_addr_rd(21 downto 0)  
+@W: CL260 :"H:\Project\SG_Project\VHDL\SG\manager.vhd":447:2:447:3|Pruning Register bit 2 of sdram_addr_rd(21 downto 0)  
+@W: CL260 :"H:\Project\SG_Project\VHDL\SG\manager.vhd":447:2:447:3|Pruning Register bit 1 of sdram_addr_rd(21 downto 0)  
+@W: CL189 :"H:\Project\SG_Project\VHDL\SG\manager.vhd":447:2:447:3|Register bit sdram_addr_rd(0) is always 0, optimizing ...
+@W: CL169 :"H:\Project\SG_Project\VHDL\SG\manager.vhd":447:2:447:3|Pruning Register sdram_addr_rd(0)  
+@N: CL201 :"H:\Project\SG_Project\VHDL\SG\manager.vhd":235:2:235:3|Trying to extract state machine for register current_sm
+Extracted state machine for register current_sm
+State machine has 5 reachable states with original encodings of:
+   00001
+   00010
+   00100
+   01000
+   10000
+@W: CL260 :"H:\Project\SG_Project\VHDL\disp_ctrl_top.vhd":1307:1:1307:2|Pruning Register bit 6 of right_frame_rg_d1(6 downto 5)  
+@W: CL169 :"H:\Project\SG_Project\VHDL\disp_ctrl_top.vhd":1307:1:1307:2|Pruning Register left_frame_rg_d2(6)  
+@W: CL169 :"H:\Project\SG_Project\VHDL\disp_ctrl_top.vhd":1307:1:1307:2|Pruning Register right_frame_rg_d2(6)  
+@W: CL169 :"H:\Project\SG_Project\VHDL\disp_ctrl_top.vhd":1307:1:1307:2|Pruning Register right_frame_rg_d2(4)  
+@N: CL201 :"H:\Project\SG_Project\VHDL\uart_rx.vhd":119:2:119:3|Trying to extract state machine for register cur_st
+Extracted state machine for register cur_st
+State machine has 4 reachable states with original encodings of:
+   00001
+   00010
+   00100
+   10000
+@W: CL190 :"H:\Project\SG_Project\VHDL\uart_rx.vhd":119:2:119:3|Optimizing register bit parity_err to a constant 0
+@W: CL190 :"H:\Project\SG_Project\VHDL\uart_rx.vhd":119:2:119:3|Optimizing register bit parity_err_i to a constant 0
+@W: CL169 :"H:\Project\SG_Project\VHDL\uart_rx.vhd":119:2:119:3|Pruning Register parity_err  
+@W: CL169 :"H:\Project\SG_Project\VHDL\uart_rx.vhd":119:2:119:3|Pruning Register parity_err_i  
+@N: CL201 :"H:\Project\SG_Project\VHDL\mp_dec.vhd":180:2:180:3|Trying to extract state machine for register cur_st
+Extracted state machine for register cur_st
+State machine has 7 reachable states with original encodings of:
+   0000001
+   0000010
+   0000100
+   0001000
+   0010000
+   0100000
+   1000000
+@W: CL260 :"H:\Project\SG_Project\VHDL\mp_dec.vhd":328:2:328:3|Pruning Register bit 7 of eof_blk(7 downto 6)  
+@N: CL201 :"H:\Project\SG_Project\VHDL\rx_path.vhd":420:2:420:3|Trying to extract state machine for register wbm_cur_st
+Extracted state machine for register wbm_cur_st
+State machine has 6 reachable states with original encodings of:
+   000001
+   000010
+   000100
+   001000
+   010000
+   100000
+@W: CL159 :"H:\Project\SG_Project\VHDL\rx_path.vhd":67:4:67:12|Input wbm_dat_i is unused
+@N: CL201 :"H:\Project\SG_Project\VHDL\uart_tx.vhd":111:2:111:3|Trying to extract state machine for register cur_st
+Extracted state machine for register cur_st
+State machine has 3 reachable states with original encodings of:
+   00
+   01
+   10
+@N: CL201 :"H:\Project\SG_Project\VHDL\mp_enc.vhd":174:2:174:3|Trying to extract state machine for register cur_st
+Extracted state machine for register cur_st
+State machine has 9 reachable states with original encodings of:
+   000000001
+   000000010
+   000000100
+   000001000
+   000010000
+   000100000
+   001000000
+   010000000
+   100000000
+@W: CL260 :"H:\Project\SG_Project\VHDL\mp_enc.vhd":174:2:174:3|Pruning Register bit 7 of eof_blk(7 downto 6)  
+@W: CL260 :"H:\Project\SG_Project\VHDL\mp_enc.vhd":174:2:174:3|Pruning Register bit 6 of sof_blk(6 downto 5)  
+@W: CL159 :"H:\Project\SG_Project\VHDL\gen_reg.vhd":62:3:62:7|Input rd_en is unused
+@W: CL159 :"H:\Project\SG_Project\VHDL\wbs_reg.vhd":33:3:33:5|Input rst is unused
+@W: CL159 :"H:\Project\SG_Project\VHDL\wbs_reg.vhd":36:3:36:7|Input clk_i is unused
+@N: CL201 :"H:\Project\SG_Project\VHDL\tx_path_wbm.vhd":134:2:134:3|Trying to extract state machine for register wbm_cur_st
+Extracted state machine for register wbm_cur_st
+State machine has 3 reachable states with original encodings of:
+   00
+   01
+   10
+@W: CL246 :"H:\Project\SG_Project\VHDL\tx_path.vhd":90:4:90:12|Input port bits 9 to 4 of wbs_adr_i(9 downto 0) are unused 
+@W: CL159 :"H:\Project\SG_Project\VHDL\tx_path.vhd":91:4:91:12|Input wbs_tga_i is unused

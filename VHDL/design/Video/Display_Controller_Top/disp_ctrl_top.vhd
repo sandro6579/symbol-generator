@@ -20,7 +20,7 @@
 --			2.01		15.02.2013	Olga&Yoav				Connecting gen_reg_opcode_unite_inst (=SG register) to Symbol_Generator_Top block
 --			3.00		09.03.2013	Olga&Yoav				Add WBM ports: wbm_dat_o & wbm_we_o
 --			3.01		20.03.2013	Olga&Yoav				Addition of SG version register in address 0x01
---
+--			4.00		30.03.2013	Olga					New debug port out: dbg_version_reg
 ------------------------------------------------------------------------------------------------
 --	Todo:
 --			(1)
@@ -126,7 +126,8 @@ entity disp_ctrl_top is
 				vsync				:	out std_logic;										--VSync Signal
 				
 				--Debug Port
-				dbg_type_reg		:	out std_logic_vector (7 downto 0)				--Type Register Value
+				dbg_type_reg		:	out std_logic_vector (7 downto 0);				--Type Register Value
+				dbg_version_reg		:	out std_logic_vector (7 downto 0)				--Version Register Value
 			);
 end entity disp_ctrl_top;
 
@@ -856,6 +857,7 @@ begin
 	begin
 		if (rst_40 = reset_polarity_g) then
 			mux_flush <= '0';
+			blank_d <= '0';
 		elsif rising_edge (clk_40) then
 			blank_d <= blank_i;
 			if (blank_d='1')and(blank_i='0') then
@@ -1312,6 +1314,7 @@ begin
 	    right_frame_rg_d2   <=	(others => '0');
 	    lower_frame_rg_d2   <=	(others => '0');
 		vesa_mux_d1			<=	'0';
+		vesa_mux_d2			<=	'0';
 	elsif rising_edge(clk_40) then
 		vesa_mux_d1			<=	type_reg_dout (synth_bit_g);
 		left_frame_rg_d1	<=	left_frame_rg	;
@@ -1330,6 +1333,10 @@ end process cdc_proc;
 -------------------------------	Debug Process--------------------------
 dbg_type_reg_proc:
 dbg_type_reg	<=	type_reg_dout;
+
+--30.03.2013
+dbg_version_reg_proc:
+dbg_version_reg <= version_rg (reg_width_c - 1 downto 0);
 
 op_cnt_proc:
 op_cnt <= wbs_tga_i + 1; ------- 15.02.2013
