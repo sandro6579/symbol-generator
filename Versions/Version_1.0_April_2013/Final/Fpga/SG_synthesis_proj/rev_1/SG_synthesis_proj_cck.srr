@@ -1,0 +1,1389 @@
+#Build: Synplify Pro D-2010.03-SP1, Build 079R, May 19 2010
+#install: C:\Synopsys\fpga_D201003SP1
+#OS: Windows_NT
+
+#Hostname: DIGLAB352-1-07
+
+$ Start of Compile
+#Sun Apr 14 22:49:54 2013
+
+Synopsys VHDL Compiler, version comp510rc, Build 073R, built May 14 2010
+@N|Running in 32-bit mode
+Copyright (C) 1994-2010, Synopsys Inc.  All Rights Reserved
+
+@N: CD720 :"C:\Synopsys\fpga_D201003SP1\lib\vhd\std.vhd":123:18:123:21|Setting time resolution to ns
+@N:"H:\Project\SG_Project\VHDL\top_synthesis.vhd":23:7:23:19|Top entity is set to top_synthesis.
+VHDL syntax check successful!
+Options changed - recompiling
+@N: CD231 :"C:\Synopsys\fpga_D201003SP1\lib\vhd\std_logic_textio.vhd":79:15:79:16|Using onehot encoding for type mvl9plus ('U'="1000000000")
+@N: CD630 :"H:\Project\SG_Project\VHDL\top_synthesis.vhd":23:7:23:19|Synthesizing work.top_synthesis.top_synthesis_rtl 
+@W: CD638 :"H:\Project\SG_Project\VHDL\top_synthesis.vhd":213:7:213:28|Signal clk_sdram_out_internal is undriven 
+@W: CD638 :"H:\Project\SG_Project\VHDL\top_synthesis.vhd":214:7:214:23|Signal clk_sdram_out_vec is undriven 
+@N: CD630 :"H:\Project\SG_Project\VHDL\Hexss.vhd":23:7:23:11|Synthesizing work.hexss.arc_hexss 
+Post processing for work.hexss.arc_hexss
+@N: CD630 :"H:\Project\SG_Project\VHDL\mds_top.vhd":31:7:31:13|Synthesizing work.mds_top.rtl_mds_top 
+@N: CD630 :"H:\Project\SG_Project\VHDL\SG\led.vhd":26:7:26:9|Synthesizing work.led.led_rtl 
+Post processing for work.led.led_rtl
+@N: CD630 :"H:\Project\SG_Project\VHDL\tx_path.vhd":25:7:25:13|Synthesizing work.tx_path.arc_tx_path 
+@W: CD326 :"H:\Project\SG_Project\VHDL\tx_path.vhd":624:1:624:10|Port used of entity work.general_fifo is unconnected
+@W: CD326 :"H:\Project\SG_Project\VHDL\tx_path.vhd":624:1:624:10|Port aempty of entity work.general_fifo is unconnected
+@W: CD326 :"H:\Project\SG_Project\VHDL\tx_path.vhd":624:1:624:10|Port afull of entity work.general_fifo is unconnected
+@N: CD630 :"H:\Project\SG_Project\VHDL\tx_path_wbm.vhd":25:7:25:17|Synthesizing work.tx_path_wbm.rtl_tx_path_wbm 
+@N: CD233 :"H:\Project\SG_Project\VHDL\tx_path_wbm.vhd":69:17:69:18|Using sequential encoding for type wbm_states
+@N: CD364 :"H:\Project\SG_Project\VHDL\tx_path_wbm.vhd":170:6:170:16|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\tx_path_wbm.vhd":181:6:181:16|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\tx_path_wbm.vhd":182:6:182:18|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\tx_path_wbm.vhd":194:7:194:17|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\tx_path_wbm.vhd":195:7:195:19|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\tx_path_wbm.vhd":196:7:196:20|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\tx_path_wbm.vhd":202:5:202:15|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\tx_path_wbm.vhd":203:5:203:17|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\tx_path_wbm.vhd":204:5:204:18|Removed redundant assignment
+@W: CD604 :"H:\Project\SG_Project\VHDL\tx_path_wbm.vhd":221:4:221:17|OTHERS clause is not synthesized 
+@N: CD364 :"H:\Project\SG_Project\VHDL\tx_path_wbm.vhd":249:4:249:12|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\tx_path_wbm.vhd":251:4:251:17|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\tx_path_wbm.vhd":263:4:263:12|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\tx_path_wbm.vhd":265:4:265:17|Removed redundant assignment
+Post processing for work.tx_path_wbm.rtl_tx_path_wbm
+@N: CD630 :"H:\Project\SG_Project\VHDL\wbs_reg.vhd":26:7:26:13|Synthesizing work.wbs_reg.rtl_wbs_reg 
+Post processing for work.wbs_reg.rtl_wbs_reg
+@N: CD630 :"H:\Project\SG_Project\VHDL\gen_reg.vhd":34:7:34:13|Synthesizing work.gen_reg.rtl_gen_reg 
+@N: CD364 :"H:\Project\SG_Project\VHDL\gen_reg.vhd":102:5:102:12|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\gen_reg.vhd":106:4:106:11|Removed redundant assignment
+Post processing for work.gen_reg.rtl_gen_reg
+@N: CD630 :"H:\Project\SG_Project\VHDL\gen_reg.vhd":34:7:34:13|Synthesizing work.gen_reg.rtl_gen_reg 
+@N: CD364 :"H:\Project\SG_Project\VHDL\gen_reg.vhd":102:5:102:12|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\gen_reg.vhd":106:4:106:11|Removed redundant assignment
+Post processing for work.gen_reg.rtl_gen_reg
+@N: CD630 :"H:\Project\SG_Project\VHDL\gen_reg.vhd":34:7:34:13|Synthesizing work.gen_reg.rtl_gen_reg 
+@N: CD364 :"H:\Project\SG_Project\VHDL\gen_reg.vhd":102:5:102:12|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\gen_reg.vhd":106:4:106:11|Removed redundant assignment
+Post processing for work.gen_reg.rtl_gen_reg
+@N: CD630 :"H:\Project\SG_Project\VHDL\gen_reg.vhd":34:7:34:13|Synthesizing work.gen_reg.rtl_gen_reg 
+@N: CD364 :"H:\Project\SG_Project\VHDL\gen_reg.vhd":102:5:102:12|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\gen_reg.vhd":106:4:106:11|Removed redundant assignment
+Post processing for work.gen_reg.rtl_gen_reg
+@N: CD630 :"H:\Project\SG_Project\VHDL\gen_reg.vhd":34:7:34:13|Synthesizing work.gen_reg.rtl_gen_reg 
+@N: CD364 :"H:\Project\SG_Project\VHDL\gen_reg.vhd":102:5:102:12|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\gen_reg.vhd":106:4:106:11|Removed redundant assignment
+Post processing for work.gen_reg.rtl_gen_reg
+@N: CD630 :"H:\Project\SG_Project\VHDL\SG\general_fifo.vhd":61:7:61:18|Synthesizing work.general_fifo.arc_general_fifo 
+@N: CD364 :"H:\Project\SG_Project\VHDL\SG\general_fifo.vhd":245:6:245:10|Removed redundant assignment
+Post processing for work.general_fifo.arc_general_fifo
+@N: CL134 :"H:\Project\SG_Project\VHDL\SG\general_fifo.vhd":96:7:96:9|Found RAM mem, depth=9, width=8
+@N: CL177 :"H:\Project\SG_Project\VHDL\SG\general_fifo.vhd":136:2:136:3|Sharing sequential element read_addr_dup.
+@N: CD630 :"H:\Project\SG_Project\VHDL\ram_simple.vhd":45:7:45:16|Synthesizing work.ram_simple.arc_ram_simple 
+Post processing for work.ram_simple.arc_ram_simple
+@N: CL134 :"H:\Project\SG_Project\VHDL\ram_simple.vhd":69:7:69:14|Found RAM ram_data, depth=1024, width=8
+@N: CD630 :"H:\Project\SG_Project\VHDL\checksum_calc.vhd":62:7:62:19|Synthesizing work.checksum_calc.arc_checksum_calc 
+@W: CG296 :"H:\Project\SG_Project\VHDL\checksum_calc.vhd":120:24:120:30|Incomplete sensitivity list - assuming completeness
+@W: CG290 :"H:\Project\SG_Project\VHDL\checksum_calc.vhd":123:15:123:31|Referenced variable checksum_init_val is not in sensitivity list
+Post processing for work.checksum_calc.arc_checksum_calc
+@W: CL170 :"H:\Project\SG_Project\VHDL\checksum_calc.vhd":122:1:122:2|Pruning bit <8> of checksum_i(8 downto 0) - not in use ... 
+@N: CD630 :"H:\Project\SG_Project\VHDL\mp_enc.vhd":44:7:44:12|Synthesizing work.mp_enc.rtl_mp_enc 
+@N: CD231 :"H:\Project\SG_Project\VHDL\mp_enc.vhd":101:23:101:24|Using onehot encoding for type mp_encoder_states (idle_st="100000000")
+@N: CD364 :"H:\Project\SG_Project\VHDL\mp_enc.vhd":327:7:327:12|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\mp_enc.vhd":329:7:329:16|Removed redundant assignment
+@W: CD604 :"H:\Project\SG_Project\VHDL\mp_enc.vhd":377:5:377:18|OTHERS clause is not synthesized 
+@N: CD364 :"H:\Project\SG_Project\VHDL\mp_enc.vhd":384:4:384:9|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\mp_enc.vhd":386:4:386:13|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\mp_enc.vhd":387:4:387:10|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\mp_enc.vhd":450:5:450:11|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\mp_enc.vhd":451:5:451:13|Removed redundant assignment
+Post processing for work.mp_enc.rtl_mp_enc
+@W: CL190 :"H:\Project\SG_Project\VHDL\mp_enc.vhd":174:2:174:3|Optimizing register bit eof_blk(0) to a constant 0
+@W: CL190 :"H:\Project\SG_Project\VHDL\mp_enc.vhd":174:2:174:3|Optimizing register bit eof_blk(1) to a constant 0
+@W: CL190 :"H:\Project\SG_Project\VHDL\mp_enc.vhd":174:2:174:3|Optimizing register bit eof_blk(2) to a constant 0
+@W: CL190 :"H:\Project\SG_Project\VHDL\mp_enc.vhd":174:2:174:3|Optimizing register bit eof_blk(4) to a constant 0
+@W: CL190 :"H:\Project\SG_Project\VHDL\mp_enc.vhd":174:2:174:3|Optimizing register bit eof_blk(5) to a constant 0
+@W: CL190 :"H:\Project\SG_Project\VHDL\mp_enc.vhd":174:2:174:3|Optimizing register bit sof_blk(0) to a constant 0
+@W: CL190 :"H:\Project\SG_Project\VHDL\mp_enc.vhd":174:2:174:3|Optimizing register bit sof_blk(1) to a constant 0
+@W: CL190 :"H:\Project\SG_Project\VHDL\mp_enc.vhd":174:2:174:3|Optimizing register bit sof_blk(3) to a constant 0
+@W: CL190 :"H:\Project\SG_Project\VHDL\mp_enc.vhd":174:2:174:3|Optimizing register bit sof_blk(4) to a constant 0
+@W: CL190 :"H:\Project\SG_Project\VHDL\mp_enc.vhd":174:2:174:3|Optimizing register bit sof_blk(7) to a constant 0
+@W: CL260 :"H:\Project\SG_Project\VHDL\mp_enc.vhd":174:2:174:3|Pruning Register bit 5 of eof_blk(7 downto 0)  
+@W: CL260 :"H:\Project\SG_Project\VHDL\mp_enc.vhd":174:2:174:3|Pruning Register bit 4 of eof_blk(7 downto 0)  
+@W: CL260 :"H:\Project\SG_Project\VHDL\mp_enc.vhd":174:2:174:3|Pruning Register bit 2 of eof_blk(7 downto 0)  
+@W: CL260 :"H:\Project\SG_Project\VHDL\mp_enc.vhd":174:2:174:3|Pruning Register bit 1 of eof_blk(7 downto 0)  
+@W: CL260 :"H:\Project\SG_Project\VHDL\mp_enc.vhd":174:2:174:3|Pruning Register bit 0 of eof_blk(7 downto 0)  
+@W: CL260 :"H:\Project\SG_Project\VHDL\mp_enc.vhd":174:2:174:3|Pruning Register bit 7 of sof_blk(7 downto 0)  
+@W: CL260 :"H:\Project\SG_Project\VHDL\mp_enc.vhd":174:2:174:3|Pruning Register bit 4 of sof_blk(7 downto 0)  
+@W: CL260 :"H:\Project\SG_Project\VHDL\mp_enc.vhd":174:2:174:3|Pruning Register bit 3 of sof_blk(7 downto 0)  
+@W: CL260 :"H:\Project\SG_Project\VHDL\mp_enc.vhd":174:2:174:3|Pruning Register bit 1 of sof_blk(7 downto 0)  
+@W: CL260 :"H:\Project\SG_Project\VHDL\mp_enc.vhd":174:2:174:3|Pruning Register bit 0 of sof_blk(7 downto 0)  
+@N: CD630 :"H:\Project\SG_Project\VHDL\uart_tx.vhd":39:7:39:13|Synthesizing work.uart_tx.arc_uart_tx 
+@N: CD233 :"H:\Project\SG_Project\VHDL\uart_tx.vhd":70:24:70:25|Using sequential encoding for type uart_tx_fsm_states
+@N: CD364 :"H:\Project\SG_Project\VHDL\uart_tx.vhd":157:7:157:13|Removed redundant assignment
+@W: CD604 :"H:\Project\SG_Project\VHDL\uart_tx.vhd":162:5:162:18|OTHERS clause is not synthesized 
+Post processing for work.uart_tx.arc_uart_tx
+Post processing for work.tx_path.arc_tx_path
+@N: CD630 :"H:\Project\SG_Project\VHDL\rx_path.vhd":26:7:26:13|Synthesizing work.rx_path.rtl_rx_path 
+@N: CD231 :"H:\Project\SG_Project\VHDL\rx_path.vhd":82:16:82:17|Using onehot encoding for type wbm_states (wbm_idle_st="100000")
+@W: CD326 :"H:\Project\SG_Project\VHDL\rx_path.vhd":270:1:270:9|Port parity_err of entity work.uart_rx is unconnected
+@N: CD364 :"H:\Project\SG_Project\VHDL\rx_path.vhd":457:5:457:18|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\rx_path.vhd":466:6:466:21|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\rx_path.vhd":472:7:472:18|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\rx_path.vhd":473:7:473:22|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\rx_path.vhd":474:7:474:20|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\rx_path.vhd":481:7:481:18|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\rx_path.vhd":487:6:487:17|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\rx_path.vhd":488:6:488:21|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\rx_path.vhd":490:6:490:15|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\rx_path.vhd":494:5:494:20|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\rx_path.vhd":495:5:495:16|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\rx_path.vhd":496:5:496:18|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\rx_path.vhd":500:6:500:21|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\rx_path.vhd":519:5:519:20|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\rx_path.vhd":526:6:526:20|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\rx_path.vhd":527:6:527:15|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\rx_path.vhd":535:6:535:21|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\rx_path.vhd":548:6:548:21|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\rx_path.vhd":549:6:549:15|Removed redundant assignment
+@W: CD604 :"H:\Project\SG_Project\VHDL\rx_path.vhd":552:4:552:17|OTHERS clause is not synthesized 
+@N: CD364 :"H:\Project\SG_Project\VHDL\rx_path.vhd":578:4:578:15|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\rx_path.vhd":582:5:582:16|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\rx_path.vhd":586:4:586:15|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\rx_path.vhd":587:4:587:15|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\rx_path.vhd":617:4:617:12|Removed redundant assignment
+@N: CD630 :"H:\Project\SG_Project\VHDL\mp_dec.vhd":52:7:52:12|Synthesizing work.mp_dec.rtl_mp_dec 
+@N: CD231 :"H:\Project\SG_Project\VHDL\mp_dec.vhd":108:19:108:20|Using onehot encoding for type mp_dec_states (sof_st="1000000")
+@W: CD604 :"H:\Project\SG_Project\VHDL\mp_dec.vhd":310:5:310:18|OTHERS clause is not synthesized 
+@N: CD364 :"H:\Project\SG_Project\VHDL\mp_dec.vhd":337:5:337:11|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\mp_dec.vhd":340:4:340:10|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\mp_dec.vhd":445:4:445:12|Removed redundant assignment
+@W: CD638 :"H:\Project\SG_Project\VHDL\mp_dec.vhd":152:7:152:12|Signal sof_sr is undriven 
+@W: CD638 :"H:\Project\SG_Project\VHDL\mp_dec.vhd":153:7:153:16|Signal sof_sr_cnt is undriven 
+Post processing for work.mp_dec.rtl_mp_dec
+@W: CL190 :"H:\Project\SG_Project\VHDL\mp_dec.vhd":328:2:328:3|Optimizing register bit eof_blk(0) to a constant 0
+@W: CL190 :"H:\Project\SG_Project\VHDL\mp_dec.vhd":328:2:328:3|Optimizing register bit eof_blk(1) to a constant 0
+@W: CL190 :"H:\Project\SG_Project\VHDL\mp_dec.vhd":328:2:328:3|Optimizing register bit eof_blk(2) to a constant 0
+@W: CL190 :"H:\Project\SG_Project\VHDL\mp_dec.vhd":328:2:328:3|Optimizing register bit eof_blk(4) to a constant 0
+@W: CL190 :"H:\Project\SG_Project\VHDL\mp_dec.vhd":328:2:328:3|Optimizing register bit eof_blk(5) to a constant 0
+@W: CL260 :"H:\Project\SG_Project\VHDL\mp_dec.vhd":328:2:328:3|Pruning Register bit 5 of eof_blk(7 downto 0)  
+@W: CL260 :"H:\Project\SG_Project\VHDL\mp_dec.vhd":328:2:328:3|Pruning Register bit 4 of eof_blk(7 downto 0)  
+@W: CL260 :"H:\Project\SG_Project\VHDL\mp_dec.vhd":328:2:328:3|Pruning Register bit 2 of eof_blk(7 downto 0)  
+@W: CL260 :"H:\Project\SG_Project\VHDL\mp_dec.vhd":328:2:328:3|Pruning Register bit 1 of eof_blk(7 downto 0)  
+@W: CL260 :"H:\Project\SG_Project\VHDL\mp_dec.vhd":328:2:328:3|Pruning Register bit 0 of eof_blk(7 downto 0)  
+@N: CD630 :"H:\Project\SG_Project\VHDL\uart_rx.vhd":46:7:46:13|Synthesizing work.uart_rx.arc_uart_rx 
+@N: CD231 :"H:\Project\SG_Project\VHDL\uart_rx.vhd":74:24:74:25|Using onehot encoding for type uart_rx_fsm_states (idle_st="10000")
+@N: CD364 :"H:\Project\SG_Project\VHDL\uart_rx.vhd":162:8:162:17|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\uart_rx.vhd":231:7:231:16|Removed redundant assignment
+@W: CD604 :"H:\Project\SG_Project\VHDL\uart_rx.vhd":302:4:302:17|OTHERS clause is not synthesized 
+Post processing for work.uart_rx.arc_uart_rx
+@W: CL190 :"H:\Project\SG_Project\VHDL\uart_rx.vhd":119:2:119:3|Optimizing register bit parity_bit to a constant 0
+@W: CL169 :"H:\Project\SG_Project\VHDL\uart_rx.vhd":119:2:119:3|Pruning Register parity_bit  
+Post processing for work.rx_path.rtl_rx_path
+@N: CD630 :"H:\Project\SG_Project\VHDL\sdram_controller.vhd":42:7:42:22|Synthesizing work.sdram_controller.rtl_sdram_controller 
+@N: CD231 :"H:\Project\SG_Project\VHDL\sdram_controller.vhd":127:18:127:19|Using onehot encoding for type main_states (idle_st="1000000000000000")
+@N: CD231 :"H:\Project\SG_Project\VHDL\sdram_controller.vhd":116:18:116:19|Using onehot encoding for type init_states (init_idle_st="10000000")
+@N: CD364 :"H:\Project\SG_Project\VHDL\sdram_controller.vhd":456:4:456:12|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\sdram_controller.vhd":559:3:559:16|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\sdram_controller.vhd":592:4:592:12|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\sdram_controller.vhd":597:4:597:12|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\sdram_controller.vhd":603:4:603:12|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\sdram_controller.vhd":633:4:633:14|Removed redundant assignment
+Post processing for work.sdram_controller.rtl_sdram_controller
+@N: CD630 :"H:\Project\SG_Project\VHDL\disp_ctrl_top.vhd":35:7:35:19|Synthesizing work.disp_ctrl_top.rtl_disp_ctrl_top 
+@W: CD326 :"H:\Project\SG_Project\VHDL\disp_ctrl_top.vhd":974:0:974:11|Port wrfull of entity work.dc_fifo is unconnected
+@W: CD326 :"H:\Project\SG_Project\VHDL\disp_ctrl_top.vhd":996:0:996:11|Port used of entity work.general_fifo is unconnected
+@W: CD326 :"H:\Project\SG_Project\VHDL\disp_ctrl_top.vhd":996:0:996:11|Port aempty of entity work.general_fifo is unconnected
+@W: CD326 :"H:\Project\SG_Project\VHDL\disp_ctrl_top.vhd":996:0:996:11|Port afull of entity work.general_fifo is unconnected
+@W: CD638 :"H:\Project\SG_Project\VHDL\disp_ctrl_top.vhd":157:7:157:23|Signal dc_fifo_wr_en_log is undriven 
+@W: CD638 :"H:\Project\SG_Project\VHDL\disp_ctrl_top.vhd":178:7:178:19|Signal sc_fifo_rd_en is undriven 
+@W: CD638 :"H:\Project\SG_Project\VHDL\disp_ctrl_top.vhd":180:7:180:17|Signal dc_fifo_din is undriven 
+@W: CD638 :"H:\Project\SG_Project\VHDL\disp_ctrl_top.vhd":181:7:181:19|Signal dc_fifo_wr_en is undriven 
+@W: CD638 :"H:\Project\SG_Project\VHDL\disp_ctrl_top.vhd":221:7:221:28|Signal left_frame_reg_din_ack is undriven 
+@W: CD638 :"H:\Project\SG_Project\VHDL\disp_ctrl_top.vhd":223:7:223:31|Signal left_frame_reg_dout_valid is undriven 
+@W: CD638 :"H:\Project\SG_Project\VHDL\disp_ctrl_top.vhd":224:7:224:29|Signal right_frame_reg_din_ack is undriven 
+@W: CD638 :"H:\Project\SG_Project\VHDL\disp_ctrl_top.vhd":226:7:226:32|Signal right_frame_reg_dout_valid is undriven 
+@W: CD638 :"H:\Project\SG_Project\VHDL\disp_ctrl_top.vhd":256:7:256:17|Signal opu_data_in is undriven 
+@W: CD638 :"H:\Project\SG_Project\VHDL\disp_ctrl_top.vhd":257:7:257:23|Signal opu_data_in_valid is undriven 
+@W: CD638 :"H:\Project\SG_Project\VHDL\disp_ctrl_top.vhd":272:7:272:12|Signal zero_s is undriven 
+@W: CD638 :"H:\Project\SG_Project\VHDL\disp_ctrl_top.vhd":273:7:273:13|Signal zeros_s is undriven 
+@N: CD630 :"H:\Project\SG_Project\VHDL\SG\Symbol_Generator_Top.vhd":23:7:23:26|Synthesizing work.symbol_generator_top.rtl_symbol_generator_top 
+@W: CD638 :"H:\Project\SG_Project\VHDL\SG\Symbol_Generator_Top.vhd":208:8:208:22|Signal opu_data_in_cnt is undriven 
+@W: CD638 :"H:\Project\SG_Project\VHDL\SG\Symbol_Generator_Top.vhd":239:8:239:19|Signal fifo_a_flush is undriven 
+@W: CD638 :"H:\Project\SG_Project\VHDL\SG\Symbol_Generator_Top.vhd":240:8:240:19|Signal fifo_b_flush is undriven 
+@N: CD630 :"H:\Project\SG_Project\VHDL\SG\mux2.vhd":30:7:30:10|Synthesizing work.mux2.mux2_rtl 
+Post processing for work.mux2.mux2_rtl
+@N: CD630 :"H:\Project\SG_Project\VHDL\SG\general_fifo.vhd":61:7:61:18|Synthesizing work.general_fifo.arc_general_fifo 
+@N: CD364 :"H:\Project\SG_Project\VHDL\SG\general_fifo.vhd":245:6:245:10|Removed redundant assignment
+Post processing for work.general_fifo.arc_general_fifo
+@N: CL134 :"H:\Project\SG_Project\VHDL\SG\general_fifo.vhd":96:7:96:9|Found RAM mem, depth=640, width=8
+@N: CL177 :"H:\Project\SG_Project\VHDL\SG\general_fifo.vhd":136:2:136:3|Sharing sequential element read_addr_dup.
+@N: CD630 :"H:\Project\SG_Project\VHDL\SG\manager.vhd":45:7:45:13|Synthesizing work.manager.manager_rtl 
+@N: CD231 :"H:\Project\SG_Project\VHDL\SG\manager.vhd":108:14:108:15|Using onehot encoding for type state_t (idle_st="10000")
+@W: CD604 :"H:\Project\SG_Project\VHDL\SG\manager.vhd":331:4:331:17|OTHERS clause is not synthesized 
+Post processing for work.manager.manager_rtl
+@W: CL169 :"H:\Project\SG_Project\VHDL\SG\manager.vhd":164:2:164:3|Pruning Register req_in_trg_dev_active  
+@W: CL169 :"H:\Project\SG_Project\VHDL\SG\manager.vhd":164:2:164:3|Pruning Register req_in_trg_counter(31 downto 0)  
+@W: CL190 :"H:\Project\SG_Project\VHDL\SG\manager.vhd":447:2:447:3|Optimizing register bit sdram_addr_rd(22) to a constant 0
+@W: CL190 :"H:\Project\SG_Project\VHDL\SG\manager.vhd":447:2:447:3|Optimizing register bit sdram_addr_rd(23) to a constant 0
+@W: CL260 :"H:\Project\SG_Project\VHDL\SG\manager.vhd":447:2:447:3|Pruning Register bit 23 of sdram_addr_rd(23 downto 0)  
+@W: CL260 :"H:\Project\SG_Project\VHDL\SG\manager.vhd":447:2:447:3|Pruning Register bit 22 of sdram_addr_rd(23 downto 0)  
+@N: CD630 :"H:\Project\SG_Project\VHDL\SG\RAM_300.vhd":40:7:40:13|Synthesizing work.ram_300.ram_300_rtl 
+Post processing for work.ram_300.ram_300_rtl
+@N: CL134 :"H:\Project\SG_Project\VHDL\SG\RAM_300.vhd":56:9:56:11|Found RAM mem, depth=300, width=13
+@N: CD630 :"H:\Project\SG_Project\VHDL\SG\opcode_store.vhd":33:7:33:18|Synthesizing work.opcode_store.opcode_store_rtl 
+@N: CD630 :"H:\Project\SG_Project\VHDL\SG\general_fifo.vhd":61:7:61:18|Synthesizing work.general_fifo.arc_general_fifo 
+@N: CD364 :"H:\Project\SG_Project\VHDL\SG\general_fifo.vhd":245:6:245:10|Removed redundant assignment
+Post processing for work.general_fifo.arc_general_fifo
+@N: CL134 :"H:\Project\SG_Project\VHDL\SG\general_fifo.vhd":96:7:96:9|Found RAM mem, depth=400, width=24
+@N: CL177 :"H:\Project\SG_Project\VHDL\SG\general_fifo.vhd":136:2:136:3|Sharing sequential element read_addr_dup.
+Post processing for work.opcode_store.opcode_store_rtl
+@W: CL169 :"H:\Project\SG_Project\VHDL\SG\opcode_store.vhd":183:2:183:3|Pruning Register op_cnt_i(9 downto 0)  
+@N: CD630 :"H:\Project\SG_Project\VHDL\SG\opcode_unite.vhd":37:7:37:18|Synthesizing work.opcode_unite.opcode_unite_rtl 
+@N: CD233 :"H:\Project\SG_Project\VHDL\SG\opcode_unite.vhd":64:14:64:15|Using sequential encoding for type state_t
+@W: CD604 :"H:\Project\SG_Project\VHDL\SG\opcode_unite.vhd":151:6:151:19|OTHERS clause is not synthesized 
+Post processing for work.opcode_unite.opcode_unite_rtl
+@W: CL169 :"H:\Project\SG_Project\VHDL\SG\opcode_unite.vhd":96:2:96:3|Pruning Register counter_i(9 downto 0)  
+Post processing for work.symbol_generator_top.rtl_symbol_generator_top
+@N: CD630 :"H:\Project\SG_Project\VHDL\wbs_reg.vhd":26:7:26:13|Synthesizing work.wbs_reg.rtl_wbs_reg 
+Post processing for work.wbs_reg.rtl_wbs_reg
+@N: CD630 :"H:\Project\SG_Project\VHDL\gen_reg.vhd":34:7:34:13|Synthesizing work.gen_reg.rtl_gen_reg 
+@N: CD364 :"H:\Project\SG_Project\VHDL\gen_reg.vhd":102:5:102:12|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\gen_reg.vhd":106:4:106:11|Removed redundant assignment
+Post processing for work.gen_reg.rtl_gen_reg
+@N: CD630 :"H:\Project\SG_Project\VHDL\gen_reg.vhd":34:7:34:13|Synthesizing work.gen_reg.rtl_gen_reg 
+@N: CD364 :"H:\Project\SG_Project\VHDL\gen_reg.vhd":102:5:102:12|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\gen_reg.vhd":106:4:106:11|Removed redundant assignment
+Post processing for work.gen_reg.rtl_gen_reg
+@N: CD630 :"H:\Project\SG_Project\VHDL\gen_reg.vhd":34:7:34:13|Synthesizing work.gen_reg.rtl_gen_reg 
+@N: CD364 :"H:\Project\SG_Project\VHDL\gen_reg.vhd":102:5:102:12|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\gen_reg.vhd":106:4:106:11|Removed redundant assignment
+Post processing for work.gen_reg.rtl_gen_reg
+@N: CD630 :"H:\Project\SG_Project\VHDL\gen_reg.vhd":34:7:34:13|Synthesizing work.gen_reg.rtl_gen_reg 
+@N: CD364 :"H:\Project\SG_Project\VHDL\gen_reg.vhd":102:5:102:12|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\gen_reg.vhd":106:4:106:11|Removed redundant assignment
+Post processing for work.gen_reg.rtl_gen_reg
+@N: CD630 :"H:\Project\SG_Project\VHDL\gen_reg.vhd":34:7:34:13|Synthesizing work.gen_reg.rtl_gen_reg 
+@N: CD364 :"H:\Project\SG_Project\VHDL\gen_reg.vhd":102:5:102:12|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\gen_reg.vhd":106:4:106:11|Removed redundant assignment
+Post processing for work.gen_reg.rtl_gen_reg
+@N: CD630 :"H:\Project\SG_Project\VHDL\synthetic_frame_generator.vhd":25:7:25:31|Synthesizing work.synthetic_frame_generator.rtl_synthetic_frame_generator 
+@N: CD364 :"H:\Project\SG_Project\VHDL\synthetic_frame_generator.vhd":154:4:154:14|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\synthetic_frame_generator.vhd":184:6:184:9|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\synthetic_frame_generator.vhd":185:6:185:9|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\synthetic_frame_generator.vhd":192:5:192:8|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\synthetic_frame_generator.vhd":193:5:193:8|Removed redundant assignment
+Post processing for work.synthetic_frame_generator.rtl_synthetic_frame_generator
+@W: CL190 :"H:\Project\SG_Project\VHDL\synthetic_frame_generator.vhd":107:2:107:3|Optimizing register bit lower_frame(0) to a constant 0
+@W: CL190 :"H:\Project\SG_Project\VHDL\synthetic_frame_generator.vhd":107:2:107:3|Optimizing register bit lower_frame(1) to a constant 0
+@W: CL190 :"H:\Project\SG_Project\VHDL\synthetic_frame_generator.vhd":107:2:107:3|Optimizing register bit lower_frame(7) to a constant 0
+@W: CL190 :"H:\Project\SG_Project\VHDL\synthetic_frame_generator.vhd":107:2:107:3|Optimizing register bit lower_frame(8) to a constant 0
+@W: CL190 :"H:\Project\SG_Project\VHDL\synthetic_frame_generator.vhd":107:2:107:3|Optimizing register bit lower_frame(9) to a constant 0
+@W: CL190 :"H:\Project\SG_Project\VHDL\synthetic_frame_generator.vhd":107:2:107:3|Optimizing register bit right_frame(0) to a constant 0
+@W: CL190 :"H:\Project\SG_Project\VHDL\synthetic_frame_generator.vhd":107:2:107:3|Optimizing register bit right_frame(1) to a constant 0
+@W: CL190 :"H:\Project\SG_Project\VHDL\synthetic_frame_generator.vhd":107:2:107:3|Optimizing register bit right_frame(2) to a constant 0
+@W: CL190 :"H:\Project\SG_Project\VHDL\synthetic_frame_generator.vhd":107:2:107:3|Optimizing register bit right_frame(3) to a constant 0
+@W: CL190 :"H:\Project\SG_Project\VHDL\synthetic_frame_generator.vhd":107:2:107:3|Optimizing register bit right_frame(8) to a constant 0
+@W: CL190 :"H:\Project\SG_Project\VHDL\synthetic_frame_generator.vhd":107:2:107:3|Optimizing register bit right_frame(9) to a constant 0
+@W: CL260 :"H:\Project\SG_Project\VHDL\synthetic_frame_generator.vhd":107:2:107:3|Pruning Register bit 9 of lower_frame(9 downto 0)  
+@W: CL260 :"H:\Project\SG_Project\VHDL\synthetic_frame_generator.vhd":107:2:107:3|Pruning Register bit 8 of lower_frame(9 downto 0)  
+@W: CL260 :"H:\Project\SG_Project\VHDL\synthetic_frame_generator.vhd":107:2:107:3|Pruning Register bit 7 of lower_frame(9 downto 0)  
+@W: CL260 :"H:\Project\SG_Project\VHDL\synthetic_frame_generator.vhd":107:2:107:3|Pruning Register bit 1 of lower_frame(9 downto 0)  
+@W: CL260 :"H:\Project\SG_Project\VHDL\synthetic_frame_generator.vhd":107:2:107:3|Pruning Register bit 0 of lower_frame(9 downto 0)  
+@W: CL260 :"H:\Project\SG_Project\VHDL\synthetic_frame_generator.vhd":107:2:107:3|Pruning Register bit 9 of right_frame(9 downto 0)  
+@W: CL260 :"H:\Project\SG_Project\VHDL\synthetic_frame_generator.vhd":107:2:107:3|Pruning Register bit 8 of right_frame(9 downto 0)  
+@W: CL260 :"H:\Project\SG_Project\VHDL\synthetic_frame_generator.vhd":107:2:107:3|Pruning Register bit 3 of right_frame(9 downto 0)  
+@W: CL260 :"H:\Project\SG_Project\VHDL\synthetic_frame_generator.vhd":107:2:107:3|Pruning Register bit 2 of right_frame(9 downto 0)  
+@W: CL260 :"H:\Project\SG_Project\VHDL\synthetic_frame_generator.vhd":107:2:107:3|Pruning Register bit 1 of right_frame(9 downto 0)  
+@W: CL260 :"H:\Project\SG_Project\VHDL\synthetic_frame_generator.vhd":107:2:107:3|Pruning Register bit 0 of right_frame(9 downto 0)  
+@N: CD630 :"H:\Project\SG_Project\VHDL\vesa_gen_ctrl.vhd":75:7:75:19|Synthesizing work.vesa_gen_ctrl.rtl_vesa_gen_ctrl 
+@N: CD364 :"H:\Project\SG_Project\VHDL\vesa_gen_ctrl.vhd":279:5:279:17|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\vesa_gen_ctrl.vhd":280:5:280:13|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\vesa_gen_ctrl.vhd":281:5:281:16|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\vesa_gen_ctrl.vhd":282:5:282:17|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\vesa_gen_ctrl.vhd":283:5:283:17|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\vesa_gen_ctrl.vhd":284:5:284:17|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\vesa_gen_ctrl.vhd":325:5:325:17|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\vesa_gen_ctrl.vhd":329:4:329:16|Removed redundant assignment
+Post processing for work.vesa_gen_ctrl.rtl_vesa_gen_ctrl
+@N: CD630 :"H:\Project\SG_Project\VHDL\SG\general_fifo.vhd":61:7:61:18|Synthesizing work.general_fifo.arc_general_fifo 
+@N: CD364 :"H:\Project\SG_Project\VHDL\SG\general_fifo.vhd":245:6:245:10|Removed redundant assignment
+Post processing for work.general_fifo.arc_general_fifo
+@N: CL134 :"H:\Project\SG_Project\VHDL\SG\general_fifo.vhd":96:7:96:9|Found RAM mem, depth=4864, width=8
+@N: CL177 :"H:\Project\SG_Project\VHDL\SG\general_fifo.vhd":136:2:136:3|Sharing sequential element read_addr_dup.
+@N: CD630 :"H:\Project\SG_Project\VHDL\dc_fifo.vhd":42:7:42:13|Synthesizing work.dc_fifo.syn 
+@N: CD630 :"H:\Project\SG_Project\VHDL\dc_fifo.vhd":68:11:68:16|Synthesizing altera_mf.dcfifo_work_top_synthesis_top_synthesis_rtl_1.syn_black_box 
+Post processing for altera_mf.dcfifo_work_top_synthesis_top_synthesis_rtl_1.syn_black_box
+Post processing for work.dc_fifo.syn
+@N: CD630 :"H:\Project\SG_Project\VHDL\SG\SG_WBM_IF.vhd":30:7:30:15|Synthesizing work.sg_wbm_if.rtl_sg_wbm_if 
+@N: CD231 :"H:\Project\SG_Project\VHDL\SG\SG_WBM_IF.vhd":74:17:74:18|Using onehot encoding for type wbm_states (wbm_idle_st="10000000000")
+@N: CD364 :"H:\Project\SG_Project\VHDL\SG\SG_WBM_IF.vhd":118:4:118:12|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\SG\SG_WBM_IF.vhd":240:6:240:11|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\SG\SG_WBM_IF.vhd":281:6:281:11|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\SG\SG_WBM_IF.vhd":360:6:360:11|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\SG\SG_WBM_IF.vhd":401:5:401:11|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\SG\SG_WBM_IF.vhd":404:4:404:10|Removed redundant assignment
+Post processing for work.sg_wbm_if.rtl_sg_wbm_if
+@W: CL169 :"H:\Project\SG_Project\VHDL\SG\SG_WBM_IF.vhd":163:2:163:3|Pruning Register dbg_cnt(30 downto 0)  
+@W: CL190 :"H:\Project\SG_Project\VHDL\SG\SG_WBM_IF.vhd":163:2:163:3|Optimizing register bit wbm_tga_o(0) to a constant 0
+@W: CL190 :"H:\Project\SG_Project\VHDL\SG\SG_WBM_IF.vhd":163:2:163:3|Optimizing register bit wbm_tga_o(2) to a constant 0
+@W: CL190 :"H:\Project\SG_Project\VHDL\SG\SG_WBM_IF.vhd":163:2:163:3|Optimizing register bit wbm_tga_o(3) to a constant 0
+@W: CL190 :"H:\Project\SG_Project\VHDL\SG\SG_WBM_IF.vhd":163:2:163:3|Optimizing register bit wbm_tga_o(4) to a constant 0
+@W: CL190 :"H:\Project\SG_Project\VHDL\SG\SG_WBM_IF.vhd":163:2:163:3|Optimizing register bit wbm_tga_o(6) to a constant 0
+@W: CL190 :"H:\Project\SG_Project\VHDL\SG\SG_WBM_IF.vhd":163:2:163:3|Optimizing register bit wbm_tga_o(7) to a constant 0
+@W: CL190 :"H:\Project\SG_Project\VHDL\SG\SG_WBM_IF.vhd":163:2:163:3|Optimizing register bit wbm_tga_o(8) to a constant 0
+@W: CL190 :"H:\Project\SG_Project\VHDL\SG\SG_WBM_IF.vhd":163:2:163:3|Optimizing register bit wbm_tga_o(9) to a constant 0
+@W: CL260 :"H:\Project\SG_Project\VHDL\SG\SG_WBM_IF.vhd":163:2:163:3|Pruning Register bit 9 of wbm_tga_o(9 downto 0)  
+@W: CL260 :"H:\Project\SG_Project\VHDL\SG\SG_WBM_IF.vhd":163:2:163:3|Pruning Register bit 8 of wbm_tga_o(9 downto 0)  
+@W: CL260 :"H:\Project\SG_Project\VHDL\SG\SG_WBM_IF.vhd":163:2:163:3|Pruning Register bit 7 of wbm_tga_o(9 downto 0)  
+@W: CL260 :"H:\Project\SG_Project\VHDL\SG\SG_WBM_IF.vhd":163:2:163:3|Pruning Register bit 6 of wbm_tga_o(9 downto 0)  
+@W: CL260 :"H:\Project\SG_Project\VHDL\SG\SG_WBM_IF.vhd":163:2:163:3|Pruning Register bit 4 of wbm_tga_o(9 downto 0)  
+@W: CL260 :"H:\Project\SG_Project\VHDL\SG\SG_WBM_IF.vhd":163:2:163:3|Pruning Register bit 3 of wbm_tga_o(9 downto 0)  
+@W: CL260 :"H:\Project\SG_Project\VHDL\SG\SG_WBM_IF.vhd":163:2:163:3|Pruning Register bit 2 of wbm_tga_o(9 downto 0)  
+@W: CL260 :"H:\Project\SG_Project\VHDL\SG\SG_WBM_IF.vhd":163:2:163:3|Pruning Register bit 0 of wbm_tga_o(9 downto 0)  
+@N: CD630 :"H:\Project\SG_Project\VHDL\pixel_mng.vhd":30:7:30:15|Synthesizing work.pixel_mng.rtl_pixel_mng 
+@N: CD231 :"H:\Project\SG_Project\VHDL\pixel_mng.vhd":77:17:77:18|Using onehot encoding for type wbm_states (wbm_idle_st="100000")
+@N: CD364 :"H:\Project\SG_Project\VHDL\pixel_mng.vhd":237:6:237:11|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\pixel_mng.vhd":264:7:264:12|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\pixel_mng.vhd":280:6:280:11|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\pixel_mng.vhd":298:6:298:11|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\pixel_mng.vhd":318:6:318:11|Removed redundant assignment
+@W: CD604 :"H:\Project\SG_Project\VHDL\pixel_mng.vhd":321:4:321:17|OTHERS clause is not synthesized 
+@N: CD364 :"H:\Project\SG_Project\VHDL\pixel_mng.vhd":345:5:345:15|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\pixel_mng.vhd":349:4:349:14|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\pixel_mng.vhd":370:4:370:10|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\pixel_mng.vhd":375:5:375:15|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\pixel_mng.vhd":380:4:380:14|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\pixel_mng.vhd":385:5:385:11|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\pixel_mng.vhd":390:4:390:14|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\pixel_mng.vhd":395:5:395:11|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\pixel_mng.vhd":399:4:399:10|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\pixel_mng.vhd":400:4:400:14|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\pixel_mng.vhd":421:5:421:10|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\pixel_mng.vhd":427:4:427:9|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\pixel_mng.vhd":473:4:473:14|Removed redundant assignment
+Post processing for work.pixel_mng.rtl_pixel_mng
+Post processing for work.disp_ctrl_top.rtl_disp_ctrl_top
+@W: CL240 :"H:\Project\SG_Project\VHDL\disp_ctrl_top.vhd":226:7:226:32|right_frame_reg_dout_valid is not assigned a value (floating) - a simulation mismatch is possible 
+@W: CL240 :"H:\Project\SG_Project\VHDL\disp_ctrl_top.vhd":224:7:224:29|right_frame_reg_din_ack is not assigned a value (floating) - a simulation mismatch is possible 
+@W: CL240 :"H:\Project\SG_Project\VHDL\disp_ctrl_top.vhd":223:7:223:31|left_frame_reg_dout_valid is not assigned a value (floating) - a simulation mismatch is possible 
+@W: CL240 :"H:\Project\SG_Project\VHDL\disp_ctrl_top.vhd":221:7:221:28|left_frame_reg_din_ack is not assigned a value (floating) - a simulation mismatch is possible 
+@W: CL168 :"H:\Project\SG_Project\VHDL\disp_ctrl_top.vhd":996:0:996:11|Pruning instance sc_fifo_inst - not in use ... 
+@W: CL111 :"H:\Project\SG_Project\VHDL\disp_ctrl_top.vhd":1307:1:1307:2|All reachable assignments to upper_frame_rg_d1(8) assign '0', register removed by optimization
+@W: CL111 :"H:\Project\SG_Project\VHDL\disp_ctrl_top.vhd":1307:1:1307:2|All reachable assignments to upper_frame_rg_d1(9) assign '0', register removed by optimization
+@W: CL111 :"H:\Project\SG_Project\VHDL\disp_ctrl_top.vhd":1307:1:1307:2|All reachable assignments to right_frame_rg_d1(0) assign '0', register removed by optimization
+@W: CL111 :"H:\Project\SG_Project\VHDL\disp_ctrl_top.vhd":1307:1:1307:2|All reachable assignments to right_frame_rg_d1(1) assign '0', register removed by optimization
+@W: CL111 :"H:\Project\SG_Project\VHDL\disp_ctrl_top.vhd":1307:1:1307:2|All reachable assignments to right_frame_rg_d1(2) assign '0', register removed by optimization
+@W: CL111 :"H:\Project\SG_Project\VHDL\disp_ctrl_top.vhd":1307:1:1307:2|All reachable assignments to right_frame_rg_d1(3) assign '0', register removed by optimization
+@W: CL111 :"H:\Project\SG_Project\VHDL\disp_ctrl_top.vhd":1307:1:1307:2|All reachable assignments to right_frame_rg_d1(5) assign '0', register removed by optimization
+@W: CL111 :"H:\Project\SG_Project\VHDL\disp_ctrl_top.vhd":1307:1:1307:2|All reachable assignments to right_frame_rg_d1(7) assign '0', register removed by optimization
+@W: CL111 :"H:\Project\SG_Project\VHDL\disp_ctrl_top.vhd":1307:1:1307:2|All reachable assignments to right_frame_rg_d1(8) assign '0', register removed by optimization
+@W: CL111 :"H:\Project\SG_Project\VHDL\disp_ctrl_top.vhd":1307:1:1307:2|All reachable assignments to right_frame_rg_d1(9) assign '0', register removed by optimization
+@W: CL111 :"H:\Project\SG_Project\VHDL\disp_ctrl_top.vhd":1307:1:1307:2|All reachable assignments to lower_frame_rg_d1(8) assign '0', register removed by optimization
+@W: CL111 :"H:\Project\SG_Project\VHDL\disp_ctrl_top.vhd":1307:1:1307:2|All reachable assignments to lower_frame_rg_d1(9) assign '0', register removed by optimization
+@W: CL111 :"H:\Project\SG_Project\VHDL\disp_ctrl_top.vhd":1307:1:1307:2|All reachable assignments to left_frame_rg_d1(0) assign '0', register removed by optimization
+@W: CL111 :"H:\Project\SG_Project\VHDL\disp_ctrl_top.vhd":1307:1:1307:2|All reachable assignments to left_frame_rg_d1(1) assign '0', register removed by optimization
+@W: CL111 :"H:\Project\SG_Project\VHDL\disp_ctrl_top.vhd":1307:1:1307:2|All reachable assignments to left_frame_rg_d1(2) assign '0', register removed by optimization
+@W: CL111 :"H:\Project\SG_Project\VHDL\disp_ctrl_top.vhd":1307:1:1307:2|All reachable assignments to left_frame_rg_d1(3) assign '0', register removed by optimization
+@W: CL111 :"H:\Project\SG_Project\VHDL\disp_ctrl_top.vhd":1307:1:1307:2|All reachable assignments to left_frame_rg_d1(5) assign '0', register removed by optimization
+@W: CL111 :"H:\Project\SG_Project\VHDL\disp_ctrl_top.vhd":1307:1:1307:2|All reachable assignments to left_frame_rg_d1(7) assign '0', register removed by optimization
+@W: CL111 :"H:\Project\SG_Project\VHDL\disp_ctrl_top.vhd":1307:1:1307:2|All reachable assignments to left_frame_rg_d1(8) assign '0', register removed by optimization
+@W: CL111 :"H:\Project\SG_Project\VHDL\disp_ctrl_top.vhd":1307:1:1307:2|All reachable assignments to left_frame_rg_d1(9) assign '0', register removed by optimization
+@N: CL177 :"H:\Project\SG_Project\VHDL\disp_ctrl_top.vhd":1307:1:1307:2|Sharing sequential element left_frame_rg_d1.
+@N: CL177 :"H:\Project\SG_Project\VHDL\disp_ctrl_top.vhd":1307:1:1307:2|Sharing sequential element left_frame_rg_d1.
+@W: CL190 :"H:\Project\SG_Project\VHDL\disp_ctrl_top.vhd":1307:1:1307:2|Optimizing register bit left_frame_rg_d2(0) to a constant 0
+@W: CL190 :"H:\Project\SG_Project\VHDL\disp_ctrl_top.vhd":1307:1:1307:2|Optimizing register bit left_frame_rg_d2(1) to a constant 0
+@W: CL190 :"H:\Project\SG_Project\VHDL\disp_ctrl_top.vhd":1307:1:1307:2|Optimizing register bit left_frame_rg_d2(2) to a constant 0
+@W: CL190 :"H:\Project\SG_Project\VHDL\disp_ctrl_top.vhd":1307:1:1307:2|Optimizing register bit left_frame_rg_d2(3) to a constant 0
+@W: CL190 :"H:\Project\SG_Project\VHDL\disp_ctrl_top.vhd":1307:1:1307:2|Optimizing register bit left_frame_rg_d2(5) to a constant 0
+@W: CL190 :"H:\Project\SG_Project\VHDL\disp_ctrl_top.vhd":1307:1:1307:2|Optimizing register bit left_frame_rg_d2(7) to a constant 0
+@W: CL190 :"H:\Project\SG_Project\VHDL\disp_ctrl_top.vhd":1307:1:1307:2|Optimizing register bit left_frame_rg_d2(8) to a constant 0
+@W: CL190 :"H:\Project\SG_Project\VHDL\disp_ctrl_top.vhd":1307:1:1307:2|Optimizing register bit left_frame_rg_d2(9) to a constant 0
+@W: CL190 :"H:\Project\SG_Project\VHDL\disp_ctrl_top.vhd":1307:1:1307:2|Optimizing register bit lower_frame_rg_d2(8) to a constant 0
+@W: CL190 :"H:\Project\SG_Project\VHDL\disp_ctrl_top.vhd":1307:1:1307:2|Optimizing register bit lower_frame_rg_d2(9) to a constant 0
+@W: CL190 :"H:\Project\SG_Project\VHDL\disp_ctrl_top.vhd":1307:1:1307:2|Optimizing register bit right_frame_rg_d2(0) to a constant 0
+@W: CL190 :"H:\Project\SG_Project\VHDL\disp_ctrl_top.vhd":1307:1:1307:2|Optimizing register bit right_frame_rg_d2(1) to a constant 0
+@W: CL190 :"H:\Project\SG_Project\VHDL\disp_ctrl_top.vhd":1307:1:1307:2|Optimizing register bit right_frame_rg_d2(2) to a constant 0
+@W: CL190 :"H:\Project\SG_Project\VHDL\disp_ctrl_top.vhd":1307:1:1307:2|Optimizing register bit right_frame_rg_d2(3) to a constant 0
+@W: CL190 :"H:\Project\SG_Project\VHDL\disp_ctrl_top.vhd":1307:1:1307:2|Optimizing register bit right_frame_rg_d2(5) to a constant 0
+@W: CL190 :"H:\Project\SG_Project\VHDL\disp_ctrl_top.vhd":1307:1:1307:2|Optimizing register bit right_frame_rg_d2(7) to a constant 0
+@W: CL190 :"H:\Project\SG_Project\VHDL\disp_ctrl_top.vhd":1307:1:1307:2|Optimizing register bit right_frame_rg_d2(8) to a constant 0
+@W: CL190 :"H:\Project\SG_Project\VHDL\disp_ctrl_top.vhd":1307:1:1307:2|Optimizing register bit right_frame_rg_d2(9) to a constant 0
+@W: CL190 :"H:\Project\SG_Project\VHDL\disp_ctrl_top.vhd":1307:1:1307:2|Optimizing register bit upper_frame_rg_d2(8) to a constant 0
+@W: CL190 :"H:\Project\SG_Project\VHDL\disp_ctrl_top.vhd":1307:1:1307:2|Optimizing register bit upper_frame_rg_d2(9) to a constant 0
+@W: CL260 :"H:\Project\SG_Project\VHDL\disp_ctrl_top.vhd":1307:1:1307:2|Pruning Register bit 9 of left_frame_rg_d2(9 downto 0)  
+@W: CL260 :"H:\Project\SG_Project\VHDL\disp_ctrl_top.vhd":1307:1:1307:2|Pruning Register bit 8 of left_frame_rg_d2(9 downto 0)  
+@W: CL260 :"H:\Project\SG_Project\VHDL\disp_ctrl_top.vhd":1307:1:1307:2|Pruning Register bit 7 of left_frame_rg_d2(9 downto 0)  
+@W: CL260 :"H:\Project\SG_Project\VHDL\disp_ctrl_top.vhd":1307:1:1307:2|Pruning Register bit 5 of left_frame_rg_d2(9 downto 0)  
+@W: CL260 :"H:\Project\SG_Project\VHDL\disp_ctrl_top.vhd":1307:1:1307:2|Pruning Register bit 3 of left_frame_rg_d2(9 downto 0)  
+@W: CL260 :"H:\Project\SG_Project\VHDL\disp_ctrl_top.vhd":1307:1:1307:2|Pruning Register bit 2 of left_frame_rg_d2(9 downto 0)  
+@W: CL260 :"H:\Project\SG_Project\VHDL\disp_ctrl_top.vhd":1307:1:1307:2|Pruning Register bit 1 of left_frame_rg_d2(9 downto 0)  
+@W: CL260 :"H:\Project\SG_Project\VHDL\disp_ctrl_top.vhd":1307:1:1307:2|Pruning Register bit 0 of left_frame_rg_d2(9 downto 0)  
+@W: CL260 :"H:\Project\SG_Project\VHDL\disp_ctrl_top.vhd":1307:1:1307:2|Pruning Register bit 9 of lower_frame_rg_d2(9 downto 0)  
+@W: CL260 :"H:\Project\SG_Project\VHDL\disp_ctrl_top.vhd":1307:1:1307:2|Pruning Register bit 8 of lower_frame_rg_d2(9 downto 0)  
+@W: CL260 :"H:\Project\SG_Project\VHDL\disp_ctrl_top.vhd":1307:1:1307:2|Pruning Register bit 9 of right_frame_rg_d2(9 downto 0)  
+@W: CL260 :"H:\Project\SG_Project\VHDL\disp_ctrl_top.vhd":1307:1:1307:2|Pruning Register bit 8 of right_frame_rg_d2(9 downto 0)  
+@W: CL260 :"H:\Project\SG_Project\VHDL\disp_ctrl_top.vhd":1307:1:1307:2|Pruning Register bit 7 of right_frame_rg_d2(9 downto 0)  
+@W: CL260 :"H:\Project\SG_Project\VHDL\disp_ctrl_top.vhd":1307:1:1307:2|Pruning Register bit 5 of right_frame_rg_d2(9 downto 0)  
+@W: CL260 :"H:\Project\SG_Project\VHDL\disp_ctrl_top.vhd":1307:1:1307:2|Pruning Register bit 3 of right_frame_rg_d2(9 downto 0)  
+@W: CL260 :"H:\Project\SG_Project\VHDL\disp_ctrl_top.vhd":1307:1:1307:2|Pruning Register bit 2 of right_frame_rg_d2(9 downto 0)  
+@W: CL260 :"H:\Project\SG_Project\VHDL\disp_ctrl_top.vhd":1307:1:1307:2|Pruning Register bit 1 of right_frame_rg_d2(9 downto 0)  
+@W: CL260 :"H:\Project\SG_Project\VHDL\disp_ctrl_top.vhd":1307:1:1307:2|Pruning Register bit 0 of right_frame_rg_d2(9 downto 0)  
+@W: CL260 :"H:\Project\SG_Project\VHDL\disp_ctrl_top.vhd":1307:1:1307:2|Pruning Register bit 9 of upper_frame_rg_d2(9 downto 0)  
+@W: CL260 :"H:\Project\SG_Project\VHDL\disp_ctrl_top.vhd":1307:1:1307:2|Pruning Register bit 8 of upper_frame_rg_d2(9 downto 0)  
+@N: CD630 :"H:\Project\SG_Project\VHDL\mem_mng_top.vhd":29:7:29:17|Synthesizing work.mem_mng_top.rtl_mem_mng_top 
+@N: CD364 :"H:\Project\SG_Project\VHDL\mem_mng_top.vhd":505:4:505:14|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\mem_mng_top.vhd":506:4:506:14|Removed redundant assignment
+@N: CD630 :"H:\Project\SG_Project\VHDL\gen_reg.vhd":34:7:34:13|Synthesizing work.gen_reg.rtl_gen_reg 
+@N: CD364 :"H:\Project\SG_Project\VHDL\gen_reg.vhd":102:5:102:12|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\gen_reg.vhd":106:4:106:11|Removed redundant assignment
+Post processing for work.gen_reg.rtl_gen_reg
+@N: CD630 :"H:\Project\SG_Project\VHDL\gen_reg.vhd":34:7:34:13|Synthesizing work.gen_reg.rtl_gen_reg 
+@N: CD364 :"H:\Project\SG_Project\VHDL\gen_reg.vhd":102:5:102:12|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\gen_reg.vhd":106:4:106:11|Removed redundant assignment
+Post processing for work.gen_reg.rtl_gen_reg
+@N: CD630 :"H:\Project\SG_Project\VHDL\gen_reg.vhd":34:7:34:13|Synthesizing work.gen_reg.rtl_gen_reg 
+@N: CD364 :"H:\Project\SG_Project\VHDL\gen_reg.vhd":102:5:102:12|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\gen_reg.vhd":106:4:106:11|Removed redundant assignment
+Post processing for work.gen_reg.rtl_gen_reg
+@N: CD630 :"H:\Project\SG_Project\VHDL\gen_reg.vhd":34:7:34:13|Synthesizing work.gen_reg.rtl_gen_reg 
+@N: CD364 :"H:\Project\SG_Project\VHDL\gen_reg.vhd":102:5:102:12|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\gen_reg.vhd":106:4:106:11|Removed redundant assignment
+Post processing for work.gen_reg.rtl_gen_reg
+@N: CD630 :"H:\Project\SG_Project\VHDL\mem_ctrl_rd.vhd":36:7:36:17|Synthesizing work.mem_ctrl_rd.rtl_mem_ctrl_rd 
+@N: CD630 :"H:\Project\SG_Project\VHDL\mem_ctrl_rd_wbm.vhd":35:7:35:21|Synthesizing work.mem_ctrl_rd_wbm.rtl_mem_ctrl_rd_wbm 
+@N: CD231 :"H:\Project\SG_Project\VHDL\mem_ctrl_rd_wbm.vhd":97:17:97:18|Using onehot encoding for type wbm_states (wbm_idle_st="10000")
+@N: CD364 :"H:\Project\SG_Project\VHDL\mem_ctrl_rd_wbm.vhd":219:7:219:17|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\mem_ctrl_rd_wbm.vhd":226:6:226:16|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\mem_ctrl_rd_wbm.vhd":231:5:231:18|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\mem_ctrl_rd_wbm.vhd":232:5:232:15|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\mem_ctrl_rd_wbm.vhd":233:5:233:17|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\mem_ctrl_rd_wbm.vhd":266:6:266:18|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\mem_ctrl_rd_wbm.vhd":267:6:267:18|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\mem_ctrl_rd_wbm.vhd":268:6:268:16|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\mem_ctrl_rd_wbm.vhd":279:6:279:18|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\mem_ctrl_rd_wbm.vhd":284:7:284:20|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\mem_ctrl_rd_wbm.vhd":298:8:298:20|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\mem_ctrl_rd_wbm.vhd":308:7:308:19|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\mem_ctrl_rd_wbm.vhd":309:7:309:17|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\mem_ctrl_rd_wbm.vhd":310:7:310:20|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\mem_ctrl_rd_wbm.vhd":311:7:311:19|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\mem_ctrl_rd_wbm.vhd":317:5:317:15|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\mem_ctrl_rd_wbm.vhd":318:5:318:18|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\mem_ctrl_rd_wbm.vhd":323:6:323:18|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\mem_ctrl_rd_wbm.vhd":347:6:347:21|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\mem_ctrl_rd_wbm.vhd":386:5:386:18|Removed redundant assignment
+@W: CD604 :"H:\Project\SG_Project\VHDL\mem_ctrl_rd_wbm.vhd":394:4:394:17|OTHERS clause is not synthesized 
+@N: CD364 :"H:\Project\SG_Project\VHDL\mem_ctrl_rd_wbm.vhd":419:4:419:11|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\mem_ctrl_rd_wbm.vhd":473:4:473:12|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\mem_ctrl_rd_wbm.vhd":492:4:492:9|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\mem_ctrl_rd_wbm.vhd":530:5:530:17|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\mem_ctrl_rd_wbm.vhd":594:4:594:16|Removed redundant assignment
+Post processing for work.mem_ctrl_rd_wbm.rtl_mem_ctrl_rd_wbm
+@N: CD630 :"H:\Project\SG_Project\VHDL\mem_ctrl_rd_wbs.vhd":37:7:37:21|Synthesizing work.mem_ctrl_rd_wbs.rtl_mem_ctrl_rd_wbs 
+@N: CD231 :"H:\Project\SG_Project\VHDL\mem_ctrl_rd_wbs.vhd":83:17:83:18|Using onehot encoding for type wbs_states (wbs_idle_st="1000000")
+@N: CD364 :"H:\Project\SG_Project\VHDL\mem_ctrl_rd_wbs.vhd":149:7:149:16|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\mem_ctrl_rd_wbs.vhd":152:6:152:15|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\mem_ctrl_rd_wbs.vhd":171:6:171:15|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\mem_ctrl_rd_wbs.vhd":188:7:188:16|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\mem_ctrl_rd_wbs.vhd":196:6:196:15|Removed redundant assignment
+@W: CD604 :"H:\Project\SG_Project\VHDL\mem_ctrl_rd_wbs.vhd":204:4:204:17|OTHERS clause is not synthesized 
+@N: CD364 :"H:\Project\SG_Project\VHDL\mem_ctrl_rd_wbs.vhd":309:5:309:18|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\mem_ctrl_rd_wbs.vhd":314:4:314:17|Removed redundant assignment
+Post processing for work.mem_ctrl_rd_wbs.rtl_mem_ctrl_rd_wbs
+@N: CD630 :"H:\Project\SG_Project\VHDL\altera_16to8_dc_ram.vhd":42:7:42:25|Synthesizing work.altera_16to8_dc_ram.syn 
+@N: CD630 :"H:\Project\SG_Project\VHDL\altera_16to8_dc_ram.vhd":62:11:62:20|Synthesizing altera_mf.altsyncram_work_top_synthesis_top_synthesis_rtl_1.syn_black_box 
+Post processing for altera_mf.altsyncram_work_top_synthesis_top_synthesis_rtl_1.syn_black_box
+Post processing for work.altera_16to8_dc_ram.syn
+Post processing for work.mem_ctrl_rd.rtl_mem_ctrl_rd
+@W: CL169 :"H:\Project\SG_Project\VHDL\mem_ctrl_rd.vhd":382:2:382:3|Pruning Register rd_addr_reg_d2(21 downto 0)  
+@W: CL169 :"H:\Project\SG_Project\VHDL\mem_ctrl_rd.vhd":382:2:382:3|Pruning Register type_reg_d2(7 downto 0)  
+@W: CL169 :"H:\Project\SG_Project\VHDL\mem_ctrl_rd.vhd":382:2:382:3|Pruning Register rd_addr_reg_d1(21 downto 0)  
+@W: CL169 :"H:\Project\SG_Project\VHDL\mem_ctrl_rd.vhd":382:2:382:3|Pruning Register type_reg_d1(7 downto 0)  
+@N: CD630 :"H:\Project\SG_Project\VHDL\mem_mng_arbiter.vhd":30:7:30:21|Synthesizing work.mem_mng_arbiter.rtl_mem_mng_arbiter 
+Post processing for work.mem_mng_arbiter.rtl_mem_mng_arbiter
+@N: CD630 :"H:\Project\SG_Project\VHDL\mem_ctrl_wr.vhd":41:7:41:17|Synthesizing work.mem_ctrl_wr.rtl_mem_ctrl_wr 
+@N: CD630 :"H:\Project\SG_Project\VHDL\mem_ctrl_wr_wbm.vhd":34:7:34:21|Synthesizing work.mem_ctrl_wr_wbm.rtl_mem_ctrl_wr_wbm 
+@N: CD231 :"H:\Project\SG_Project\VHDL\mem_ctrl_wr_wbm.vhd":93:17:93:18|Using onehot encoding for type wbm_states (wbm_idle_st="1000000000")
+@N: CD364 :"H:\Project\SG_Project\VHDL\mem_ctrl_wr_wbm.vhd":217:8:217:18|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\mem_ctrl_wr_wbm.vhd":224:7:224:17|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\mem_ctrl_wr_wbm.vhd":228:6:228:16|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\mem_ctrl_wr_wbm.vhd":233:5:233:18|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\mem_ctrl_wr_wbm.vhd":235:5:235:15|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\mem_ctrl_wr_wbm.vhd":255:6:255:19|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\mem_ctrl_wr_wbm.vhd":256:6:256:18|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\mem_ctrl_wr_wbm.vhd":257:6:257:16|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\mem_ctrl_wr_wbm.vhd":265:6:265:19|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\mem_ctrl_wr_wbm.vhd":266:6:266:18|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\mem_ctrl_wr_wbm.vhd":271:7:271:20|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\mem_ctrl_wr_wbm.vhd":272:7:272:20|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\mem_ctrl_wr_wbm.vhd":275:7:275:22|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\mem_ctrl_wr_wbm.vhd":296:7:296:20|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\mem_ctrl_wr_wbm.vhd":297:7:297:17|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\mem_ctrl_wr_wbm.vhd":298:7:298:20|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\mem_ctrl_wr_wbm.vhd":299:7:299:19|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\mem_ctrl_wr_wbm.vhd":305:5:305:18|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\mem_ctrl_wr_wbm.vhd":306:5:306:15|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\mem_ctrl_wr_wbm.vhd":307:5:307:18|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\mem_ctrl_wr_wbm.vhd":319:6:319:21|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\mem_ctrl_wr_wbm.vhd":347:5:347:15|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\mem_ctrl_wr_wbm.vhd":349:5:349:18|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\mem_ctrl_wr_wbm.vhd":358:5:358:15|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\mem_ctrl_wr_wbm.vhd":359:5:359:18|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\mem_ctrl_wr_wbm.vhd":362:6:362:19|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\mem_ctrl_wr_wbm.vhd":368:6:368:18|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\mem_ctrl_wr_wbm.vhd":371:6:371:18|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\mem_ctrl_wr_wbm.vhd":385:5:385:18|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\mem_ctrl_wr_wbm.vhd":387:5:387:15|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\mem_ctrl_wr_wbm.vhd":395:5:395:18|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\mem_ctrl_wr_wbm.vhd":397:5:397:15|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\mem_ctrl_wr_wbm.vhd":408:5:408:18|Removed redundant assignment
+@W: CD604 :"H:\Project\SG_Project\VHDL\mem_ctrl_wr_wbm.vhd":415:4:415:17|OTHERS clause is not synthesized 
+@N: CD364 :"H:\Project\SG_Project\VHDL\mem_ctrl_wr_wbm.vhd":471:4:471:15|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\mem_ctrl_wr_wbm.vhd":514:5:514:16|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\mem_ctrl_wr_wbm.vhd":518:4:518:15|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\mem_ctrl_wr_wbm.vhd":525:6:525:17|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\mem_ctrl_wr_wbm.vhd":528:5:528:16|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\mem_ctrl_wr_wbm.vhd":536:4:536:15|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\mem_ctrl_wr_wbm.vhd":537:4:537:15|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\mem_ctrl_wr_wbm.vhd":574:4:574:12|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\mem_ctrl_wr_wbm.vhd":597:4:597:9|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\mem_ctrl_wr_wbm.vhd":645:4:645:13|Removed redundant assignment
+Post processing for work.mem_ctrl_wr_wbm.rtl_mem_ctrl_wr_wbm
+@N: CL177 :"H:\Project\SG_Project\VHDL\mem_ctrl_wr_wbm.vhd":459:2:459:3|Sharing sequential element wr_cnt_en.
+@N: CD630 :"H:\Project\SG_Project\VHDL\mem_ctrl_wr_wbs.vhd":25:7:25:21|Synthesizing work.mem_ctrl_wr_wbs.rtl_mem_ctrl_wr_wbs 
+@N: CD231 :"H:\Project\SG_Project\VHDL\mem_ctrl_wr_wbs.vhd":67:17:67:18|Using onehot encoding for type wbs_states (wbs_idle_st="10000")
+@N: CD364 :"H:\Project\SG_Project\VHDL\mem_ctrl_wr_wbs.vhd":131:5:131:18|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\mem_ctrl_wr_wbs.vhd":159:7:159:20|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\mem_ctrl_wr_wbs.vhd":176:6:176:19|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\mem_ctrl_wr_wbs.vhd":181:5:181:18|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\mem_ctrl_wr_wbs.vhd":200:6:200:15|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\mem_ctrl_wr_wbs.vhd":205:5:205:18|Removed redundant assignment
+@W: CD604 :"H:\Project\SG_Project\VHDL\mem_ctrl_wr_wbs.vhd":207:4:207:17|OTHERS clause is not synthesized 
+@N: CD364 :"H:\Project\SG_Project\VHDL\mem_ctrl_wr_wbs.vhd":228:4:228:14|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\mem_ctrl_wr_wbs.vhd":306:4:306:11|Removed redundant assignment
+Post processing for work.mem_ctrl_wr_wbs.rtl_mem_ctrl_wr_wbs
+@N: CD630 :"H:\Project\SG_Project\VHDL\altera_8to16_dc_ram.vhd":42:7:42:25|Synthesizing work.altera_8to16_dc_ram.syn 
+@N: CD630 :"H:\Project\SG_Project\VHDL\altera_8to16_dc_ram.vhd":62:11:62:20|Synthesizing altera_mf.altsyncram_work_top_synthesis_top_synthesis_rtl_3.syn_black_box 
+Post processing for altera_mf.altsyncram_work_top_synthesis_top_synthesis_rtl_3.syn_black_box
+Post processing for work.altera_8to16_dc_ram.syn
+Post processing for work.mem_ctrl_wr.rtl_mem_ctrl_wr
+@W: CL170 :"H:\Project\SG_Project\VHDL\mem_ctrl_wr.vhd":355:2:355:3|Pruning bit <0> of type_reg_wbm_d1(7 downto 0) - not in use ... 
+@W: CL111 :"H:\Project\SG_Project\VHDL\mem_ctrl_wr.vhd":355:2:355:3|All reachable assignments to type_reg_wbm_d2(0) assign '0', register removed by optimization
+Post processing for work.mem_mng_top.rtl_mem_mng_top
+@N: CD630 :"H:\Project\SG_Project\VHDL\intercon_mux.vhd":24:7:24:18|Synthesizing work.intercon_mux.intercon_mux_rtl 
+Post processing for work.intercon_mux.intercon_mux_rtl
+@N: CD630 :"H:\Project\SG_Project\VHDL\intercon.vhd":35:7:35:14|Synthesizing work.intercon.intercon_rtl 
+@N: CD233 :"H:\Project\SG_Project\VHDL\intercon.vhd":98:22:98:23|Using sequential encoding for type intercon_states
+@N: CD364 :"H:\Project\SG_Project\VHDL\intercon.vhd":175:6:175:12|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\intercon.vhd":184:6:184:11|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\intercon.vhd":191:5:191:11|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\intercon.vhd":192:5:192:11|Removed redundant assignment
+@W: CD604 :"H:\Project\SG_Project\VHDL\intercon.vhd":194:4:194:19|OTHERS clause is not synthesized 
+Post processing for work.intercon.intercon_rtl
+@N: CD630 :"H:\Project\SG_Project\VHDL\intercon.vhd":35:7:35:14|Synthesizing work.intercon.intercon_rtl 
+@N: CD233 :"H:\Project\SG_Project\VHDL\intercon.vhd":98:22:98:23|Using sequential encoding for type intercon_states
+@N: CD364 :"H:\Project\SG_Project\VHDL\intercon.vhd":175:6:175:12|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\intercon.vhd":184:6:184:11|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\intercon.vhd":191:5:191:11|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\intercon.vhd":192:5:192:11|Removed redundant assignment
+@W: CD604 :"H:\Project\SG_Project\VHDL\intercon.vhd":194:4:194:19|OTHERS clause is not synthesized 
+Post processing for work.intercon.intercon_rtl
+Post processing for work.mds_top.rtl_mds_top
+@N: CD630 :"H:\Project\SG_Project\VHDL\global_nets_top.vhd":37:7:37:21|Synthesizing work.global_nets_top.rtl_global_nets_top 
+@N: CD630 :"H:\Project\SG_Project\VHDL\reset_blk_top.vhd":38:7:38:19|Synthesizing work.reset_blk_top.rtl_reset_blk_top 
+@N: CD630 :"H:\Project\SG_Project\VHDL\sync_rst_gen.vhd":22:7:22:18|Synthesizing work.sync_rst_gen.rtl_sync_rst_gen 
+Post processing for work.sync_rst_gen.rtl_sync_rst_gen
+@N: CD630 :"H:\Project\SG_Project\VHDL\reset_debouncer.vhd":30:7:30:21|Synthesizing work.reset_debouncer.rtl_reset_debouncer 
+@N: CD364 :"H:\Project\SG_Project\VHDL\reset_debouncer.vhd":87:4:87:11|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\reset_debouncer.vhd":109:4:109:9|Removed redundant assignment
+Post processing for work.reset_debouncer.rtl_reset_debouncer
+Post processing for work.reset_blk_top.rtl_reset_blk_top
+@N: CD630 :"H:\Project\SG_Project\VHDL\clk_blk_top.vhd":32:7:32:17|Synthesizing work.clk_blk_top.rtl_clk_blk_top 
+@N: CD630 :"H:\Project\SG_Project\VHDL\pll_new_2.vhd":42:7:42:15|Synthesizing work.pll_new_2.syn 
+@N: CD630 :"H:\Project\SG_Project\VHDL\pll_new_2.vhd":66:11:66:16|Synthesizing altera_mf.altpll_work_top_synthesis_top_synthesis_rtl_1.syn_black_box 
+Post processing for altera_mf.altpll_work_top_synthesis_top_synthesis_rtl_1.syn_black_box
+Post processing for work.pll_new_2.syn
+@N: CD630 :"H:\Project\SG_Project\VHDL\pll_new_1.vhd":42:7:42:15|Synthesizing work.pll_new_1.syn 
+@N: CD630 :"H:\Project\SG_Project\VHDL\pll_new_1.vhd":66:11:66:16|Synthesizing altera_mf.altpll_work_top_synthesis_top_synthesis_rtl_3.syn_black_box 
+Post processing for altera_mf.altpll_work_top_synthesis_top_synthesis_rtl_3.syn_black_box
+Post processing for work.pll_new_1.syn
+Post processing for work.clk_blk_top.rtl_clk_blk_top
+Post processing for work.global_nets_top.rtl_global_nets_top
+Post processing for work.top_synthesis.top_synthesis_rtl
+@W: CL138 :"H:\Project\SG_Project\VHDL\intercon.vhd":167:2:167:3|Register 'wbs_gnt' is only assigned 0 or its old value; the register will be removed
+@N: CL201 :"H:\Project\SG_Project\VHDL\mem_ctrl_wr_wbs.vhd":119:2:119:3|Trying to extract state machine for register wbs_cur_st
+Extracted state machine for register wbs_cur_st
+State machine has 5 reachable states with original encodings of:
+   00001
+   00010
+   00100
+   01000
+   10000
+@W: CL247 :"H:\Project\SG_Project\VHDL\mem_ctrl_wr_wbs.vhd":37:2:37:10|Input port bit 0 of wbs_tga_i(9 downto 0) is unused 
+@N: CL201 :"H:\Project\SG_Project\VHDL\mem_ctrl_wr_wbm.vhd":187:2:187:3|Trying to extract state machine for register wbm_cur_st
+Extracted state machine for register wbm_cur_st
+State machine has 10 reachable states with original encodings of:
+   0000000001
+   0000000010
+   0000000100
+   0000001000
+   0000010000
+   0000100000
+   0001000000
+   0010000000
+   0100000000
+   1000000000
+@W: CL246 :"H:\Project\SG_Project\VHDL\mem_ctrl_wr_wbm.vhd":68:2:68:9|Input port bits 7 to 2 of type_reg(7 downto 0) are unused 
+@N: CL135 :"H:\Project\SG_Project\VHDL\mem_ctrl_wr.vhd":355:2:355:3|Found seqShift ram_ready_d3, depth=3, width=1
+@N: CL201 :"H:\Project\SG_Project\VHDL\mem_ctrl_rd_wbs.vhd":136:2:136:3|Trying to extract state machine for register wbs_cur_st
+Extracted state machine for register wbs_cur_st
+State machine has 7 reachable states with original encodings of:
+   0000001
+   0000010
+   0000100
+   0001000
+   0010000
+   0100000
+   1000000
+@W: CL247 :"H:\Project\SG_Project\VHDL\mem_ctrl_rd_wbs.vhd":49:2:49:10|Input port bit 0 of wbs_tga_i(9 downto 0) is unused 
+@N: CL201 :"H:\Project\SG_Project\VHDL\mem_ctrl_rd_wbm.vhd":188:2:188:3|Trying to extract state machine for register wbm_cur_st
+Extracted state machine for register wbm_cur_st
+State machine has 5 reachable states with original encodings of:
+   00001
+   00010
+   00100
+   01000
+   10000
+@W: CL246 :"H:\Project\SG_Project\VHDL\mem_ctrl_rd_wbm.vhd":80:2:80:9|Input port bits 7 to 1 of type_reg(7 downto 0) are unused 
+@N: CL135 :"H:\Project\SG_Project\VHDL\mem_ctrl_rd.vhd":382:2:382:3|Found seqShift init_rd_d3, depth=3, width=1
+@N: CL135 :"H:\Project\SG_Project\VHDL\mem_ctrl_rd.vhd":382:2:382:3|Found seqShift restart_rd_d3, depth=3, width=1
+@N: CL135 :"H:\Project\SG_Project\VHDL\mem_ctrl_rd.vhd":456:2:456:3|Found seqShift ram_ready_d3, depth=3, width=1
+@N: CL135 :"H:\Project\SG_Project\VHDL\pixel_mng.vhd":181:2:181:3|Found seqShift vsync_sig, depth=3, width=1
+@N: CL201 :"H:\Project\SG_Project\VHDL\pixel_mng.vhd":216:2:216:3|Trying to extract state machine for register cur_st
+Extracted state machine for register cur_st
+State machine has 6 reachable states with original encodings of:
+   000001
+   000010
+   000100
+   001000
+   010000
+   100000
+@W: CL159 :"H:\Project\SG_Project\VHDL\pixel_mng.vhd":49:2:49:10|Input wbm_dat_i is unused
+@W: CL159 :"H:\Project\SG_Project\VHDL\pixel_mng.vhd":61:2:61:9|Input term_cyc is unused
+@N: CL201 :"H:\Project\SG_Project\VHDL\SG\SG_WBM_IF.vhd":163:2:163:3|Trying to extract state machine for register cur_st
+Extracted state machine for register cur_st
+State machine has 10 reachable states with original encodings of:
+   00000000001
+   00000000010
+   00000000100
+   00000001000
+   00000010000
+   00000100000
+   00001000000
+   00010000000
+   00100000000
+   01000000000
+@N: CL201 :"H:\Project\SG_Project\VHDL\synthetic_frame_generator.vhd":107:2:107:3|Trying to extract state machine for register frame_state
+Extracted state machine for register frame_state
+State machine has 5 reachable states with original encodings of:
+   000
+   001
+   010
+   011
+   100
+@W: CL260 :"H:\Project\SG_Project\VHDL\synthetic_frame_generator.vhd":107:2:107:3|Pruning Register bit 7 of right_frame(7 downto 4)  
+@W: CL260 :"H:\Project\SG_Project\VHDL\synthetic_frame_generator.vhd":107:2:107:3|Pruning Register bit 6 of right_frame(7 downto 4)  
+@W: CL260 :"H:\Project\SG_Project\VHDL\synthetic_frame_generator.vhd":107:2:107:3|Pruning Register bit 5 of lower_frame(6 downto 2)  
+@W: CL260 :"H:\Project\SG_Project\VHDL\synthetic_frame_generator.vhd":107:2:107:3|Pruning Register bit 4 of lower_frame(6 downto 2)  
+@W: CL159 :"H:\Project\SG_Project\VHDL\wbs_reg.vhd":33:3:33:5|Input rst is unused
+@W: CL159 :"H:\Project\SG_Project\VHDL\wbs_reg.vhd":36:3:36:7|Input clk_i is unused
+@N: CL201 :"H:\Project\SG_Project\VHDL\SG\opcode_unite.vhd":96:2:96:3|Trying to extract state machine for register current_sm
+Extracted state machine for register current_sm
+State machine has 3 reachable states with original encodings of:
+   00
+   01
+   10
+@W: CL159 :"H:\Project\SG_Project\VHDL\SG\opcode_store.vhd":37:4:37:9|Input op_cnt is unused
+@W: CL260 :"H:\Project\SG_Project\VHDL\SG\manager.vhd":447:2:447:3|Pruning Register bit 3 of sdram_addr_rd(21 downto 0)  
+@W: CL260 :"H:\Project\SG_Project\VHDL\SG\manager.vhd":447:2:447:3|Pruning Register bit 2 of sdram_addr_rd(21 downto 0)  
+@W: CL260 :"H:\Project\SG_Project\VHDL\SG\manager.vhd":447:2:447:3|Pruning Register bit 1 of sdram_addr_rd(21 downto 0)  
+@W: CL189 :"H:\Project\SG_Project\VHDL\SG\manager.vhd":447:2:447:3|Register bit sdram_addr_rd(0) is always 0, optimizing ...
+@W: CL169 :"H:\Project\SG_Project\VHDL\SG\manager.vhd":447:2:447:3|Pruning Register sdram_addr_rd(0)  
+@N: CL201 :"H:\Project\SG_Project\VHDL\SG\manager.vhd":235:2:235:3|Trying to extract state machine for register current_sm
+Extracted state machine for register current_sm
+State machine has 5 reachable states with original encodings of:
+   00001
+   00010
+   00100
+   01000
+   10000
+@W: CL260 :"H:\Project\SG_Project\VHDL\disp_ctrl_top.vhd":1307:1:1307:2|Pruning Register bit 6 of right_frame_rg_d1(6 downto 5)  
+@W: CL169 :"H:\Project\SG_Project\VHDL\disp_ctrl_top.vhd":1307:1:1307:2|Pruning Register left_frame_rg_d2(6)  
+@W: CL169 :"H:\Project\SG_Project\VHDL\disp_ctrl_top.vhd":1307:1:1307:2|Pruning Register right_frame_rg_d2(6)  
+@W: CL169 :"H:\Project\SG_Project\VHDL\disp_ctrl_top.vhd":1307:1:1307:2|Pruning Register right_frame_rg_d2(4)  
+@N: CL201 :"H:\Project\SG_Project\VHDL\uart_rx.vhd":119:2:119:3|Trying to extract state machine for register cur_st
+Extracted state machine for register cur_st
+State machine has 4 reachable states with original encodings of:
+   00001
+   00010
+   00100
+   10000
+@W: CL190 :"H:\Project\SG_Project\VHDL\uart_rx.vhd":119:2:119:3|Optimizing register bit parity_err to a constant 0
+@W: CL190 :"H:\Project\SG_Project\VHDL\uart_rx.vhd":119:2:119:3|Optimizing register bit parity_err_i to a constant 0
+@W: CL169 :"H:\Project\SG_Project\VHDL\uart_rx.vhd":119:2:119:3|Pruning Register parity_err  
+@W: CL169 :"H:\Project\SG_Project\VHDL\uart_rx.vhd":119:2:119:3|Pruning Register parity_err_i  
+@N: CL201 :"H:\Project\SG_Project\VHDL\mp_dec.vhd":180:2:180:3|Trying to extract state machine for register cur_st
+Extracted state machine for register cur_st
+State machine has 7 reachable states with original encodings of:
+   0000001
+   0000010
+   0000100
+   0001000
+   0010000
+   0100000
+   1000000
+@W: CL260 :"H:\Project\SG_Project\VHDL\mp_dec.vhd":328:2:328:3|Pruning Register bit 7 of eof_blk(7 downto 6)  
+@N: CL201 :"H:\Project\SG_Project\VHDL\rx_path.vhd":420:2:420:3|Trying to extract state machine for register wbm_cur_st
+Extracted state machine for register wbm_cur_st
+State machine has 6 reachable states with original encodings of:
+   000001
+   000010
+   000100
+   001000
+   010000
+   100000
+@W: CL159 :"H:\Project\SG_Project\VHDL\rx_path.vhd":67:4:67:12|Input wbm_dat_i is unused
+@N: CL201 :"H:\Project\SG_Project\VHDL\uart_tx.vhd":111:2:111:3|Trying to extract state machine for register cur_st
+Extracted state machine for register cur_st
+State machine has 3 reachable states with original encodings of:
+   00
+   01
+   10
+@N: CL201 :"H:\Project\SG_Project\VHDL\mp_enc.vhd":174:2:174:3|Trying to extract state machine for register cur_st
+Extracted state machine for register cur_st
+State machine has 9 reachable states with original encodings of:
+   000000001
+   000000010
+   000000100
+   000001000
+   000010000
+   000100000
+   001000000
+   010000000
+   100000000
+@W: CL260 :"H:\Project\SG_Project\VHDL\mp_enc.vhd":174:2:174:3|Pruning Register bit 7 of eof_blk(7 downto 6)  
+@W: CL260 :"H:\Project\SG_Project\VHDL\mp_enc.vhd":174:2:174:3|Pruning Register bit 6 of sof_blk(6 downto 5)  
+@W: CL159 :"H:\Project\SG_Project\VHDL\gen_reg.vhd":62:3:62:7|Input rd_en is unused
+@W: CL159 :"H:\Project\SG_Project\VHDL\wbs_reg.vhd":33:3:33:5|Input rst is unused
+@W: CL159 :"H:\Project\SG_Project\VHDL\wbs_reg.vhd":36:3:36:7|Input clk_i is unused
+@N: CL201 :"H:\Project\SG_Project\VHDL\tx_path_wbm.vhd":134:2:134:3|Trying to extract state machine for register wbm_cur_st
+Extracted state machine for register wbm_cur_st
+State machine has 3 reachable states with original encodings of:
+   00
+   01
+   10
+@W: CL246 :"H:\Project\SG_Project\VHDL\tx_path.vhd":90:4:90:12|Input port bits 9 to 4 of wbs_adr_i(9 downto 0) are unused 
+@W: CL159 :"H:\Project\SG_Project\VHDL\tx_path.vhd":91:4:91:12|Input wbs_tga_i is unused
+@END
+Process took 0h:00m:08s realtime, 0h:00m:04s cputime
+# Sun Apr 14 22:50:03 2013
+
+###########################################################]
+Synopsys Altera Technology Mapper, Version map520rc, Build 069R, Built May 14 2010 21:31:02
+Copyright (C) 1994-2010, Synopsys Inc.  All Rights Reserved
+Product Version D-2010.03-SP1
+Reading constraint file: H:\Project\SG_synthesis_proj\SG.sdc
+@N: MF249 |Running in 64-bit mode.
+@N: MF257 |Gated clock conversion enabled 
+@N|Running in logic synthesis mode without enhanced optimization
+@W: BN132 :"h:\project\sg_project\vhdl\sg\sg_wbm_if.vhd":163:2:163:3|Removing sequential instance wbm_tgc_o,  because it is equivalent to instance we_internal
+@W: BN132 :"h:\project\sg_project\vhdl\sdram_controller.vhd":642:1:642:2|Removing sequential instance dram_ldqm,  because it is equivalent to instance dram_udqm
+@W: BN132 :"h:\project\sg_project\vhdl\mp_dec.vhd":328:2:328:3|Removing sequential instance eof_blk[3],  because it is equivalent to instance eof_blk[6]
+@W: BN132 :"h:\project\sg_project\vhdl\mp_enc.vhd":174:2:174:3|Removing sequential instance sof_blk[5],  because it is equivalent to instance eof_blk[6]
+@W: BN132 :"h:\project\sg_project\vhdl\mp_enc.vhd":174:2:174:3|Removing sequential instance eof_blk[3],  because it is equivalent to instance eof_blk[6]
+@W: BN132 :"h:\project\sg_project\vhdl\mp_enc.vhd":174:2:174:3|Removing sequential instance sof_blk[2],  because it is equivalent to instance eof_blk[6]
+Finished Timing Extraction Phase. (Time elapsed 0h:00m:00s; Memory used current: 111MB peak: 113MB)
+
+
+Automatic dissolve during optimization of view:work.clk_blk_top(rtl_clk_blk_top) of pll_new_2_inst(pll_new_2)
+Automatic dissolve during optimization of view:work.clk_blk_top(rtl_clk_blk_top) of pll_new_1_inst(pll_new_1)
+Automatic dissolve during optimization of view:work.mem_ctrl_wr(rtl_mem_ctrl_wr) of ram1_inst(altera_8to16_dc_ram)
+Automatic dissolve during optimization of view:work.mem_ctrl_rd(rtl_mem_ctrl_rd) of ram1_inst(altera_16to8_dc_ram)
+Automatic dissolve during optimization of view:work.disp_ctrl_top(rtl_disp_ctrl_top) of dc_fifo_inst(dc_fifo)
+Automatic dissolve during optimization of view:work.top_synthesis(top_synthesis_rtl) of msb_version_hexss_inst(hexss)
+Automatic dissolve during optimization of view:work.top_synthesis(top_synthesis_rtl) of lsb_version_hexss_inst(hexss)
+Automatic dissolve during optimization of view:work.top_synthesis(top_synthesis_rtl) of msb_tx_hexss_inst(hexss)
+Automatic dissolve during optimization of view:work.top_synthesis(top_synthesis_rtl) of lsb_tx_hexss_inst(hexss)
+Automatic dissolve during optimization of view:work.top_synthesis(top_synthesis_rtl) of msb_disp_hexss_inst(hexss)
+Automatic dissolve during optimization of view:work.top_synthesis(top_synthesis_rtl) of lsb_disp_hexss_inst(hexss)
+Automatic dissolve during optimization of view:work.top_synthesis(top_synthesis_rtl) of msb_mem_hexss_inst(hexss)
+Automatic dissolve during optimization of view:work.top_synthesis(top_synthesis_rtl) of lsb_mem_hexss_inst(hexss)
+Automatic dissolve at startup in view:work.reset_blk_top(rtl_reset_blk_top) of sync_rst_vesa_inst(sync_rst_gen)
+Automatic dissolve at startup in view:work.reset_blk_top(rtl_reset_blk_top) of sync_rst_sys_inst(sync_rst_gen)
+Automatic dissolve at startup in view:work.reset_blk_top(rtl_reset_blk_top) of sync_rst_sdram_inst(sync_rst_gen)
+Automatic dissolve at startup in view:work.global_nets_top(rtl_global_nets_top) of clk_blk_inst(clk_blk_top)
+Automatic dissolve at startup in view:work.mem_mng_top(rtl_mem_mng_top) of wbs_reg_inst(wbs_regZ1)
+Automatic dissolve at startup in view:work.mem_mng_top(rtl_mem_mng_top) of dbg_reg_generate\.0\.gen_reg_dbg_inst(gen_regZ0)
+Automatic dissolve at startup in view:work.mem_mng_top(rtl_mem_mng_top) of dbg_reg_generate\.1\.gen_reg_dbg_inst(gen_regZ1)
+Automatic dissolve at startup in view:work.mem_mng_top(rtl_mem_mng_top) of dbg_reg_generate\.2\.gen_reg_dbg_inst(gen_regZ2)
+Automatic dissolve at startup in view:work.mem_mng_top(rtl_mem_mng_top) of gen_reg_type_inst(gen_regZ3)
+Automatic dissolve at startup in view:work.mem_mng_top(rtl_mem_mng_top) of arbiter_inst(mem_mng_arbiter)
+Automatic dissolve at startup in view:work.opcode_store(opcode_store_rtl) of general_fifo_inst(general_fifoZ0)
+@N: BN116 :"h:\project\sg_project\vhdl\sg\general_fifo.vhd":116:2:116:3|Removing sequential instance general_fifo_inst.dout_valid of view:PrimLib.dffr(prim) because there are no references to its outputs 
+Automatic dissolve at startup in view:work.Symbol_Generator_Top(rtl_symbol_generator_top) of mux2_inst(mux2)
+Automatic dissolve at startup in view:work.Symbol_Generator_Top(rtl_symbol_generator_top) of RAM_300_inst(RAM_300)
+Automatic dissolve at startup in view:work.disp_ctrl_top(rtl_disp_ctrl_top) of gen_reg_version_inst(gen_regZ4)
+Automatic dissolve at startup in view:work.disp_ctrl_top(rtl_disp_ctrl_top) of gen_reg_opcode_unite_inst(gen_regZ5)
+Automatic dissolve at startup in view:work.disp_ctrl_top(rtl_disp_ctrl_top) of gen_reg_lower_frame_inst(gen_regZ6)
+Automatic dissolve at startup in view:work.disp_ctrl_top(rtl_disp_ctrl_top) of gen_reg_upper_frame_inst(gen_regZ7)
+Automatic dissolve at startup in view:work.disp_ctrl_top(rtl_disp_ctrl_top) of gen_reg_type_inst(gen_regZ8)
+@N: BN116 :"h:\project\sg_project\vhdl\gen_reg.vhd":86:2:86:3|Removing sequential instance gen_reg_version_inst.din_ack of view:PrimLib.dffr(prim) because there are no references to its outputs 
+@N: BN116 :"h:\project\sg_project\vhdl\gen_reg.vhd":86:2:86:3|Removing sequential instance gen_reg_lower_frame_inst.din_ack of view:PrimLib.dffr(prim) because there are no references to its outputs 
+@N: BN116 :"h:\project\sg_project\vhdl\gen_reg.vhd":86:2:86:3|Removing sequential instance gen_reg_upper_frame_inst.din_ack of view:PrimLib.dffr(prim) because there are no references to its outputs 
+@N: BN116 :"h:\project\sg_project\vhdl\gen_reg.vhd":86:2:86:3|Removing sequential instance gen_reg_type_inst.din_ack of view:PrimLib.dffr(prim) because there are no references to its outputs 
+Automatic dissolve at startup in view:work.rx_path(rtl_rx_path) of checksum_inst_dec(checksum_calc)
+Automatic dissolve at startup in view:work.rx_path(rtl_rx_path) of ram_inst1(ram_simple)
+@N: BN116 :"h:\project\sg_project\vhdl\ram_simple.vhd":113:2:113:3|Removing sequential instance ram_inst1.dout_valid of view:PrimLib.dffr(prim) because there are no references to its outputs 
+Automatic dissolve at startup in view:work.tx_path(arc_tx_path) of wbs_reg_inst(wbs_regZ1)
+Automatic dissolve at startup in view:work.tx_path(arc_tx_path) of rd_burst_reg_generate\.1\.gen_rd_burst_reg_inst(gen_regZ10)
+Automatic dissolve at startup in view:work.tx_path(arc_tx_path) of rd_burst_reg_generate\.0\.gen_rd_burst_reg_inst(gen_regZ9)
+Automatic dissolve at startup in view:work.tx_path(arc_tx_path) of gen_reg_addr_reg_inst(gen_regZ11)
+Automatic dissolve at startup in view:work.tx_path(arc_tx_path) of gen_dbg_cmd_reg_inst(gen_regZ12)
+Automatic dissolve at startup in view:work.tx_path(arc_tx_path) of gen_reg_type_inst(gen_regZ13)
+Automatic dissolve at startup in view:work.tx_path(arc_tx_path) of fifo_inst1(general_fifoZ3)
+Automatic dissolve at startup in view:work.tx_path(arc_tx_path) of ram_inst1(ram_simple)
+Automatic dissolve at startup in view:work.tx_path(arc_tx_path) of checksum_inst_enc(checksum_calc)
+Automatic dissolve at startup in view:work.mds_top(rtl_mds_top) of intercon_x_inst(intercon_mux)
+Automatic dissolve at startup in view:work.mds_top(rtl_mds_top) of intercon_y_inst(interconZ0)
+@N: BN116 :"h:\project\sg_project\vhdl\pixel_mng.vhd":453:2:453:3|Removing sequential instance pix_max_b of view:PrimLib.dffr(prim) because there are no references to its outputs 
+
+Available hyper_sources - for debug and ip models
+	None Found
+
+@N: FA239 :"h:\project\sg_project\vhdl\hexss.vhd":48:3:48:11|Rom msb_version_hexss_inst.ss_1[6:0] mapped in logic.
+@N: FA239 :"h:\project\sg_project\vhdl\hexss.vhd":48:3:48:11|Rom lsb_version_hexss_inst.ss_1[6:0] mapped in logic.
+@N: FA239 :"h:\project\sg_project\vhdl\hexss.vhd":48:3:48:11|Rom msb_tx_hexss_inst.ss_1[6:0] mapped in logic.
+@N: FA239 :"h:\project\sg_project\vhdl\hexss.vhd":48:3:48:11|Rom lsb_tx_hexss_inst.ss_1[6:0] mapped in logic.
+@N: FA239 :"h:\project\sg_project\vhdl\hexss.vhd":48:3:48:11|Rom msb_disp_hexss_inst.ss_1[6:0] mapped in logic.
+@N: FA239 :"h:\project\sg_project\vhdl\hexss.vhd":48:3:48:11|Rom lsb_disp_hexss_inst.ss_1[6:0] mapped in logic.
+@N: FA239 :"h:\project\sg_project\vhdl\hexss.vhd":48:3:48:11|Rom msb_mem_hexss_inst.ss_1[6:0] mapped in logic.
+@N: FA239 :"h:\project\sg_project\vhdl\hexss.vhd":48:3:48:11|Rom lsb_mem_hexss_inst.ss_1[6:0] mapped in logic.
+@N: FA239 :"h:\project\sg_project\vhdl\hexss.vhd":48:3:48:11|Rom msb_version_hexss_inst.ss_1[6:0] mapped in logic.
+@N: FA239 :"h:\project\sg_project\vhdl\hexss.vhd":48:3:48:11|Rom lsb_version_hexss_inst.ss_1[6:0] mapped in logic.
+@N: FA239 :"h:\project\sg_project\vhdl\hexss.vhd":48:3:48:11|Rom msb_tx_hexss_inst.ss_1[6:0] mapped in logic.
+@N: FA239 :"h:\project\sg_project\vhdl\hexss.vhd":48:3:48:11|Rom lsb_tx_hexss_inst.ss_1[6:0] mapped in logic.
+@N: FA239 :"h:\project\sg_project\vhdl\hexss.vhd":48:3:48:11|Rom msb_disp_hexss_inst.ss_1[6:0] mapped in logic.
+@N: FA239 :"h:\project\sg_project\vhdl\hexss.vhd":48:3:48:11|Rom lsb_disp_hexss_inst.ss_1[6:0] mapped in logic.
+@N: FA239 :"h:\project\sg_project\vhdl\hexss.vhd":48:3:48:11|Rom msb_mem_hexss_inst.ss_1[6:0] mapped in logic.
+@N: FA239 :"h:\project\sg_project\vhdl\hexss.vhd":48:3:48:11|Rom lsb_mem_hexss_inst.ss_1[6:0] mapped in logic.
+Finished RTL optimizations (Time elapsed 0h:00m:00s; Memory used current: 113MB peak: 115MB)
+
+@N:"h:\project\sg_project\vhdl\mem_ctrl_wr_wbs.vhd":119:2:119:3|Found counter in view:work.mem_ctrl_wr_wbs(rtl_mem_ctrl_wr_wbs) inst ram_expect_adr[9:0]
+@N:"h:\project\sg_project\vhdl\mem_ctrl_wr_wbs.vhd":298:2:298:3|Found counter in view:work.mem_ctrl_wr_wbs(rtl_mem_ctrl_wr_wbs) inst done_cnt[2:0]
+Encoding state machine work.mem_ctrl_wr_wbs(rtl_mem_ctrl_wr_wbs)-wbs_cur_st[0:4]
+original code -> new code
+   00001 -> 00001
+   00010 -> 00010
+   00100 -> 00100
+   01000 -> 01000
+   10000 -> 10000
+@N:"h:\project\sg_project\vhdl\mem_ctrl_wr_wbm.vhd":187:2:187:3|Found counter in view:work.mem_ctrl_wr_wbm(rtl_mem_ctrl_wr_wbm) inst ram_words_left[8:0]
+@N:"h:\project\sg_project\vhdl\mem_ctrl_wr_wbm.vhd":187:2:187:3|Found counter in view:work.mem_ctrl_wr_wbm(rtl_mem_ctrl_wr_wbm) inst ram_addr_out_i[8:0]
+@N:"h:\project\sg_project\vhdl\mem_ctrl_wr_wbm.vhd":550:2:550:3|Found counter in view:work.mem_ctrl_wr_wbm(rtl_mem_ctrl_wr_wbm) inst ack_i_cnt[8:0]
+@N:"h:\project\sg_project\vhdl\mem_ctrl_wr_wbm.vhd":588:2:588:3|Found counter in view:work.mem_ctrl_wr_wbm(rtl_mem_ctrl_wr_wbm) inst wr_cnt[18:0]
+Encoding state machine work.mem_ctrl_wr_wbm(rtl_mem_ctrl_wr_wbm)-wbm_cur_st[0:9]
+original code -> new code
+   0000000001 -> 0000000001
+   0000000010 -> 0000000010
+   0000000100 -> 0000000100
+   0000001000 -> 0000001000
+   0000010000 -> 0000010000
+   0000100000 -> 0000100000
+   0001000000 -> 0001000000
+   0010000000 -> 0010000000
+   0100000000 -> 0100000000
+   1000000000 -> 1000000000
+@N:"h:\project\sg_project\vhdl\mem_ctrl_rd_wbs.vhd":300:2:300:3|Found counter in view:work.mem_ctrl_rd_wbs(rtl_mem_ctrl_rd_wbs) inst ram_expect_adr[9:0]
+Encoding state machine work.mem_ctrl_rd_wbs(rtl_mem_ctrl_rd_wbs)-wbs_cur_st[0:6]
+original code -> new code
+   0000001 -> 0000001
+   0000010 -> 0000010
+   0000100 -> 0000100
+   0001000 -> 0001000
+   0010000 -> 0010000
+   0100000 -> 0100000
+   1000000 -> 1000000
+@N:"h:\project\sg_project\vhdl\mem_ctrl_rd_wbm.vhd":188:2:188:3|Found counter in view:work.mem_ctrl_rd_wbm(rtl_mem_ctrl_rd_wbm) inst ram_words_left[8:0]
+@N:"h:\project\sg_project\vhdl\mem_ctrl_rd_wbm.vhd":409:2:409:3|Found counter in view:work.mem_ctrl_rd_wbm(rtl_mem_ctrl_rd_wbm) inst rd_cnt_i[18:0]
+@N:"h:\project\sg_project\vhdl\mem_ctrl_rd_wbm.vhd":188:2:188:3|Found counter in view:work.mem_ctrl_rd_wbm(rtl_mem_ctrl_rd_wbm) inst cur_rd_addr[21:0]
+@N:"h:\project\sg_project\vhdl\mem_ctrl_rd_wbm.vhd":188:2:188:3|Found counter in view:work.mem_ctrl_rd_wbm(rtl_mem_ctrl_rd_wbm) inst ram_addr_in_i[8:0]
+@N:"h:\project\sg_project\vhdl\mem_ctrl_rd_wbm.vhd":625:2:625:3|Found counter in view:work.mem_ctrl_rd_wbm(rtl_mem_ctrl_rd_wbm) inst release_arb_cnt[12:0]
+@N:"h:\project\sg_project\vhdl\mem_ctrl_rd_wbm.vhd":522:2:522:3|Found counter in view:work.mem_ctrl_rd_wbm(rtl_mem_ctrl_rd_wbm) inst ram_delay_cnt[3:0]
+Encoding state machine work.mem_ctrl_rd_wbm(rtl_mem_ctrl_rd_wbm)-wbm_cur_st[0:4]
+original code -> new code
+   00001 -> 00001
+   00010 -> 00010
+   00100 -> 00100
+   01000 -> 01000
+   10000 -> 10000
+@N:"h:\project\sg_project\vhdl\pixel_mng.vhd":412:2:412:3|Found counter in view:work.pixel_mng(rtl_pixel_mng) inst rd_adr[9:0]
+@W: MO161 :"h:\project\sg_project\vhdl\pixel_mng.vhd":335:2:335:3|Register bit ack_err_cnt[10] is always 0, optimizing ...
+@W: MO161 :"h:\project\sg_project\vhdl\pixel_mng.vhd":335:2:335:3|Register bit ack_err_cnt[9] is always 0, optimizing ...
+@W: MO161 :"h:\project\sg_project\vhdl\pixel_mng.vhd":335:2:335:3|Register bit ack_err_cnt[8] is always 0, optimizing ...
+@W: MO161 :"h:\project\sg_project\vhdl\pixel_mng.vhd":335:2:335:3|Register bit ack_err_cnt[7] is always 0, optimizing ...
+@W: MO161 :"h:\project\sg_project\vhdl\pixel_mng.vhd":335:2:335:3|Register bit ack_err_cnt[6] is always 0, optimizing ...
+@W: MO161 :"h:\project\sg_project\vhdl\pixel_mng.vhd":335:2:335:3|Register bit ack_err_cnt[5] is always 0, optimizing ...
+@W: MO161 :"h:\project\sg_project\vhdl\pixel_mng.vhd":335:2:335:3|Register bit ack_err_cnt[4] is always 0, optimizing ...
+@W: MO161 :"h:\project\sg_project\vhdl\pixel_mng.vhd":335:2:335:3|Register bit ack_err_cnt[3] is always 0, optimizing ...
+@W: MO161 :"h:\project\sg_project\vhdl\pixel_mng.vhd":335:2:335:3|Register bit ack_err_cnt[2] is always 0, optimizing ...
+@W: MO161 :"h:\project\sg_project\vhdl\pixel_mng.vhd":335:2:335:3|Register bit ack_err_cnt[1] is always 0, optimizing ...
+@W: MO161 :"h:\project\sg_project\vhdl\pixel_mng.vhd":335:2:335:3|Register bit ack_err_cnt[0] is always 0, optimizing ...
+@W: MO161 :"h:\project\sg_project\vhdl\pixel_mng.vhd":361:2:361:3|Register bit pix_cnt[18] is always 0, optimizing ...
+@W: MO161 :"h:\project\sg_project\vhdl\pixel_mng.vhd":361:2:361:3|Register bit pix_cnt[17] is always 0, optimizing ...
+@W: MO161 :"h:\project\sg_project\vhdl\pixel_mng.vhd":361:2:361:3|Register bit pix_cnt[16] is always 0, optimizing ...
+@W: MO161 :"h:\project\sg_project\vhdl\pixel_mng.vhd":361:2:361:3|Register bit pix_cnt[15] is always 0, optimizing ...
+@W: MO161 :"h:\project\sg_project\vhdl\pixel_mng.vhd":361:2:361:3|Register bit pix_cnt[14] is always 0, optimizing ...
+@W: MO161 :"h:\project\sg_project\vhdl\pixel_mng.vhd":361:2:361:3|Register bit pix_cnt[13] is always 0, optimizing ...
+@W: MO161 :"h:\project\sg_project\vhdl\pixel_mng.vhd":361:2:361:3|Register bit pix_cnt[12] is always 0, optimizing ...
+@W: MO161 :"h:\project\sg_project\vhdl\pixel_mng.vhd":361:2:361:3|Register bit pix_cnt[11] is always 0, optimizing ...
+@W: MO161 :"h:\project\sg_project\vhdl\pixel_mng.vhd":361:2:361:3|Register bit pix_cnt[10] is always 0, optimizing ...
+@W: MO161 :"h:\project\sg_project\vhdl\pixel_mng.vhd":361:2:361:3|Register bit pix_cnt[9] is always 0, optimizing ...
+@W: MO161 :"h:\project\sg_project\vhdl\pixel_mng.vhd":361:2:361:3|Register bit pix_cnt[8] is always 0, optimizing ...
+@W: MO161 :"h:\project\sg_project\vhdl\pixel_mng.vhd":361:2:361:3|Register bit pix_cnt[7] is always 0, optimizing ...
+@W: MO161 :"h:\project\sg_project\vhdl\pixel_mng.vhd":361:2:361:3|Register bit pix_cnt[6] is always 0, optimizing ...
+@W: MO161 :"h:\project\sg_project\vhdl\pixel_mng.vhd":361:2:361:3|Register bit pix_cnt[5] is always 0, optimizing ...
+@W: MO161 :"h:\project\sg_project\vhdl\pixel_mng.vhd":361:2:361:3|Register bit pix_cnt[4] is always 0, optimizing ...
+@W: MO161 :"h:\project\sg_project\vhdl\pixel_mng.vhd":361:2:361:3|Register bit pix_cnt[3] is always 0, optimizing ...
+@W: MO161 :"h:\project\sg_project\vhdl\pixel_mng.vhd":361:2:361:3|Register bit pix_cnt[2] is always 0, optimizing ...
+@W: MO161 :"h:\project\sg_project\vhdl\pixel_mng.vhd":361:2:361:3|Register bit pix_cnt[1] is always 0, optimizing ...
+@W: MO161 :"h:\project\sg_project\vhdl\pixel_mng.vhd":361:2:361:3|Register bit pix_cnt[0] is always 0, optimizing ...
+Encoding state machine work.pixel_mng(rtl_pixel_mng)-cur_st[0:5]
+original code -> new code
+   000001 -> 000001
+   000010 -> 000010
+   000100 -> 000100
+   001000 -> 001000
+   010000 -> 010000
+   100000 -> 100000
+@W: MO161 :"h:\project\sg_project\vhdl\pixel_mng.vhd":283:4:283:21|Register bit cur_st[2] is always 0, optimizing ...
+@N:"h:\project\sg_project\vhdl\sg\sg_wbm_if.vhd":391:2:391:3|Found counter in view:work.SG_WBM_IF(rtl_sg_wbm_if) inst ack_cnt[10:0]
+Encoding state machine work.SG_WBM_IF(rtl_sg_wbm_if)-cur_st[0:9]
+original code -> new code
+   00000000001 -> 0000000001
+   00000000010 -> 0000000010
+   00000000100 -> 0000000100
+   00000001000 -> 0000001000
+   00000010000 -> 0000010000
+   00000100000 -> 0000100000
+   00001000000 -> 0001000000
+   00010000000 -> 0010000000
+   00100000000 -> 0100000000
+   01000000000 -> 1000000000
+@N:"h:\project\sg_project\vhdl\synthetic_frame_generator.vhd":166:2:166:3|Found counter in view:work.synthetic_frame_generator(rtl_synthetic_frame_generator) inst hcnt[9:0]
+@N:"h:\project\sg_project\vhdl\synthetic_frame_generator.vhd":166:2:166:3|Found counter in view:work.synthetic_frame_generator(rtl_synthetic_frame_generator) inst vcnt[8:0]
+Encoding state machine work.synthetic_frame_generator(rtl_synthetic_frame_generator)-frame_state[0:4]
+original code -> new code
+   000 -> 000
+   001 -> 001
+   010 -> 010
+   011 -> 011
+   100 -> 100
+@W: MO161 :"h:\project\sg_project\vhdl\synthetic_frame_generator.vhd":107:2:107:3|Register bit upper_frame[9] is always 0, optimizing ...
+@W: MO161 :"h:\project\sg_project\vhdl\synthetic_frame_generator.vhd":107:2:107:3|Register bit upper_frame[8] is always 0, optimizing ...
+@W: MO161 :"h:\project\sg_project\vhdl\synthetic_frame_generator.vhd":107:2:107:3|Register bit upper_frame[7] is always 0, optimizing ...
+@W: MO161 :"h:\project\sg_project\vhdl\synthetic_frame_generator.vhd":107:2:107:3|Register bit upper_frame[1] is always 0, optimizing ...
+@W: MO161 :"h:\project\sg_project\vhdl\synthetic_frame_generator.vhd":107:2:107:3|Register bit upper_frame[0] is always 0, optimizing ...
+@W: MO161 :"h:\project\sg_project\vhdl\synthetic_frame_generator.vhd":107:2:107:3|Register bit left_frame[9] is always 0, optimizing ...
+@W: MO161 :"h:\project\sg_project\vhdl\synthetic_frame_generator.vhd":107:2:107:3|Register bit left_frame[8] is always 0, optimizing ...
+@W: MO161 :"h:\project\sg_project\vhdl\synthetic_frame_generator.vhd":107:2:107:3|Register bit left_frame[3] is always 0, optimizing ...
+@W: MO161 :"h:\project\sg_project\vhdl\synthetic_frame_generator.vhd":107:2:107:3|Register bit left_frame[2] is always 0, optimizing ...
+@W: MO161 :"h:\project\sg_project\vhdl\synthetic_frame_generator.vhd":107:2:107:3|Register bit left_frame[1] is always 0, optimizing ...
+@W: MO161 :"h:\project\sg_project\vhdl\synthetic_frame_generator.vhd":107:2:107:3|Register bit left_frame[0] is always 0, optimizing ...
+Encoding state machine work.opcode_unite(opcode_unite_rtl)-current_sm[0:2]
+original code -> new code
+   00 -> 00
+   01 -> 01
+   10 -> 10
+@N:"h:\project\sg_project\vhdl\sg\opcode_store.vhd":203:2:203:3|Found counter in view:work.opcode_store(opcode_store_rtl) inst counter[9:0]
+@N:"h:\project\sg_project\vhdl\sg\general_fifo.vhd":235:2:235:3|Found updn counter in view:work.opcode_store(opcode_store_rtl) inst general_fifo_inst.count[8:0] 
+@N: BN116 :"h:\project\sg_project\vhdl\sg\general_fifo.vhd":182:2:182:3|Removing sequential instance general_fifo_inst.dout[23] of view:PrimLib.dff(prim) because there are no references to its outputs 
+@N:"h:\project\sg_project\vhdl\sg\manager.vhd":361:2:361:3|Found counter in view:work.manager(manager_rtl) inst sdram_wait_counter[7:0]
+@N:"h:\project\sg_project\vhdl\sg\manager.vhd":361:2:361:3|Found counter in view:work.manager(manager_rtl) inst sdram_wait_counter_tmp[7:0]
+@N:"h:\project\sg_project\vhdl\sg\manager.vhd":394:2:394:3|Found counter in view:work.manager(manager_rtl) inst row_count[10:0]
+Encoding state machine work.manager(manager_rtl)-current_sm[0:4]
+original code -> new code
+   00001 -> 00001
+   00010 -> 00010
+   00100 -> 00100
+   01000 -> 01000
+   10000 -> 10000
+@N:"h:\project\sg_project\vhdl\sg\general_fifo.vhd":235:2:235:3|Found updn counter in view:work.general_fifoZ1_fifo_A(arc_general_fifo) inst count[9:0] 
+@N:"h:\project\sg_project\vhdl\sg\general_fifo.vhd":235:2:235:3|Found updn counter in view:work.general_fifoZ1_fifo_B_0(arc_general_fifo) inst count[9:0] 
+@N:"h:\project\sg_project\vhdl\rx_path.vhd":420:2:420:3|Found counter in view:work.rx_path(rtl_rx_path) inst ram_bytes_left[9:0]
+Encoding state machine work.rx_path(rtl_rx_path)-wbm_cur_st[0:5]
+original code -> new code
+   000001 -> 000001
+   000010 -> 000010
+   000100 -> 000100
+   001000 -> 001000
+   010000 -> 010000
+   100000 -> 100000
+@N:"h:\project\sg_project\vhdl\uart_rx.vhd":119:2:119:3|Found counter in view:work.uart_rx(arc_uart_rx) inst pos_cnt[3:0]
+Encoding state machine work.uart_rx(arc_uart_rx)-cur_st[0:3]
+original code -> new code
+   00001 -> 00
+   00010 -> 01
+   00100 -> 10
+   10000 -> 11
+Encoding state machine work.mp_dec(rtl_mp_dec)-cur_st[0:6]
+original code -> new code
+   0000001 -> 0000001
+   0000010 -> 0000010
+   0000100 -> 0000100
+   0001000 -> 0001000
+   0010000 -> 0010000
+   0100000 -> 0100000
+   1000000 -> 1000000
+@N:"h:\project\sg_project\vhdl\sg\general_fifo.vhd":235:2:235:3|Found updn counter in view:work.tx_path(arc_tx_path) inst fifo_inst1.count[3:0] 
+@N:"h:\project\sg_project\vhdl\uart_tx.vhd":111:2:111:3|Found counter in view:work.uart_tx(arc_uart_tx) inst pos_cnt[3:0]
+Encoding state machine work.uart_tx(arc_uart_tx)-cur_st[0:2]
+original code -> new code
+   00 -> 00
+   01 -> 01
+   10 -> 10
+Encoding state machine work.mp_enc(rtl_mp_enc)-cur_st[0:8]
+original code -> new code
+   000000001 -> 000000001
+   000000010 -> 000000010
+   000000100 -> 000000100
+   000001000 -> 000001000
+   000010000 -> 000010000
+   000100000 -> 000100000
+   001000000 -> 001000000
+   010000000 -> 010000000
+   100000000 -> 100000000
+@N:"h:\project\sg_project\vhdl\tx_path_wbm.vhd":134:2:134:3|Found counter in view:work.tx_path_wbm(rtl_tx_path_wbm) inst ram_words_left[10:0]
+@N:"h:\project\sg_project\vhdl\tx_path_wbm.vhd":134:2:134:3|Found counter in view:work.tx_path_wbm(rtl_tx_path_wbm) inst ram_in_addr_i[9:0]
+Encoding state machine work.tx_path_wbm(rtl_tx_path_wbm)-wbm_cur_st[0:2]
+original code -> new code
+   00 -> 00
+   01 -> 01
+   10 -> 10
+@N:"h:\project\sg_project\vhdl\sg\led.vhd":62:2:62:3|Found counter in view:work.led(led_rtl) inst timer_counter[26:0]
+@N:"h:\project\sg_project\vhdl\sdram_controller.vhd":224:1:224:2|Found counter in view:work.sdram_controller(rtl_sdram_controller) inst rfsh_int_cntr[11:0]
+@N:"h:\project\sg_project\vhdl\sdram_controller.vhd":224:1:224:2|Found counter in view:work.sdram_controller(rtl_sdram_controller) inst wait_200us_cntr[14:0]
+@N:"h:\project\sg_project\vhdl\sdram_controller.vhd":224:1:224:2|Found counter in view:work.sdram_controller(rtl_sdram_controller) inst tRC_cntr[3:0]
+@N:"h:\project\sg_project\vhdl\sdram_controller.vhd":296:1:296:2|Found counter in view:work.sdram_controller(rtl_sdram_controller) inst init_pre_cntr[3:0]
+Starting Early Timing Optimization (Time elapsed 0h:00m:01s; Memory used current: 121MB peak: 122MB)
+
+Finished Early Timing Optimization (Time elapsed 0h:00m:03s; Memory used current: 127MB peak: 128MB)
+
+@W: MF244 :"h:\project\sg_project\vhdl\sg\general_fifo.vhd":96:7:96:9|Glue logic is created around ram "general_fifo_inst.mem[23:0]" to avoid read write conflict.     
+@W: MF245 :"h:\project\sg_project\vhdl\sg\general_fifo.vhd":96:7:96:9|To avoid this glue logic you can use syn_ramstyle = "no_rw_check" attribute.    
+@W: MF244 :"h:\project\sg_project\vhdl\ram_simple.vhd":69:7:69:14|Glue logic is created around ram "ram_inst1.ram_data[7:0]" to avoid read write conflict.     
+@W: MF245 :"h:\project\sg_project\vhdl\ram_simple.vhd":69:7:69:14|To avoid this glue logic you can use syn_ramstyle = "no_rw_check" attribute.    
+@W: MF244 :"h:\project\sg_project\vhdl\sg\general_fifo.vhd":96:7:96:9|Glue logic is created around ram "mem[7:0]" to avoid read write conflict.     
+@W: MF245 :"h:\project\sg_project\vhdl\sg\general_fifo.vhd":96:7:96:9|To avoid this glue logic you can use syn_ramstyle = "no_rw_check" attribute.    
+@W: MF244 :"h:\project\sg_project\vhdl\sg\general_fifo.vhd":96:7:96:9|Glue logic is created around ram "mem[7:0]" to avoid read write conflict.     
+@W: MF245 :"h:\project\sg_project\vhdl\sg\general_fifo.vhd":96:7:96:9|To avoid this glue logic you can use syn_ramstyle = "no_rw_check" attribute.    
+@W: MF244 :"h:\project\sg_project\vhdl\sg\general_fifo.vhd":96:7:96:9|Glue logic is created around ram "fifo_inst1.mem[7:0]" to avoid read write conflict.     
+@W: MF245 :"h:\project\sg_project\vhdl\sg\general_fifo.vhd":96:7:96:9|To avoid this glue logic you can use syn_ramstyle = "no_rw_check" attribute.    
+@W: BN132 :"h:\project\sg_project\vhdl\ram_simple.vhd":98:2:98:3|Removing sequential instance mds_top_inst.tx_path_inst.ram_inst1.data_out_3[6],  because it is equivalent to instance mds_top_inst.tx_path_inst.ram_inst1.data_out_3[7]
+@W: BN132 :"h:\project\sg_project\vhdl\ram_simple.vhd":98:2:98:3|Removing sequential instance mds_top_inst.tx_path_inst.ram_inst1.data_out_3[5],  because it is equivalent to instance mds_top_inst.tx_path_inst.ram_inst1.data_out_3[7]
+@W: BN132 :"h:\project\sg_project\vhdl\ram_simple.vhd":98:2:98:3|Removing sequential instance mds_top_inst.tx_path_inst.ram_inst1.data_out_3[4],  because it is equivalent to instance mds_top_inst.tx_path_inst.ram_inst1.data_out_3[7]
+@W: BN132 :"h:\project\sg_project\vhdl\ram_simple.vhd":98:2:98:3|Removing sequential instance mds_top_inst.tx_path_inst.ram_inst1.data_out_3[3],  because it is equivalent to instance mds_top_inst.tx_path_inst.ram_inst1.data_out_3[7]
+@W: BN132 :"h:\project\sg_project\vhdl\ram_simple.vhd":98:2:98:3|Removing sequential instance mds_top_inst.tx_path_inst.ram_inst1.data_out_3[2],  because it is equivalent to instance mds_top_inst.tx_path_inst.ram_inst1.data_out_3[7]
+@W: BN132 :"h:\project\sg_project\vhdl\ram_simple.vhd":98:2:98:3|Removing sequential instance mds_top_inst.tx_path_inst.ram_inst1.data_out_3[1],  because it is equivalent to instance mds_top_inst.tx_path_inst.ram_inst1.data_out_3[7]
+@W: BN132 :"h:\project\sg_project\vhdl\ram_simple.vhd":98:2:98:3|Removing sequential instance mds_top_inst.tx_path_inst.ram_inst1.data_out_3[0],  because it is equivalent to instance mds_top_inst.tx_path_inst.ram_inst1.data_out_3[7]
+@W: BN132 :"h:\project\sg_project\vhdl\sg\ram_300.vhd":88:2:88:3|Removing sequential instance mds_top_inst.disp_ctrl_inst.Symbol_Generator_Top_inst.RAM_300_inst.ram_data_out_3[11],  because it is equivalent to instance mds_top_inst.disp_ctrl_inst.Symbol_Generator_Top_inst.RAM_300_inst.ram_data_out_3[12]
+@W: BN132 :"h:\project\sg_project\vhdl\sg\ram_300.vhd":88:2:88:3|Removing sequential instance mds_top_inst.disp_ctrl_inst.Symbol_Generator_Top_inst.RAM_300_inst.ram_data_out_3[10],  because it is equivalent to instance mds_top_inst.disp_ctrl_inst.Symbol_Generator_Top_inst.RAM_300_inst.ram_data_out_3[12]
+@W: BN132 :"h:\project\sg_project\vhdl\sg\ram_300.vhd":88:2:88:3|Removing sequential instance mds_top_inst.disp_ctrl_inst.Symbol_Generator_Top_inst.RAM_300_inst.ram_data_out_3[9],  because it is equivalent to instance mds_top_inst.disp_ctrl_inst.Symbol_Generator_Top_inst.RAM_300_inst.ram_data_out_3[12]
+@W: BN132 :"h:\project\sg_project\vhdl\sg\ram_300.vhd":88:2:88:3|Removing sequential instance mds_top_inst.disp_ctrl_inst.Symbol_Generator_Top_inst.RAM_300_inst.ram_data_out_3[8],  because it is equivalent to instance mds_top_inst.disp_ctrl_inst.Symbol_Generator_Top_inst.RAM_300_inst.ram_data_out_3[12]
+@W: BN132 :"h:\project\sg_project\vhdl\sg\ram_300.vhd":88:2:88:3|Removing sequential instance mds_top_inst.disp_ctrl_inst.Symbol_Generator_Top_inst.RAM_300_inst.ram_data_out_3[7],  because it is equivalent to instance mds_top_inst.disp_ctrl_inst.Symbol_Generator_Top_inst.RAM_300_inst.ram_data_out_3[12]
+@W: BN132 :"h:\project\sg_project\vhdl\sg\ram_300.vhd":88:2:88:3|Removing sequential instance mds_top_inst.disp_ctrl_inst.Symbol_Generator_Top_inst.RAM_300_inst.ram_data_out_3[6],  because it is equivalent to instance mds_top_inst.disp_ctrl_inst.Symbol_Generator_Top_inst.RAM_300_inst.ram_data_out_3[12]
+@W: BN132 :"h:\project\sg_project\vhdl\sg\ram_300.vhd":88:2:88:3|Removing sequential instance mds_top_inst.disp_ctrl_inst.Symbol_Generator_Top_inst.RAM_300_inst.ram_data_out_3[5],  because it is equivalent to instance mds_top_inst.disp_ctrl_inst.Symbol_Generator_Top_inst.RAM_300_inst.ram_data_out_3[12]
+@W: BN132 :"h:\project\sg_project\vhdl\sg\ram_300.vhd":88:2:88:3|Removing sequential instance mds_top_inst.disp_ctrl_inst.Symbol_Generator_Top_inst.RAM_300_inst.ram_data_out_3[4],  because it is equivalent to instance mds_top_inst.disp_ctrl_inst.Symbol_Generator_Top_inst.RAM_300_inst.ram_data_out_3[12]
+@W: BN132 :"h:\project\sg_project\vhdl\sg\ram_300.vhd":88:2:88:3|Removing sequential instance mds_top_inst.disp_ctrl_inst.Symbol_Generator_Top_inst.RAM_300_inst.ram_data_out_3[3],  because it is equivalent to instance mds_top_inst.disp_ctrl_inst.Symbol_Generator_Top_inst.RAM_300_inst.ram_data_out_3[12]
+@W: BN132 :"h:\project\sg_project\vhdl\sg\ram_300.vhd":88:2:88:3|Removing sequential instance mds_top_inst.disp_ctrl_inst.Symbol_Generator_Top_inst.RAM_300_inst.ram_data_out_3[2],  because it is equivalent to instance mds_top_inst.disp_ctrl_inst.Symbol_Generator_Top_inst.RAM_300_inst.ram_data_out_3[12]
+@W: BN132 :"h:\project\sg_project\vhdl\sg\ram_300.vhd":88:2:88:3|Removing sequential instance mds_top_inst.disp_ctrl_inst.Symbol_Generator_Top_inst.RAM_300_inst.ram_data_out_3[1],  because it is equivalent to instance mds_top_inst.disp_ctrl_inst.Symbol_Generator_Top_inst.RAM_300_inst.ram_data_out_3[12]
+@W: BN132 :"h:\project\sg_project\vhdl\sg\ram_300.vhd":88:2:88:3|Removing sequential instance mds_top_inst.disp_ctrl_inst.Symbol_Generator_Top_inst.RAM_300_inst.ram_data_out_3[0],  because it is equivalent to instance mds_top_inst.disp_ctrl_inst.Symbol_Generator_Top_inst.RAM_300_inst.ram_data_out_3[12]
+@W: BN132 :"h:\project\sg_project\vhdl\sg\ram_300.vhd":88:2:88:3|Removing sequential instance mds_top_inst.disp_ctrl_inst.Symbol_Generator_Top_inst.RAM_300_inst.ram_data_out_0_0[11],  because it is equivalent to instance mds_top_inst.disp_ctrl_inst.Symbol_Generator_Top_inst.RAM_300_inst.ram_data_out_0_0[12]
+@W: BN132 :"h:\project\sg_project\vhdl\sg\ram_300.vhd":88:2:88:3|Removing sequential instance mds_top_inst.disp_ctrl_inst.Symbol_Generator_Top_inst.RAM_300_inst.ram_data_out_0_0[10],  because it is equivalent to instance mds_top_inst.disp_ctrl_inst.Symbol_Generator_Top_inst.RAM_300_inst.ram_data_out_0_0[12]
+@W: BN132 :"h:\project\sg_project\vhdl\sg\ram_300.vhd":88:2:88:3|Removing sequential instance mds_top_inst.disp_ctrl_inst.Symbol_Generator_Top_inst.RAM_300_inst.ram_data_out_0_0[9],  because it is equivalent to instance mds_top_inst.disp_ctrl_inst.Symbol_Generator_Top_inst.RAM_300_inst.ram_data_out_0_0[12]
+@W: BN132 :"h:\project\sg_project\vhdl\sg\ram_300.vhd":88:2:88:3|Removing sequential instance mds_top_inst.disp_ctrl_inst.Symbol_Generator_Top_inst.RAM_300_inst.ram_data_out_0_0[8],  because it is equivalent to instance mds_top_inst.disp_ctrl_inst.Symbol_Generator_Top_inst.RAM_300_inst.ram_data_out_0_0[12]
+@W: BN132 :"h:\project\sg_project\vhdl\sg\ram_300.vhd":88:2:88:3|Removing sequential instance mds_top_inst.disp_ctrl_inst.Symbol_Generator_Top_inst.RAM_300_inst.ram_data_out_0_0[7],  because it is equivalent to instance mds_top_inst.disp_ctrl_inst.Symbol_Generator_Top_inst.RAM_300_inst.ram_data_out_0_0[12]
+@W: BN132 :"h:\project\sg_project\vhdl\sg\ram_300.vhd":88:2:88:3|Removing sequential instance mds_top_inst.disp_ctrl_inst.Symbol_Generator_Top_inst.RAM_300_inst.ram_data_out_0_0[6],  because it is equivalent to instance mds_top_inst.disp_ctrl_inst.Symbol_Generator_Top_inst.RAM_300_inst.ram_data_out_0_0[12]
+@W: BN132 :"h:\project\sg_project\vhdl\sg\ram_300.vhd":88:2:88:3|Removing sequential instance mds_top_inst.disp_ctrl_inst.Symbol_Generator_Top_inst.RAM_300_inst.ram_data_out_0_0[5],  because it is equivalent to instance mds_top_inst.disp_ctrl_inst.Symbol_Generator_Top_inst.RAM_300_inst.ram_data_out_0_0[12]
+@W: BN132 :"h:\project\sg_project\vhdl\sg\ram_300.vhd":88:2:88:3|Removing sequential instance mds_top_inst.disp_ctrl_inst.Symbol_Generator_Top_inst.RAM_300_inst.ram_data_out_0_0[4],  because it is equivalent to instance mds_top_inst.disp_ctrl_inst.Symbol_Generator_Top_inst.RAM_300_inst.ram_data_out_0_0[12]
+@W: BN132 :"h:\project\sg_project\vhdl\sg\ram_300.vhd":88:2:88:3|Removing sequential instance mds_top_inst.disp_ctrl_inst.Symbol_Generator_Top_inst.RAM_300_inst.ram_data_out_0_0[3],  because it is equivalent to instance mds_top_inst.disp_ctrl_inst.Symbol_Generator_Top_inst.RAM_300_inst.ram_data_out_0_0[12]
+@W: BN132 :"h:\project\sg_project\vhdl\sg\ram_300.vhd":88:2:88:3|Removing sequential instance mds_top_inst.disp_ctrl_inst.Symbol_Generator_Top_inst.RAM_300_inst.ram_data_out_0_0[2],  because it is equivalent to instance mds_top_inst.disp_ctrl_inst.Symbol_Generator_Top_inst.RAM_300_inst.ram_data_out_0_0[12]
+@W: BN132 :"h:\project\sg_project\vhdl\sg\ram_300.vhd":88:2:88:3|Removing sequential instance mds_top_inst.disp_ctrl_inst.Symbol_Generator_Top_inst.RAM_300_inst.ram_data_out_0_0[1],  because it is equivalent to instance mds_top_inst.disp_ctrl_inst.Symbol_Generator_Top_inst.RAM_300_inst.ram_data_out_0_0[12]
+@W: BN132 :"h:\project\sg_project\vhdl\sg\ram_300.vhd":88:2:88:3|Removing sequential instance mds_top_inst.disp_ctrl_inst.Symbol_Generator_Top_inst.RAM_300_inst.ram_data_out_0_0[0],  because it is equivalent to instance mds_top_inst.disp_ctrl_inst.Symbol_Generator_Top_inst.RAM_300_inst.ram_data_out_0_0[12]
+@W: MO161 :"h:\project\sg_project\vhdl\vesa_gen_ctrl.vhd":255:2:255:3|Register bit right_frame_i[3] is always 1, optimizing ...
+@W: MO161 :"h:\project\sg_project\vhdl\vesa_gen_ctrl.vhd":255:2:255:3|Register bit right_frame_i[2] is always 1, optimizing ...
+@W: MO161 :"h:\project\sg_project\vhdl\vesa_gen_ctrl.vhd":255:2:255:3|Register bit right_frame_i[1] is always 1, optimizing ...
+@W: MO161 :"h:\project\sg_project\vhdl\vesa_gen_ctrl.vhd":255:2:255:3|Register bit right_frame_i[0] is always 1, optimizing ...
+@W: MO161 :"h:\project\sg_project\vhdl\vesa_gen_ctrl.vhd":255:2:255:3|Register bit upper_frame_i[9] is always 0, optimizing ...
+@W: MO161 :"h:\project\sg_project\vhdl\vesa_gen_ctrl.vhd":255:2:255:3|Register bit upper_frame_i[8] is always 0, optimizing ...
+@W: MO161 :"h:\project\sg_project\vhdl\vesa_gen_ctrl.vhd":255:2:255:3|Register bit left_frame_i[9] is always 0, optimizing ...
+@W: MO161 :"h:\project\sg_project\vhdl\vesa_gen_ctrl.vhd":255:2:255:3|Register bit left_frame_i[8] is always 0, optimizing ...
+@W: MO161 :"h:\project\sg_project\vhdl\vesa_gen_ctrl.vhd":255:2:255:3|Register bit left_frame_i[3] is always 0, optimizing ...
+@W: MO161 :"h:\project\sg_project\vhdl\vesa_gen_ctrl.vhd":255:2:255:3|Register bit left_frame_i[2] is always 0, optimizing ...
+@W: MO161 :"h:\project\sg_project\vhdl\vesa_gen_ctrl.vhd":255:2:255:3|Register bit left_frame_i[1] is always 0, optimizing ...
+@W: MO161 :"h:\project\sg_project\vhdl\vesa_gen_ctrl.vhd":255:2:255:3|Register bit left_frame_i[0] is always 0, optimizing ...
+Auto Dissolve of wbs_inst (inst of view:work.mem_ctrl_wr_wbs(rtl_mem_ctrl_wr_wbs))
+@N: BN116 :"h:\project\sg_project\vhdl\mem_ctrl_wr_wbs.vhd":318:2:318:3|Removing sequential instance wbs_inst.type_reg_wbm[0] of view:PrimLib.dffr(prim) because there are no references to its outputs 
+Auto Dissolve of wbs_inst (inst of view:work.mem_ctrl_rd_wbs(rtl_mem_ctrl_rd_wbs))
+Automatic dissolve during optimization of view:work.SG_WBM_IF(rtl_sg_wbm_if) of fsm_proc\.un42_wbm_dat_o(PM_top_synthesis_LSH__24_24_5_0000uuuuuuuuuuuuuuuuuu00_ep2c35)
+Automatic dissolve during optimization of view:work.SG_WBM_IF(rtl_sg_wbm_if) of fsm_proc\.un43_wbm_dat_o(PM_top_synthesis_RSH__24_24_5_0000uuuuuuuuuuuuuuuuuu00_ep2c35)
+Automatic dissolve during optimization of view:work.SG_WBM_IF(rtl_sg_wbm_if) of fsm_proc\.un19_wbm_dat_o(PM_top_synthesis_LSH__24_24_5_0000uuuuuuuuuuuuuuuuuu00_ep2c35)
+Automatic dissolve during optimization of view:work.SG_WBM_IF(rtl_sg_wbm_if) of fsm_proc\.un20_wbm_dat_o(PM_top_synthesis_RSH__24_24_5_0000uuuuuuuuuuuuuuuuuu00_ep2c35)
+Auto Dissolve of general_fifo_inst.mem_98 (inst of view:VhdlGenLib.RAM_R_W_400_24_TFFF_NOSTYLE_ygr1(block_ram))
+Automatic dissolve during optimization of view:work.general_fifoZ1_fifo_A(arc_general_fifo) of mem_34(RAM_R_W_640_8_TFFF_NOSTYLE_ygr1_0)
+Automatic dissolve during optimization of view:work.general_fifoZ1_fifo_B_0(arc_general_fifo) of mem_34(RAM_R_W_640_8_TFFF_NOSTYLE_ygr1)
+Automatic dissolve during optimization of view:work.disp_ctrl_top(rtl_disp_ctrl_top) of wbs_reg_inst(wbs_regZ0)
+Auto Dissolve of Symbol_Generator_Top_inst (inst of view:work.Symbol_Generator_Top(rtl_symbol_generator_top))
+Auto Dissolve of pixel_mng_inst (inst of view:work.pixel_mng(rtl_pixel_mng))
+@N: BN116 :"h:\project\sg_project\vhdl\pixel_mng.vhd":308:4:308:26|Removing sequential instance pixel_mng_inst.cur_st[0] of view:PrimLib.dffr(prim) because there are no references to its outputs 
+@N: BN116 :"h:\project\sg_project\vhdl\pixel_mng.vhd":302:4:302:24|Removing sequential instance pixel_mng_inst.cur_st[1] of view:PrimLib.dffr(prim) because there are no references to its outputs 
+@N: BN116 :"h:\project\sg_project\vhdl\pixel_mng.vhd":252:4:252:20|Removing sequential instance pixel_mng_inst.cur_st[3] of view:PrimLib.dffr(prim) because there are no references to its outputs 
+@N: BN116 :"h:\project\sg_project\vhdl\pixel_mng.vhd":243:4:243:25|Removing sequential instance pixel_mng_inst.cur_st[4] of view:PrimLib.dffr(prim) because there are no references to its outputs 
+@N: BN116 :"h:\project\sg_project\vhdl\pixel_mng.vhd":223:4:223:22|Removing sequential instance pixel_mng_inst.cur_st[5] of view:PrimLib.dffs(prim) because there are no references to its outputs 
+@N: BN116 :"h:\project\sg_project\vhdl\pixel_mng.vhd":361:2:361:3|Removing sequential instance pixel_mng_inst.tot_req_pix[18] of view:PrimLib.dffr(prim) because there are no references to its outputs 
+@N: BN116 :"h:\project\sg_project\vhdl\pixel_mng.vhd":361:2:361:3|Removing sequential instance pixel_mng_inst.tot_req_pix[17] of view:PrimLib.dffr(prim) because there are no references to its outputs 
+@N: BN116 :"h:\project\sg_project\vhdl\pixel_mng.vhd":361:2:361:3|Removing sequential instance pixel_mng_inst.tot_req_pix[16] of view:PrimLib.dffr(prim) because there are no references to its outputs 
+@N: BN116 :"h:\project\sg_project\vhdl\pixel_mng.vhd":361:2:361:3|Removing sequential instance pixel_mng_inst.tot_req_pix[15] of view:PrimLib.dffr(prim) because there are no references to its outputs 
+@N: BN116 :"h:\project\sg_project\vhdl\pixel_mng.vhd":361:2:361:3|Removing sequential instance pixel_mng_inst.tot_req_pix[14] of view:PrimLib.dffr(prim) because there are no references to its outputs 
+@N: BN116 :"h:\project\sg_project\vhdl\pixel_mng.vhd":361:2:361:3|Removing sequential instance pixel_mng_inst.tot_req_pix[13] of view:PrimLib.dffr(prim) because there are no references to its outputs 
+@N: BN116 :"h:\project\sg_project\vhdl\pixel_mng.vhd":361:2:361:3|Removing sequential instance pixel_mng_inst.tot_req_pix[12] of view:PrimLib.dffr(prim) because there are no references to its outputs 
+@N: BN116 :"h:\project\sg_project\vhdl\pixel_mng.vhd":361:2:361:3|Removing sequential instance pixel_mng_inst.tot_req_pix[11] of view:PrimLib.dffr(prim) because there are no references to its outputs 
+@N: BN116 :"h:\project\sg_project\vhdl\pixel_mng.vhd":361:2:361:3|Removing sequential instance pixel_mng_inst.tot_req_pix[10] of view:PrimLib.dffr(prim) because there are no references to its outputs 
+@N: BN116 :"h:\project\sg_project\vhdl\pixel_mng.vhd":361:2:361:3|Removing sequential instance pixel_mng_inst.tot_req_pix[9] of view:PrimLib.dffs(prim) because there are no references to its outputs 
+@N: BN116 :"h:\project\sg_project\vhdl\pixel_mng.vhd":361:2:361:3|Removing sequential instance pixel_mng_inst.tot_req_pix[8] of view:PrimLib.dffr(prim) because there are no references to its outputs 
+@N: BN116 :"h:\project\sg_project\vhdl\pixel_mng.vhd":361:2:361:3|Removing sequential instance pixel_mng_inst.tot_req_pix[7] of view:PrimLib.dffs(prim) because there are no references to its outputs 
+@N: BN116 :"h:\project\sg_project\vhdl\pixel_mng.vhd":361:2:361:3|Removing sequential instance pixel_mng_inst.tot_req_pix[6] of view:PrimLib.dffr(prim) because there are no references to its outputs 
+@N: BN116 :"h:\project\sg_project\vhdl\pixel_mng.vhd":361:2:361:3|Removing sequential instance pixel_mng_inst.tot_req_pix[5] of view:PrimLib.dffr(prim) because there are no references to its outputs 
+@N: BN116 :"h:\project\sg_project\vhdl\pixel_mng.vhd":361:2:361:3|Removing sequential instance pixel_mng_inst.tot_req_pix[4] of view:PrimLib.dffr(prim) because there are no references to its outputs 
+@N: BN116 :"h:\project\sg_project\vhdl\pixel_mng.vhd":361:2:361:3|Removing sequential instance pixel_mng_inst.tot_req_pix[3] of view:PrimLib.dffr(prim) because there are no references to its outputs 
+@N: BN116 :"h:\project\sg_project\vhdl\pixel_mng.vhd":361:2:361:3|Removing sequential instance pixel_mng_inst.tot_req_pix[2] of view:PrimLib.dffr(prim) because there are no references to its outputs 
+@N: BN116 :"h:\project\sg_project\vhdl\pixel_mng.vhd":361:2:361:3|Removing sequential instance pixel_mng_inst.tot_req_pix[1] of view:PrimLib.dffr(prim) because there are no references to its outputs 
+@N: BN116 :"h:\project\sg_project\vhdl\pixel_mng.vhd":361:2:361:3|Removing sequential instance pixel_mng_inst.tot_req_pix[0] of view:PrimLib.dffr(prim) because there are no references to its outputs 
+@N: BN116 :"h:\project\sg_project\vhdl\pixel_mng.vhd":467:2:467:3|Removing sequential instance pixel_mng_inst.pix_req_add[9] of view:PrimLib.dffr(prim) because there are no references to its outputs 
+@N: BN116 :"h:\project\sg_project\vhdl\pixel_mng.vhd":467:2:467:3|Removing sequential instance pixel_mng_inst.pix_req_add[8] of view:PrimLib.dffr(prim) because there are no references to its outputs 
+@N: BN116 :"h:\project\sg_project\vhdl\pixel_mng.vhd":467:2:467:3|Removing sequential instance pixel_mng_inst.pix_req_add[7] of view:PrimLib.dffr(prim) because there are no references to its outputs 
+@N: BN116 :"h:\project\sg_project\vhdl\pixel_mng.vhd":467:2:467:3|Removing sequential instance pixel_mng_inst.pix_req_add[6] of view:PrimLib.dffr(prim) because there are no references to its outputs 
+@N: BN116 :"h:\project\sg_project\vhdl\pixel_mng.vhd":467:2:467:3|Removing sequential instance pixel_mng_inst.pix_req_add[5] of view:PrimLib.dffr(prim) because there are no references to its outputs 
+@N: BN116 :"h:\project\sg_project\vhdl\pixel_mng.vhd":467:2:467:3|Removing sequential instance pixel_mng_inst.pix_req_add[4] of view:PrimLib.dffr(prim) because there are no references to its outputs 
+@N: BN116 :"h:\project\sg_project\vhdl\pixel_mng.vhd":467:2:467:3|Removing sequential instance pixel_mng_inst.pix_req_add[3] of view:PrimLib.dffr(prim) because there are no references to its outputs 
+@N: BN116 :"h:\project\sg_project\vhdl\pixel_mng.vhd":467:2:467:3|Removing sequential instance pixel_mng_inst.pix_req_add[2] of view:PrimLib.dffr(prim) because there are no references to its outputs 
+@N: BN116 :"h:\project\sg_project\vhdl\pixel_mng.vhd":467:2:467:3|Removing sequential instance pixel_mng_inst.pix_req_add[1] of view:PrimLib.dffr(prim) because there are no references to its outputs 
+@N: BN116 :"h:\project\sg_project\vhdl\pixel_mng.vhd":467:2:467:3|Removing sequential instance pixel_mng_inst.pix_req_add[0] of view:PrimLib.dffr(prim) because there are no references to its outputs 
+@N: BN116 :"h:\project\sg_project\vhdl\pixel_mng.vhd":216:2:216:3|Removing sequential instance pixel_mng_inst.wbm_tgc_o of view:PrimLib.dffr(prim) because there are no references to its outputs 
+@N: BN116 :"h:\project\sg_project\vhdl\pixel_mng.vhd":216:2:216:3|Removing sequential instance pixel_mng_inst.wbm_stb_o of view:PrimLib.dffr(prim) because there are no references to its outputs 
+@N: BN116 :"h:\project\sg_project\vhdl\pixel_mng.vhd":216:2:216:3|Removing sequential instance pixel_mng_inst.cyc_internal of view:PrimLib.dffr(prim) because there are no references to its outputs 
+@N: BN116 :"h:\project\sg_project\vhdl\pixel_mng.vhd":439:2:439:3|Removing sequential instance pixel_mng_inst.end_burst_b of view:PrimLib.dffr(prim) because there are no references to its outputs 
+@N: BN116 :"h:\project\sg_project\vhdl\pixel_mng.vhd":158:2:158:3|Removing sequential instance pixel_mng_inst.req_trig_sig of view:PrimLib.dffr(prim) because there are no references to its outputs 
+@N: BN116 :"h:\project\sg_project\vhdl\pixel_mng.vhd":158:2:158:3|Removing sequential instance pixel_mng_inst.req_trig_d3 of view:PrimLib.dffr(prim) because there are no references to its outputs 
+@N: BN116 :"h:\project\sg_project\vhdl\pixel_mng.vhd":158:2:158:3|Removing sequential instance pixel_mng_inst.req_trig_d2 of view:PrimLib.dffr(prim) because there are no references to its outputs 
+@N: BN116 :"h:\project\sg_project\vhdl\pixel_mng.vhd":202:2:202:3|Removing sequential instance pixel_mng_inst.req_trig_b of view:PrimLib.dffs(prim) because there are no references to its outputs 
+@N: BN116 :"h:\project\sg_project\vhdl\pixel_mng.vhd":158:2:158:3|Removing sequential instance pixel_mng_inst.req_trig_d1 of view:PrimLib.dffr(prim) because there are no references to its outputs 
+Automatic dissolve during optimization of view:work.rx_path(rtl_rx_path) of ram_inst1.ram_data_34(RAM_R_W_1024_8_TFFF_NOSTYLE_ygr1)
+Auto Dissolve of mp_dec1 (inst of view:work.mp_dec(rtl_mp_dec))
+@N: BN116 :"h:\project\sg_project\vhdl\mp_dec.vhd":353:2:353:3|Removing sequential instance mp_dec1.write_addr[15] of view:PrimLib.dffr(prim) because there are no references to its outputs 
+@N: BN116 :"h:\project\sg_project\vhdl\mp_dec.vhd":353:2:353:3|Removing sequential instance mp_dec1.write_addr[14] of view:PrimLib.dffr(prim) because there are no references to its outputs 
+@N: BN116 :"h:\project\sg_project\vhdl\mp_dec.vhd":353:2:353:3|Removing sequential instance mp_dec1.write_addr[13] of view:PrimLib.dffr(prim) because there are no references to its outputs 
+@N: BN116 :"h:\project\sg_project\vhdl\mp_dec.vhd":353:2:353:3|Removing sequential instance mp_dec1.write_addr[12] of view:PrimLib.dffr(prim) because there are no references to its outputs 
+@N: BN116 :"h:\project\sg_project\vhdl\mp_dec.vhd":353:2:353:3|Removing sequential instance mp_dec1.write_addr[11] of view:PrimLib.dffr(prim) because there are no references to its outputs 
+@N: BN116 :"h:\project\sg_project\vhdl\mp_dec.vhd":353:2:353:3|Removing sequential instance mp_dec1.write_addr[10] of view:PrimLib.dffr(prim) because there are no references to its outputs 
+@N: BN116 :"h:\project\sg_project\vhdl\mp_dec.vhd":459:2:459:3|Removing sequential instance mp_dec1.len_reg[15] of view:PrimLib.dffr(prim) because there are no references to its outputs 
+@N: BN116 :"h:\project\sg_project\vhdl\mp_dec.vhd":459:2:459:3|Removing sequential instance mp_dec1.len_reg[14] of view:PrimLib.dffr(prim) because there are no references to its outputs 
+@N: BN116 :"h:\project\sg_project\vhdl\mp_dec.vhd":459:2:459:3|Removing sequential instance mp_dec1.len_reg[13] of view:PrimLib.dffr(prim) because there are no references to its outputs 
+@N: BN116 :"h:\project\sg_project\vhdl\mp_dec.vhd":459:2:459:3|Removing sequential instance mp_dec1.len_reg[12] of view:PrimLib.dffr(prim) because there are no references to its outputs 
+@N: BN116 :"h:\project\sg_project\vhdl\mp_dec.vhd":459:2:459:3|Removing sequential instance mp_dec1.len_reg[11] of view:PrimLib.dffr(prim) because there are no references to its outputs 
+@N: BN116 :"h:\project\sg_project\vhdl\mp_dec.vhd":459:2:459:3|Removing sequential instance mp_dec1.len_reg[10] of view:PrimLib.dffr(prim) because there are no references to its outputs 
+@N: BN116 :"h:\project\sg_project\vhdl\mp_dec.vhd":459:2:459:3|Removing sequential instance mp_dec1.addr_reg[15] of view:PrimLib.dffr(prim) because there are no references to its outputs 
+@N: BN116 :"h:\project\sg_project\vhdl\mp_dec.vhd":459:2:459:3|Removing sequential instance mp_dec1.addr_reg[14] of view:PrimLib.dffr(prim) because there are no references to its outputs 
+@N: BN116 :"h:\project\sg_project\vhdl\mp_dec.vhd":459:2:459:3|Removing sequential instance mp_dec1.addr_reg[13] of view:PrimLib.dffr(prim) because there are no references to its outputs 
+@N: BN116 :"h:\project\sg_project\vhdl\mp_dec.vhd":459:2:459:3|Removing sequential instance mp_dec1.addr_reg[12] of view:PrimLib.dffr(prim) because there are no references to its outputs 
+@N: BN116 :"h:\project\sg_project\vhdl\mp_dec.vhd":459:2:459:3|Removing sequential instance mp_dec1.addr_reg[11] of view:PrimLib.dffr(prim) because there are no references to its outputs 
+@N: BN116 :"h:\project\sg_project\vhdl\mp_dec.vhd":459:2:459:3|Removing sequential instance mp_dec1.addr_reg[10] of view:PrimLib.dffr(prim) because there are no references to its outputs 
+@N: BN116 :"h:\project\sg_project\vhdl\mp_dec.vhd":180:2:180:3|Removing sequential instance mp_dec1.addr_blk[15] of view:PrimLib.dffr(prim) because there are no references to its outputs 
+@N: BN116 :"h:\project\sg_project\vhdl\mp_dec.vhd":180:2:180:3|Removing sequential instance mp_dec1.addr_blk[14] of view:PrimLib.dffr(prim) because there are no references to its outputs 
+@N: BN116 :"h:\project\sg_project\vhdl\mp_dec.vhd":180:2:180:3|Removing sequential instance mp_dec1.addr_blk[13] of view:PrimLib.dffr(prim) because there are no references to its outputs 
+@N: BN116 :"h:\project\sg_project\vhdl\mp_dec.vhd":180:2:180:3|Removing sequential instance mp_dec1.addr_blk[12] of view:PrimLib.dffr(prim) because there are no references to its outputs 
+@N: BN116 :"h:\project\sg_project\vhdl\mp_dec.vhd":180:2:180:3|Removing sequential instance mp_dec1.addr_blk[11] of view:PrimLib.dffr(prim) because there are no references to its outputs 
+@N: BN116 :"h:\project\sg_project\vhdl\mp_dec.vhd":180:2:180:3|Removing sequential instance mp_dec1.addr_blk[10] of view:PrimLib.dffr(prim) because there are no references to its outputs 
+Automatic dissolve during optimization of view:work.tx_path(arc_tx_path) of fifo_inst1.mem_34(RAM_R_W_9_8_TFFF_NOSTYLE_ygr1)
+Auto Dissolve of intercon_z_inst (inst of view:work.interconZ1(intercon_rtl))
+Finished factoring (Time elapsed 0h:00m:05s; Memory used current: 136MB peak: 137MB)
+
+@N: BN116 :"h:\project\sg_project\vhdl\tx_path_wbm.vhd":134:2:134:3|Removing sequential instance mds_top_inst.tx_path_inst.tx_wbm_inst.wbm_tga_o[0] of view:PrimLib.dffr(prim) because there are no references to its outputs 
+@N: BN116 :"h:\project\sg_project\vhdl\mp_enc.vhd":400:2:400:3|Removing sequential instance mds_top_inst.tx_path_inst.mp_enc1.mp_done of view:PrimLib.dffr(prim) because there are no references to its outputs 
+@N: BN116 :"h:\project\sg_project\vhdl\rx_path.vhd":420:2:420:3|Removing sequential instance mds_top_inst.rx_path_inst.wbm_tga_o[0] of view:PrimLib.dffr(prim) because there are no references to its outputs 
+@N: BN116 :"h:\project\sg_project\vhdl\vesa_gen_ctrl.vhd":307:2:307:3|Removing sequential instance mds_top_inst.disp_ctrl_inst.vesa_gen_ctrl_inst.pixels_req[9] of view:PrimLib.dffr(prim) because there are no references to its outputs 
+@N: BN116 :"h:\project\sg_project\vhdl\vesa_gen_ctrl.vhd":307:2:307:3|Removing sequential instance mds_top_inst.disp_ctrl_inst.vesa_gen_ctrl_inst.pixels_req[8] of view:PrimLib.dffr(prim) because there are no references to its outputs 
+@N: BN116 :"h:\project\sg_project\vhdl\vesa_gen_ctrl.vhd":307:2:307:3|Removing sequential instance mds_top_inst.disp_ctrl_inst.vesa_gen_ctrl_inst.pixels_req[7] of view:PrimLib.dffr(prim) because there are no references to its outputs 
+@N: BN116 :"h:\project\sg_project\vhdl\vesa_gen_ctrl.vhd":307:2:307:3|Removing sequential instance mds_top_inst.disp_ctrl_inst.vesa_gen_ctrl_inst.pixels_req[6] of view:PrimLib.dffr(prim) because there are no references to its outputs 
+@N: BN116 :"h:\project\sg_project\vhdl\vesa_gen_ctrl.vhd":307:2:307:3|Removing sequential instance mds_top_inst.disp_ctrl_inst.vesa_gen_ctrl_inst.pixels_req[5] of view:PrimLib.dffr(prim) because there are no references to its outputs 
+@N: BN116 :"h:\project\sg_project\vhdl\vesa_gen_ctrl.vhd":307:2:307:3|Removing sequential instance mds_top_inst.disp_ctrl_inst.vesa_gen_ctrl_inst.pixels_req[4] of view:PrimLib.dffr(prim) because there are no references to its outputs 
+@N: BN116 :"h:\project\sg_project\vhdl\vesa_gen_ctrl.vhd":307:2:307:3|Removing sequential instance mds_top_inst.disp_ctrl_inst.vesa_gen_ctrl_inst.pixels_req[3] of view:PrimLib.dffr(prim) because there are no references to its outputs 
+@N: BN116 :"h:\project\sg_project\vhdl\vesa_gen_ctrl.vhd":307:2:307:3|Removing sequential instance mds_top_inst.disp_ctrl_inst.vesa_gen_ctrl_inst.pixels_req[2] of view:PrimLib.dffr(prim) because there are no references to its outputs 
+@N: BN116 :"h:\project\sg_project\vhdl\vesa_gen_ctrl.vhd":307:2:307:3|Removing sequential instance mds_top_inst.disp_ctrl_inst.vesa_gen_ctrl_inst.pixels_req[1] of view:PrimLib.dffr(prim) because there are no references to its outputs 
+@N: BN116 :"h:\project\sg_project\vhdl\vesa_gen_ctrl.vhd":307:2:307:3|Removing sequential instance mds_top_inst.disp_ctrl_inst.vesa_gen_ctrl_inst.pixels_req[0] of view:PrimLib.dffr(prim) because there are no references to its outputs 
+@N: BN116 :"h:\project\sg_project\vhdl\mem_ctrl_rd.vhd":382:2:382:3|Removing sequential instance mds_top_inst.mem_mng_inst.mem_ctrl_rd_inst.type_reg_wbm_d1[7] of view:PrimLib.dffr(prim) because there are no references to its outputs 
+@N: BN116 :"h:\project\sg_project\vhdl\mem_ctrl_rd.vhd":382:2:382:3|Removing sequential instance mds_top_inst.mem_mng_inst.mem_ctrl_rd_inst.type_reg_wbm_d1[6] of view:PrimLib.dffr(prim) because there are no references to its outputs 
+@N: BN116 :"h:\project\sg_project\vhdl\mem_ctrl_rd.vhd":382:2:382:3|Removing sequential instance mds_top_inst.mem_mng_inst.mem_ctrl_rd_inst.type_reg_wbm_d1[5] of view:PrimLib.dffr(prim) because there are no references to its outputs 
+@N: BN116 :"h:\project\sg_project\vhdl\mem_ctrl_rd.vhd":382:2:382:3|Removing sequential instance mds_top_inst.mem_mng_inst.mem_ctrl_rd_inst.type_reg_wbm_d1[4] of view:PrimLib.dffr(prim) because there are no references to its outputs 
+@N: BN116 :"h:\project\sg_project\vhdl\mem_ctrl_rd.vhd":382:2:382:3|Removing sequential instance mds_top_inst.mem_mng_inst.mem_ctrl_rd_inst.type_reg_wbm_d1[3] of view:PrimLib.dffr(prim) because there are no references to its outputs 
+@N: BN116 :"h:\project\sg_project\vhdl\mem_ctrl_rd.vhd":382:2:382:3|Removing sequential instance mds_top_inst.mem_mng_inst.mem_ctrl_rd_inst.type_reg_wbm_d1[2] of view:PrimLib.dffr(prim) because there are no references to its outputs 
+@N: BN116 :"h:\project\sg_project\vhdl\mem_ctrl_rd.vhd":382:2:382:3|Removing sequential instance mds_top_inst.mem_mng_inst.mem_ctrl_rd_inst.type_reg_wbm_d1[1] of view:PrimLib.dffr(prim) because there are no references to its outputs 
+@N: BN116 :"h:\project\sg_project\vhdl\mem_ctrl_rd.vhd":382:2:382:3|Removing sequential instance mds_top_inst.mem_mng_inst.mem_ctrl_rd_inst.type_reg_wbm_d2[7] of view:PrimLib.dffr(prim) because there are no references to its outputs 
+@N: BN116 :"h:\project\sg_project\vhdl\mem_ctrl_rd.vhd":382:2:382:3|Removing sequential instance mds_top_inst.mem_mng_inst.mem_ctrl_rd_inst.type_reg_wbm_d2[6] of view:PrimLib.dffr(prim) because there are no references to its outputs 
+@N: BN116 :"h:\project\sg_project\vhdl\mem_ctrl_rd.vhd":382:2:382:3|Removing sequential instance mds_top_inst.mem_mng_inst.mem_ctrl_rd_inst.type_reg_wbm_d2[5] of view:PrimLib.dffr(prim) because there are no references to its outputs 
+@N: BN116 :"h:\project\sg_project\vhdl\mem_ctrl_rd.vhd":382:2:382:3|Removing sequential instance mds_top_inst.mem_mng_inst.mem_ctrl_rd_inst.type_reg_wbm_d2[4] of view:PrimLib.dffr(prim) because there are no references to its outputs 
+@N: BN116 :"h:\project\sg_project\vhdl\mem_ctrl_rd.vhd":382:2:382:3|Removing sequential instance mds_top_inst.mem_mng_inst.mem_ctrl_rd_inst.type_reg_wbm_d2[3] of view:PrimLib.dffr(prim) because there are no references to its outputs 
+@N: BN116 :"h:\project\sg_project\vhdl\mem_ctrl_rd.vhd":382:2:382:3|Removing sequential instance mds_top_inst.mem_mng_inst.mem_ctrl_rd_inst.type_reg_wbm_d2[2] of view:PrimLib.dffr(prim) because there are no references to its outputs 
+@N: BN116 :"h:\project\sg_project\vhdl\mem_ctrl_rd.vhd":382:2:382:3|Removing sequential instance mds_top_inst.mem_mng_inst.mem_ctrl_rd_inst.type_reg_wbm_d2[1] of view:PrimLib.dffr(prim) because there are no references to its outputs 
+@N: BN116 :"h:\project\sg_project\vhdl\mem_ctrl_rd_wbs.vhd":384:2:384:3|Removing sequential instance mds_top_inst.mem_mng_inst.mem_ctrl_rd_inst.wbs_inst.type_reg_wbm[7] of view:PrimLib.dffr(prim) because there are no references to its outputs 
+@N: BN116 :"h:\project\sg_project\vhdl\mem_ctrl_rd_wbs.vhd":384:2:384:3|Removing sequential instance mds_top_inst.mem_mng_inst.mem_ctrl_rd_inst.wbs_inst.type_reg_wbm[6] of view:PrimLib.dffr(prim) because there are no references to its outputs 
+@N: BN116 :"h:\project\sg_project\vhdl\mem_ctrl_rd_wbs.vhd":384:2:384:3|Removing sequential instance mds_top_inst.mem_mng_inst.mem_ctrl_rd_inst.wbs_inst.type_reg_wbm[5] of view:PrimLib.dffr(prim) because there are no references to its outputs 
+@N: BN116 :"h:\project\sg_project\vhdl\mem_ctrl_rd_wbs.vhd":384:2:384:3|Removing sequential instance mds_top_inst.mem_mng_inst.mem_ctrl_rd_inst.wbs_inst.type_reg_wbm[4] of view:PrimLib.dffr(prim) because there are no references to its outputs 
+@N: BN116 :"h:\project\sg_project\vhdl\mem_ctrl_rd_wbs.vhd":384:2:384:3|Removing sequential instance mds_top_inst.mem_mng_inst.mem_ctrl_rd_inst.wbs_inst.type_reg_wbm[3] of view:PrimLib.dffr(prim) because there are no references to its outputs 
+@N: BN116 :"h:\project\sg_project\vhdl\mem_ctrl_rd_wbs.vhd":384:2:384:3|Removing sequential instance mds_top_inst.mem_mng_inst.mem_ctrl_rd_inst.wbs_inst.type_reg_wbm[2] of view:PrimLib.dffr(prim) because there are no references to its outputs 
+@N: BN116 :"h:\project\sg_project\vhdl\mem_ctrl_rd_wbs.vhd":384:2:384:3|Removing sequential instance mds_top_inst.mem_mng_inst.mem_ctrl_rd_inst.wbs_inst.type_reg_wbm[1] of view:PrimLib.dffr(prim) because there are no references to its outputs 
+@N: BN116 :"h:\project\sg_project\vhdl\mem_ctrl_wr.vhd":355:2:355:3|Removing sequential instance mds_top_inst.mem_mng_inst.mem_ctrl_wr_inst.type_reg_wbm_d1[7] of view:PrimLib.dffr(prim) because there are no references to its outputs 
+@N: BN116 :"h:\project\sg_project\vhdl\mem_ctrl_wr.vhd":355:2:355:3|Removing sequential instance mds_top_inst.mem_mng_inst.mem_ctrl_wr_inst.type_reg_wbm_d1[6] of view:PrimLib.dffr(prim) because there are no references to its outputs 
+@N: BN116 :"h:\project\sg_project\vhdl\mem_ctrl_wr.vhd":355:2:355:3|Removing sequential instance mds_top_inst.mem_mng_inst.mem_ctrl_wr_inst.type_reg_wbm_d1[5] of view:PrimLib.dffr(prim) because there are no references to its outputs 
+@N: BN116 :"h:\project\sg_project\vhdl\mem_ctrl_wr.vhd":355:2:355:3|Removing sequential instance mds_top_inst.mem_mng_inst.mem_ctrl_wr_inst.type_reg_wbm_d1[4] of view:PrimLib.dffr(prim) because there are no references to its outputs 
+@N: BN116 :"h:\project\sg_project\vhdl\mem_ctrl_wr.vhd":355:2:355:3|Removing sequential instance mds_top_inst.mem_mng_inst.mem_ctrl_wr_inst.type_reg_wbm_d1[3] of view:PrimLib.dffr(prim) because there are no references to its outputs 
+@N: BN116 :"h:\project\sg_project\vhdl\mem_ctrl_wr.vhd":355:2:355:3|Removing sequential instance mds_top_inst.mem_mng_inst.mem_ctrl_wr_inst.type_reg_wbm_d1[2] of view:PrimLib.dffr(prim) because there are no references to its outputs 
+@N: BN116 :"h:\project\sg_project\vhdl\mem_ctrl_wr.vhd":355:2:355:3|Removing sequential instance mds_top_inst.mem_mng_inst.mem_ctrl_wr_inst.wr_addr_reg_wbm_d1[21] of view:PrimLib.dffr(prim) because there are no references to its outputs 
+@N: BN116 :"h:\project\sg_project\vhdl\mem_ctrl_wr.vhd":355:2:355:3|Removing sequential instance mds_top_inst.mem_mng_inst.mem_ctrl_wr_inst.wr_addr_reg_wbm_d1[20] of view:PrimLib.dffr(prim) because there are no references to its outputs 
+@N: BN116 :"h:\project\sg_project\vhdl\mem_ctrl_wr.vhd":355:2:355:3|Removing sequential instance mds_top_inst.mem_mng_inst.mem_ctrl_wr_inst.wr_addr_reg_wbm_d1[19] of view:PrimLib.dffr(prim) because there are no references to its outputs 
+@N: BN116 :"h:\project\sg_project\vhdl\mem_ctrl_wr.vhd":355:2:355:3|Removing sequential instance mds_top_inst.mem_mng_inst.mem_ctrl_wr_inst.wr_addr_reg_wbm_d1[18] of view:PrimLib.dffr(prim) because there are no references to its outputs 
+@N: BN116 :"h:\project\sg_project\vhdl\mem_ctrl_wr.vhd":355:2:355:3|Removing sequential instance mds_top_inst.mem_mng_inst.mem_ctrl_wr_inst.wr_addr_reg_wbm_d1[17] of view:PrimLib.dffr(prim) because there are no references to its outputs 
+@N: BN116 :"h:\project\sg_project\vhdl\mem_ctrl_wr.vhd":355:2:355:3|Removing sequential instance mds_top_inst.mem_mng_inst.mem_ctrl_wr_inst.wr_addr_reg_wbm_d1[16] of view:PrimLib.dffr(prim) because there are no references to its outputs 
+@N: BN116 :"h:\project\sg_project\vhdl\mem_ctrl_wr.vhd":355:2:355:3|Removing sequential instance mds_top_inst.mem_mng_inst.mem_ctrl_wr_inst.wr_addr_reg_wbm_d1[15] of view:PrimLib.dffr(prim) because there are no references to its outputs 
+@N: BN116 :"h:\project\sg_project\vhdl\mem_ctrl_wr.vhd":355:2:355:3|Removing sequential instance mds_top_inst.mem_mng_inst.mem_ctrl_wr_inst.wr_addr_reg_wbm_d1[14] of view:PrimLib.dffr(prim) because there are no references to its outputs 
+@N: BN116 :"h:\project\sg_project\vhdl\mem_ctrl_wr.vhd":355:2:355:3|Removing sequential instance mds_top_inst.mem_mng_inst.mem_ctrl_wr_inst.wr_addr_reg_wbm_d1[13] of view:PrimLib.dffr(prim) because there are no references to its outputs 
+@N: BN116 :"h:\project\sg_project\vhdl\mem_ctrl_wr.vhd":355:2:355:3|Removing sequential instance mds_top_inst.mem_mng_inst.mem_ctrl_wr_inst.wr_addr_reg_wbm_d1[12] of view:PrimLib.dffr(prim) because there are no references to its outputs 
+@N: BN116 :"h:\project\sg_project\vhdl\mem_ctrl_wr.vhd":355:2:355:3|Removing sequential instance mds_top_inst.mem_mng_inst.mem_ctrl_wr_inst.wr_addr_reg_wbm_d1[11] of view:PrimLib.dffr(prim) because there are no references to its outputs 
+@N: BN116 :"h:\project\sg_project\vhdl\mem_ctrl_wr.vhd":355:2:355:3|Removing sequential instance mds_top_inst.mem_mng_inst.mem_ctrl_wr_inst.wr_addr_reg_wbm_d1[10] of view:PrimLib.dffr(prim) because there are no references to its outputs 
+@N: BN116 :"h:\project\sg_project\vhdl\mem_ctrl_wr.vhd":355:2:355:3|Removing sequential instance mds_top_inst.mem_mng_inst.mem_ctrl_wr_inst.wr_addr_reg_wbm_d1[9] of view:PrimLib.dffr(prim) because there are no references to its outputs 
+@N: BN116 :"h:\project\sg_project\vhdl\mem_ctrl_wr.vhd":355:2:355:3|Removing sequential instance mds_top_inst.mem_mng_inst.mem_ctrl_wr_inst.wr_addr_reg_wbm_d1[8] of view:PrimLib.dffr(prim) because there are no references to its outputs 
+@N: BN116 :"h:\project\sg_project\vhdl\mem_ctrl_wr.vhd":355:2:355:3|Removing sequential instance mds_top_inst.mem_mng_inst.mem_ctrl_wr_inst.wr_addr_reg_wbm_d1[7] of view:PrimLib.dffr(prim) because there are no references to its outputs 
+@N: BN116 :"h:\project\sg_project\vhdl\mem_ctrl_wr.vhd":355:2:355:3|Removing sequential instance mds_top_inst.mem_mng_inst.mem_ctrl_wr_inst.wr_addr_reg_wbm_d1[6] of view:PrimLib.dffr(prim) because there are no references to its outputs 
+@N: BN116 :"h:\project\sg_project\vhdl\mem_ctrl_wr.vhd":355:2:355:3|Removing sequential instance mds_top_inst.mem_mng_inst.mem_ctrl_wr_inst.wr_addr_reg_wbm_d1[5] of view:PrimLib.dffr(prim) because there are no references to its outputs 
+@N: BN116 :"h:\project\sg_project\vhdl\mem_ctrl_wr.vhd":355:2:355:3|Removing sequential instance mds_top_inst.mem_mng_inst.mem_ctrl_wr_inst.wr_addr_reg_wbm_d1[4] of view:PrimLib.dffr(prim) because there are no references to its outputs 
+@N: BN116 :"h:\project\sg_project\vhdl\mem_ctrl_wr.vhd":355:2:355:3|Removing sequential instance mds_top_inst.mem_mng_inst.mem_ctrl_wr_inst.wr_addr_reg_wbm_d1[3] of view:PrimLib.dffr(prim) because there are no references to its outputs 
+@N: BN116 :"h:\project\sg_project\vhdl\mem_ctrl_wr.vhd":355:2:355:3|Removing sequential instance mds_top_inst.mem_mng_inst.mem_ctrl_wr_inst.wr_addr_reg_wbm_d1[2] of view:PrimLib.dffr(prim) because there are no references to its outputs 
+@N: BN116 :"h:\project\sg_project\vhdl\mem_ctrl_wr.vhd":355:2:355:3|Removing sequential instance mds_top_inst.mem_mng_inst.mem_ctrl_wr_inst.wr_addr_reg_wbm_d1[1] of view:PrimLib.dffr(prim) because there are no references to its outputs 
+@N: BN116 :"h:\project\sg_project\vhdl\mem_ctrl_wr.vhd":355:2:355:3|Removing sequential instance mds_top_inst.mem_mng_inst.mem_ctrl_wr_inst.wr_addr_reg_wbm_d1[0] of view:PrimLib.dffr(prim) because there are no references to its outputs 
+@N: BN116 :"h:\project\sg_project\vhdl\mem_ctrl_wr.vhd":355:2:355:3|Removing sequential instance mds_top_inst.mem_mng_inst.mem_ctrl_wr_inst.type_reg_wbm_d2[7] of view:PrimLib.dffr(prim) because there are no references to its outputs 
+@N: BN116 :"h:\project\sg_project\vhdl\mem_ctrl_wr.vhd":355:2:355:3|Removing sequential instance mds_top_inst.mem_mng_inst.mem_ctrl_wr_inst.type_reg_wbm_d2[6] of view:PrimLib.dffr(prim) because there are no references to its outputs 
+@N: BN116 :"h:\project\sg_project\vhdl\mem_ctrl_wr.vhd":355:2:355:3|Removing sequential instance mds_top_inst.mem_mng_inst.mem_ctrl_wr_inst.type_reg_wbm_d2[5] of view:PrimLib.dffr(prim) because there are no references to its outputs 
+@N: BN116 :"h:\project\sg_project\vhdl\mem_ctrl_wr.vhd":355:2:355:3|Removing sequential instance mds_top_inst.mem_mng_inst.mem_ctrl_wr_inst.type_reg_wbm_d2[4] of view:PrimLib.dffr(prim) because there are no references to its outputs 
+@N: BN116 :"h:\project\sg_project\vhdl\mem_ctrl_wr.vhd":355:2:355:3|Removing sequential instance mds_top_inst.mem_mng_inst.mem_ctrl_wr_inst.type_reg_wbm_d2[3] of view:PrimLib.dffr(prim) because there are no references to its outputs 
+@N: BN116 :"h:\project\sg_project\vhdl\mem_ctrl_wr.vhd":355:2:355:3|Removing sequential instance mds_top_inst.mem_mng_inst.mem_ctrl_wr_inst.type_reg_wbm_d2[2] of view:PrimLib.dffr(prim) because there are no references to its outputs 
+@N: BN116 :"h:\project\sg_project\vhdl\mem_ctrl_wr.vhd":355:2:355:3|Removing sequential instance mds_top_inst.mem_mng_inst.mem_ctrl_wr_inst.wr_addr_reg_wbm_d2[21] of view:PrimLib.dffr(prim) because there are no references to its outputs 
+@N: BN116 :"h:\project\sg_project\vhdl\mem_ctrl_wr.vhd":355:2:355:3|Removing sequential instance mds_top_inst.mem_mng_inst.mem_ctrl_wr_inst.wr_addr_reg_wbm_d2[20] of view:PrimLib.dffr(prim) because there are no references to its outputs 
+@N: BN116 :"h:\project\sg_project\vhdl\mem_ctrl_wr.vhd":355:2:355:3|Removing sequential instance mds_top_inst.mem_mng_inst.mem_ctrl_wr_inst.wr_addr_reg_wbm_d2[19] of view:PrimLib.dffr(prim) because there are no references to its outputs 
+@N: BN116 :"h:\project\sg_project\vhdl\mem_ctrl_wr.vhd":355:2:355:3|Removing sequential instance mds_top_inst.mem_mng_inst.mem_ctrl_wr_inst.wr_addr_reg_wbm_d2[18] of view:PrimLib.dffr(prim) because there are no references to its outputs 
+@N: BN116 :"h:\project\sg_project\vhdl\mem_ctrl_wr.vhd":355:2:355:3|Removing sequential instance mds_top_inst.mem_mng_inst.mem_ctrl_wr_inst.wr_addr_reg_wbm_d2[17] of view:PrimLib.dffr(prim) because there are no references to its outputs 
+@N: BN116 :"h:\project\sg_project\vhdl\mem_ctrl_wr.vhd":355:2:355:3|Removing sequential instance mds_top_inst.mem_mng_inst.mem_ctrl_wr_inst.wr_addr_reg_wbm_d2[16] of view:PrimLib.dffr(prim) because there are no references to its outputs 
+@N: BN116 :"h:\project\sg_project\vhdl\mem_ctrl_wr.vhd":355:2:355:3|Removing sequential instance mds_top_inst.mem_mng_inst.mem_ctrl_wr_inst.wr_addr_reg_wbm_d2[15] of view:PrimLib.dffr(prim) because there are no references to its outputs 
+@N: BN116 :"h:\project\sg_project\vhdl\mem_ctrl_wr.vhd":355:2:355:3|Removing sequential instance mds_top_inst.mem_mng_inst.mem_ctrl_wr_inst.wr_addr_reg_wbm_d2[14] of view:PrimLib.dffr(prim) because there are no references to its outputs 
+@N: BN116 :"h:\project\sg_project\vhdl\mem_ctrl_wr.vhd":355:2:355:3|Removing sequential instance mds_top_inst.mem_mng_inst.mem_ctrl_wr_inst.wr_addr_reg_wbm_d2[13] of view:PrimLib.dffr(prim) because there are no references to its outputs 
+@N: BN116 :"h:\project\sg_project\vhdl\mem_ctrl_wr.vhd":355:2:355:3|Removing sequential instance mds_top_inst.mem_mng_inst.mem_ctrl_wr_inst.wr_addr_reg_wbm_d2[12] of view:PrimLib.dffr(prim) because there are no references to its outputs 
+@N: BN116 :"h:\project\sg_project\vhdl\mem_ctrl_wr.vhd":355:2:355:3|Removing sequential instance mds_top_inst.mem_mng_inst.mem_ctrl_wr_inst.wr_addr_reg_wbm_d2[11] of view:PrimLib.dffr(prim) because there are no references to its outputs 
+@N: BN116 :"h:\project\sg_project\vhdl\mem_ctrl_wr.vhd":355:2:355:3|Removing sequential instance mds_top_inst.mem_mng_inst.mem_ctrl_wr_inst.wr_addr_reg_wbm_d2[10] of view:PrimLib.dffr(prim) because there are no references to its outputs 
+@N: BN116 :"h:\project\sg_project\vhdl\mem_ctrl_wr.vhd":355:2:355:3|Removing sequential instance mds_top_inst.mem_mng_inst.mem_ctrl_wr_inst.wr_addr_reg_wbm_d2[9] of view:PrimLib.dffr(prim) because there are no references to its outputs 
+@N: BN116 :"h:\project\sg_project\vhdl\mem_ctrl_wr.vhd":355:2:355:3|Removing sequential instance mds_top_inst.mem_mng_inst.mem_ctrl_wr_inst.wr_addr_reg_wbm_d2[8] of view:PrimLib.dffr(prim) because there are no references to its outputs 
+@N: BN116 :"h:\project\sg_project\vhdl\mem_ctrl_wr.vhd":355:2:355:3|Removing sequential instance mds_top_inst.mem_mng_inst.mem_ctrl_wr_inst.wr_addr_reg_wbm_d2[7] of view:PrimLib.dffr(prim) because there are no references to its outputs 
+@N: BN116 :"h:\project\sg_project\vhdl\mem_ctrl_wr.vhd":355:2:355:3|Removing sequential instance mds_top_inst.mem_mng_inst.mem_ctrl_wr_inst.wr_addr_reg_wbm_d2[6] of view:PrimLib.dffr(prim) because there are no references to its outputs 
+@N: BN116 :"h:\project\sg_project\vhdl\mem_ctrl_wr.vhd":355:2:355:3|Removing sequential instance mds_top_inst.mem_mng_inst.mem_ctrl_wr_inst.wr_addr_reg_wbm_d2[5] of view:PrimLib.dffr(prim) because there are no references to its outputs 
+@N: BN116 :"h:\project\sg_project\vhdl\mem_ctrl_wr.vhd":355:2:355:3|Removing sequential instance mds_top_inst.mem_mng_inst.mem_ctrl_wr_inst.wr_addr_reg_wbm_d2[4] of view:PrimLib.dffr(prim) because there are no references to its outputs 
+@N: BN116 :"h:\project\sg_project\vhdl\mem_ctrl_wr.vhd":355:2:355:3|Removing sequential instance mds_top_inst.mem_mng_inst.mem_ctrl_wr_inst.wr_addr_reg_wbm_d2[3] of view:PrimLib.dffr(prim) because there are no references to its outputs 
+@N: BN116 :"h:\project\sg_project\vhdl\mem_ctrl_wr.vhd":355:2:355:3|Removing sequential instance mds_top_inst.mem_mng_inst.mem_ctrl_wr_inst.wr_addr_reg_wbm_d2[2] of view:PrimLib.dffr(prim) because there are no references to its outputs 
+@N: BN116 :"h:\project\sg_project\vhdl\mem_ctrl_wr.vhd":355:2:355:3|Removing sequential instance mds_top_inst.mem_mng_inst.mem_ctrl_wr_inst.wr_addr_reg_wbm_d2[1] of view:PrimLib.dffr(prim) because there are no references to its outputs 
+@N: BN116 :"h:\project\sg_project\vhdl\mem_ctrl_wr.vhd":355:2:355:3|Removing sequential instance mds_top_inst.mem_mng_inst.mem_ctrl_wr_inst.wr_addr_reg_wbm_d2[0] of view:PrimLib.dffr(prim) because there are no references to its outputs 
+@N: BN116 :"h:\project\sg_project\vhdl\mem_ctrl_wr_wbs.vhd":318:2:318:3|Removing sequential instance mds_top_inst.mem_mng_inst.mem_ctrl_wr_inst.wbs_inst.wr_addr_reg_wbm[21] of view:PrimLib.dffr(prim) because there are no references to its outputs 
+@N: BN116 :"h:\project\sg_project\vhdl\mem_ctrl_wr_wbs.vhd":318:2:318:3|Removing sequential instance mds_top_inst.mem_mng_inst.mem_ctrl_wr_inst.wbs_inst.wr_addr_reg_wbm[20] of view:PrimLib.dffr(prim) because there are no references to its outputs 
+@N: BN116 :"h:\project\sg_project\vhdl\mem_ctrl_wr_wbs.vhd":318:2:318:3|Removing sequential instance mds_top_inst.mem_mng_inst.mem_ctrl_wr_inst.wbs_inst.wr_addr_reg_wbm[19] of view:PrimLib.dffr(prim) because there are no references to its outputs 
+@N: BN116 :"h:\project\sg_project\vhdl\mem_ctrl_wr_wbs.vhd":318:2:318:3|Removing sequential instance mds_top_inst.mem_mng_inst.mem_ctrl_wr_inst.wbs_inst.wr_addr_reg_wbm[18] of view:PrimLib.dffr(prim) because there are no references to its outputs 
+@N: BN116 :"h:\project\sg_project\vhdl\mem_ctrl_wr_wbs.vhd":318:2:318:3|Removing sequential instance mds_top_inst.mem_mng_inst.mem_ctrl_wr_inst.wbs_inst.wr_addr_reg_wbm[17] of view:PrimLib.dffr(prim) because there are no references to its outputs 
+@N: BN116 :"h:\project\sg_project\vhdl\mem_ctrl_wr_wbs.vhd":318:2:318:3|Removing sequential instance mds_top_inst.mem_mng_inst.mem_ctrl_wr_inst.wbs_inst.wr_addr_reg_wbm[16] of view:PrimLib.dffr(prim) because there are no references to its outputs 
+@N: BN116 :"h:\project\sg_project\vhdl\mem_ctrl_wr_wbs.vhd":318:2:318:3|Removing sequential instance mds_top_inst.mem_mng_inst.mem_ctrl_wr_inst.wbs_inst.wr_addr_reg_wbm[15] of view:PrimLib.dffr(prim) because there are no references to its outputs 
+@N: BN116 :"h:\project\sg_project\vhdl\mem_ctrl_wr_wbs.vhd":318:2:318:3|Removing sequential instance mds_top_inst.mem_mng_inst.mem_ctrl_wr_inst.wbs_inst.wr_addr_reg_wbm[14] of view:PrimLib.dffr(prim) because there are no references to its outputs 
+@N: BN116 :"h:\project\sg_project\vhdl\mem_ctrl_wr_wbs.vhd":318:2:318:3|Removing sequential instance mds_top_inst.mem_mng_inst.mem_ctrl_wr_inst.wbs_inst.wr_addr_reg_wbm[13] of view:PrimLib.dffr(prim) because there are no references to its outputs 
+@N: BN116 :"h:\project\sg_project\vhdl\mem_ctrl_wr_wbs.vhd":318:2:318:3|Removing sequential instance mds_top_inst.mem_mng_inst.mem_ctrl_wr_inst.wbs_inst.wr_addr_reg_wbm[12] of view:PrimLib.dffr(prim) because there are no references to its outputs 
+@N: BN116 :"h:\project\sg_project\vhdl\mem_ctrl_wr_wbs.vhd":318:2:318:3|Removing sequential instance mds_top_inst.mem_mng_inst.mem_ctrl_wr_inst.wbs_inst.wr_addr_reg_wbm[11] of view:PrimLib.dffr(prim) because there are no references to its outputs 
+@N: BN116 :"h:\project\sg_project\vhdl\mem_ctrl_wr_wbs.vhd":318:2:318:3|Removing sequential instance mds_top_inst.mem_mng_inst.mem_ctrl_wr_inst.wbs_inst.wr_addr_reg_wbm[10] of view:PrimLib.dffr(prim) because there are no references to its outputs 
+@N: BN116 :"h:\project\sg_project\vhdl\mem_ctrl_wr_wbs.vhd":318:2:318:3|Removing sequential instance mds_top_inst.mem_mng_inst.mem_ctrl_wr_inst.wbs_inst.wr_addr_reg_wbm[9] of view:PrimLib.dffr(prim) because there are no references to its outputs 
+@N: BN116 :"h:\project\sg_project\vhdl\mem_ctrl_wr_wbs.vhd":318:2:318:3|Removing sequential instance mds_top_inst.mem_mng_inst.mem_ctrl_wr_inst.wbs_inst.wr_addr_reg_wbm[8] of view:PrimLib.dffr(prim) because there are no references to its outputs 
+@N: BN116 :"h:\project\sg_project\vhdl\mem_ctrl_wr_wbs.vhd":318:2:318:3|Removing sequential instance mds_top_inst.mem_mng_inst.mem_ctrl_wr_inst.wbs_inst.wr_addr_reg_wbm[7] of view:PrimLib.dffr(prim) because there are no references to its outputs 
+@N: BN116 :"h:\project\sg_project\vhdl\mem_ctrl_wr_wbs.vhd":318:2:318:3|Removing sequential instance mds_top_inst.mem_mng_inst.mem_ctrl_wr_inst.wbs_inst.wr_addr_reg_wbm[6] of view:PrimLib.dffr(prim) because there are no references to its outputs 
+@N: BN116 :"h:\project\sg_project\vhdl\mem_ctrl_wr_wbs.vhd":318:2:318:3|Removing sequential instance mds_top_inst.mem_mng_inst.mem_ctrl_wr_inst.wbs_inst.wr_addr_reg_wbm[5] of view:PrimLib.dffr(prim) because there are no references to its outputs 
+@N: BN116 :"h:\project\sg_project\vhdl\mem_ctrl_wr_wbs.vhd":318:2:318:3|Removing sequential instance mds_top_inst.mem_mng_inst.mem_ctrl_wr_inst.wbs_inst.wr_addr_reg_wbm[4] of view:PrimLib.dffr(prim) because there are no references to its outputs 
+@N: BN116 :"h:\project\sg_project\vhdl\mem_ctrl_wr_wbs.vhd":318:2:318:3|Removing sequential instance mds_top_inst.mem_mng_inst.mem_ctrl_wr_inst.wbs_inst.wr_addr_reg_wbm[3] of view:PrimLib.dffr(prim) because there are no references to its outputs 
+@N: BN116 :"h:\project\sg_project\vhdl\mem_ctrl_wr_wbs.vhd":318:2:318:3|Removing sequential instance mds_top_inst.mem_mng_inst.mem_ctrl_wr_inst.wbs_inst.wr_addr_reg_wbm[2] of view:PrimLib.dffr(prim) because there are no references to its outputs 
+@N: BN116 :"h:\project\sg_project\vhdl\mem_ctrl_wr_wbs.vhd":318:2:318:3|Removing sequential instance mds_top_inst.mem_mng_inst.mem_ctrl_wr_inst.wbs_inst.wr_addr_reg_wbm[1] of view:PrimLib.dffr(prim) because there are no references to its outputs 
+@N: BN116 :"h:\project\sg_project\vhdl\mem_ctrl_wr_wbs.vhd":318:2:318:3|Removing sequential instance mds_top_inst.mem_mng_inst.mem_ctrl_wr_inst.wbs_inst.wr_addr_reg_wbm[0] of view:PrimLib.dffr(prim) because there are no references to its outputs 
+@N: BN116 :"h:\project\sg_project\vhdl\mem_ctrl_wr_wbs.vhd":318:2:318:3|Removing sequential instance mds_top_inst.mem_mng_inst.mem_ctrl_wr_inst.wbs_inst.type_reg_wbm[7] of view:PrimLib.dffr(prim) because there are no references to its outputs 
+@N: BN116 :"h:\project\sg_project\vhdl\mem_ctrl_wr_wbs.vhd":318:2:318:3|Removing sequential instance mds_top_inst.mem_mng_inst.mem_ctrl_wr_inst.wbs_inst.type_reg_wbm[6] of view:PrimLib.dffr(prim) because there are no references to its outputs 
+@N: BN116 :"h:\project\sg_project\vhdl\mem_ctrl_wr_wbs.vhd":318:2:318:3|Removing sequential instance mds_top_inst.mem_mng_inst.mem_ctrl_wr_inst.wbs_inst.type_reg_wbm[5] of view:PrimLib.dffr(prim) because there are no references to its outputs 
+@N: BN116 :"h:\project\sg_project\vhdl\mem_ctrl_wr_wbs.vhd":318:2:318:3|Removing sequential instance mds_top_inst.mem_mng_inst.mem_ctrl_wr_inst.wbs_inst.type_reg_wbm[4] of view:PrimLib.dffr(prim) because there are no references to its outputs 
+@N: BN116 :"h:\project\sg_project\vhdl\mem_ctrl_wr_wbs.vhd":318:2:318:3|Removing sequential instance mds_top_inst.mem_mng_inst.mem_ctrl_wr_inst.wbs_inst.type_reg_wbm[3] of view:PrimLib.dffr(prim) because there are no references to its outputs 
+@N: BN116 :"h:\project\sg_project\vhdl\mem_ctrl_wr_wbs.vhd":318:2:318:3|Removing sequential instance mds_top_inst.mem_mng_inst.mem_ctrl_wr_inst.wbs_inst.type_reg_wbm[2] of view:PrimLib.dffr(prim) because there are no references to its outputs 
+@W: BN132 :"h:\project\sg_project\vhdl\pixel_mng.vhd":181:2:181:3|Removing sequential instance mds_top_inst.disp_ctrl_inst.pixel_mng_inst.vsync_d1,  because it is equivalent to instance mds_top_inst.disp_ctrl_inst.Symbol_Generator_Top_inst.opcode_store_inst.start_trigger_1
+@W: BN132 :"h:\project\sg_project\vhdl\vesa_gen_ctrl.vhd":255:2:255:3|Removing sequential instance mds_top_inst.disp_ctrl_inst.vesa_gen_ctrl_inst.vesa_en_i,  because it is equivalent to instance mds_top_inst.disp_ctrl_inst.right_frame_rg_d1[5]
+@W: BN132 :"h:\project\sg_project\vhdl\disp_ctrl_top.vhd":766:2:766:3|Removing sequential instance mds_top_inst.disp_ctrl_inst.right_frame[6],  because it is equivalent to instance mds_top_inst.disp_ctrl_inst.right_frame[4]
+@W: BN132 :"h:\project\sg_project\vhdl\disp_ctrl_top.vhd":766:2:766:3|Removing sequential instance mds_top_inst.disp_ctrl_inst.right_frame[7],  because it is equivalent to instance mds_top_inst.disp_ctrl_inst.right_frame[5]
+@W: BN132 :"h:\project\sg_project\vhdl\sg\opcode_store.vhd":138:2:138:3|Removing sequential instance mds_top_inst.disp_ctrl_inst.Symbol_Generator_Top_inst.opcode_store_inst.start_trigger_2,  because it is equivalent to instance mds_top_inst.disp_ctrl_inst.pixel_mng_inst.vsync_d2
+@W: BN132 :"h:\project\sg_project\vhdl\pixel_mng.vhd":181:2:181:3|Removing sequential instance mds_top_inst.disp_ctrl_inst.pixel_mng_inst.vsync_sig_0,  because it is equivalent to instance mds_top_inst.disp_ctrl_inst.Symbol_Generator_Top_inst.opcode_store_inst.start_trigger_3
+@W: BN132 :"h:\project\sg_project\vhdl\synthetic_frame_generator.vhd":107:2:107:3|Removing sequential instance mds_top_inst.disp_ctrl_inst.synth_pic_gen_inst.left_frame[6],  because it is equivalent to instance mds_top_inst.disp_ctrl_inst.synth_pic_gen_inst.left_frame[4]
+@W: BN132 :"h:\project\sg_project\vhdl\synthetic_frame_generator.vhd":107:2:107:3|Removing sequential instance mds_top_inst.disp_ctrl_inst.synth_pic_gen_inst.left_frame[7],  because it is equivalent to instance mds_top_inst.disp_ctrl_inst.synth_pic_gen_inst.left_frame[5]
+@W: BN132 :"h:\project\sg_project\vhdl\disp_ctrl_top.vhd":766:2:766:3|Removing sequential instance mds_top_inst.disp_ctrl_inst.left_frame[7],  because it is equivalent to instance mds_top_inst.disp_ctrl_inst.left_frame[5]
+@W: BN132 :"h:\project\sg_project\vhdl\disp_ctrl_top.vhd":766:2:766:3|Removing sequential instance mds_top_inst.disp_ctrl_inst.left_frame[4],  because it is equivalent to instance mds_top_inst.disp_ctrl_inst.left_frame[6]
+@W: BN132 :"h:\project\sg_project\vhdl\synthetic_frame_generator.vhd":107:2:107:3|Removing sequential instance mds_top_inst.disp_ctrl_inst.synth_pic_gen_inst.frame_state[1],  because it is equivalent to instance mds_top_inst.disp_ctrl_inst.synth_pic_gen_inst.lower_frame_1[6]
+@W: BN132 :"h:\project\sg_project\vhdl\synthetic_frame_generator.vhd":107:2:107:3|Removing sequential instance mds_top_inst.disp_ctrl_inst.synth_pic_gen_inst.upper_frame[5],  because it is equivalent to instance mds_top_inst.disp_ctrl_inst.synth_pic_gen_inst.upper_frame[4]
+@W: BN132 :"h:\project\sg_project\vhdl\synthetic_frame_generator.vhd":107:2:107:3|Removing sequential instance mds_top_inst.disp_ctrl_inst.synth_pic_gen_inst.left_frame[4],  because it is equivalent to instance mds_top_inst.disp_ctrl_inst.synth_pic_gen_inst.right_frame_1[4]
+@W: BN132 :"h:\project\sg_project\vhdl\synthetic_frame_generator.vhd":107:2:107:3|Removing sequential instance mds_top_inst.disp_ctrl_inst.synth_pic_gen_inst.lower_frame_1[2],  because it is equivalent to instance mds_top_inst.disp_ctrl_inst.synth_pic_gen_inst.right_frame_1[4]
+@W: BN132 :"h:\project\sg_project\vhdl\vesa_gen_ctrl.vhd":255:2:255:3|Removing sequential instance mds_top_inst.disp_ctrl_inst.vesa_gen_ctrl_inst.left_frame_i[7],  because it is equivalent to instance mds_top_inst.disp_ctrl_inst.vesa_gen_ctrl_inst.left_frame_i[5]
+@W: BN132 :"h:\project\sg_project\vhdl\synthetic_frame_generator.vhd":107:2:107:3|Removing sequential instance mds_top_inst.disp_ctrl_inst.synth_pic_gen_inst.upper_frame[2],  because it is equivalent to instance mds_top_inst.disp_ctrl_inst.synth_pic_gen_inst.right_frame_1[4]
+@W: BN132 :"h:\project\sg_project\vhdl\disp_ctrl_top.vhd":766:2:766:3|Removing sequential instance mds_top_inst.disp_ctrl_inst.right_frame[4],  because it is equivalent to instance mds_top_inst.disp_ctrl_inst.left_frame[6]
+@W: BN132 :"h:\project\sg_project\vhdl\synthetic_frame_generator.vhd":107:2:107:3|Removing sequential instance mds_top_inst.disp_ctrl_inst.synth_pic_gen_inst.upper_frame[4],  because it is equivalent to instance mds_top_inst.disp_ctrl_inst.synth_pic_gen_inst.upper_frame[3]
+@W: BN132 :"h:\project\sg_project\vhdl\vesa_gen_ctrl.vhd":255:2:255:3|Removing sequential instance mds_top_inst.disp_ctrl_inst.vesa_gen_ctrl_inst.left_frame_i[6],  because it is equivalent to instance mds_top_inst.disp_ctrl_inst.vesa_gen_ctrl_inst.left_frame_i[4]
+@N:"h:\project\sg_project\vhdl\sg\general_fifo.vhd":198:2:198:3|Found counter in view:work.top_synthesis(top_synthesis_rtl) inst mds_top_inst.disp_ctrl_inst.Symbol_Generator_Top_inst.opcode_store_inst.general_fifo_inst.read_addr[8:0]
+@N:"h:\project\sg_project\vhdl\sg\general_fifo.vhd":198:2:198:3|Found counter in view:work.top_synthesis(top_synthesis_rtl) inst mds_top_inst.disp_ctrl_inst.Symbol_Generator_Top_inst.opcode_store_inst.general_fifo_inst.write_addr[8:0]
+@N:"h:\project\sg_project\vhdl\sg\general_fifo.vhd":198:2:198:3|Found counter in view:work.top_synthesis(top_synthesis_rtl) inst mds_top_inst.disp_ctrl_inst.Symbol_Generator_Top_inst.fifo_A.read_addr[9:0]
+@N:"h:\project\sg_project\vhdl\sg\general_fifo.vhd":198:2:198:3|Found counter in view:work.top_synthesis(top_synthesis_rtl) inst mds_top_inst.disp_ctrl_inst.Symbol_Generator_Top_inst.fifo_A.write_addr[9:0]
+@N:"h:\project\sg_project\vhdl\sg\general_fifo.vhd":198:2:198:3|Found counter in view:work.top_synthesis(top_synthesis_rtl) inst mds_top_inst.disp_ctrl_inst.Symbol_Generator_Top_inst.fifo_B.read_addr[9:0]
+@N:"h:\project\sg_project\vhdl\sg\general_fifo.vhd":198:2:198:3|Found counter in view:work.top_synthesis(top_synthesis_rtl) inst mds_top_inst.disp_ctrl_inst.Symbol_Generator_Top_inst.fifo_B.write_addr[9:0]
+@N:"h:\project\sg_project\vhdl\rx_path.vhd":420:2:420:3|Found counter in view:work.top_synthesis(top_synthesis_rtl) inst mds_top_inst.rx_path_inst.ram_addr_out[9:0]
+@N:"h:\project\sg_project\vhdl\sg\general_fifo.vhd":198:2:198:3|Found counter in view:work.top_synthesis(top_synthesis_rtl) inst mds_top_inst.tx_path_inst.fifo_inst1.read_addr[3:0]
+@N:"h:\project\sg_project\vhdl\sg\general_fifo.vhd":198:2:198:3|Found counter in view:work.top_synthesis(top_synthesis_rtl) inst mds_top_inst.tx_path_inst.fifo_inst1.write_addr[3:0]
+@W: MO161 :|Register bit false_5 is always 0, optimizing ...
+@W: MO161 :|Register bit false_4 is always 0, optimizing ...
+@W: MO161 :|Register bit false_3 is always 0, optimizing ...
+@W: MO161 :|Register bit false_2 is always 0, optimizing ...
+@W: MO161 :|Register bit false_1 is always 0, optimizing ...
+@W: MO161 :|Register bit false_0 is always 0, optimizing ...
+@W: MO161 :"h:\project\sg_project\vhdl\vesa_gen_ctrl.vhd":255:2:255:3|Register bit mds_top_inst.disp_ctrl_inst.vesa_gen_ctrl_inst.right_frame_i[9] is always 1, optimizing ...
+@W: FA160 :"h:\project\sg_project\vhdl\mem_ctrl_wr_wbm.vhd":459:2:459:3|Removing sequential instance mds_top_inst.mem_mng_inst.mem_ctrl_wr_inst.wbm_inst.wr_cnt_to_rd[18] of view:ALTERA_APEX.S_DFFE_P(PRIM) because its output is stuck at constant value 
+@W: FA160 :"h:\project\sg_project\vhdl\mem_ctrl_rd_wbm.vhd":486:2:486:3|Removing sequential instance mds_top_inst.mem_mng_inst.mem_ctrl_rd_inst.wbm_inst.rd_cnt[18] of view:ALTERA_APEX.S_DFFE_P(PRIM) because its output is stuck at constant value 
+
+
+#################### START OF GENERATED CLOCK OPTIMIZATION REPORT ####################[
+
+======================================================================================
+                                Instance:Pin        Generated Clock Optimization Status
+======================================================================================
+global_nets_inst.reset_blk_inst.sync_rst_sdram_inst.sync_rst_out:CLK            Not Done
+global_nets_inst.reset_blk_inst.sync_rst_sys_inst.sync_rst_out:CLK            Not Done
+global_nets_inst.reset_blk_inst.sync_rst_vesa_inst.sync_rst_out:CLK            Not Done
+
+
+##################### END OF GENERATED CLOCK OPTIMIZATION REPORT #####################]
+
+Finished gated-clock and generated-clock conversion (Time elapsed 0h:00m:08s; Memory used current: 144MB peak: 146MB)
+
+Constraint Checker successful!
+Process took 0h:00m:15s realtime, 0h:00m:09s cputime
+# Sun Apr 14 22:50:20 2013
+
+###########################################################]

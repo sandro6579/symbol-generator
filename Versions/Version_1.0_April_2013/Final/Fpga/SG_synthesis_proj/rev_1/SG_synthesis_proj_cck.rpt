@@ -1,0 +1,234 @@
+# Synplicity Constraint Checker, version map520rc, Build 069R, built May 14 2010
+# Copyright (C) 1994-2010, Synopsys Inc.  All Rights Reserved
+
+# Written on Sun Apr 14 22:50:20 2013
+
+
+##### DESIGN INFO #######################################################
+
+Top View:                "top_synthesis"
+Constraint File(s):      "H:\Project\SG_synthesis_proj\SG.sdc"
+
+
+##### SUMMARY ############################################################
+
+Found 3 issues in 3 out of 4 constraints
+
+
+##### DETAILS ############################################################
+
+
+
+Clock Relationships
+*******************
+
+Starting                                                                 Ending                                                                   |     rise to rise     |     fall to fall     |     rise to fall     |     fall to rise                     
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+fpga_clk                                                                 fpga_clk                                                                 |     20.000           |     No paths         |     No paths         |     No paths                         
+fpga_clk                                                                 global_nets_top|clk_blk_inst.pll_new_2_inst.sdram_clk_derived_clock      |     0.215            |     No paths         |     No paths         |     No paths                         
+fpga_clk                                                                 global_nets_top|clk_blk_inst.pll_new_1_inst.system_clk_derived_clock     |     10.000           |     No paths         |     No paths         |     No paths                         
+fpga_clk                                                                 global_nets_top|clk_blk_inst.pll_new_1_inst.vesa_clk_derived_clock       |     5.000            |     No paths         |     No paths         |     No paths                         
+global_nets_top|clk_blk_inst.pll_new_2_inst.sdram_clk_derived_clock      global_nets_top|clk_blk_inst.pll_new_2_inst.sdram_clk_derived_clock      |     7.519            |     No paths         |     No paths         |     No paths                         
+global_nets_top|clk_blk_inst.pll_new_2_inst.sdram_clk_derived_clock      global_nets_top|clk_blk_inst.pll_new_1_inst.system_clk_derived_clock     |     0.124            |     No paths         |     No paths         |     No paths                         
+global_nets_top|clk_blk_inst.pll_new_1_inst.system_clk_derived_clock     global_nets_top|clk_blk_inst.pll_new_2_inst.sdram_clk_derived_clock      |     0.124            |     No paths         |     No paths         |     No paths                         
+global_nets_top|clk_blk_inst.pll_new_1_inst.system_clk_derived_clock     global_nets_top|clk_blk_inst.pll_new_1_inst.system_clk_derived_clock     |     10.000           |     No paths         |     No paths         |     No paths                         
+global_nets_top|clk_blk_inst.pll_new_1_inst.system_clk_derived_clock     global_nets_top|clk_blk_inst.pll_new_1_inst.vesa_clk_derived_clock       |     5.000            |     No paths         |     No paths         |     No paths                         
+global_nets_top|clk_blk_inst.pll_new_1_inst.vesa_clk_derived_clock       global_nets_top|clk_blk_inst.pll_new_1_inst.system_clk_derived_clock     |     5.000            |     No paths         |     No paths         |     No paths                         
+global_nets_top|clk_blk_inst.pll_new_1_inst.vesa_clk_derived_clock       global_nets_top|clk_blk_inst.pll_new_1_inst.vesa_clk_derived_clock       |     25.000           |     No paths         |     No paths         |     No paths                         
+=============================================================================================================================================================================================================================================================
+ Note: 'No paths' indicates there are no paths in the design for that pair of clock edges.
+       'Diff grp' indicates that paths exist but the starting clock and ending clock are in different clock groups.
+
+
+@W|Paths from clock (fpga_clk:r) to clock (global_nets_top|clk_blk_inst.pll_new_2_inst.sdram_clk_derived_clock:r) are overconstrained because the required time of 0.22 ns is too small.  
+@W|Paths from clock (global_nets_top|clk_blk_inst.pll_new_2_inst.sdram_clk_derived_clock:r) to clock (global_nets_top|clk_blk_inst.pll_new_1_inst.system_clk_derived_clock:r) are overconstrained because the required time of 0.12 ns is too small.  
+@W|Paths from clock (global_nets_top|clk_blk_inst.pll_new_1_inst.system_clk_derived_clock:r) to clock (global_nets_top|clk_blk_inst.pll_new_2_inst.sdram_clk_derived_clock:r) are overconstrained because the required time of 0.12 ns is too small.  
+
+
+Unconstrained Start/End Points
+******************************
+
+p:b_out[0]
+p:b_out[1]
+p:b_out[2]
+p:b_out[3]
+p:b_out[4]
+p:b_out[5]
+p:b_out[6]
+p:b_out[7]
+p:b_out[8]
+p:b_out[9]
+p:blank
+p:dbg_actual_rd_bank
+p:dbg_actual_wr_bank
+p:dbg_disp_active
+p:dbg_icy_bus_taken
+p:dbg_icz_bus_taken
+p:dbg_rd_bank_val
+p:dbg_rx_path_cyc
+p:dbg_sdram_active
+p:dbg_wr_bank_val
+p:dram_addr[0]
+p:dram_addr[1]
+p:dram_addr[2]
+p:dram_addr[3]
+p:dram_addr[4]
+p:dram_addr[5]
+p:dram_addr[6]
+p:dram_addr[7]
+p:dram_addr[8]
+p:dram_addr[9]
+p:dram_addr[10]
+p:dram_addr[11]
+p:dram_bank[0]
+p:dram_bank[1]
+p:dram_cas_n
+p:dram_cke
+p:dram_cs_n
+p:dram_dq[0] (bidir end point)
+p:dram_dq[0] (bidir start point)
+p:dram_dq[1] (bidir end point)
+p:dram_dq[1] (bidir start point)
+p:dram_dq[2] (bidir end point)
+p:dram_dq[2] (bidir start point)
+p:dram_dq[3] (bidir end point)
+p:dram_dq[3] (bidir start point)
+p:dram_dq[4] (bidir end point)
+p:dram_dq[4] (bidir start point)
+p:dram_dq[5] (bidir end point)
+p:dram_dq[5] (bidir start point)
+p:dram_dq[6] (bidir end point)
+p:dram_dq[6] (bidir start point)
+p:dram_dq[7] (bidir end point)
+p:dram_dq[7] (bidir start point)
+p:dram_dq[8] (bidir end point)
+p:dram_dq[8] (bidir start point)
+p:dram_dq[9] (bidir end point)
+p:dram_dq[9] (bidir start point)
+p:dram_dq[10] (bidir end point)
+p:dram_dq[10] (bidir start point)
+p:dram_dq[11] (bidir end point)
+p:dram_dq[11] (bidir start point)
+p:dram_dq[12] (bidir end point)
+p:dram_dq[12] (bidir start point)
+p:dram_dq[13] (bidir end point)
+p:dram_dq[13] (bidir start point)
+p:dram_dq[14] (bidir end point)
+p:dram_dq[14] (bidir start point)
+p:dram_dq[15] (bidir end point)
+p:dram_dq[15] (bidir start point)
+p:dram_ldqm
+p:dram_ras_n
+p:dram_udqm
+p:dram_we_n
+p:fpga_rst
+p:g_out[0]
+p:g_out[1]
+p:g_out[2]
+p:g_out[3]
+p:g_out[4]
+p:g_out[5]
+p:g_out[6]
+p:g_out[7]
+p:g_out[8]
+p:g_out[9]
+p:hsync
+p:lsb_disp[0]
+p:lsb_disp[1]
+p:lsb_disp[2]
+p:lsb_disp[3]
+p:lsb_disp[4]
+p:lsb_disp[5]
+p:lsb_disp[6]
+p:lsb_mem[0]
+p:lsb_mem[1]
+p:lsb_mem[2]
+p:lsb_mem[3]
+p:lsb_mem[4]
+p:lsb_mem[5]
+p:lsb_mem[6]
+p:lsb_tx[0]
+p:lsb_tx[1]
+p:lsb_tx[2]
+p:lsb_tx[3]
+p:lsb_tx[4]
+p:lsb_tx[5]
+p:lsb_tx[6]
+p:lsb_version[0]
+p:lsb_version[1]
+p:lsb_version[2]
+p:lsb_version[3]
+p:lsb_version[4]
+p:lsb_version[5]
+p:lsb_version[6]
+p:msb_disp[0]
+p:msb_disp[1]
+p:msb_disp[2]
+p:msb_disp[3]
+p:msb_disp[4]
+p:msb_disp[5]
+p:msb_disp[6]
+p:msb_mem[0]
+p:msb_mem[1]
+p:msb_mem[2]
+p:msb_mem[3]
+p:msb_mem[4]
+p:msb_mem[5]
+p:msb_mem[6]
+p:msb_tx[0]
+p:msb_tx[1]
+p:msb_tx[2]
+p:msb_tx[3]
+p:msb_tx[4]
+p:msb_tx[5]
+p:msb_tx[6]
+p:msb_version[0]
+p:msb_version[1]
+p:msb_version[2]
+p:msb_version[3]
+p:msb_version[4]
+p:msb_version[5]
+p:msb_version[6]
+p:programming_indication_led
+p:r_out[0]
+p:r_out[1]
+p:r_out[2]
+p:r_out[3]
+p:r_out[4]
+p:r_out[5]
+p:r_out[6]
+p:r_out[7]
+p:r_out[8]
+p:r_out[9]
+p:uart_serial_in
+p:uart_serial_out
+p:vsync
+
+
+Inapplicable constraints
+************************
+
+define_clock { clk_40 } -name { clk_40 } -freq { 40 } -clockgroup { default_clkgroup_4 }
+	@E:|object "clk_40" does not exist
+define_clock { clk_100 } -name { clk_100 } -freq { 100 } -clockgroup { default_clkgroup_3 }
+	@E:|object "clk_100" does not exist
+define_clock { clk_133 } -name { clk_133 } -freq { 133 } -clockgroup { default_clkgroup_2 }
+	@E:|object "clk_133" does not exist
+
+Applicable constraints with issues
+**********************************
+
+(none)
+
+
+Constraints with matching wildcard expressions
+**********************************************
+
+(none)
+
+
+Library Report
+**************
+
+
+# End of Constraint Checker Report

@@ -1,0 +1,62 @@
+--altddio_out CBX_DECLARE_ALL_CONNECTED_PORTS="OFF" DEVICE_FAMILY="Cyclone II" EXTEND_OE_DISABLE="OFF" INVERT_OUTPUT="OFF" OE_REG="UNREGISTERED" POWER_UP_HIGH="OFF" WIDTH=1 datain_h datain_l dataout outclock
+--VERSION_BEGIN 12.0SP2 cbx_altddio_out 2012:08:02:15:11:17:SJ cbx_cycloneii 2012:08:02:15:11:17:SJ cbx_maxii 2012:08:02:15:11:17:SJ cbx_mgl 2012:08:02:15:13:53:SJ cbx_stratix 2012:08:02:15:11:17:SJ cbx_stratixii 2012:08:02:15:11:17:SJ cbx_stratixiii 2012:08:02:15:11:17:SJ cbx_stratixv 2012:08:02:15:11:17:SJ cbx_util_mgl 2012:08:02:15:11:17:SJ  VERSION_END
+
+
+-- Copyright (C) 1991-2012 Altera Corporation
+--  Your use of Altera Corporation's design tools, logic functions 
+--  and other software and tools, and its AMPP partner logic 
+--  functions, and any output files from any of the foregoing 
+--  (including device programming or simulation files), and any 
+--  associated documentation or information are expressly subject 
+--  to the terms and conditions of the Altera Program License 
+--  Subscription Agreement, Altera MegaCore Function License 
+--  Agreement, or other applicable license agreement, including, 
+--  without limitation, that your use is for the sole purpose of 
+--  programming logic devices manufactured by Altera and sold by 
+--  Altera or its authorized distributors.  Please refer to the 
+--  applicable agreement for further details.
+
+
+FUNCTION cycloneii_io (areset, datain, differentialin, inclk, inclkena, linkin, oe, outclk, outclkena, sreset)
+WITH ( bus_hold, input_async_reset, input_power_up, input_register_mode, input_sync_reset, oe_async_reset, oe_power_up, oe_register_mode, oe_sync_reset, open_drain_output, operation_mode, output_async_reset, output_power_up, output_register_mode, output_sync_reset, tie_off_oe_clock_enable, tie_off_output_clock_enable, use_differential_input)
+RETURNS ( combout, differentialout, linkout, padio, regout);
+FUNCTION cycloneii_lcell_comb (cin, dataa, datab, datac, datad)
+WITH ( LUT_MASK, SUM_LUTC_INPUT)
+RETURNS ( combout, cout);
+
+--synthesis_resources = cycloneii_io 1 lut 1 reg 2 
+OPTIONS ALTERA_INTERNAL_OPTION = "ANALYZE_METASTABILITY=OFF;ADV_NETLIST_OPT_ALLOWED=""NEVER_ALLOW"";ALLOW_SYNCH_CTRL_USAGE=OFF;suppress_da_rule_internal=""C104,C106"";{-to output_cell_H} DDIO_OUTPUT_REGISTER=HIGH;{-to output_cell_H} PRESERVE_REGISTER=ON;{-to output_cell_L} DDIO_OUTPUT_REGISTER=LOW;{-to output_cell_L} PRESERVE_REGISTER=ON";
+
+SUBDESIGN ddio_out_75j
+( 
+	datain_h[0..0]	:	input;
+	datain_l[0..0]	:	input;
+	dataout[0..0]	:	output;
+	outclock	:	input;
+) 
+VARIABLE 
+	ddio_outa[0..0] : cycloneii_io
+		WITH (
+			operation_mode = "output"
+		);
+	muxa[0..0] : cycloneii_lcell_comb
+		WITH (
+			LUT_MASK = "1B1B",
+			SUM_LUTC_INPUT = "datac"
+		);
+	output_cell_H[0..0] : dffe;
+	output_cell_L[0..0] : dffe;
+
+BEGIN 
+	ddio_outa[].datain = (! muxa[].combout);
+	ddio_outa[].oe = B"1";
+	muxa[].dataa = outclock;
+	muxa[].datab = output_cell_L[].q;
+	muxa[].datac = output_cell_H[].q;
+	output_cell_H[].clk = outclock;
+	output_cell_H[].d = datain_h[];
+	output_cell_L[].clk = outclock;
+	output_cell_L[].d = datain_l[];
+	dataout[] = ddio_outa[].padio;
+END;
+--VALID FILE

@@ -1,0 +1,49 @@
+# Synopsys, Inc. constraint file
+# H:\Project\SG_synthesis_proj\SG.sdc
+# Written on Tue Apr 02 16:10:21 2013
+# by Synplify Pro, D-2010.03-SP1 Scope Editor
+
+#
+# Collections
+#
+
+#
+# Clocks
+#
+define_clock   {fpga_clk}  -freq 50 -clockgroup default_clkgroup_0
+define_clock -disable   {global_nets_inst.clk_blk_inst.pll_inst.altpll_component}  -clockgroup default_clkgroup_1
+define_clock   {clk_133}  -freq 133 -clockgroup default_clkgroup_2
+define_clock   {clk_100}  -freq 100 -clockgroup default_clkgroup_3
+define_clock   {clk_40}  -freq 40 -clockgroup default_clkgroup_4
+
+#
+# Clock to Clock
+#
+
+#
+# Inputs/Outputs
+#
+
+#
+# Registers
+#
+
+#
+# Delay Paths
+#
+
+#
+# Attributes
+#
+
+#
+# I/O Standards
+#
+
+#
+# Compile Points
+#
+
+#
+# Other
+#

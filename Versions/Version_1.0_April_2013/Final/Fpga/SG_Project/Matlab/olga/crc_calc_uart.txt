@@ -1,0 +1,16 @@
+calcultae crc = (data + type +length + address) mod 256
+
+-------------------------------------------------------
+
+SG opcode register
+
+data = 0x04 = 4
+data = 0x05 = 5
+data = 0x06 = 6
+data = 0x07 = 7
+type = 0x80 = 128
+length = 0x03 = 3
+address = 0x00 = 00
+address = 0x10 = 16
+
+crc = (4+128+0+0+16) mod 256 = 148 = 0x94

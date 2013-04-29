@@ -1,0 +1,164 @@
+#Build: Synplify Pro D-2010.03-SP1, Build 079R, May 19 2010
+#install: C:\Synopsys\fpga_D201003SP1
+#OS:  6.1
+#Hostname: DIGLAB352-1-02
+
+#Implementation: rev_1
+
+#Wed Mar 27 15:44:34 2013
+
+$ Start of Compile
+#Wed Mar 27 15:44:35 2013
+
+Synopsys VHDL Compiler, version comp510rc, Build 073R, built May 14 2010
+@N|Running in 32-bit mode
+Copyright (C) 1994-2010, Synopsys Inc.  All Rights Reserved
+
+@N: CD720 :"C:\Synopsys\fpga_D201003SP1\lib\vhd\std.vhd":123:18:123:21|Setting time resolution to ns
+@N:"H:\Project\SG_synthesis_proj\VHDL\top_synthesis.vhd":23:7:23:19|Top entity is set to top_synthesis.
+@E: CD255 :"H:\Project\SG_synthesis_proj\VHDL\BMP_io_package.vhd":152:23:152:23|No identifier "endfile" in scope
+1 error parsing file H:\Project\SG_synthesis_proj\VHDL\BMP_io_package.vhd
+@END
+1 error parsing file H:\Project\SG_synthesis_proj\VHDL\checksum_calc.vhd
+@END
+1 error parsing file H:\Project\SG_synthesis_proj\VHDL\dec_generic.vhd
+@END
+1 error parsing file H:\Project\SG_synthesis_proj\VHDL\gen_reg.vhd
+@END
+1 error parsing file H:\Project\SG_synthesis_proj\VHDL\general_fifo.vhd
+@END
+1 error parsing file H:\Project\SG_synthesis_proj\VHDL\Hexss.vhd
+@END
+1 error parsing file H:\Project\SG_synthesis_proj\VHDL\img_man_manager.vhd
+@END
+1 error parsing file H:\Project\SG_synthesis_proj\VHDL\intercon_mux.vhd
+@END
+1 error parsing file H:\Project\SG_synthesis_proj\VHDL\intercon_pkg.vhd
+@END
+1 error parsing file H:\Project\SG_synthesis_proj\VHDL\mem_ctrl_rd_wbm.vhd
+@END
+1 error parsing file H:\Project\SG_synthesis_proj\VHDL\mem_ctrl_rd_wbs.vhd
+@END
+1 error parsing file H:\Project\SG_synthesis_proj\VHDL\mem_ctrl_wr_wbm.vhd
+@END
+1 error parsing file H:\Project\SG_synthesis_proj\VHDL\mem_ctrl_wr_wbs.vhd
+@END
+1 error parsing file H:\Project\SG_synthesis_proj\VHDL\mem_mng_arbiter.vhd
+@END
+1 error parsing file H:\Project\SG_synthesis_proj\VHDL\mp_dec.vhd
+@END
+1 error parsing file H:\Project\SG_synthesis_proj\VHDL\mp_enc.vhd
+@END
+1 error parsing file H:\Project\SG_synthesis_proj\VHDL\mux_generic.vhd
+@END
+1 error parsing file H:\Project\SG_synthesis_proj\VHDL\pixel_mng.vhd
+@END
+1 error parsing file H:\Project\SG_synthesis_proj\VHDL\ram_generic_pkg.vhd
+@END
+1 error parsing file H:\Project\SG_synthesis_proj\VHDL\ram_simple.vhd
+@END
+1 error parsing file H:\Project\SG_synthesis_proj\VHDL\rd_wr_ctr.vhd
+@END
+1 error parsing file H:\Project\SG_synthesis_proj\VHDL\reset_debouncer.vhd
+@END
+1 error parsing file H:\Project\SG_synthesis_proj\VHDL\sdram_controller.vhd
+@END
+1 error parsing file H:\Project\SG_synthesis_proj\VHDL\sdram_model.vhd
+@END
+1 error parsing file H:\Project\SG_synthesis_proj\VHDL\sdram_rw.vhd
+@END
+1 error parsing file H:\Project\SG_synthesis_proj\VHDL\sync_rst_gen.vhd
+@END
+1 error parsing file H:\Project\SG_synthesis_proj\VHDL\synthetic_frame_generator.vhd
+@END
+1 error parsing file H:\Project\SG_synthesis_proj\VHDL\tx_path_wbm.vhd
+@END
+1 error parsing file H:\Project\SG_synthesis_proj\VHDL\txt_util_pkg.vhd
+@END
+1 error parsing file H:\Project\SG_synthesis_proj\VHDL\uart_rx.vhd
+@END
+1 error parsing file H:\Project\SG_synthesis_proj\VHDL\uart_tx.vhd
+@END
+@E: CD200 :"H:\Project\SG_synthesis_proj\VHDL\uart_tx_gen_model.vhd":199:5:199:14|Misspelled variable, signal or procedure name?
+2 errors parsing file H:\Project\SG_synthesis_proj\VHDL\uart_tx_gen_model.vhd
+@END
+2 errors parsing file H:\Project\SG_synthesis_proj\VHDL\vesa_gen_ctrl.vhd
+@END
+2 errors parsing file H:\Project\SG_synthesis_proj\VHDL\wbs_reg.vhd
+@END
+2 errors parsing file H:\Project\SG_synthesis_proj\VHDL\SG\led.vhd
+@END
+2 errors parsing file H:\Project\SG_synthesis_proj\VHDL\SG\manager.vhd
+@END
+2 errors parsing file H:\Project\SG_synthesis_proj\VHDL\SG\mux2.vhd
+@END
+2 errors parsing file H:\Project\SG_synthesis_proj\VHDL\SG\opcode_unite.vhd
+@END
+2 errors parsing file H:\Project\SG_synthesis_proj\VHDL\SG\RAM_300.vhd
+@END
+2 errors parsing file H:\Project\SG_synthesis_proj\VHDL\SG\SG_WBM_IF.vhd
+@END
+@W: CD643 :"H:\Project\SG_synthesis_proj\VHDL\altera_mf.vhd":49207:25:49207:25|Ignoring use clause - vital_timing not found ...
+@W: CD643 :"H:\Project\SG_synthesis_proj\VHDL\altera_mf.vhd":49208:29:49208:29|Ignoring use clause - vital_primitives not found ...
+2 errors parsing file H:\Project\SG_synthesis_proj\VHDL\altera_mf.vhd
+@END
+2 errors parsing file H:\Project\SG_synthesis_proj\VHDL\altera_8to16_dc_ram.vhd
+@END
+2 errors parsing file H:\Project\SG_synthesis_proj\VHDL\altera_16to8_dc_ram.vhd
+@END
+2 errors parsing file H:\Project\SG_synthesis_proj\VHDL\pll.vhd
+@END
+2 errors parsing file H:\Project\SG_synthesis_proj\VHDL\clk_blk_top.vhd
+@END
+2 errors parsing file H:\Project\SG_synthesis_proj\VHDL\dc_fifo.vhd
+@END
+2 errors parsing file H:\Project\SG_synthesis_proj\VHDL\SG\opcode_store.vhd
+@END
+2 errors parsing file H:\Project\SG_synthesis_proj\VHDL\SG\Symbol_Generator_Top.vhd
+@END
+2 errors parsing file H:\Project\SG_synthesis_proj\VHDL\disp_ctrl_top.vhd
+@END
+2 errors parsing file H:\Project\SG_synthesis_proj\VHDL\reset_blk_top.vhd
+@END
+2 errors parsing file H:\Project\SG_synthesis_proj\VHDL\global_nets_top.vhd
+@END
+2 errors parsing file H:\Project\SG_synthesis_proj\VHDL\img_man_top.vhd
+@END
+2 errors parsing file H:\Project\SG_synthesis_proj\VHDL\intercon.vhd
+@END
+2 errors parsing file H:\Project\SG_synthesis_proj\VHDL\mem_ctrl_rd.vhd
+@END
+2 errors parsing file H:\Project\SG_synthesis_proj\VHDL\mem_ctrl_wr.vhd
+@END
+2 errors parsing file H:\Project\SG_synthesis_proj\VHDL\mem_mng_top.vhd
+@END
+2 errors parsing file H:\Project\SG_synthesis_proj\VHDL\rx_path.vhd
+@END
+2 errors parsing file H:\Project\SG_synthesis_proj\VHDL\tx_path.vhd
+@END
+2 errors parsing file H:\Project\SG_synthesis_proj\VHDL\mds_top.vhd
+@END
+2 errors parsing file H:\Project\SG_synthesis_proj\VHDL\vesa_pic_col.vhd
+@END
+2 errors parsing file H:\Project\SG_synthesis_proj\VHDL\mds_top_tb.vhd
+@END
+2 errors parsing file H:\Project\SG_synthesis_proj\VHDL\ram_generic.vhd
+@END
+2 errors parsing file H:\Project\SG_synthesis_proj\VHDL\top_synthesis.vhd
+@END
+2 errors parsing file H:\Project\SG_synthesis_proj\VHDL\tx_path_tb.vhd
+@END
+@E: CD200 :"H:\Project\SG_synthesis_proj\VHDL\uart_rx_compare_model.vhd":95:5:95:14|Misspelled variable, signal or procedure name?
+3 errors parsing file H:\Project\SG_synthesis_proj\VHDL\uart_rx_compare_model.vhd
+@END
+@E: CD200 :"H:\Project\SG_synthesis_proj\VHDL\uart_tx_tb.vhd":320:3:320:12|Misspelled variable, signal or procedure name?
+@E: CD415 :"H:\Project\SG_synthesis_proj\VHDL\uart_tx_tb.vhd":325:31:325:31|Expecting keyword of
+5 errors parsing file H:\Project\SG_synthesis_proj\VHDL\uart_tx_tb.vhd
+@END
+5 errors parsing file H:\Project\SG_synthesis_proj\VHDL\vesa_pic_gen.vhd
+@END
+@E|Parse errors encountered - exiting
+Process took 0h:00m:01s realtime, 0h:00m:01s cputime
+# Wed Mar 27 15:44:36 2013
+
+###########################################################]

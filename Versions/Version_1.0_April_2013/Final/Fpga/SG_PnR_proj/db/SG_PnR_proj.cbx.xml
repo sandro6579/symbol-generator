@@ -1,0 +1,15 @@
+<?xml version="1.0" ?>
+<LOG_ROOT>
+	<PROJECT NAME="SG_PnR_proj">
+		<CBX_INST_ENTRY INSTANCE_NAME="|top_synthesis|mds_top:mds_top_inst|mem_mng_top:mem_mng_inst|mem_ctrl_wr:mem_ctrl_wr_inst|altera_8to16_dc_ram:ram1_inst|altsyncram:altsyncram_component" CBX_FILE_NAME="altsyncram_a4l1.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|top_synthesis|mds_top:mds_top_inst|rx_path:rx_path_inst|ram_simple:ram_inst1|altsyncram:ram_data_rtl_0" CBX_FILE_NAME="altsyncram_utg1.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|top_synthesis|mds_top:mds_top_inst|tx_path:tx_path_inst|ram_simple:ram_inst1|altsyncram:ram_data_rtl_0" CBX_FILE_NAME="altsyncram_5di1.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|top_synthesis|mds_top:mds_top_inst|disp_ctrl_top:disp_ctrl_inst|Symbol_Generator_Top:Symbol_Generator_Top_inst|RAM_300:RAM_300_inst|altsyncram:mem_rtl_0" CBX_FILE_NAME="altsyncram_uqg1.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|top_synthesis|mds_top:mds_top_inst|disp_ctrl_top:disp_ctrl_inst|Symbol_Generator_Top:Symbol_Generator_Top_inst|general_fifo:fifo_A|altsyncram:mem_rtl_0" CBX_FILE_NAME="altsyncram_4rg1.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|top_synthesis|mds_top:mds_top_inst|disp_ctrl_top:disp_ctrl_inst|dc_fifo:dc_fifo_inst|dcfifo:dcfifo_component" CBX_FILE_NAME="dcfifo_k3n1.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|top_synthesis|mds_top:mds_top_inst|disp_ctrl_top:disp_ctrl_inst|Symbol_Generator_Top:Symbol_Generator_Top_inst|general_fifo:fifo_B|altsyncram:mem_rtl_0" CBX_FILE_NAME="altsyncram_4rg1.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|top_synthesis|mds_top:mds_top_inst|disp_ctrl_top:disp_ctrl_inst|Symbol_Generator_Top:Symbol_Generator_Top_inst|opcode_store:opcode_store_inst|general_fifo:general_fifo_inst|altsyncram:mem_rtl_0" CBX_FILE_NAME="altsyncram_2rg1.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|top_synthesis|mds_top:mds_top_inst|mem_mng_top:mem_mng_inst|mem_ctrl_rd:mem_ctrl_rd_inst|altera_16to8_dc_ram:ram1_inst|altsyncram:altsyncram_component" CBX_FILE_NAME="altsyncram_b4l1.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|top_synthesis|mds_top:mds_top_inst|tx_path:tx_path_inst|general_fifo:fifo_inst1|altsyncram:mem_rtl_0" CBX_FILE_NAME="altsyncram_8ig1.tdf"/>
+	</PROJECT>
+</LOG_ROOT>

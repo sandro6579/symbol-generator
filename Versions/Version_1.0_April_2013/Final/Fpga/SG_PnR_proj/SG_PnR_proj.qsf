@@ -1,0 +1,298 @@
+# -------------------------------------------------------------------------- #
+#
+# Copyright (C) 1991-2011 Altera Corporation
+# Your use of Altera Corporation's design tools, logic functions 
+# and other software and tools, and its AMPP partner logic 
+# functions, and any output files from any of the foregoing 
+# (including device programming or simulation files), and any 
+# associated documentation or information are expressly subject 
+# to the terms and conditions of the Altera Program License 
+# Subscription Agreement, Altera MegaCore Function License 
+# Agreement, or other applicable license agreement, including, 
+# without limitation, that your use is for the sole purpose of 
+# programming logic devices manufactured by Altera and sold by 
+# Altera or its authorized distributors.  Please refer to the 
+# applicable agreement for further details.
+#
+# -------------------------------------------------------------------------- #
+#
+# Quartus II 64-Bit
+# Version 11.0 Build 208 07/03/2011 Service Pack 1 SJ Full Version
+# Date created = 17:51:51  March 27, 2013
+#
+# -------------------------------------------------------------------------- #
+#
+# Notes:
+#
+# 1) The default values for assignments are stored in the file:
+#		SG_PnR_proj_assignment_defaults.qdf
+#    If this file doesn't exist, see file:
+#		assignment_defaults.qdf
+#
+# 2) Altera recommends that you do not modify this file. This
+#    file is updated automatically by the Quartus II software
+#    and any changes you make may be lost or overwritten.
+#
+# -------------------------------------------------------------------------- #
+
+
+set_global_assignment -name FAMILY "Cyclone II"
+set_global_assignment -name DEVICE EP2C35F672C6
+set_global_assignment -name TOP_LEVEL_ENTITY top_synthesis
+set_global_assignment -name ORIGINAL_QUARTUS_VERSION "11.0 SP1"
+set_global_assignment -name PROJECT_CREATION_TIME_DATE "17:51:51  MARCH 27, 2013"
+set_global_assignment -name LAST_QUARTUS_VERSION "12.0 SP2"
+set_global_assignment -name DEVICE_FILTER_PIN_COUNT 672
+set_global_assignment -name DEVICE_FILTER_SPEED_GRADE 6
+set_global_assignment -name EDA_DESIGN_ENTRY_SYNTHESIS_TOOL "<None>"
+set_global_assignment -name EDA_SIMULATION_TOOL "<None>"
+set_location_assignment PIN_N2 -to fpga_clk
+set_location_assignment PIN_G26 -to fpga_rst
+set_location_assignment PIN_AE22 -to programming_indication_led
+set_location_assignment PIN_AE23 -to dbg_rx_path_cyc
+set_location_assignment PIN_AF23 -to dbg_sdram_active
+set_location_assignment PIN_AB21 -to dbg_disp_active
+set_location_assignment PIN_AC22 -to dbg_icy_bus_taken
+set_location_assignment PIN_AD22 -to dbg_icz_bus_taken
+set_location_assignment PIN_AF13 -to dbg_actual_wr_bank
+set_location_assignment PIN_AE13 -to dbg_actual_rd_bank
+set_location_assignment PIN_AE12 -to dbg_wr_bank_val
+set_location_assignment PIN_AD12 -to dbg_rd_bank_val
+set_location_assignment PIN_C25 -to uart_serial_in
+set_location_assignment PIN_B25 -to uart_serial_out
+set_location_assignment PIN_C8 -to r_out[0]
+set_location_assignment PIN_F10 -to r_out[1]
+set_location_assignment PIN_G10 -to r_out[2]
+set_location_assignment PIN_D9 -to r_out[3]
+set_location_assignment PIN_C9 -to r_out[4]
+set_location_assignment PIN_A8 -to r_out[5]
+set_location_assignment PIN_H11 -to r_out[6]
+set_location_assignment PIN_H12 -to r_out[7]
+set_location_assignment PIN_F11 -to r_out[8]
+set_location_assignment PIN_E10 -to r_out[9]
+set_location_assignment PIN_B9 -to g_out[0]
+set_location_assignment PIN_A9 -to g_out[1]
+set_location_assignment PIN_C10 -to g_out[2]
+set_location_assignment PIN_D10 -to g_out[3]
+set_location_assignment PIN_B10 -to g_out[4]
+set_location_assignment PIN_A10 -to g_out[5]
+set_location_assignment PIN_G11 -to g_out[6]
+set_location_assignment PIN_D11 -to g_out[7]
+set_location_assignment PIN_E12 -to g_out[8]
+set_location_assignment PIN_D12 -to g_out[9]
+set_location_assignment PIN_J13 -to b_out[0]
+set_location_assignment PIN_J14 -to b_out[1]
+set_location_assignment PIN_F12 -to b_out[2]
+set_location_assignment PIN_G12 -to b_out[3]
+set_location_assignment PIN_J10 -to b_out[4]
+set_location_assignment PIN_J11 -to b_out[5]
+set_location_assignment PIN_C11 -to b_out[6]
+set_location_assignment PIN_B11 -to b_out[7]
+set_location_assignment PIN_C12 -to b_out[8]
+set_location_assignment PIN_B12 -to b_out[9]
+set_location_assignment PIN_A7 -to hsync
+set_location_assignment PIN_D8 -to vsync
+set_location_assignment PIN_B8 -to clk_vesa_out
+set_location_assignment PIN_D6 -to blank
+set_location_assignment PIN_AA7 -to clk_sdram_out
+set_instance_assignment -name FAST_OUTPUT_REGISTER ON -to clk_sdram_out
+set_global_assignment -name DEVICE_FILTER_PACKAGE FBGA
+set_global_assignment -name RESERVE_ALL_UNUSED_PINS "AS INPUT TRI-STATED"
+set_location_assignment PIN_AF10 -to lsb_mem[6]
+set_location_assignment PIN_AB12 -to lsb_mem[5]
+set_location_assignment PIN_AC12 -to lsb_mem[4]
+set_location_assignment PIN_AD11 -to lsb_mem[3]
+set_location_assignment PIN_AE11 -to lsb_mem[2]
+set_location_assignment PIN_V14 -to lsb_mem[1]
+set_location_assignment PIN_V13 -to lsb_mem[0]
+set_location_assignment PIN_V20 -to msb_mem[6]
+set_location_assignment PIN_V21 -to msb_mem[5]
+set_location_assignment PIN_W21 -to msb_mem[4]
+set_location_assignment PIN_Y22 -to msb_mem[3]
+set_location_assignment PIN_AA24 -to msb_mem[2]
+set_location_assignment PIN_AA23 -to msb_mem[1]
+set_location_assignment PIN_AB24 -to msb_mem[0]
+set_location_assignment PIN_AB23 -to lsb_disp[6]
+set_location_assignment PIN_V22 -to lsb_disp[5]
+set_location_assignment PIN_AC25 -to lsb_disp[4]
+set_location_assignment PIN_AC26 -to lsb_disp[3]
+set_location_assignment PIN_AB26 -to lsb_disp[2]
+set_location_assignment PIN_AB25 -to lsb_disp[1]
+set_location_assignment PIN_Y24 -to lsb_disp[0]
+set_location_assignment PIN_Y23 -to msb_disp[6]
+set_location_assignment PIN_AA25 -to msb_disp[5]
+set_location_assignment PIN_AA26 -to msb_disp[4]
+set_location_assignment PIN_Y26 -to msb_disp[3]
+set_location_assignment PIN_Y25 -to msb_disp[2]
+set_location_assignment PIN_U22 -to msb_disp[1]
+set_location_assignment PIN_W24 -to msb_disp[0]
+set_location_assignment PIN_U9 -to lsb_tx[6]
+set_location_assignment PIN_U1 -to lsb_tx[5]
+set_location_assignment PIN_U2 -to lsb_tx[4]
+set_location_assignment PIN_T4 -to lsb_tx[3]
+set_location_assignment PIN_R7 -to lsb_tx[2]
+set_location_assignment PIN_R6 -to lsb_tx[1]
+set_location_assignment PIN_T3 -to lsb_tx[0]
+set_location_assignment PIN_T2 -to msb_tx[6]
+set_location_assignment PIN_P6 -to msb_tx[5]
+set_location_assignment PIN_P7 -to msb_tx[4]
+set_location_assignment PIN_T9 -to msb_tx[3]
+set_location_assignment PIN_R5 -to msb_tx[2]
+set_location_assignment PIN_R4 -to msb_tx[1]
+set_location_assignment PIN_R3 -to msb_tx[0]
+set_location_assignment PIN_R2 -to lsb_version[6]
+set_location_assignment PIN_P4 -to lsb_version[5]
+set_location_assignment PIN_P3 -to lsb_version[4]
+set_location_assignment PIN_M2 -to lsb_version[3]
+set_location_assignment PIN_M3 -to lsb_version[2]
+set_location_assignment PIN_M5 -to lsb_version[1]
+set_location_assignment PIN_M4 -to lsb_version[0]
+set_location_assignment PIN_L3 -to msb_version[6]
+set_location_assignment PIN_L2 -to msb_version[5]
+set_location_assignment PIN_L9 -to msb_version[4]
+set_location_assignment PIN_L6 -to msb_version[3]
+set_location_assignment PIN_L7 -to msb_version[2]
+set_location_assignment PIN_P9 -to msb_version[1]
+set_location_assignment PIN_N9 -to msb_version[0]
+set_location_assignment PIN_T6 -to dram_addr[0]
+set_location_assignment PIN_V4 -to dram_addr[1]
+set_location_assignment PIN_V3 -to dram_addr[2]
+set_location_assignment PIN_W2 -to dram_addr[3]
+set_location_assignment PIN_W1 -to dram_addr[4]
+set_location_assignment PIN_U6 -to dram_addr[5]
+set_location_assignment PIN_U7 -to dram_addr[6]
+set_location_assignment PIN_U5 -to dram_addr[7]
+set_location_assignment PIN_W4 -to dram_addr[8]
+set_location_assignment PIN_W3 -to dram_addr[9]
+set_location_assignment PIN_Y1 -to dram_addr[10]
+set_location_assignment PIN_V5 -to dram_addr[11]
+set_instance_assignment -name FAST_OUTPUT_REGISTER ON -to dram_addr[0]
+set_instance_assignment -name FAST_OUTPUT_REGISTER ON -to dram_addr[1]
+set_instance_assignment -name FAST_OUTPUT_REGISTER ON -to dram_addr[2]
+set_instance_assignment -name FAST_OUTPUT_REGISTER ON -to dram_addr[3]
+set_instance_assignment -name FAST_OUTPUT_REGISTER ON -to dram_addr[4]
+set_instance_assignment -name FAST_OUTPUT_REGISTER ON -to dram_addr[5]
+set_instance_assignment -name FAST_OUTPUT_REGISTER ON -to dram_addr[6]
+set_instance_assignment -name FAST_OUTPUT_REGISTER ON -to dram_addr[7]
+set_instance_assignment -name FAST_OUTPUT_REGISTER ON -to dram_addr[8]
+set_instance_assignment -name FAST_OUTPUT_REGISTER ON -to dram_addr[9]
+set_instance_assignment -name FAST_OUTPUT_REGISTER ON -to dram_addr[10]
+set_instance_assignment -name FAST_OUTPUT_REGISTER ON -to dram_addr[11]
+set_location_assignment PIN_V6 -to dram_dq[0]
+set_location_assignment PIN_AA2 -to dram_dq[1]
+set_location_assignment PIN_AA1 -to dram_dq[2]
+set_location_assignment PIN_Y3 -to dram_dq[3]
+set_location_assignment PIN_Y4 -to dram_dq[4]
+set_location_assignment PIN_R8 -to dram_dq[5]
+set_location_assignment PIN_T8 -to dram_dq[6]
+set_location_assignment PIN_V7 -to dram_dq[7]
+set_location_assignment PIN_W6 -to dram_dq[8]
+set_location_assignment PIN_AB2 -to dram_dq[9]
+set_location_assignment PIN_AB1 -to dram_dq[10]
+set_location_assignment PIN_AA4 -to dram_dq[11]
+set_location_assignment PIN_AA3 -to dram_dq[12]
+set_location_assignment PIN_AC2 -to dram_dq[13]
+set_location_assignment PIN_AC1 -to dram_dq[14]
+set_location_assignment PIN_AA5 -to dram_dq[15]
+set_location_assignment PIN_AE2 -to dram_bank[0]
+set_location_assignment PIN_AE3 -to dram_bank[1]
+set_instance_assignment -name FAST_OUTPUT_REGISTER ON -to dram_bank[0]
+set_instance_assignment -name FAST_OUTPUT_REGISTER ON -to dram_bank[1]
+set_location_assignment PIN_AD2 -to dram_ldqm
+set_instance_assignment -name FAST_OUTPUT_REGISTER ON -to dram_ldqm
+set_location_assignment PIN_Y5 -to dram_udqm
+set_instance_assignment -name FAST_OUTPUT_REGISTER ON -to dram_udqm
+set_location_assignment PIN_AB4 -to dram_ras_n
+set_instance_assignment -name FAST_OUTPUT_REGISTER ON -to dram_ras_n
+set_location_assignment PIN_AB3 -to dram_cas_n
+set_instance_assignment -name FAST_OUTPUT_REGISTER ON -to dram_cas_n
+set_location_assignment PIN_AA6 -to dram_cke
+set_instance_assignment -name FAST_OUTPUT_REGISTER ON -to dram_cke
+set_location_assignment PIN_AD3 -to dram_we_n
+set_instance_assignment -name FAST_OUTPUT_REGISTER ON -to dram_we_n
+set_location_assignment PIN_AC3 -to dram_cs_n
+set_instance_assignment -name FAST_OUTPUT_REGISTER ON -to dram_cs_n
+set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
+set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
+set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
+set_global_assignment -name RESERVE_ALL_UNUSED_PINS_NO_OUTPUT_GND "AS INPUT TRI-STATED"
+set_global_assignment -name STRATIX_DEVICE_IO_STANDARD "3.3-V LVTTL"
+set_global_assignment -name ENABLE_SIGNALTAP OFF
+set_global_assignment -name USE_SIGNALTAP_FILE serial_in_out_video.stp
+set_global_assignment -name MIN_CORE_JUNCTION_TEMP 0
+set_global_assignment -name MAX_CORE_JUNCTION_TEMP 85
+set_global_assignment -name POWER_PRESET_COOLING_SOLUTION "23 MM HEAT SINK WITH 200 LFPM AIRFLOW"
+set_global_assignment -name POWER_BOARD_THERMAL_MODEL "NONE (CONSERVATIVE)"
+set_global_assignment -name VHDL_FILE ../SG_Project/VHDL/SG/pll_27/pll_27.vhd
+set_global_assignment -name VHDL_FILE ../SG_Project/VHDL/SG/pll_50/pll_50.vhd
+set_global_assignment -name QIP_FILE sdram_altddio_out.qip
+set_global_assignment -name VHDL_FILE ../SG_Project/VHDL/wbs_reg.vhd
+set_global_assignment -name VHDL_FILE ../SG_Project/VHDL/vesa_pic_gen.vhd
+set_global_assignment -name VHDL_FILE ../SG_Project/VHDL/vesa_pic_col.vhd
+set_global_assignment -name VHDL_FILE ../SG_Project/VHDL/vesa_gen_ctrl.vhd
+set_global_assignment -name VHDL_FILE ../SG_Project/VHDL/uart_tx_gen_model.vhd
+set_global_assignment -name VHDL_FILE ../SG_Project/VHDL/uart_tx.vhd
+set_global_assignment -name VHDL_FILE ../SG_Project/VHDL/uart_rx.vhd
+set_global_assignment -name VHDL_FILE ../SG_Project/VHDL/txt_util_pkg.vhd
+set_global_assignment -name VHDL_FILE ../SG_Project/VHDL/tx_path_wbm.vhd
+set_global_assignment -name VHDL_FILE ../SG_Project/VHDL/tx_path.vhd
+set_global_assignment -name VHDL_FILE ../SG_Project/VHDL/top_synthesis.vhd
+set_global_assignment -name VHDL_FILE ../SG_Project/VHDL/synthetic_frame_generator.vhd
+set_global_assignment -name VHDL_FILE ../SG_Project/VHDL/sync_rst_gen.vhd
+set_global_assignment -name VHDL_FILE ../SG_Project/VHDL/sdram_rw.vhd
+set_global_assignment -name VHDL_FILE ../SG_Project/VHDL/sdram_model.vhd
+set_global_assignment -name VHDL_FILE ../SG_Project/VHDL/sdram_controller.vhd
+set_global_assignment -name VHDL_FILE ../SG_Project/VHDL/sdram_altddio_out.vhd
+set_global_assignment -name VHDL_FILE ../SG_Project/VHDL/rx_path.vhd
+set_global_assignment -name VHDL_FILE ../SG_Project/VHDL/reset_debouncer.vhd
+set_global_assignment -name VHDL_FILE ../SG_Project/VHDL/reset_blk_top.vhd
+set_global_assignment -name VHDL_FILE ../SG_Project/VHDL/rd_wr_ctr.vhd
+set_global_assignment -name VHDL_FILE ../SG_Project/VHDL/ram_simple.vhd
+set_global_assignment -name VHDL_FILE ../SG_Project/VHDL/ram_generic_pkg.vhd
+set_global_assignment -name VHDL_FILE ../SG_Project/VHDL/ram_generic.vhd
+set_global_assignment -name VHDL_FILE ../SG_Project/VHDL/pll.vhd
+set_global_assignment -name VHDL_FILE ../SG_Project/VHDL/pixel_mng.vhd
+set_global_assignment -name VHDL_FILE ../SG_Project/VHDL/mux_generic.vhd
+set_global_assignment -name VHDL_FILE ../SG_Project/VHDL/mp_enc.vhd
+set_global_assignment -name VHDL_FILE ../SG_Project/VHDL/mp_dec.vhd
+set_global_assignment -name VHDL_FILE ../SG_Project/VHDL/mem_mng_top.vhd
+set_global_assignment -name VHDL_FILE ../SG_Project/VHDL/mem_mng_arbiter.vhd
+set_global_assignment -name VHDL_FILE ../SG_Project/VHDL/mem_ctrl_wr_wbs.vhd
+set_global_assignment -name VHDL_FILE ../SG_Project/VHDL/mem_ctrl_wr_wbm.vhd
+set_global_assignment -name VHDL_FILE ../SG_Project/VHDL/mem_ctrl_wr.vhd
+set_global_assignment -name VHDL_FILE ../SG_Project/VHDL/mem_ctrl_rd_wbs.vhd
+set_global_assignment -name VHDL_FILE ../SG_Project/VHDL/mem_ctrl_rd_wbm.vhd
+set_global_assignment -name VHDL_FILE ../SG_Project/VHDL/mem_ctrl_rd.vhd
+set_global_assignment -name VHDL_FILE ../SG_Project/VHDL/mds_top_tb.vhd
+set_global_assignment -name VHDL_FILE ../SG_Project/VHDL/mds_top.vhd
+set_global_assignment -name VHDL_FILE ../SG_Project/VHDL/intercon_pkg.vhd
+set_global_assignment -name VHDL_FILE ../SG_Project/VHDL/intercon_mux.vhd
+set_global_assignment -name VHDL_FILE ../SG_Project/VHDL/intercon.vhd
+set_global_assignment -name VHDL_FILE ../SG_Project/VHDL/img_man_top.vhd
+set_global_assignment -name VHDL_FILE ../SG_Project/VHDL/img_man_manager.vhd
+set_global_assignment -name VHDL_FILE ../SG_Project/VHDL/Hexss.vhd
+set_global_assignment -name VHDL_FILE ../SG_Project/VHDL/global_nets_top.vhd
+set_global_assignment -name VHDL_FILE ../SG_Project/VHDL/gen_reg.vhd
+set_global_assignment -name VHDL_FILE ../SG_Project/VHDL/disp_ctrl_top.vhd
+set_global_assignment -name VHDL_FILE ../SG_Project/VHDL/dec_generic.vhd
+set_global_assignment -name VHDL_FILE ../SG_Project/VHDL/dc_fifo.vhd
+set_global_assignment -name VHDL_FILE ../SG_Project/VHDL/clk_blk_top.vhd
+set_global_assignment -name VHDL_FILE ../SG_Project/VHDL/checksum_calc.vhd
+set_global_assignment -name VHDL_FILE ../SG_Project/VHDL/BMP_io_package.vhd
+set_global_assignment -name VHDL_FILE ../SG_Project/VHDL/bilinear.vhd
+set_global_assignment -name VHDL_FILE ../SG_Project/VHDL/altera_16to8_dc_ram.vhd
+set_global_assignment -name VHDL_FILE ../SG_Project/VHDL/altera_8to16_dc_ram.vhd
+set_global_assignment -name VHDL_FILE ../SG_Project/VHDL/addr_calc.vhd
+set_global_assignment -name SDC_FILE SDC1.sdc
+set_global_assignment -name TCL_SCRIPT_FILE de2_pins.tcl
+set_global_assignment -name VHDL_FILE ../SG_Project/VHDL/SG/Symbol_Generator_Top.vhd
+set_global_assignment -name VHDL_FILE ../SG_Project/VHDL/SG/SG_WBM_IF.vhd
+set_global_assignment -name VHDL_FILE ../SG_Project/VHDL/SG/RAM_300.vhd
+set_global_assignment -name VHDL_FILE ../SG_Project/VHDL/SG/opcode_unite.vhd
+set_global_assignment -name VHDL_FILE ../SG_Project/VHDL/SG/opcode_store.vhd
+set_global_assignment -name VHDL_FILE ../SG_Project/VHDL/SG/mux2.vhd
+set_global_assignment -name VHDL_FILE ../SG_Project/VHDL/SG/manager.vhd
+set_global_assignment -name VHDL_FILE ../SG_Project/VHDL/SG/clk_reset_model.vhd
+set_global_assignment -name VHDL_FILE ../SG_Project/VHDL/SG/general_fifo.vhd
+set_global_assignment -name VHDL_FILE ../SG_Project/VHDL/SG/led.vhd
+set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top

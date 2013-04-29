@@ -1,0 +1,70 @@
+# Current time Tue Jan 08 19:56:17 2013
+# ModelSim Stack Trace
+# Program = vish
+# Id = "6.6b"
+# Version = "2010.05"
+# Date = "May 21 2010"
+# Platform = win32
+
+Exception c0000005 has occurred at address 004b4efc. Traceback:
+# 0    0x004b4efc: 'Mtirpc_Init + 0x2abec'
+# 1    0x004655f3: '<unknown (@0x4655f3)>'
+# 2    0x1005848e: 'TclServiceIdle + 0x7e'
+# 3    0x1004b131: 'Tcl_DoOneEvent + 0x121'
+# 4    0x1025980f: 'Tk_UpdateObjCmd + 0x6f'
+# 5    0x1000c770: 'TclEvalObjvInternal + 0x230'
+# 6    0x1000dd77: 'Tcl_EvalEx + 0x167'
+# 7    0x1000f1a5: 'Tcl_EvalObjEx + 0x235'
+# 8    0x10011bf5: 'Tcl_EvalObjCmd + 0x75'
+# 9    0x1000c770: 'TclEvalObjvInternal + 0x230'
+# 10   0x1002d7bb: 'TclExprFloatError + 0x10eb'
+# 11   0x1002bc79: 'TclCompEvalObj + 0xd9'
+# 12   0x1005391f: 'TclObjInterpProc + 0x23f'
+# 13   0x1000c770: 'TclEvalObjvInternal + 0x230'
+# 14   0x1002d7bb: 'TclExprFloatError + 0x10eb'
+# 15   0x1002bc79: 'TclCompEvalObj + 0xd9'
+# 16   0x1005391f: 'TclObjInterpProc + 0x23f'
+# 17   0x1000c770: 'TclEvalObjvInternal + 0x230'
+# 18   0x1002d7bb: 'TclExprFloatError + 0x10eb'
+# 19   0x1002bc79: 'TclCompEvalObj + 0xd9'
+# 20   0x1000efc6: 'Tcl_EvalObjEx + 0x56'
+# 21   0x0220aa8d: 'Itcl_EvalMemberCode + 0x22d'
+# 22   0x086d0d00: '<unknown (@0x86d0d00)>'
+StackWalk failed 126
+# End of Stack Trace
+
+# Current time Thu Mar 07 13:06:37 2013
+# ModelSim Stack Trace
+# Program = vish
+# Id = "6.6b"
+# Version = "2010.05"
+# Date = "May 21 2010"
+# Platform = win32
+
+Exception c0000005 has occurred at address 004b4efc. Traceback:
+# 0    0x004b4efc: 'Mtirpc_Init + 0x2abec'
+# 1    0x004655f3: '<unknown (@0x4655f3)>'
+# 2    0x1005848e: 'TclServiceIdle + 0x7e'
+# 3    0x1004b131: 'Tcl_DoOneEvent + 0x121'
+# 4    0x1025980f: 'Tk_UpdateObjCmd + 0x6f'
+# 5    0x1000c770: 'TclEvalObjvInternal + 0x230'
+# 6    0x1000dd77: 'Tcl_EvalEx + 0x167'
+# 7    0x1000f1a5: 'Tcl_EvalObjEx + 0x235'
+# 8    0x10011bf5: 'Tcl_EvalObjCmd + 0x75'
+# 9    0x1000c770: 'TclEvalObjvInternal + 0x230'
+# 10   0x1002d7bb: 'TclExprFloatError + 0x10eb'
+# 11   0x1002bc79: 'TclCompEvalObj + 0xd9'
+# 12   0x1005391f: 'TclObjInterpProc + 0x23f'
+# 13   0x1000c770: 'TclEvalObjvInternal + 0x230'
+# 14   0x1002d7bb: 'TclExprFloatError + 0x10eb'
+# 15   0x1002bc79: 'TclCompEvalObj + 0xd9'
+# 16   0x1005391f: 'TclObjInterpProc + 0x23f'
+# 17   0x1000c770: 'TclEvalObjvInternal + 0x230'
+# 18   0x1002d7bb: 'TclExprFloatError + 0x10eb'
+# 19   0x1002bc79: 'TclCompEvalObj + 0xd9'
+# 20   0x1000efc6: 'Tcl_EvalObjEx + 0x56'
+# 21   0x009eaa8d: 'Itcl_EvalMemberCode + 0x22d'
+# 22   0x08cd1fc8: '<unknown (@0x8cd1fc8)>'
+StackWalk failed 126
+# End of Stack Trace
+

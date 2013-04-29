@@ -1,0 +1,128 @@
+#-- Synopsys, Inc.
+#-- Version D-2010.03-SP1
+#-- Project file H:\Project\SG_synthesis_proj\rev_1\scratchproject.prs
+#-- Written on Mon Apr 15 12:13:35 2013
+
+
+#project files
+add_file -vhdl -lib work "H:/Project/SG_Project/VHDL/SG/Symbol_Generator_Top.vhd"
+add_file -vhdl -lib work "H:/Project/SG_Project/VHDL/SG/SG_WBM_IF.vhd"
+add_file -vhdl -lib work "H:/Project/SG_Project/VHDL/SG/RAM_300.vhd"
+add_file -vhdl -lib work "H:/Project/SG_Project/VHDL/SG/opcode_unite.vhd"
+add_file -vhdl -lib work "H:/Project/SG_Project/VHDL/SG/opcode_store.vhd"
+add_file -vhdl -lib work "H:/Project/SG_Project/VHDL/SG/mux2.vhd"
+add_file -vhdl -lib work "H:/Project/SG_Project/VHDL/SG/manager.vhd"
+add_file -vhdl -lib work "H:/Project/SG_Project/VHDL/SG/led.vhd"
+add_file -vhdl -lib work "H:/Project/SG_Project/VHDL/SG/general_fifo.vhd"
+add_file -vhdl -lib work "H:/Project/SG_Project/VHDL/altera_8to16_dc_ram.vhd"
+add_file -vhdl -lib work "H:/Project/SG_Project/VHDL/altera_16to8_dc_ram.vhd"
+add_file -vhdl -lib work "H:/Project/SG_Project/VHDL/checksum_calc.vhd"
+add_file -vhdl -lib work "H:/Project/SG_Project/VHDL/clk_blk_top.vhd"
+add_file -vhdl -lib work "H:/Project/SG_Project/VHDL/dc_fifo.vhd"
+add_file -vhdl -lib work "H:/Project/SG_Project/VHDL/dec_generic.vhd"
+add_file -vhdl -lib work "H:/Project/SG_Project/VHDL/disp_ctrl_top.vhd"
+add_file -vhdl -lib work "H:/Project/SG_Project/VHDL/gen_reg.vhd"
+add_file -vhdl -lib work "H:/Project/SG_Project/VHDL/global_nets_top.vhd"
+add_file -vhdl -lib work "H:/Project/SG_Project/VHDL/Hexss.vhd"
+add_file -vhdl -lib work "H:/Project/SG_Project/VHDL/intercon.vhd"
+add_file -vhdl -lib work "H:/Project/SG_Project/VHDL/intercon_mux.vhd"
+add_file -vhdl -lib work "H:/Project/SG_Project/VHDL/intercon_pkg.vhd"
+add_file -vhdl -lib work "H:/Project/SG_Project/VHDL/mds_top.vhd"
+add_file -vhdl -lib work "H:/Project/SG_Project/VHDL/mem_ctrl_rd.vhd"
+add_file -vhdl -lib work "H:/Project/SG_Project/VHDL/mem_ctrl_rd_wbm.vhd"
+add_file -vhdl -lib work "H:/Project/SG_Project/VHDL/mem_ctrl_rd_wbs.vhd"
+add_file -vhdl -lib work "H:/Project/SG_Project/VHDL/mem_ctrl_wr.vhd"
+add_file -vhdl -lib work "H:/Project/SG_Project/VHDL/mem_ctrl_wr_wbm.vhd"
+add_file -vhdl -lib work "H:/Project/SG_Project/VHDL/mem_ctrl_wr_wbs.vhd"
+add_file -vhdl -lib work "H:/Project/SG_Project/VHDL/mem_mng_arbiter.vhd"
+add_file -vhdl -lib work "H:/Project/SG_Project/VHDL/mem_mng_top.vhd"
+add_file -vhdl -lib work "H:/Project/SG_Project/VHDL/mp_dec.vhd"
+add_file -vhdl -lib work "H:/Project/SG_Project/VHDL/mp_enc.vhd"
+add_file -vhdl -lib work "H:/Project/SG_Project/VHDL/mux_generic.vhd"
+add_file -vhdl -lib work "H:/Project/SG_Project/VHDL/pixel_mng.vhd"
+add_file -vhdl -lib work "H:/Project/SG_Project/VHDL/pll.vhd"
+add_file -vhdl -lib work "H:/Project/SG_Project/VHDL/ram_generic.vhd"
+add_file -vhdl -lib work "H:/Project/SG_Project/VHDL/ram_generic_pkg.vhd"
+add_file -vhdl -lib work "H:/Project/SG_Project/VHDL/ram_simple.vhd"
+add_file -vhdl -lib work "H:/Project/SG_Project/VHDL/rd_wr_ctr.vhd"
+add_file -vhdl -lib work "H:/Project/SG_Project/VHDL/reset_blk_top.vhd"
+add_file -vhdl -lib work "H:/Project/SG_Project/VHDL/reset_debouncer.vhd"
+add_file -vhdl -lib work "H:/Project/SG_Project/VHDL/rx_path.vhd"
+add_file -vhdl -lib work "H:/Project/SG_Project/VHDL/sdram_controller.vhd"
+add_file -vhdl -lib work "H:/Project/SG_Project/VHDL/sdram_model.vhd"
+add_file -vhdl -lib work "H:/Project/SG_Project/VHDL/sdram_rw.vhd"
+add_file -vhdl -lib work "H:/Project/SG_Project/VHDL/sync_rst_gen.vhd"
+add_file -vhdl -lib work "H:/Project/SG_Project/VHDL/synthetic_frame_generator.vhd"
+add_file -vhdl -lib work "H:/Project/SG_Project/VHDL/top_synthesis.vhd"
+add_file -vhdl -lib work "H:/Project/SG_Project/VHDL/tx_path.vhd"
+add_file -vhdl -lib work "H:/Project/SG_Project/VHDL/tx_path_wbm.vhd"
+add_file -vhdl -lib work "H:/Project/SG_Project/VHDL/txt_util_pkg.vhd"
+add_file -vhdl -lib work "H:/Project/SG_Project/VHDL/uart_rx.vhd"
+add_file -vhdl -lib work "H:/Project/SG_Project/VHDL/uart_tx.vhd"
+add_file -vhdl -lib work "H:/Project/SG_Project/VHDL/vesa_gen_ctrl.vhd"
+add_file -vhdl -lib work "H:/Project/SG_Project/VHDL/wbs_reg.vhd"
+add_file -constraint "H:/Project/SG_synthesis_proj/SG.sdc"
+add_file -vhdl -lib work "H:/Project/SG_Project/VHDL/pll_new_1.vhd"
+add_file -vhdl -lib work "H:/Project/SG_Project/VHDL/sdram_altddio_out.vhd"
+add_file -vhdl -lib work "H:/Project/SG_Project/VHDL/pll_new_2.vhd"
+
+
+#implementation: "rev_1"
+impl -add H:\Project\SG_synthesis_proj\rev_1 -type fpga
+
+#
+#implementation attributes
+
+set_option -vlog_std v2001
+set_option -project_relative_includes 1
+set_option -include_path H:/Project/SG_synthesis_proj/
+
+#device options
+set_option -technology CYCLONEII
+set_option -part EP2C35
+set_option -package FC672
+set_option -speed_grade -6
+set_option -part_companion ""
+
+#compilation/mapping options
+set_option -use_fsm_explorer 0
+set_option -top_module "top_synthesis"
+
+# mapper_options
+set_option -frequency 133.0000
+set_option -write_verilog 0
+set_option -write_vhdl 0
+
+# Altera STRATIX
+set_option -run_prop_extract 1
+set_option -maxfan 30
+set_option -disable_io_insertion 0
+set_option -pipe 1
+set_option -update_models_cp 0
+set_option -retiming 0
+set_option -no_sequential_opt 0
+set_option -fixgatedclocks 3
+set_option -fixgeneratedclocks 3
+set_option -quartus_version 9.1
+
+# NFilter
+set_option -popfeed 0
+set_option -constprop 0
+set_option -createhierarchy 0
+
+# sequential_optimization_options
+set_option -symbolic_fsm_compiler 1
+
+# Compiler Options
+set_option -compiler_compatible 0
+set_option -resource_sharing 1
+
+#VIF options
+set_option -write_vif 1
+
+#automatic place and route (vendor) options
+set_option -write_apr_constraint 1
+
+#set result format/file last
+project -result_file "H:/Project/SG_synthesis_proj/rev_1/SG_synthesis_proj.vqm"
+impl -active "rev_1"
