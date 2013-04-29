@@ -97,8 +97,11 @@ architecture rtl_SG_WBM_IF of SG_WBM_IF is
 	signal dbg_adr 			: 	std_logic_vector (23 downto 0);		--
 	signal dbg_cnt			:	natural;
 	
-	signal vsync_cnt : integer range 0 to 15;
-	signal vsync_en : std_logic;
+	--constant vsync_cnt_c 	: integer := 4095; -- synth
+	constant vsync_cnt_c 	: integer := 3; -- simulation
+	
+	signal vsync_cnt 		: integer range 0 to vsync_cnt_c;
+	signal vsync_en 		: std_logic;
 	
 begin
 	
@@ -110,7 +113,7 @@ begin
 			vsync_cnt <= 0;
 			vsync_en <= '0';
 		elsif rising_edge (clk) then
-			if (vsync_cnt > 4) then
+			if (vsync_cnt > (vsync_cnt_c-1) ) then
 				vsync_en <= '1';
 				vsync_cnt <= vsync_cnt;
 			elsif (vsync = '1') then

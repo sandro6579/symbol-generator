@@ -81,7 +81,7 @@ entity mds_top is
 				dbg_type_reg_mem	:	out std_logic_vector (7 downto 0);		--Mem_Management Type Register value for Debug
 				dbg_type_reg_disp	:	out std_logic_vector (7 downto 0);		--Display Type Register value for Debug
 				dbg_type_reg_tx		:	out std_logic_vector (7 downto 0);		--RX_Path Type Register value for Debug
-				dbg_sdram_acive		:	out std_logic;							--'1' when WBM_CYC_O from mem_mng_top to SDRAM is active
+				dbg_sdram_active		:	out std_logic;							--'1' when WBM_CYC_O from mem_mng_top to SDRAM is active
 				dbg_disp_active		:	out std_logic;							--'1' when WBM_CYC_O from disp_ctrl_top to INTERCON_Y is active
 				dbg_icy_bus_taken	:	out std_logic;							--'1' when INTERCON_Y is taken, '0' otherwise
 				dbg_icz_bus_taken	:	out std_logic;							--'1' when INTERCON_Z is taken, '0' otherwise
@@ -1138,8 +1138,8 @@ dbg_rx_path_cyc_proc:
 dbg_rx_path_cyc	<=	rx_wbm_cyc_o;
 
 --WBM_CYC_O from mem_mng_top to SDRAM state
-dbg_sdram_acive_proc:
-dbg_sdram_acive	<=	wbm_cyc_o;
+dbg_sdram_active_proc:
+dbg_sdram_active	<=	wbm_cyc_o;
 			
 --WBM_CYC_O from disp_ctrl_top to INTERCON_Y state
 dbg_disp_active_proc:

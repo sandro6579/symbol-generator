@@ -1254,7 +1254,7 @@ gen_reg_version_inst	:	gen_reg generic map (
 							read_en_g			=>	true,
 							write_en_g			=>	true,
 							clear_on_read_g		=>	false,
-							default_value_g		=>	218							-- SG version - DA
+							default_value_g		=>	1							-- SG version - 0x01
 						)
 						port map (
 							clk					=>	clk_100,
