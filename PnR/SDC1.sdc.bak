@@ -1,0 +1,4 @@
+create_clock -name fpga_clk -period 20 [get_ports {fpga_clk} ]
+create_clock -name clk_133 -period 7.5188 [top_synthesis.clk_133]
+create_clock -name clk_100 -period 10 [top_synthesis.clk_100]
+create_clock -name clk_40 -period 25 [top_synthesis.clk_40]

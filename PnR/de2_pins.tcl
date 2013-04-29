@@ -17,8 +17,8 @@ if {[is_project_open]} {
    ;# To use the 27 MHz clock,the TD_RESET pin (PIN_C4)
    ;# must be asserted to a high logic level
    ;# TD_RESET is also the TV-Decoder reset pin.
-#   set_location_assignment  PIN_D13 -to CLOCK_27
-#   set_location_assignment  PIN_C4  -to TD_RESET
+   set_location_assignment  PIN_D13 -to CLOCK_27
+   set_location_assignment  PIN_C4  -to TD_RESET
    ;# External (SMA) clock input
 #   set_location_assignment  PIN_P26 -to EXT_CLOCK
 
@@ -548,52 +548,52 @@ if {[is_project_open]} {
    ;# 8-Mbyte SDRAM #
    ;#################
    ;# SDRASM address
-   set_location_assignment PIN_T6   -to DRAM_ADDR[0]
-   set_location_assignment PIN_V4   -to DRAM_ADDR[1]
-   set_location_assignment PIN_V3   -to DRAM_ADDR[2]
-   set_location_assignment PIN_W2   -to DRAM_ADDR[3]
-   set_location_assignment PIN_W1   -to DRAM_ADDR[4]
-   set_location_assignment PIN_U6   -to DRAM_ADDR[5]
-   set_location_assignment PIN_U7   -to DRAM_ADDR[6]
-   set_location_assignment PIN_U5   -to DRAM_ADDR[7]
-   set_location_assignment PIN_W4   -to DRAM_ADDR[8]
-   set_location_assignment PIN_W3   -to DRAM_ADDR[9]
-   set_location_assignment PIN_Y1   -to DRAM_ADDR[10]
-   set_location_assignment PIN_V5   -to DRAM_ADDR[11]
+   set_location_assignment PIN_T6   -to dram_addr[0]
+   set_location_assignment PIN_V4   -to dram_addr[1]
+   set_location_assignment PIN_V3   -to dram_addr[2]
+   set_location_assignment PIN_W2   -to dram_addr[3]
+   set_location_assignment PIN_W1   -to dram_addr[4]
+   set_location_assignment PIN_U6   -to dram_addr[5]
+   set_location_assignment PIN_U7   -to dram_addr[6]
+   set_location_assignment PIN_U5   -to dram_addr[7]
+   set_location_assignment PIN_W4   -to dram_addr[8]
+   set_location_assignment PIN_W3   -to dram_addr[9]
+   set_location_assignment PIN_Y1   -to dram_addr[10]
+   set_location_assignment PIN_V5   -to dram_addr[11]
    ;# SDRAM data
-   set_location_assignment PIN_V6   -to DRAM_DQ[0]
-   set_location_assignment PIN_AA2  -to DRAM_DQ[1]
-   set_location_assignment PIN_AA1  -to DRAM_DQ[2]
-   set_location_assignment PIN_Y3   -to DRAM_DQ[3]
-   set_location_assignment PIN_Y4   -to DRAM_DQ[4]
-   set_location_assignment PIN_R8   -to DRAM_DQ[5]
-   set_location_assignment PIN_T8   -to DRAM_DQ[6]
-   set_location_assignment PIN_V7   -to DRAM_DQ[7]
-   set_location_assignment PIN_W6   -to DRAM_DQ[8]
-   set_location_assignment PIN_AB2  -to DRAM_DQ[9]
-   set_location_assignment PIN_AB1  -to DRAM_DQ[10]
-   set_location_assignment PIN_AA4  -to DRAM_DQ[11]
-   set_location_assignment PIN_AA3  -to DRAM_DQ[12]
-   set_location_assignment PIN_AC2  -to DRAM_DQ[13]
-   set_location_assignment PIN_AC1  -to DRAM_DQ[14]
-   set_location_assignment PIN_AA5  -to DRAM_DQ[15]
+   set_location_assignment PIN_V6   -to dram_dq[0]
+   set_location_assignment PIN_AA2  -to dram_dq[1]
+   set_location_assignment PIN_AA1  -to dram_dq[2]
+   set_location_assignment PIN_Y3   -to dram_dq[3]
+   set_location_assignment PIN_Y4   -to dram_dq[4]
+   set_location_assignment PIN_R8   -to dram_dq[5]
+   set_location_assignment PIN_T8   -to dram_dq[6]
+   set_location_assignment PIN_V7   -to dram_dq[7]
+   set_location_assignment PIN_W6   -to dram_dq[8]
+   set_location_assignment PIN_AB2  -to dram_dq[9]
+   set_location_assignment PIN_AB1  -to dram_dq[10]
+   set_location_assignment PIN_AA4  -to dram_dq[11]
+   set_location_assignment PIN_AA3  -to dram_dq[12]
+   set_location_assignment PIN_AC2  -to dram_dq[13]
+   set_location_assignment PIN_AC1  -to dram_dq[14]
+   set_location_assignment PIN_AA5  -to dram_dq[15]
    ;# SDRAM Bank Address
-   set_location_assignment PIN_AE2  -to DRAM_BANK[0]
-   set_location_assignment PIN_AE3  -to DRAM_BANK[1]
+   set_location_assignment PIN_AE2  -to dram_bank[0]
+   set_location_assignment PIN_AE3  -to dram_bank[1]
    ;# SDRAM Low byte & High byte data mask
-   set_location_assignment PIN_AD2  -to DRAM_LDQM
-   set_location_assignment PIN_Y5   -to DRAM_UDQM
+   set_location_assignment PIN_AD2  -to dram_ldqm
+   set_location_assignment PIN_Y5   -to dram_udqm
    ;# SDRAM Row Address Strobe & Column Address Strobe
-   set_location_assignment PIN_AB4  -to DRAM_RAS_N
-   set_location_assignment PIN_AB3  -to DRAM_CAS_N
+   set_location_assignment PIN_AB4  -to dram_ras_n
+   set_location_assignment PIN_AB3  -to dram_cas_n
    ;# ClocK Enable
-   set_location_assignment PIN_AA6  -to DRAM_CKE
+   set_location_assignment PIN_AA6  -to dram_cke
    ;# SDRAM CLocK
    set_location_assignment PIN_AA7  -to clk_sdram_out
    ;# SDRAM Write Enable
-   set_location_assignment PIN_AD3  -to DRAM_WE_N
+   set_location_assignment PIN_AD3  -to dram_we_n
    ;# SDRAM Chip Select
-   set_location_assignment PIN_AC3  -to DRAM_CS_N
+   set_location_assignment PIN_AC3  -to dram_cs_n
 
    ;################
    ;# FLASH Memory #

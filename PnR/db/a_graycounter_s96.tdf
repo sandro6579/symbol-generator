@@ -1,8 +1,8 @@
 --a_graycounter DEVICE_FAMILY="Cyclone II" WIDTH=14 aclr clock cnt_en q
---VERSION_BEGIN 11.0SP1 cbx_a_gray2bin 2011:07:03:21:05:55:SJ cbx_a_graycounter 2011:07:03:21:05:55:SJ cbx_cycloneii 2011:07:03:21:05:55:SJ cbx_mgl 2011:07:03:21:07:56:SJ cbx_stratix 2011:07:03:21:05:55:SJ cbx_stratixii 2011:07:03:21:05:55:SJ  VERSION_END
+--VERSION_BEGIN 12.0SP2 cbx_a_gray2bin 2012:08:02:15:11:16:SJ cbx_a_graycounter 2012:08:02:15:11:16:SJ cbx_cycloneii 2012:08:02:15:11:17:SJ cbx_mgl 2012:08:02:15:13:53:SJ cbx_stratix 2012:08:02:15:11:17:SJ cbx_stratixii 2012:08:02:15:11:17:SJ  VERSION_END
 
 
--- Copyright (C) 1991-2011 Altera Corporation
+-- Copyright (C) 1991-2012 Altera Corporation
 --  Your use of Altera Corporation's design tools, logic functions 
 --  and other software and tools, and its AMPP partner logic 
 --  functions, and any output files from any of the foregoing 

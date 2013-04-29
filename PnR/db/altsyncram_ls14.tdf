@@ -20,7 +20,7 @@
 FUNCTION altsyncram_tgq1 (address_a[13..0], address_b[13..0], clock0, clock1, clocken0, clocken1, data_a[13..0], data_b[13..0], wren_a, wren_b)
 RETURNS ( q_a[13..0], q_b[13..0]);
 
---synthesis_resources = lut 56 M4K 56 reg 4 
+--synthesis_resources = lut 72 M4K 56 reg 4 
 OPTIONS ALTERA_INTERNAL_OPTION = "OPTIMIZE_POWER_DURING_SYNTHESIS=NORMAL_COMPILATION";
 
 SUBDESIGN altsyncram_ls14

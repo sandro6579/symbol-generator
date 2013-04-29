@@ -1,14 +1,14 @@
-Analysis & Synthesis Status : Successful - Sat Mar 30 16:50:36 2013
-Quartus II 64-Bit Version : 11.0 Build 208 07/03/2011 SP 1 SJ Full Version
+Analysis & Synthesis Status : Successful - Wed Apr 24 12:24:18 2013
+Quartus II 64-Bit Version : 12.0 Build 263 08/02/2012 SP 2 SJ Full Version
 Revision Name : SG_PnR_proj
 Top-level Entity Name : top_synthesis
 Family : Cyclone II
-Total logic elements : 5,490
-    Total combinational functions : 4,130
-    Dedicated logic registers : 3,004
-Total registers : 3004
+Total logic elements : 4,445
+    Total combinational functions : 3,644
+    Dedicated logic registers : 2,426
+Total registers : 2426
 Total pins : 142
 Total virtual pins : 0
-Total memory bits : 301,940
-Embedded Multiplier 9-bit elements : 2
+Total memory bits : 121,716
+Embedded Multiplier 9-bit elements : 0
 Total PLLs : 1
