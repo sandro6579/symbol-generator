@@ -28,7 +28,7 @@ end
 
 n=0;
 
-%% create black symbol
+%% create black symbol no.1
 if (max>=n)
     if (n<10)
         filename=strcat(prefix,'_0',int2str(n),'.bmp');
@@ -40,7 +40,7 @@ if (max>=n)
     n=n+1;
 end
 
-%% create white symbol
+%% create white symbol no.2
 if (max>=n)
     if (n<10)
         filename=strcat(prefix,'_0',int2str(n),'.bmp');
@@ -53,7 +53,7 @@ if (max>=n)
 end
 
 
-%% create gray dark symbol
+%% create gray dark symbol no.3
 if (max>=n)
     if (n<10)
         filename=strcat(prefix,'_0',int2str(n),'.bmp');
@@ -65,7 +65,7 @@ if (max>=n)
 	n=n+1;
 end
 
-%% create gray light symbol
+%% create gray light symbol no.4
 if (max>=n)
     if (n<10)
         filename=strcat(prefix,'_0',int2str(n),'.bmp');
@@ -77,7 +77,7 @@ if (max>=n)
 	n=n+1;
 end
 
-%% create chess symbol
+%% create chess symbol no.5
 if (max>=n)
     if (n<10)
         filename=strcat(prefix,'_0',int2str(n),'.bmp');
@@ -98,7 +98,7 @@ if (max>=n)
     n=n+1;
 end
 
-%% create horizontal stripes symbol
+%% create horizontal stripes symbol no.6
 if (max>=n)
     if (n<10)
         filename=strcat(prefix,'_0',int2str(n),'.bmp');
@@ -119,7 +119,7 @@ if (max>=n)
     n=n+1;
 end
 
-%% create vertical stripes symbol
+%% create vertical stripes symbol no.7
 if (max>=n)
     if (n<10)
         filename=strcat(prefix,'_0',int2str(n),'.bmp');
@@ -141,7 +141,7 @@ if (max>=n)
 end
 
 
-%% create horizontal shade symbol
+%% create horizontal shade symbol no.8
 if (max>=n)
     if (n<10)
         filename=strcat(prefix,'_0',int2str(n),'.bmp');
@@ -158,7 +158,7 @@ if (max>=n)
     n=n+1;
 end
 
-%% create vertical shade symbol
+%% create vertical shade symbol no.9
 if (max>=n)
     if (n<10)
         filename=strcat(prefix,'_0',int2str(n),'.bmp');
@@ -176,7 +176,7 @@ if (max>=n)
 end
 
 
-%% create horizontal shade symbol
+%% create horizontal shade symbol no.10
 if (max>=n)
     if (n<10)
         filename=strcat(prefix,'_0',int2str(n),'.bmp');
@@ -187,6 +187,33 @@ if (max>=n)
     for row=1:32
         for col=1:32
             im(row,col,:)=4*(row+col);
+        end
+    end
+    imwrite( im , filename , 'bmp');
+    n=n+1;
+end
+
+%% create bebug symbol of the form: no.11
+% 
+%         1 2 3 ... 32
+%         1 2 3 ... 32
+%         .
+%         .
+%         .
+%         1 2 3 ... 32
+%
+if (max>=n)
+    if (n<10)
+        filename=strcat(prefix,'_0',int2str(n),'.bmp');
+    else
+        filename=strcat(prefix,'_',int2str(n),'.bmp');
+    end
+    im = uint8(zeros(32,32,3));
+    for row=1:32
+        count=1;
+        for col=1:32
+            im(row,col,:)=count;
+            count=count+1;
         end
     end
     imwrite( im , filename , 'bmp');

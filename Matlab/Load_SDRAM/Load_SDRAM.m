@@ -40,10 +40,8 @@
 % 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Revision:
-% Number		Date            Name        Description
-%   1.0         02.08.2012      Olga        Creation
-%   1.1         27.08.2012      Olga        the bug with half symbol is fixed
-% 
+% Number		Date                  Name				Description
+%   1.0                 02.08.2012          Olga               Creation
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % To Do:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -54,7 +52,7 @@ if (max<=0)
     return
 end
 
-Create_Symbols( prefix , max);
+%Create_Symbols( prefix , max);
 
 file = fopen( filename ,'wt');
 
@@ -66,24 +64,14 @@ for n=0:max
         symbol_name = strcat( prefix , '_' , int2str(n) , '.bmp' );
     end
     im = imread(symbol_name, 'bmp');
-    row = 2*n;
+    for row=(2*n):(2*n+1);
         for i=0:15
-            if (i==0)
-                fprintf(file,'address=%s   -- symbol # %d\n',dec2bin(row*256+16*i,24),n);
-            else
-                fprintf(file,'address=%s\n',dec2bin(row*256+16*i,24));
-            end
+            fprintf(file,'address=%s\n',dec2bin(row*256+16*i,24));
             for k=1:32
                     fprintf(file,'%s\n',dec2bin(im(i+1,k,1),8));
             end
         end
-    row = 2*n+1;
-        for i=0:15
-            fprintf(file,'address=%s\n',dec2bin(row*256+16*i,24));
-            for k=1:32
-                    fprintf(file,'%s\n',dec2bin(im(i+1+16,k,1),8));
-            end
-        end
+    end
 end
 
 fclose(file);
