@@ -1,7 +1,7 @@
 #-- Synopsys, Inc.
 #-- Version D-2010.03-SP1
 #-- Project file H:\Project\SG_synthesis_proj\rev_1\scratchproject.prs
-#-- Written on Sat Mar 30 16:46:40 2013
+#-- Written on Mon Apr 15 12:13:35 2013
 
 
 #project files
@@ -61,6 +61,10 @@ add_file -vhdl -lib work "H:/Project/SG_Project/VHDL/uart_rx.vhd"
 add_file -vhdl -lib work "H:/Project/SG_Project/VHDL/uart_tx.vhd"
 add_file -vhdl -lib work "H:/Project/SG_Project/VHDL/vesa_gen_ctrl.vhd"
 add_file -vhdl -lib work "H:/Project/SG_Project/VHDL/wbs_reg.vhd"
+add_file -constraint "H:/Project/SG_synthesis_proj/SG.sdc"
+add_file -vhdl -lib work "H:/Project/SG_Project/VHDL/pll_new_1.vhd"
+add_file -vhdl -lib work "H:/Project/SG_Project/VHDL/sdram_altddio_out.vhd"
+add_file -vhdl -lib work "H:/Project/SG_Project/VHDL/pll_new_2.vhd"
 
 
 #implementation: "rev_1"
@@ -85,7 +89,7 @@ set_option -use_fsm_explorer 0
 set_option -top_module "top_synthesis"
 
 # mapper_options
-set_option -frequency 160
+set_option -frequency 133.0000
 set_option -write_verilog 0
 set_option -write_vhdl 0
 

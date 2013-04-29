@@ -19,7 +19,9 @@ set_global_assignment -name ENABLE_CLOCK_LATENCY "ON"
 
 # Clock assignments 
 
-create_base_clock fpga_clk_setting -fmax 160.000mhz -duty_cycle 50.00 -target fpga_clk 
+create_base_clock fpga_clk_setting -fmax 50.000mhz -duty_cycle 50.00 -target fpga_clk 
+create_base_clock clk_sdram_out_setting -fmax 133.002mhz -duty_cycle 50.00 -target clk_sdram_out 
+create_base_clock clk_vesa_out_setting -fmax 40.000mhz -duty_cycle 50.00 -target clk_vesa_out 
 
 
 # False path constraints 

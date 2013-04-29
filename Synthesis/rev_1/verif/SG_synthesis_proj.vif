@@ -70,6 +70,9 @@ vif_add_file -original -vhdl -lib work ../../SG_Project/VHDL/uart_rx.vhd
 vif_add_file -original -vhdl -lib work ../../SG_Project/VHDL/uart_tx.vhd
 vif_add_file -original -vhdl -lib work ../../SG_Project/VHDL/vesa_gen_ctrl.vhd
 vif_add_file -original -vhdl -lib work ../../SG_Project/VHDL/wbs_reg.vhd
+vif_add_file -original -vhdl -lib work ../../SG_Project/VHDL/pll_new_1.vhd
+vif_add_file -original -vhdl -lib work ../../SG_Project/VHDL/sdram_altddio_out.vhd
+vif_add_file -original -vhdl -lib work ../../SG_Project/VHDL/pll_new_2.vhd
 vif_set_top_module -original -top top_synthesis
  
 vif_add_library -translated $env(QUARTUS_ROOTDIR)/eda/fv_lib/verilog

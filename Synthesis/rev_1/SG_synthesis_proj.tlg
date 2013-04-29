@@ -1,5 +1,7 @@
 @N: CD231 :"C:\Synopsys\fpga_D201003SP1\lib\vhd\std_logic_textio.vhd":79:15:79:16|Using onehot encoding for type mvl9plus ('U'="1000000000")
 @N: CD630 :"H:\Project\SG_Project\VHDL\top_synthesis.vhd":23:7:23:19|Synthesizing work.top_synthesis.top_synthesis_rtl 
+@W: CD638 :"H:\Project\SG_Project\VHDL\top_synthesis.vhd":213:7:213:28|Signal clk_sdram_out_internal is undriven 
+@W: CD638 :"H:\Project\SG_Project\VHDL\top_synthesis.vhd":214:7:214:23|Signal clk_sdram_out_vec is undriven 
 @N: CD630 :"H:\Project\SG_Project\VHDL\Hexss.vhd":23:7:23:11|Synthesizing work.hexss.arc_hexss 
 Post processing for work.hexss.arc_hexss
 @N: CD630 :"H:\Project\SG_Project\VHDL\mds_top.vhd":31:7:31:13|Synthesizing work.mds_top.rtl_mds_top 
@@ -291,30 +293,30 @@ Post processing for altera_mf.dcfifo_work_top_synthesis_top_synthesis_rtl_1.syn_
 Post processing for work.dc_fifo.syn
 @N: CD630 :"H:\Project\SG_Project\VHDL\SG\SG_WBM_IF.vhd":30:7:30:15|Synthesizing work.sg_wbm_if.rtl_sg_wbm_if 
 @N: CD231 :"H:\Project\SG_Project\VHDL\SG\SG_WBM_IF.vhd":74:17:74:18|Using onehot encoding for type wbm_states (wbm_idle_st="10000000000")
-@N: CD364 :"H:\Project\SG_Project\VHDL\SG\SG_WBM_IF.vhd":116:4:116:12|Removed redundant assignment
-@N: CD364 :"H:\Project\SG_Project\VHDL\SG\SG_WBM_IF.vhd":238:6:238:11|Removed redundant assignment
-@N: CD364 :"H:\Project\SG_Project\VHDL\SG\SG_WBM_IF.vhd":279:6:279:11|Removed redundant assignment
-@N: CD364 :"H:\Project\SG_Project\VHDL\SG\SG_WBM_IF.vhd":358:6:358:11|Removed redundant assignment
-@N: CD364 :"H:\Project\SG_Project\VHDL\SG\SG_WBM_IF.vhd":399:5:399:11|Removed redundant assignment
-@N: CD364 :"H:\Project\SG_Project\VHDL\SG\SG_WBM_IF.vhd":402:4:402:10|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\SG\SG_WBM_IF.vhd":118:4:118:12|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\SG\SG_WBM_IF.vhd":240:6:240:11|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\SG\SG_WBM_IF.vhd":281:6:281:11|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\SG\SG_WBM_IF.vhd":360:6:360:11|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\SG\SG_WBM_IF.vhd":401:5:401:11|Removed redundant assignment
+@N: CD364 :"H:\Project\SG_Project\VHDL\SG\SG_WBM_IF.vhd":404:4:404:10|Removed redundant assignment
 Post processing for work.sg_wbm_if.rtl_sg_wbm_if
-@W: CL169 :"H:\Project\SG_Project\VHDL\SG\SG_WBM_IF.vhd":161:2:161:3|Pruning Register dbg_cnt(30 downto 0)  
-@W: CL190 :"H:\Project\SG_Project\VHDL\SG\SG_WBM_IF.vhd":161:2:161:3|Optimizing register bit wbm_tga_o(0) to a constant 0
-@W: CL190 :"H:\Project\SG_Project\VHDL\SG\SG_WBM_IF.vhd":161:2:161:3|Optimizing register bit wbm_tga_o(2) to a constant 0
-@W: CL190 :"H:\Project\SG_Project\VHDL\SG\SG_WBM_IF.vhd":161:2:161:3|Optimizing register bit wbm_tga_o(3) to a constant 0
-@W: CL190 :"H:\Project\SG_Project\VHDL\SG\SG_WBM_IF.vhd":161:2:161:3|Optimizing register bit wbm_tga_o(4) to a constant 0
-@W: CL190 :"H:\Project\SG_Project\VHDL\SG\SG_WBM_IF.vhd":161:2:161:3|Optimizing register bit wbm_tga_o(6) to a constant 0
-@W: CL190 :"H:\Project\SG_Project\VHDL\SG\SG_WBM_IF.vhd":161:2:161:3|Optimizing register bit wbm_tga_o(7) to a constant 0
-@W: CL190 :"H:\Project\SG_Project\VHDL\SG\SG_WBM_IF.vhd":161:2:161:3|Optimizing register bit wbm_tga_o(8) to a constant 0
-@W: CL190 :"H:\Project\SG_Project\VHDL\SG\SG_WBM_IF.vhd":161:2:161:3|Optimizing register bit wbm_tga_o(9) to a constant 0
-@W: CL260 :"H:\Project\SG_Project\VHDL\SG\SG_WBM_IF.vhd":161:2:161:3|Pruning Register bit 9 of wbm_tga_o(9 downto 0)  
-@W: CL260 :"H:\Project\SG_Project\VHDL\SG\SG_WBM_IF.vhd":161:2:161:3|Pruning Register bit 8 of wbm_tga_o(9 downto 0)  
-@W: CL260 :"H:\Project\SG_Project\VHDL\SG\SG_WBM_IF.vhd":161:2:161:3|Pruning Register bit 7 of wbm_tga_o(9 downto 0)  
-@W: CL260 :"H:\Project\SG_Project\VHDL\SG\SG_WBM_IF.vhd":161:2:161:3|Pruning Register bit 6 of wbm_tga_o(9 downto 0)  
-@W: CL260 :"H:\Project\SG_Project\VHDL\SG\SG_WBM_IF.vhd":161:2:161:3|Pruning Register bit 4 of wbm_tga_o(9 downto 0)  
-@W: CL260 :"H:\Project\SG_Project\VHDL\SG\SG_WBM_IF.vhd":161:2:161:3|Pruning Register bit 3 of wbm_tga_o(9 downto 0)  
-@W: CL260 :"H:\Project\SG_Project\VHDL\SG\SG_WBM_IF.vhd":161:2:161:3|Pruning Register bit 2 of wbm_tga_o(9 downto 0)  
-@W: CL260 :"H:\Project\SG_Project\VHDL\SG\SG_WBM_IF.vhd":161:2:161:3|Pruning Register bit 0 of wbm_tga_o(9 downto 0)  
+@W: CL169 :"H:\Project\SG_Project\VHDL\SG\SG_WBM_IF.vhd":163:2:163:3|Pruning Register dbg_cnt(30 downto 0)  
+@W: CL190 :"H:\Project\SG_Project\VHDL\SG\SG_WBM_IF.vhd":163:2:163:3|Optimizing register bit wbm_tga_o(0) to a constant 0
+@W: CL190 :"H:\Project\SG_Project\VHDL\SG\SG_WBM_IF.vhd":163:2:163:3|Optimizing register bit wbm_tga_o(2) to a constant 0
+@W: CL190 :"H:\Project\SG_Project\VHDL\SG\SG_WBM_IF.vhd":163:2:163:3|Optimizing register bit wbm_tga_o(3) to a constant 0
+@W: CL190 :"H:\Project\SG_Project\VHDL\SG\SG_WBM_IF.vhd":163:2:163:3|Optimizing register bit wbm_tga_o(4) to a constant 0
+@W: CL190 :"H:\Project\SG_Project\VHDL\SG\SG_WBM_IF.vhd":163:2:163:3|Optimizing register bit wbm_tga_o(6) to a constant 0
+@W: CL190 :"H:\Project\SG_Project\VHDL\SG\SG_WBM_IF.vhd":163:2:163:3|Optimizing register bit wbm_tga_o(7) to a constant 0
+@W: CL190 :"H:\Project\SG_Project\VHDL\SG\SG_WBM_IF.vhd":163:2:163:3|Optimizing register bit wbm_tga_o(8) to a constant 0
+@W: CL190 :"H:\Project\SG_Project\VHDL\SG\SG_WBM_IF.vhd":163:2:163:3|Optimizing register bit wbm_tga_o(9) to a constant 0
+@W: CL260 :"H:\Project\SG_Project\VHDL\SG\SG_WBM_IF.vhd":163:2:163:3|Pruning Register bit 9 of wbm_tga_o(9 downto 0)  
+@W: CL260 :"H:\Project\SG_Project\VHDL\SG\SG_WBM_IF.vhd":163:2:163:3|Pruning Register bit 8 of wbm_tga_o(9 downto 0)  
+@W: CL260 :"H:\Project\SG_Project\VHDL\SG\SG_WBM_IF.vhd":163:2:163:3|Pruning Register bit 7 of wbm_tga_o(9 downto 0)  
+@W: CL260 :"H:\Project\SG_Project\VHDL\SG\SG_WBM_IF.vhd":163:2:163:3|Pruning Register bit 6 of wbm_tga_o(9 downto 0)  
+@W: CL260 :"H:\Project\SG_Project\VHDL\SG\SG_WBM_IF.vhd":163:2:163:3|Pruning Register bit 4 of wbm_tga_o(9 downto 0)  
+@W: CL260 :"H:\Project\SG_Project\VHDL\SG\SG_WBM_IF.vhd":163:2:163:3|Pruning Register bit 3 of wbm_tga_o(9 downto 0)  
+@W: CL260 :"H:\Project\SG_Project\VHDL\SG\SG_WBM_IF.vhd":163:2:163:3|Pruning Register bit 2 of wbm_tga_o(9 downto 0)  
+@W: CL260 :"H:\Project\SG_Project\VHDL\SG\SG_WBM_IF.vhd":163:2:163:3|Pruning Register bit 0 of wbm_tga_o(9 downto 0)  
 @N: CD630 :"H:\Project\SG_Project\VHDL\pixel_mng.vhd":30:7:30:15|Synthesizing work.pixel_mng.rtl_pixel_mng 
 @N: CD231 :"H:\Project\SG_Project\VHDL\pixel_mng.vhd":77:17:77:18|Using onehot encoding for type wbm_states (wbm_idle_st="100000")
 @N: CD364 :"H:\Project\SG_Project\VHDL\pixel_mng.vhd":237:6:237:11|Removed redundant assignment
@@ -641,7 +643,7 @@ State machine has 6 reachable states with original encodings of:
    100000
 @W: CL159 :"H:\Project\SG_Project\VHDL\pixel_mng.vhd":49:2:49:10|Input wbm_dat_i is unused
 @W: CL159 :"H:\Project\SG_Project\VHDL\pixel_mng.vhd":61:2:61:9|Input term_cyc is unused
-@N: CL201 :"H:\Project\SG_Project\VHDL\SG\SG_WBM_IF.vhd":161:2:161:3|Trying to extract state machine for register cur_st
+@N: CL201 :"H:\Project\SG_Project\VHDL\SG\SG_WBM_IF.vhd":163:2:163:3|Trying to extract state machine for register cur_st
 Extracted state machine for register cur_st
 State machine has 10 reachable states with original encodings of:
    00000000001

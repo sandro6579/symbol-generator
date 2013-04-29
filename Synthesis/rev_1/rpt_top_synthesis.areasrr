@@ -11,9 +11,9 @@ SEQUENTIAL ATOMS
 
 Name          Total elements     Utilization     Notes
 ------------------------------------------------------
-REGISTERS     2238               100 %                
+REGISTERS     2220               100 %                
 ======================================================
-Total SEQUENTIAL ATOMS in the block top_synthesis:	2238 (36.12 % Utilization)
+Total SEQUENTIAL ATOMS in the block top_synthesis:	2220 (36.19 % Utilization)
 
 
 COMBINATIONAL ATOMS
@@ -21,10 +21,10 @@ COMBINATIONAL ATOMS
 
 Name                Total elements     Utilization     Notes
 ------------------------------------------------------------
-ATOMS               2424               100 %                
+ATOMS               2408               100 %                
 ARITHMETIC MODE     0                  0.0 %                
 ============================================================
-Total COMBINATIONAL ATOMS in the block top_synthesis:	2424 (39.12 % Utilization)
+Total COMBINATIONAL ATOMS in the block top_synthesis:	2408 (39.26 % Utilization)
 
 
 RAMS
@@ -35,7 +35,7 @@ Name          Total elements     Number of bits     Utilization     Notes
 SYNC RAMS     7                  7                  100 %                
 LPMs          13                 13                 100 %                
 =========================================================================
-Total RAMS in the block top_synthesis:	20 (0.32 % Utilization)
+Total RAMS in the block top_synthesis:	20 (0.33 % Utilization)
 
 
 DSPs
@@ -67,9 +67,9 @@ SEQUENTIAL ATOMS
 
 Name          Total elements     Utilization     Notes
 ------------------------------------------------------
-REGISTERS     20                 0.8940 %             
+REGISTERS     20                 0.9010 %             
 ======================================================
-Total SEQUENTIAL ATOMS in the block top_synthesis.global_nets_top:	20 (0.32 % Utilization)
+Total SEQUENTIAL ATOMS in the block top_synthesis.global_nets_top:	20 (0.33 % Utilization)
 
 
 COMBINATIONAL ATOMS
@@ -77,10 +77,10 @@ COMBINATIONAL ATOMS
 
 Name                Total elements     Utilization     Notes
 ------------------------------------------------------------
-ATOMS               4                  0.1650 %             
+ATOMS               4                  0.1660 %             
 ARITHMETIC MODE     0                  0.0 %                
 ============================================================
-Total COMBINATIONAL ATOMS in the block top_synthesis.global_nets_top:	4 (0.06 % Utilization)
+Total COMBINATIONAL ATOMS in the block top_synthesis.global_nets_top:	4 (0.07 % Utilization)
 
 
 RAMS
@@ -235,9 +235,9 @@ SEQUENTIAL ATOMS
 
 Name          Total elements     Utilization     Notes
 ------------------------------------------------------
-REGISTERS     20                 0.8940 %             
+REGISTERS     20                 0.9010 %             
 ======================================================
-Total SEQUENTIAL ATOMS in the block global_nets_top.reset_blk_top:	20 (0.32 % Utilization)
+Total SEQUENTIAL ATOMS in the block global_nets_top.reset_blk_top:	20 (0.33 % Utilization)
 
 
 COMBINATIONAL ATOMS
@@ -245,10 +245,10 @@ COMBINATIONAL ATOMS
 
 Name                Total elements     Utilization     Notes
 ------------------------------------------------------------
-ATOMS               4                  0.1650 %             
+ATOMS               4                  0.1660 %             
 ARITHMETIC MODE     0                  0.0 %                
 ============================================================
-Total COMBINATIONAL ATOMS in the block global_nets_top.reset_blk_top:	4 (0.06 % Utilization)
+Total COMBINATIONAL ATOMS in the block global_nets_top.reset_blk_top:	4 (0.07 % Utilization)
 
 
 RAMS
@@ -291,7 +291,7 @@ SEQUENTIAL ATOMS
 
 Name          Total elements     Utilization     Notes
 ------------------------------------------------------
-REGISTERS     14                 0.6260 %             
+REGISTERS     14                 0.6310 %             
 ======================================================
 Total SEQUENTIAL ATOMS in the block reset_blk_top.reset_debouncer:	14 (0.23 % Utilization)
 
@@ -301,10 +301,10 @@ COMBINATIONAL ATOMS
 
 Name                Total elements     Utilization     Notes
 ------------------------------------------------------------
-ATOMS               4                  0.1650 %             
+ATOMS               4                  0.1660 %             
 ARITHMETIC MODE     0                  0.0 %                
 ============================================================
-Total COMBINATIONAL ATOMS in the block reset_blk_top.reset_debouncer:	4 (0.06 % Utilization)
+Total COMBINATIONAL ATOMS in the block reset_blk_top.reset_debouncer:	4 (0.07 % Utilization)
 
 
 RAMS
@@ -347,7 +347,7 @@ SEQUENTIAL ATOMS
 
 Name          Total elements     Utilization     Notes
 ------------------------------------------------------
-REGISTERS     2                  8.94e-002 %          
+REGISTERS     2                  9.01e-002 %          
 ======================================================
 Total SEQUENTIAL ATOMS in the block reset_blk_top.sync_rst_gen:	2 (0.03 % Utilization)
 
@@ -403,7 +403,7 @@ SEQUENTIAL ATOMS
 
 Name          Total elements     Utilization     Notes
 ------------------------------------------------------
-REGISTERS     2                  8.94e-002 %          
+REGISTERS     2                  9.01e-002 %          
 ======================================================
 Total SEQUENTIAL ATOMS in the block reset_blk_top.sync_rst_gen_1:	2 (0.03 % Utilization)
 
@@ -459,7 +459,7 @@ SEQUENTIAL ATOMS
 
 Name          Total elements     Utilization     Notes
 ------------------------------------------------------
-REGISTERS     2                  8.94e-002 %          
+REGISTERS     2                  9.01e-002 %          
 ======================================================
 Total SEQUENTIAL ATOMS in the block reset_blk_top.sync_rst_gen_2:	2 (0.03 % Utilization)
 
@@ -525,7 +525,7 @@ COMBINATIONAL ATOMS
 
 Name                Total elements     Utilization     Notes
 ------------------------------------------------------------
-ATOMS               7                  0.2890 %             
+ATOMS               7                  0.2910 %             
 ARITHMETIC MODE     0                  0.0 %                
 ============================================================
 Total COMBINATIONAL ATOMS in the block top_synthesis.hexss:	7 (0.11 % Utilization)
@@ -581,7 +581,7 @@ COMBINATIONAL ATOMS
 
 Name                Total elements     Utilization     Notes
 ------------------------------------------------------------
-ATOMS               7                  0.2890 %             
+ATOMS               7                  0.2910 %             
 ARITHMETIC MODE     0                  0.0 %                
 ============================================================
 Total COMBINATIONAL ATOMS in the block top_synthesis.hexss_1:	7 (0.11 % Utilization)
@@ -637,7 +637,7 @@ COMBINATIONAL ATOMS
 
 Name                Total elements     Utilization     Notes
 ------------------------------------------------------------
-ATOMS               7                  0.2890 %             
+ATOMS               7                  0.2910 %             
 ARITHMETIC MODE     0                  0.0 %                
 ============================================================
 Total COMBINATIONAL ATOMS in the block top_synthesis.hexss_2:	7 (0.11 % Utilization)
@@ -693,7 +693,7 @@ COMBINATIONAL ATOMS
 
 Name                Total elements     Utilization     Notes
 ------------------------------------------------------------
-ATOMS               7                  0.2890 %             
+ATOMS               7                  0.2910 %             
 ARITHMETIC MODE     0                  0.0 %                
 ============================================================
 Total COMBINATIONAL ATOMS in the block top_synthesis.hexss_3:	7 (0.11 % Utilization)
@@ -749,7 +749,7 @@ COMBINATIONAL ATOMS
 
 Name                Total elements     Utilization     Notes
 ------------------------------------------------------------
-ATOMS               7                  0.2890 %             
+ATOMS               7                  0.2910 %             
 ARITHMETIC MODE     0                  0.0 %                
 ============================================================
 Total COMBINATIONAL ATOMS in the block top_synthesis.hexss_4:	7 (0.11 % Utilization)
@@ -805,7 +805,7 @@ COMBINATIONAL ATOMS
 
 Name                Total elements     Utilization     Notes
 ------------------------------------------------------------
-ATOMS               7                  0.2890 %             
+ATOMS               7                  0.2910 %             
 ARITHMETIC MODE     0                  0.0 %                
 ============================================================
 Total COMBINATIONAL ATOMS in the block top_synthesis.hexss_5:	7 (0.11 % Utilization)
@@ -861,7 +861,7 @@ COMBINATIONAL ATOMS
 
 Name                Total elements     Utilization     Notes
 ------------------------------------------------------------
-ATOMS               7                  0.2890 %             
+ATOMS               7                  0.2910 %             
 ARITHMETIC MODE     0                  0.0 %                
 ============================================================
 Total COMBINATIONAL ATOMS in the block top_synthesis.hexss_6:	7 (0.11 % Utilization)
@@ -917,7 +917,7 @@ COMBINATIONAL ATOMS
 
 Name                Total elements     Utilization     Notes
 ------------------------------------------------------------
-ATOMS               7                  0.2890 %             
+ATOMS               7                  0.2910 %             
 ARITHMETIC MODE     0                  0.0 %                
 ============================================================
 Total COMBINATIONAL ATOMS in the block top_synthesis.hexss_7:	7 (0.11 % Utilization)
@@ -963,9 +963,9 @@ SEQUENTIAL ATOMS
 
 Name          Total elements     Utilization     Notes
 ------------------------------------------------------
-REGISTERS     2218               99.1 %               
+REGISTERS     2200               99.1 %               
 ======================================================
-Total SEQUENTIAL ATOMS in the block top_synthesis.mds_top:	2218 (35.80 % Utilization)
+Total SEQUENTIAL ATOMS in the block top_synthesis.mds_top:	2200 (35.87 % Utilization)
 
 
 COMBINATIONAL ATOMS
@@ -973,10 +973,10 @@ COMBINATIONAL ATOMS
 
 Name                Total elements     Utilization     Notes
 ------------------------------------------------------------
-ATOMS               2364               97.5 %               
+ATOMS               2348               97.5 %               
 ARITHMETIC MODE     0                  0.0 %                
 ============================================================
-Total COMBINATIONAL ATOMS in the block top_synthesis.mds_top:	2364 (38.15 % Utilization)
+Total COMBINATIONAL ATOMS in the block top_synthesis.mds_top:	2348 (38.28 % Utilization)
 
 
 RAMS
@@ -1007,7 +1007,7 @@ Name            Total elements     Utilization     Notes
 --------------------------------------------------------
 BLACK BOXES     12                 92.3 %               
 ========================================================
-Total Black Boxes in the block top_synthesis.mds_top:	12 (0.19 % Utilization)
+Total Black Boxes in the block top_synthesis.mds_top:	12 (0.20 % Utilization)
 
 -------------------------------------------------------------------
 ########   Utilization report for  cell:   disp_ctrl_top   ########
@@ -1019,9 +1019,9 @@ SEQUENTIAL ATOMS
 
 Name          Total elements     Utilization     Notes
 ------------------------------------------------------
-REGISTERS     841                37.6 %               
+REGISTERS     831                37.4 %               
 ======================================================
-Total SEQUENTIAL ATOMS in the block mds_top.disp_ctrl_top:	841 (13.57 % Utilization)
+Total SEQUENTIAL ATOMS in the block mds_top.disp_ctrl_top:	831 (13.55 % Utilization)
 
 
 COMBINATIONAL ATOMS
@@ -1029,10 +1029,10 @@ COMBINATIONAL ATOMS
 
 Name                Total elements     Utilization     Notes
 ------------------------------------------------------------
-ATOMS               763                31.5 %               
+ATOMS               738                30.6 %               
 ARITHMETIC MODE     0                  0.0 %                
 ============================================================
-Total COMBINATIONAL ATOMS in the block mds_top.disp_ctrl_top:	763 (12.31 % Utilization)
+Total COMBINATIONAL ATOMS in the block mds_top.disp_ctrl_top:	738 (12.03 % Utilization)
 
 
 RAMS
@@ -1075,9 +1075,9 @@ SEQUENTIAL ATOMS
 
 Name          Total elements     Utilization     Notes
 ------------------------------------------------------
-REGISTERS     108                4.83 %               
+REGISTERS     98                 4.41 %               
 ======================================================
-Total SEQUENTIAL ATOMS in the block disp_ctrl_top.SG_WBM_IF:	108 (1.74 % Utilization)
+Total SEQUENTIAL ATOMS in the block disp_ctrl_top.SG_WBM_IF:	98 (1.60 % Utilization)
 
 
 COMBINATIONAL ATOMS
@@ -1085,10 +1085,10 @@ COMBINATIONAL ATOMS
 
 Name                Total elements     Utilization     Notes
 ------------------------------------------------------------
-ATOMS               187                7.71 %               
+ATOMS               170                7.06 %               
 ARITHMETIC MODE     0                  0.0 %                
 ============================================================
-Total COMBINATIONAL ATOMS in the block disp_ctrl_top.SG_WBM_IF:	187 (3.02 % Utilization)
+Total COMBINATIONAL ATOMS in the block disp_ctrl_top.SG_WBM_IF:	170 (2.77 % Utilization)
 
 
 RAMS
@@ -1131,9 +1131,9 @@ SEQUENTIAL ATOMS
 
 Name          Total elements     Utilization     Notes
 ------------------------------------------------------
-REGISTERS     461                20.6 %               
+REGISTERS     461                20.8 %               
 ======================================================
-Total SEQUENTIAL ATOMS in the block disp_ctrl_top.Symbol_Generator_Top:	461 (7.44 % Utilization)
+Total SEQUENTIAL ATOMS in the block disp_ctrl_top.Symbol_Generator_Top:	461 (7.52 % Utilization)
 
 
 COMBINATIONAL ATOMS
@@ -1141,10 +1141,10 @@ COMBINATIONAL ATOMS
 
 Name                Total elements     Utilization     Notes
 ------------------------------------------------------------
-ATOMS               348                14.4 %               
+ATOMS               341                14.2 %               
 ARITHMETIC MODE     0                  0.0 %                
 ============================================================
-Total COMBINATIONAL ATOMS in the block disp_ctrl_top.Symbol_Generator_Top:	348 (5.62 % Utilization)
+Total COMBINATIONAL ATOMS in the block disp_ctrl_top.Symbol_Generator_Top:	341 (5.56 % Utilization)
 
 
 RAMS
@@ -1187,7 +1187,7 @@ SEQUENTIAL ATOMS
 
 Name          Total elements     Utilization     Notes
 ------------------------------------------------------
-REGISTERS     14                 0.6260 %             
+REGISTERS     14                 0.6310 %             
 ======================================================
 Total SEQUENTIAL ATOMS in the block Symbol_Generator_Top.RAM_300:	14 (0.23 % Utilization)
 
@@ -1197,7 +1197,7 @@ COMBINATIONAL ATOMS
 
 Name                Total elements     Utilization     Notes
 ------------------------------------------------------------
-ATOMS               18                 0.7430 %             
+ATOMS               18                 0.7480 %             
 ARITHMETIC MODE     0                  0.0 %                
 ============================================================
 Total COMBINATIONAL ATOMS in the block Symbol_Generator_Top.RAM_300:	18 (0.29 % Utilization)
@@ -1243,9 +1243,9 @@ SEQUENTIAL ATOMS
 
 Name          Total elements     Utilization     Notes
 ------------------------------------------------------
-REGISTERS     57                 2.55 %               
+REGISTERS     57                 2.57 %               
 ======================================================
-Total SEQUENTIAL ATOMS in the block Symbol_Generator_Top.general_fifoZ1_Symbol_Generator_Top_inst_fifo_A:	57 (0.92 % Utilization)
+Total SEQUENTIAL ATOMS in the block Symbol_Generator_Top.general_fifoZ1_Symbol_Generator_Top_inst_fifo_A:	57 (0.93 % Utilization)
 
 
 COMBINATIONAL ATOMS
@@ -1253,10 +1253,10 @@ COMBINATIONAL ATOMS
 
 Name                Total elements     Utilization     Notes
 ------------------------------------------------------------
-ATOMS               49                 2.02 %               
+ATOMS               49                 2.03 %               
 ARITHMETIC MODE     0                  0.0 %                
 ============================================================
-Total COMBINATIONAL ATOMS in the block Symbol_Generator_Top.general_fifoZ1_Symbol_Generator_Top_inst_fifo_A:	49 (0.79 % Utilization)
+Total COMBINATIONAL ATOMS in the block Symbol_Generator_Top.general_fifoZ1_Symbol_Generator_Top_inst_fifo_A:	49 (0.80 % Utilization)
 
 
 RAMS
@@ -1299,9 +1299,9 @@ SEQUENTIAL ATOMS
 
 Name          Total elements     Utilization     Notes
 ------------------------------------------------------
-REGISTERS     57                 2.55 %               
+REGISTERS     57                 2.57 %               
 ======================================================
-Total SEQUENTIAL ATOMS in the block Symbol_Generator_Top.general_fifoZ1_Symbol_Generator_Top_inst_fifo_A_1:	57 (0.92 % Utilization)
+Total SEQUENTIAL ATOMS in the block Symbol_Generator_Top.general_fifoZ1_Symbol_Generator_Top_inst_fifo_A_1:	57 (0.93 % Utilization)
 
 
 COMBINATIONAL ATOMS
@@ -1309,10 +1309,10 @@ COMBINATIONAL ATOMS
 
 Name                Total elements     Utilization     Notes
 ------------------------------------------------------------
-ATOMS               50                 2.06 %               
+ATOMS               48                 1.99 %               
 ARITHMETIC MODE     0                  0.0 %                
 ============================================================
-Total COMBINATIONAL ATOMS in the block Symbol_Generator_Top.general_fifoZ1_Symbol_Generator_Top_inst_fifo_A_1:	50 (0.81 % Utilization)
+Total COMBINATIONAL ATOMS in the block Symbol_Generator_Top.general_fifoZ1_Symbol_Generator_Top_inst_fifo_A_1:	48 (0.78 % Utilization)
 
 
 RAMS
@@ -1355,9 +1355,9 @@ SEQUENTIAL ATOMS
 
 Name          Total elements     Utilization     Notes
 ------------------------------------------------------
-REGISTERS     121                5.41 %               
+REGISTERS     121                5.45 %               
 ======================================================
-Total SEQUENTIAL ATOMS in the block Symbol_Generator_Top.manager:	121 (1.95 % Utilization)
+Total SEQUENTIAL ATOMS in the block Symbol_Generator_Top.manager:	121 (1.97 % Utilization)
 
 
 COMBINATIONAL ATOMS
@@ -1365,10 +1365,10 @@ COMBINATIONAL ATOMS
 
 Name                Total elements     Utilization     Notes
 ------------------------------------------------------------
-ATOMS               126                5.2 %                
+ATOMS               121                5.02 %               
 ARITHMETIC MODE     0                  0.0 %                
 ============================================================
-Total COMBINATIONAL ATOMS in the block Symbol_Generator_Top.manager:	126 (2.03 % Utilization)
+Total COMBINATIONAL ATOMS in the block Symbol_Generator_Top.manager:	121 (1.97 % Utilization)
 
 
 RAMS
@@ -1411,9 +1411,9 @@ SEQUENTIAL ATOMS
 
 Name          Total elements     Utilization     Notes
 ------------------------------------------------------
-REGISTERS     12                 0.5360 %             
+REGISTERS     12                 0.5410 %             
 ======================================================
-Total SEQUENTIAL ATOMS in the block Symbol_Generator_Top.mux2:	12 (0.19 % Utilization)
+Total SEQUENTIAL ATOMS in the block Symbol_Generator_Top.mux2:	12 (0.20 % Utilization)
 
 
 COMBINATIONAL ATOMS
@@ -1421,7 +1421,7 @@ COMBINATIONAL ATOMS
 
 Name                Total elements     Utilization     Notes
 ------------------------------------------------------------
-ATOMS               2                  8.25e-002 %          
+ATOMS               2                  8.31e-002 %          
 ARITHMETIC MODE     0                  0.0 %                
 ============================================================
 Total COMBINATIONAL ATOMS in the block Symbol_Generator_Top.mux2:	2 (0.03 % Utilization)
@@ -1467,9 +1467,9 @@ SEQUENTIAL ATOMS
 
 Name          Total elements     Utilization     Notes
 ------------------------------------------------------
-REGISTERS     173                7.73 %               
+REGISTERS     173                7.79 %               
 ======================================================
-Total SEQUENTIAL ATOMS in the block Symbol_Generator_Top.opcode_store:	173 (2.79 % Utilization)
+Total SEQUENTIAL ATOMS in the block Symbol_Generator_Top.opcode_store:	173 (2.82 % Utilization)
 
 
 COMBINATIONAL ATOMS
@@ -1477,10 +1477,10 @@ COMBINATIONAL ATOMS
 
 Name                Total elements     Utilization     Notes
 ------------------------------------------------------------
-ATOMS               98                 4.04 %               
+ATOMS               98                 4.07 %               
 ARITHMETIC MODE     0                  0.0 %                
 ============================================================
-Total COMBINATIONAL ATOMS in the block Symbol_Generator_Top.opcode_store:	98 (1.58 % Utilization)
+Total COMBINATIONAL ATOMS in the block Symbol_Generator_Top.opcode_store:	98 (1.60 % Utilization)
 
 
 RAMS
@@ -1523,9 +1523,9 @@ SEQUENTIAL ATOMS
 
 Name          Total elements     Utilization     Notes
 ------------------------------------------------------
-REGISTERS     98                 4.38 %               
+REGISTERS     98                 4.41 %               
 ======================================================
-Total SEQUENTIAL ATOMS in the block opcode_store.general_fifoZ0:	98 (1.58 % Utilization)
+Total SEQUENTIAL ATOMS in the block opcode_store.general_fifoZ0:	98 (1.60 % Utilization)
 
 
 COMBINATIONAL ATOMS
@@ -1533,10 +1533,10 @@ COMBINATIONAL ATOMS
 
 Name                Total elements     Utilization     Notes
 ------------------------------------------------------------
-ATOMS               59                 2.43 %               
+ATOMS               59                 2.45 %               
 ARITHMETIC MODE     0                  0.0 %                
 ============================================================
-Total COMBINATIONAL ATOMS in the block opcode_store.general_fifoZ0:	59 (0.95 % Utilization)
+Total COMBINATIONAL ATOMS in the block opcode_store.general_fifoZ0:	59 (0.96 % Utilization)
 
 
 RAMS
@@ -1579,7 +1579,7 @@ SEQUENTIAL ATOMS
 
 Name          Total elements     Utilization     Notes
 ------------------------------------------------------
-REGISTERS     27                 1.21 %               
+REGISTERS     27                 1.22 %               
 ======================================================
 Total SEQUENTIAL ATOMS in the block Symbol_Generator_Top.opcode_unite:	27 (0.44 % Utilization)
 
@@ -1589,7 +1589,7 @@ COMBINATIONAL ATOMS
 
 Name                Total elements     Utilization     Notes
 ------------------------------------------------------------
-ATOMS               5                  0.2060 %             
+ATOMS               5                  0.2080 %             
 ARITHMETIC MODE     0                  0.0 %                
 ============================================================
 Total COMBINATIONAL ATOMS in the block Symbol_Generator_Top.opcode_unite:	5 (0.08 % Utilization)
@@ -1691,7 +1691,7 @@ SEQUENTIAL ATOMS
 
 Name          Total elements     Utilization     Notes
 ------------------------------------------------------
-REGISTERS     8                  0.3570 %             
+REGISTERS     8                  0.360 %              
 ======================================================
 Total SEQUENTIAL ATOMS in the block disp_ctrl_top.gen_regZ4:	8 (0.13 % Utilization)
 
@@ -1701,7 +1701,7 @@ COMBINATIONAL ATOMS
 
 Name                Total elements     Utilization     Notes
 ------------------------------------------------------------
-ATOMS               1                  4.13e-002 %          
+ATOMS               1                  4.15e-002 %          
 ARITHMETIC MODE     0                  0.0 %                
 ============================================================
 Total COMBINATIONAL ATOMS in the block disp_ctrl_top.gen_regZ4:	1 (0.02 % Utilization)
@@ -1747,7 +1747,7 @@ SEQUENTIAL ATOMS
 
 Name          Total elements     Utilization     Notes
 ------------------------------------------------------
-REGISTERS     9                  0.4020 %             
+REGISTERS     9                  0.4050 %             
 ======================================================
 Total SEQUENTIAL ATOMS in the block disp_ctrl_top.gen_regZ5:	9 (0.15 % Utilization)
 
@@ -1757,10 +1757,10 @@ COMBINATIONAL ATOMS
 
 Name                Total elements     Utilization     Notes
 ------------------------------------------------------------
-ATOMS               10                 0.4130 %             
+ATOMS               5                  0.2080 %             
 ARITHMETIC MODE     0                  0.0 %                
 ============================================================
-Total COMBINATIONAL ATOMS in the block disp_ctrl_top.gen_regZ5:	10 (0.16 % Utilization)
+Total COMBINATIONAL ATOMS in the block disp_ctrl_top.gen_regZ5:	5 (0.08 % Utilization)
 
 
 RAMS
@@ -1803,7 +1803,7 @@ SEQUENTIAL ATOMS
 
 Name          Total elements     Utilization     Notes
 ------------------------------------------------------
-REGISTERS     8                  0.3570 %             
+REGISTERS     8                  0.360 %              
 ======================================================
 Total SEQUENTIAL ATOMS in the block disp_ctrl_top.gen_regZ6:	8 (0.13 % Utilization)
 
@@ -1813,7 +1813,7 @@ COMBINATIONAL ATOMS
 
 Name                Total elements     Utilization     Notes
 ------------------------------------------------------------
-ATOMS               1                  4.13e-002 %          
+ATOMS               1                  4.15e-002 %          
 ARITHMETIC MODE     0                  0.0 %                
 ============================================================
 Total COMBINATIONAL ATOMS in the block disp_ctrl_top.gen_regZ6:	1 (0.02 % Utilization)
@@ -1859,7 +1859,7 @@ SEQUENTIAL ATOMS
 
 Name          Total elements     Utilization     Notes
 ------------------------------------------------------
-REGISTERS     8                  0.3570 %             
+REGISTERS     8                  0.360 %              
 ======================================================
 Total SEQUENTIAL ATOMS in the block disp_ctrl_top.gen_regZ7:	8 (0.13 % Utilization)
 
@@ -1869,7 +1869,7 @@ COMBINATIONAL ATOMS
 
 Name                Total elements     Utilization     Notes
 ------------------------------------------------------------
-ATOMS               1                  4.13e-002 %          
+ATOMS               1                  4.15e-002 %          
 ARITHMETIC MODE     0                  0.0 %                
 ============================================================
 Total COMBINATIONAL ATOMS in the block disp_ctrl_top.gen_regZ7:	1 (0.02 % Utilization)
@@ -1915,7 +1915,7 @@ SEQUENTIAL ATOMS
 
 Name          Total elements     Utilization     Notes
 ------------------------------------------------------
-REGISTERS     8                  0.3570 %             
+REGISTERS     8                  0.360 %              
 ======================================================
 Total SEQUENTIAL ATOMS in the block disp_ctrl_top.gen_regZ8:	8 (0.13 % Utilization)
 
@@ -1925,10 +1925,10 @@ COMBINATIONAL ATOMS
 
 Name                Total elements     Utilization     Notes
 ------------------------------------------------------------
-ATOMS               1                  4.13e-002 %          
+ATOMS               2                  8.31e-002 %          
 ARITHMETIC MODE     0                  0.0 %                
 ============================================================
-Total COMBINATIONAL ATOMS in the block disp_ctrl_top.gen_regZ8:	1 (0.02 % Utilization)
+Total COMBINATIONAL ATOMS in the block disp_ctrl_top.gen_regZ8:	2 (0.03 % Utilization)
 
 
 RAMS
@@ -1971,7 +1971,7 @@ SEQUENTIAL ATOMS
 
 Name          Total elements     Utilization     Notes
 ------------------------------------------------------
-REGISTERS     1                  4.47e-002 %          
+REGISTERS     1                  4.5e-002 %           
 ======================================================
 Total SEQUENTIAL ATOMS in the block disp_ctrl_top.pixel_mng:	1 (0.02 % Utilization)
 
@@ -2027,9 +2027,9 @@ SEQUENTIAL ATOMS
 
 Name          Total elements     Utilization     Notes
 ------------------------------------------------------
-REGISTERS     80                 3.57 %               
+REGISTERS     80                 3.6 %                
 ======================================================
-Total SEQUENTIAL ATOMS in the block disp_ctrl_top.synthetic_frame_generator:	80 (1.29 % Utilization)
+Total SEQUENTIAL ATOMS in the block disp_ctrl_top.synthetic_frame_generator:	80 (1.30 % Utilization)
 
 
 COMBINATIONAL ATOMS
@@ -2037,10 +2037,10 @@ COMBINATIONAL ATOMS
 
 Name                Total elements     Utilization     Notes
 ------------------------------------------------------------
-ATOMS               75                 3.09 %               
+ATOMS               76                 3.16 %               
 ARITHMETIC MODE     0                  0.0 %                
 ============================================================
-Total COMBINATIONAL ATOMS in the block disp_ctrl_top.synthetic_frame_generator:	75 (1.21 % Utilization)
+Total COMBINATIONAL ATOMS in the block disp_ctrl_top.synthetic_frame_generator:	76 (1.24 % Utilization)
 
 
 RAMS
@@ -2083,9 +2083,9 @@ SEQUENTIAL ATOMS
 
 Name          Total elements     Utilization     Notes
 ------------------------------------------------------
-REGISTERS     93                 4.16 %               
+REGISTERS     93                 4.19 %               
 ======================================================
-Total SEQUENTIAL ATOMS in the block disp_ctrl_top.vesa_gen_ctrl:	93 (1.50 % Utilization)
+Total SEQUENTIAL ATOMS in the block disp_ctrl_top.vesa_gen_ctrl:	93 (1.52 % Utilization)
 
 
 COMBINATIONAL ATOMS
@@ -2093,10 +2093,10 @@ COMBINATIONAL ATOMS
 
 Name                Total elements     Utilization     Notes
 ------------------------------------------------------------
-ATOMS               95                 3.92 %               
+ATOMS               96                 3.99 %               
 ARITHMETIC MODE     0                  0.0 %                
 ============================================================
-Total COMBINATIONAL ATOMS in the block disp_ctrl_top.vesa_gen_ctrl:	95 (1.53 % Utilization)
+Total COMBINATIONAL ATOMS in the block disp_ctrl_top.vesa_gen_ctrl:	96 (1.57 % Utilization)
 
 
 RAMS
@@ -2139,9 +2139,9 @@ SEQUENTIAL ATOMS
 
 Name          Total elements     Utilization     Notes
 ------------------------------------------------------
-REGISTERS     4                  0.1790 %             
+REGISTERS     3                  0.1350 %             
 ======================================================
-Total SEQUENTIAL ATOMS in the block mds_top.interconZ0:	4 (0.06 % Utilization)
+Total SEQUENTIAL ATOMS in the block mds_top.interconZ0:	3 (0.05 % Utilization)
 
 
 COMBINATIONAL ATOMS
@@ -2149,10 +2149,10 @@ COMBINATIONAL ATOMS
 
 Name                Total elements     Utilization     Notes
 ------------------------------------------------------------
-ATOMS               28                 1.16 %               
+ATOMS               30                 1.25 %               
 ARITHMETIC MODE     0                  0.0 %                
 ============================================================
-Total COMBINATIONAL ATOMS in the block mds_top.interconZ0:	28 (0.45 % Utilization)
+Total COMBINATIONAL ATOMS in the block mds_top.interconZ0:	30 (0.49 % Utilization)
 
 
 RAMS
@@ -2195,9 +2195,9 @@ SEQUENTIAL ATOMS
 
 Name          Total elements     Utilization     Notes
 ------------------------------------------------------
-REGISTERS     10                 0.4470 %             
+REGISTERS     5                  0.2250 %             
 ======================================================
-Total SEQUENTIAL ATOMS in the block mds_top.interconZ1:	10 (0.16 % Utilization)
+Total SEQUENTIAL ATOMS in the block mds_top.interconZ1:	5 (0.08 % Utilization)
 
 
 COMBINATIONAL ATOMS
@@ -2205,10 +2205,10 @@ COMBINATIONAL ATOMS
 
 Name                Total elements     Utilization     Notes
 ------------------------------------------------------------
-ATOMS               79                 3.26 %               
+ATOMS               72                 2.99 %               
 ARITHMETIC MODE     0                  0.0 %                
 ============================================================
-Total COMBINATIONAL ATOMS in the block mds_top.interconZ1:	79 (1.28 % Utilization)
+Total COMBINATIONAL ATOMS in the block mds_top.interconZ1:	72 (1.17 % Utilization)
 
 
 RAMS
@@ -2261,10 +2261,10 @@ COMBINATIONAL ATOMS
 
 Name                Total elements     Utilization     Notes
 ------------------------------------------------------------
-ATOMS               32                 1.32 %               
+ATOMS               36                 1.5 %                
 ARITHMETIC MODE     0                  0.0 %                
 ============================================================
-Total COMBINATIONAL ATOMS in the block mds_top.intercon_mux:	32 (0.52 % Utilization)
+Total COMBINATIONAL ATOMS in the block mds_top.intercon_mux:	36 (0.59 % Utilization)
 
 
 RAMS
@@ -2307,7 +2307,7 @@ SEQUENTIAL ATOMS
 
 Name          Total elements     Utilization     Notes
 ------------------------------------------------------
-REGISTERS     29                 1.3 %                
+REGISTERS     29                 1.31 %               
 ======================================================
 Total SEQUENTIAL ATOMS in the block mds_top.led:	29 (0.47 % Utilization)
 
@@ -2317,7 +2317,7 @@ COMBINATIONAL ATOMS
 
 Name                Total elements     Utilization     Notes
 ------------------------------------------------------------
-ATOMS               37                 1.53 %               
+ATOMS               37                 1.54 %               
 ARITHMETIC MODE     0                  0.0 %                
 ============================================================
 Total COMBINATIONAL ATOMS in the block mds_top.led:	37 (0.60 % Utilization)
@@ -2363,9 +2363,9 @@ SEQUENTIAL ATOMS
 
 Name          Total elements     Utilization     Notes
 ------------------------------------------------------
-REGISTERS     580                25.9 %               
+REGISTERS     580                26.1 %               
 ======================================================
-Total SEQUENTIAL ATOMS in the block mds_top.mem_mng_top:	580 (9.36 % Utilization)
+Total SEQUENTIAL ATOMS in the block mds_top.mem_mng_top:	580 (9.46 % Utilization)
 
 
 COMBINATIONAL ATOMS
@@ -2373,10 +2373,10 @@ COMBINATIONAL ATOMS
 
 Name                Total elements     Utilization     Notes
 ------------------------------------------------------------
-ATOMS               619                25.5 %               
+ATOMS               618                25.7 %               
 ARITHMETIC MODE     0                  0.0 %                
 ============================================================
-Total COMBINATIONAL ATOMS in the block mds_top.mem_mng_top:	619 (9.99 % Utilization)
+Total COMBINATIONAL ATOMS in the block mds_top.mem_mng_top:	618 (10.07 % Utilization)
 
 
 RAMS
@@ -2419,7 +2419,7 @@ SEQUENTIAL ATOMS
 
 Name          Total elements     Utilization     Notes
 ------------------------------------------------------
-REGISTERS     9                  0.4020 %             
+REGISTERS     9                  0.4050 %             
 ======================================================
 Total SEQUENTIAL ATOMS in the block mem_mng_top.gen_regZ0:	9 (0.15 % Utilization)
 
@@ -2429,10 +2429,10 @@ COMBINATIONAL ATOMS
 
 Name                Total elements     Utilization     Notes
 ------------------------------------------------------------
-ATOMS               9                  0.3710 %             
+ATOMS               10                 0.4150 %             
 ARITHMETIC MODE     0                  0.0 %                
 ============================================================
-Total COMBINATIONAL ATOMS in the block mem_mng_top.gen_regZ0:	9 (0.15 % Utilization)
+Total COMBINATIONAL ATOMS in the block mem_mng_top.gen_regZ0:	10 (0.16 % Utilization)
 
 
 RAMS
@@ -2475,7 +2475,7 @@ SEQUENTIAL ATOMS
 
 Name          Total elements     Utilization     Notes
 ------------------------------------------------------
-REGISTERS     9                  0.4020 %             
+REGISTERS     9                  0.4050 %             
 ======================================================
 Total SEQUENTIAL ATOMS in the block mem_mng_top.gen_regZ1:	9 (0.15 % Utilization)
 
@@ -2485,10 +2485,10 @@ COMBINATIONAL ATOMS
 
 Name                Total elements     Utilization     Notes
 ------------------------------------------------------------
-ATOMS               1                  4.13e-002 %          
+ATOMS               2                  8.31e-002 %          
 ARITHMETIC MODE     0                  0.0 %                
 ============================================================
-Total COMBINATIONAL ATOMS in the block mem_mng_top.gen_regZ1:	1 (0.02 % Utilization)
+Total COMBINATIONAL ATOMS in the block mem_mng_top.gen_regZ1:	2 (0.03 % Utilization)
 
 
 RAMS
@@ -2531,7 +2531,7 @@ SEQUENTIAL ATOMS
 
 Name          Total elements     Utilization     Notes
 ------------------------------------------------------
-REGISTERS     9                  0.4020 %             
+REGISTERS     9                  0.4050 %             
 ======================================================
 Total SEQUENTIAL ATOMS in the block mem_mng_top.gen_regZ2:	9 (0.15 % Utilization)
 
@@ -2541,10 +2541,10 @@ COMBINATIONAL ATOMS
 
 Name                Total elements     Utilization     Notes
 ------------------------------------------------------------
-ATOMS               1                  4.13e-002 %          
+ATOMS               2                  8.31e-002 %          
 ARITHMETIC MODE     0                  0.0 %                
 ============================================================
-Total COMBINATIONAL ATOMS in the block mem_mng_top.gen_regZ2:	1 (0.02 % Utilization)
+Total COMBINATIONAL ATOMS in the block mem_mng_top.gen_regZ2:	2 (0.03 % Utilization)
 
 
 RAMS
@@ -2587,7 +2587,7 @@ SEQUENTIAL ATOMS
 
 Name          Total elements     Utilization     Notes
 ------------------------------------------------------
-REGISTERS     9                  0.4020 %             
+REGISTERS     9                  0.4050 %             
 ======================================================
 Total SEQUENTIAL ATOMS in the block mem_mng_top.gen_regZ3:	9 (0.15 % Utilization)
 
@@ -2597,10 +2597,10 @@ COMBINATIONAL ATOMS
 
 Name                Total elements     Utilization     Notes
 ------------------------------------------------------------
-ATOMS               1                  4.13e-002 %          
+ATOMS               2                  8.31e-002 %          
 ARITHMETIC MODE     0                  0.0 %                
 ============================================================
-Total COMBINATIONAL ATOMS in the block mem_mng_top.gen_regZ3:	1 (0.02 % Utilization)
+Total COMBINATIONAL ATOMS in the block mem_mng_top.gen_regZ3:	2 (0.03 % Utilization)
 
 
 RAMS
@@ -2643,9 +2643,9 @@ SEQUENTIAL ATOMS
 
 Name          Total elements     Utilization     Notes
 ------------------------------------------------------
-REGISTERS     289                12.9 %               
+REGISTERS     289                13. %                
 ======================================================
-Total SEQUENTIAL ATOMS in the block mem_mng_top.mem_ctrl_rd:	289 (4.66 % Utilization)
+Total SEQUENTIAL ATOMS in the block mem_mng_top.mem_ctrl_rd:	289 (4.71 % Utilization)
 
 
 COMBINATIONAL ATOMS
@@ -2653,10 +2653,10 @@ COMBINATIONAL ATOMS
 
 Name                Total elements     Utilization     Notes
 ------------------------------------------------------------
-ATOMS               294                12.1 %               
+ATOMS               292                12.1 %               
 ARITHMETIC MODE     0                  0.0 %                
 ============================================================
-Total COMBINATIONAL ATOMS in the block mem_mng_top.mem_ctrl_rd:	294 (4.74 % Utilization)
+Total COMBINATIONAL ATOMS in the block mem_mng_top.mem_ctrl_rd:	292 (4.76 % Utilization)
 
 
 RAMS
@@ -2755,9 +2755,9 @@ SEQUENTIAL ATOMS
 
 Name          Total elements     Utilization     Notes
 ------------------------------------------------------
-REGISTERS     152                6.79 %               
+REGISTERS     152                6.85 %               
 ======================================================
-Total SEQUENTIAL ATOMS in the block mem_ctrl_rd.mem_ctrl_rd_wbm:	152 (2.45 % Utilization)
+Total SEQUENTIAL ATOMS in the block mem_ctrl_rd.mem_ctrl_rd_wbm:	152 (2.48 % Utilization)
 
 
 COMBINATIONAL ATOMS
@@ -2765,10 +2765,10 @@ COMBINATIONAL ATOMS
 
 Name                Total elements     Utilization     Notes
 ------------------------------------------------------------
-ATOMS               235                9.69 %               
+ATOMS               233                9.68 %               
 ARITHMETIC MODE     0                  0.0 %                
 ============================================================
-Total COMBINATIONAL ATOMS in the block mem_ctrl_rd.mem_ctrl_rd_wbm:	235 (3.79 % Utilization)
+Total COMBINATIONAL ATOMS in the block mem_ctrl_rd.mem_ctrl_rd_wbm:	233 (3.80 % Utilization)
 
 
 RAMS
@@ -2811,9 +2811,9 @@ SEQUENTIAL ATOMS
 
 Name          Total elements     Utilization     Notes
 ------------------------------------------------------
-REGISTERS     54                 2.41 %               
+REGISTERS     54                 2.43 %               
 ======================================================
-Total SEQUENTIAL ATOMS in the block mem_ctrl_rd.mem_ctrl_rd_wbs:	54 (0.87 % Utilization)
+Total SEQUENTIAL ATOMS in the block mem_ctrl_rd.mem_ctrl_rd_wbs:	54 (0.88 % Utilization)
 
 
 COMBINATIONAL ATOMS
@@ -2821,10 +2821,10 @@ COMBINATIONAL ATOMS
 
 Name                Total elements     Utilization     Notes
 ------------------------------------------------------------
-ATOMS               56                 2.31 %               
+ATOMS               56                 2.33 %               
 ARITHMETIC MODE     0                  0.0 %                
 ============================================================
-Total COMBINATIONAL ATOMS in the block mem_ctrl_rd.mem_ctrl_rd_wbs:	56 (0.90 % Utilization)
+Total COMBINATIONAL ATOMS in the block mem_ctrl_rd.mem_ctrl_rd_wbs:	56 (0.91 % Utilization)
 
 
 RAMS
@@ -2867,9 +2867,9 @@ SEQUENTIAL ATOMS
 
 Name          Total elements     Utilization     Notes
 ------------------------------------------------------
-REGISTERS     250                11.2 %               
+REGISTERS     250                11.3 %               
 ======================================================
-Total SEQUENTIAL ATOMS in the block mem_mng_top.mem_ctrl_wr:	250 (4.03 % Utilization)
+Total SEQUENTIAL ATOMS in the block mem_mng_top.mem_ctrl_wr:	250 (4.08 % Utilization)
 
 
 COMBINATIONAL ATOMS
@@ -2877,10 +2877,10 @@ COMBINATIONAL ATOMS
 
 Name                Total elements     Utilization     Notes
 ------------------------------------------------------------
-ATOMS               236                9.74 %               
+ATOMS               235                9.76 %               
 ARITHMETIC MODE     0                  0.0 %                
 ============================================================
-Total COMBINATIONAL ATOMS in the block mem_mng_top.mem_ctrl_wr:	236 (3.81 % Utilization)
+Total COMBINATIONAL ATOMS in the block mem_mng_top.mem_ctrl_wr:	235 (3.83 % Utilization)
 
 
 RAMS
@@ -2979,9 +2979,9 @@ SEQUENTIAL ATOMS
 
 Name          Total elements     Utilization     Notes
 ------------------------------------------------------
-REGISTERS     185                8.27 %               
+REGISTERS     185                8.33 %               
 ======================================================
-Total SEQUENTIAL ATOMS in the block mem_ctrl_wr.mem_ctrl_wr_wbm:	185 (2.99 % Utilization)
+Total SEQUENTIAL ATOMS in the block mem_ctrl_wr.mem_ctrl_wr_wbm:	185 (3.02 % Utilization)
 
 
 COMBINATIONAL ATOMS
@@ -2989,10 +2989,10 @@ COMBINATIONAL ATOMS
 
 Name                Total elements     Utilization     Notes
 ------------------------------------------------------------
-ATOMS               186                7.67 %               
+ATOMS               185                7.68 %               
 ARITHMETIC MODE     0                  0.0 %                
 ============================================================
-Total COMBINATIONAL ATOMS in the block mem_ctrl_wr.mem_ctrl_wr_wbm:	186 (3.00 % Utilization)
+Total COMBINATIONAL ATOMS in the block mem_ctrl_wr.mem_ctrl_wr_wbm:	185 (3.02 % Utilization)
 
 
 RAMS
@@ -3035,9 +3035,9 @@ SEQUENTIAL ATOMS
 
 Name          Total elements     Utilization     Notes
 ------------------------------------------------------
-REGISTERS     38                 1.7 %                
+REGISTERS     38                 1.71 %               
 ======================================================
-Total SEQUENTIAL ATOMS in the block mem_ctrl_wr.mem_ctrl_wr_wbs:	38 (0.61 % Utilization)
+Total SEQUENTIAL ATOMS in the block mem_ctrl_wr.mem_ctrl_wr_wbs:	38 (0.62 % Utilization)
 
 
 COMBINATIONAL ATOMS
@@ -3045,10 +3045,10 @@ COMBINATIONAL ATOMS
 
 Name                Total elements     Utilization     Notes
 ------------------------------------------------------------
-ATOMS               49                 2.02 %               
+ATOMS               49                 2.03 %               
 ARITHMETIC MODE     0                  0.0 %                
 ============================================================
-Total COMBINATIONAL ATOMS in the block mem_ctrl_wr.mem_ctrl_wr_wbs:	49 (0.79 % Utilization)
+Total COMBINATIONAL ATOMS in the block mem_ctrl_wr.mem_ctrl_wr_wbs:	49 (0.80 % Utilization)
 
 
 RAMS
@@ -3091,7 +3091,7 @@ SEQUENTIAL ATOMS
 
 Name          Total elements     Utilization     Notes
 ------------------------------------------------------
-REGISTERS     3                  0.1340 %             
+REGISTERS     3                  0.1350 %             
 ======================================================
 Total SEQUENTIAL ATOMS in the block mem_mng_top.mem_mng_arbiter:	3 (0.05 % Utilization)
 
@@ -3101,7 +3101,7 @@ COMBINATIONAL ATOMS
 
 Name                Total elements     Utilization     Notes
 ------------------------------------------------------------
-ATOMS               13                 0.5360 %             
+ATOMS               13                 0.540 %              
 ARITHMETIC MODE     0                  0.0 %                
 ============================================================
 Total COMBINATIONAL ATOMS in the block mem_mng_top.mem_mng_arbiter:	13 (0.21 % Utilization)
@@ -3137,62 +3137,6 @@ BLACK BOXES     0                  0.0 %
 ========================================================
 Total Black Boxes in the block mem_mng_top.mem_mng_arbiter:	0 (0.00 % Utilization)
 
----------------------------------------------------------------
-########   Utilization report for  cell:   wbs_regZ1   ########
-Instance path:   mem_mng_top.wbs_regZ1                         
-===============================================================
-
-SEQUENTIAL ATOMS
-****************
-
-Name          Total elements     Utilization     Notes
-------------------------------------------------------
-REGISTERS     0                  0.0 %                
-======================================================
-Total SEQUENTIAL ATOMS in the block mem_mng_top.wbs_regZ1:	0 (0.00 % Utilization)
-
-
-COMBINATIONAL ATOMS
-*******************
-
-Name                Total elements     Utilization     Notes
-------------------------------------------------------------
-ATOMS               1                  4.13e-002 %          
-ARITHMETIC MODE     0                  0.0 %                
-============================================================
-Total COMBINATIONAL ATOMS in the block mem_mng_top.wbs_regZ1:	1 (0.02 % Utilization)
-
-
-RAMS
-****
-
-Name          Total elements     Number of bits     Utilization     Notes
--------------------------------------------------------------------------
-SYNC RAMS     0                  0                  0.0 %                
-LPMs          0                  0                  0.0 %                
-=========================================================================
-Total RAMS in the block mem_mng_top.wbs_regZ1:	0 (0.00 % Utilization)
-
-
-DSPs
-****
-
-Name     Total elements     Utilization     Notes
--------------------------------------------------
-MACs     0                  0.0 %                
-=================================================
-Total DSPs in the block mem_mng_top.wbs_regZ1:	0 (0.00 % Utilization)
-
-
-Black Boxes
-***********
-
-Name            Total elements     Utilization     Notes
---------------------------------------------------------
-BLACK BOXES     0                  0.0 %                
-========================================================
-Total Black Boxes in the block mem_mng_top.wbs_regZ1:	0 (0.00 % Utilization)
-
 -------------------------------------------------------------
 ########   Utilization report for  cell:   rx_path   ########
 Instance path:   mds_top.rx_path                             
@@ -3203,9 +3147,9 @@ SEQUENTIAL ATOMS
 
 Name          Total elements     Utilization     Notes
 ------------------------------------------------------
-REGISTERS     281                12.6 %               
+REGISTERS     280                12.6 %               
 ======================================================
-Total SEQUENTIAL ATOMS in the block mds_top.rx_path:	281 (4.54 % Utilization)
+Total SEQUENTIAL ATOMS in the block mds_top.rx_path:	280 (4.56 % Utilization)
 
 
 COMBINATIONAL ATOMS
@@ -3213,10 +3157,10 @@ COMBINATIONAL ATOMS
 
 Name                Total elements     Utilization     Notes
 ------------------------------------------------------------
-ATOMS               309                12.7 %               
+ATOMS               287                11.9 %               
 ARITHMETIC MODE     0                  0.0 %                
 ============================================================
-Total COMBINATIONAL ATOMS in the block mds_top.rx_path:	309 (4.99 % Utilization)
+Total COMBINATIONAL ATOMS in the block mds_top.rx_path:	287 (4.68 % Utilization)
 
 
 RAMS
@@ -3259,7 +3203,7 @@ SEQUENTIAL ATOMS
 
 Name          Total elements     Utilization     Notes
 ------------------------------------------------------
-REGISTERS     9                  0.4020 %             
+REGISTERS     9                  0.4050 %             
 ======================================================
 Total SEQUENTIAL ATOMS in the block rx_path.checksum_calc:	9 (0.15 % Utilization)
 
@@ -3269,7 +3213,7 @@ COMBINATIONAL ATOMS
 
 Name                Total elements     Utilization     Notes
 ------------------------------------------------------------
-ATOMS               16                 0.660 %              
+ATOMS               16                 0.6640 %             
 ARITHMETIC MODE     0                  0.0 %                
 ============================================================
 Total COMBINATIONAL ATOMS in the block rx_path.checksum_calc:	16 (0.26 % Utilization)
@@ -3315,9 +3259,9 @@ SEQUENTIAL ATOMS
 
 Name          Total elements     Utilization     Notes
 ------------------------------------------------------
-REGISTERS     130                5.81 %               
+REGISTERS     130                5.86 %               
 ======================================================
-Total SEQUENTIAL ATOMS in the block rx_path.mp_dec:	130 (2.10 % Utilization)
+Total SEQUENTIAL ATOMS in the block rx_path.mp_dec:	130 (2.12 % Utilization)
 
 
 COMBINATIONAL ATOMS
@@ -3325,10 +3269,10 @@ COMBINATIONAL ATOMS
 
 Name                Total elements     Utilization     Notes
 ------------------------------------------------------------
-ATOMS               45                 1.86 %               
+ATOMS               44                 1.83 %               
 ARITHMETIC MODE     0                  0.0 %                
 ============================================================
-Total COMBINATIONAL ATOMS in the block rx_path.mp_dec:	45 (0.73 % Utilization)
+Total COMBINATIONAL ATOMS in the block rx_path.mp_dec:	44 (0.72 % Utilization)
 
 
 RAMS
@@ -3371,7 +3315,7 @@ SEQUENTIAL ATOMS
 
 Name          Total elements     Utilization     Notes
 ------------------------------------------------------
-REGISTERS     26                 1.16 %               
+REGISTERS     26                 1.17 %               
 ======================================================
 Total SEQUENTIAL ATOMS in the block rx_path.ram_simple:	26 (0.42 % Utilization)
 
@@ -3381,10 +3325,10 @@ COMBINATIONAL ATOMS
 
 Name                Total elements     Utilization     Notes
 ------------------------------------------------------------
-ATOMS               20                 0.8250 %             
+ATOMS               20                 0.8310 %             
 ARITHMETIC MODE     0                  0.0 %                
 ============================================================
-Total COMBINATIONAL ATOMS in the block rx_path.ram_simple:	20 (0.32 % Utilization)
+Total COMBINATIONAL ATOMS in the block rx_path.ram_simple:	20 (0.33 % Utilization)
 
 
 RAMS
@@ -3427,9 +3371,9 @@ SEQUENTIAL ATOMS
 
 Name          Total elements     Utilization     Notes
 ------------------------------------------------------
-REGISTERS     39                 1.74 %               
+REGISTERS     39                 1.76 %               
 ======================================================
-Total SEQUENTIAL ATOMS in the block rx_path.uart_rx:	39 (0.63 % Utilization)
+Total SEQUENTIAL ATOMS in the block rx_path.uart_rx:	39 (0.64 % Utilization)
 
 
 COMBINATIONAL ATOMS
@@ -3437,10 +3381,10 @@ COMBINATIONAL ATOMS
 
 Name                Total elements     Utilization     Notes
 ------------------------------------------------------------
-ATOMS               69                 2.85 %               
+ATOMS               66                 2.74 %               
 ARITHMETIC MODE     0                  0.0 %                
 ============================================================
-Total COMBINATIONAL ATOMS in the block rx_path.uart_rx:	69 (1.11 % Utilization)
+Total COMBINATIONAL ATOMS in the block rx_path.uart_rx:	66 (1.08 % Utilization)
 
 
 RAMS
@@ -3483,9 +3427,9 @@ SEQUENTIAL ATOMS
 
 Name          Total elements     Utilization     Notes
 ------------------------------------------------------
-REGISTERS     162                7.24 %               
+REGISTERS     162                7.3 %                
 ======================================================
-Total SEQUENTIAL ATOMS in the block mds_top.sdram_controller:	162 (2.61 % Utilization)
+Total SEQUENTIAL ATOMS in the block mds_top.sdram_controller:	162 (2.64 % Utilization)
 
 
 COMBINATIONAL ATOMS
@@ -3493,10 +3437,10 @@ COMBINATIONAL ATOMS
 
 Name                Total elements     Utilization     Notes
 ------------------------------------------------------------
-ATOMS               176                7.26 %               
+ATOMS               197                8.18 %               
 ARITHMETIC MODE     0                  0.0 %                
 ============================================================
-Total COMBINATIONAL ATOMS in the block mds_top.sdram_controller:	176 (2.84 % Utilization)
+Total COMBINATIONAL ATOMS in the block mds_top.sdram_controller:	197 (3.21 % Utilization)
 
 
 RAMS
@@ -3539,9 +3483,9 @@ SEQUENTIAL ATOMS
 
 Name          Total elements     Utilization     Notes
 ------------------------------------------------------
-REGISTERS     311                13.9 %               
+REGISTERS     310                14. %                
 ======================================================
-Total SEQUENTIAL ATOMS in the block mds_top.tx_path:	311 (5.02 % Utilization)
+Total SEQUENTIAL ATOMS in the block mds_top.tx_path:	310 (5.05 % Utilization)
 
 
 COMBINATIONAL ATOMS
@@ -3549,10 +3493,10 @@ COMBINATIONAL ATOMS
 
 Name                Total elements     Utilization     Notes
 ------------------------------------------------------------
-ATOMS               321                13.2 %               
+ATOMS               333                13.8 %               
 ARITHMETIC MODE     0                  0.0 %                
 ============================================================
-Total COMBINATIONAL ATOMS in the block mds_top.tx_path:	321 (5.18 % Utilization)
+Total COMBINATIONAL ATOMS in the block mds_top.tx_path:	333 (5.43 % Utilization)
 
 
 RAMS
@@ -3563,7 +3507,7 @@ Name          Total elements     Number of bits     Utilization     Notes
 SYNC RAMS     2                  2                  28.6 %               
 LPMs          2                  2                  15.4 %               
 =========================================================================
-Total RAMS in the block mds_top.tx_path:	4 (0.06 % Utilization)
+Total RAMS in the block mds_top.tx_path:	4 (0.07 % Utilization)
 
 
 DSPs
@@ -3595,7 +3539,7 @@ SEQUENTIAL ATOMS
 
 Name          Total elements     Utilization     Notes
 ------------------------------------------------------
-REGISTERS     9                  0.4020 %             
+REGISTERS     9                  0.4050 %             
 ======================================================
 Total SEQUENTIAL ATOMS in the block tx_path.checksum_calc_1:	9 (0.15 % Utilization)
 
@@ -3605,7 +3549,7 @@ COMBINATIONAL ATOMS
 
 Name                Total elements     Utilization     Notes
 ------------------------------------------------------------
-ATOMS               16                 0.660 %              
+ATOMS               16                 0.6640 %             
 ARITHMETIC MODE     0                  0.0 %                
 ============================================================
 Total COMBINATIONAL ATOMS in the block tx_path.checksum_calc_1:	16 (0.26 % Utilization)
@@ -3651,7 +3595,7 @@ SEQUENTIAL ATOMS
 
 Name          Total elements     Utilization     Notes
 ------------------------------------------------------
-REGISTERS     9                  0.4020 %             
+REGISTERS     9                  0.4050 %             
 ======================================================
 Total SEQUENTIAL ATOMS in the block tx_path.gen_regZ10:	9 (0.15 % Utilization)
 
@@ -3661,7 +3605,7 @@ COMBINATIONAL ATOMS
 
 Name                Total elements     Utilization     Notes
 ------------------------------------------------------------
-ATOMS               2                  8.25e-002 %          
+ATOMS               2                  8.31e-002 %          
 ARITHMETIC MODE     0                  0.0 %                
 ============================================================
 Total COMBINATIONAL ATOMS in the block tx_path.gen_regZ10:	2 (0.03 % Utilization)
@@ -3707,7 +3651,7 @@ SEQUENTIAL ATOMS
 
 Name          Total elements     Utilization     Notes
 ------------------------------------------------------
-REGISTERS     9                  0.4020 %             
+REGISTERS     9                  0.4050 %             
 ======================================================
 Total SEQUENTIAL ATOMS in the block tx_path.gen_regZ11:	9 (0.15 % Utilization)
 
@@ -3717,10 +3661,10 @@ COMBINATIONAL ATOMS
 
 Name                Total elements     Utilization     Notes
 ------------------------------------------------------------
-ATOMS               20                 0.8250 %             
+ATOMS               21                 0.8720 %             
 ARITHMETIC MODE     0                  0.0 %                
 ============================================================
-Total COMBINATIONAL ATOMS in the block tx_path.gen_regZ11:	20 (0.32 % Utilization)
+Total COMBINATIONAL ATOMS in the block tx_path.gen_regZ11:	21 (0.34 % Utilization)
 
 
 RAMS
@@ -3763,7 +3707,7 @@ SEQUENTIAL ATOMS
 
 Name          Total elements     Utilization     Notes
 ------------------------------------------------------
-REGISTERS     9                  0.4020 %             
+REGISTERS     9                  0.4050 %             
 ======================================================
 Total SEQUENTIAL ATOMS in the block tx_path.gen_regZ12:	9 (0.15 % Utilization)
 
@@ -3773,10 +3717,10 @@ COMBINATIONAL ATOMS
 
 Name                Total elements     Utilization     Notes
 ------------------------------------------------------------
-ATOMS               3                  0.1240 %             
+ATOMS               4                  0.1660 %             
 ARITHMETIC MODE     0                  0.0 %                
 ============================================================
-Total COMBINATIONAL ATOMS in the block tx_path.gen_regZ12:	3 (0.05 % Utilization)
+Total COMBINATIONAL ATOMS in the block tx_path.gen_regZ12:	4 (0.07 % Utilization)
 
 
 RAMS
@@ -3819,7 +3763,7 @@ SEQUENTIAL ATOMS
 
 Name          Total elements     Utilization     Notes
 ------------------------------------------------------
-REGISTERS     9                  0.4020 %             
+REGISTERS     9                  0.4050 %             
 ======================================================
 Total SEQUENTIAL ATOMS in the block tx_path.gen_regZ13:	9 (0.15 % Utilization)
 
@@ -3829,10 +3773,10 @@ COMBINATIONAL ATOMS
 
 Name                Total elements     Utilization     Notes
 ------------------------------------------------------------
-ATOMS               2                  8.25e-002 %          
+ATOMS               1                  4.15e-002 %          
 ARITHMETIC MODE     0                  0.0 %                
 ============================================================
-Total COMBINATIONAL ATOMS in the block tx_path.gen_regZ13:	2 (0.03 % Utilization)
+Total COMBINATIONAL ATOMS in the block tx_path.gen_regZ13:	1 (0.02 % Utilization)
 
 
 RAMS
@@ -3875,7 +3819,7 @@ SEQUENTIAL ATOMS
 
 Name          Total elements     Utilization     Notes
 ------------------------------------------------------
-REGISTERS     9                  0.4020 %             
+REGISTERS     9                  0.4050 %             
 ======================================================
 Total SEQUENTIAL ATOMS in the block tx_path.gen_regZ9:	9 (0.15 % Utilization)
 
@@ -3885,10 +3829,10 @@ COMBINATIONAL ATOMS
 
 Name                Total elements     Utilization     Notes
 ------------------------------------------------------------
-ATOMS               1                  4.13e-002 %          
+ATOMS               2                  8.31e-002 %          
 ARITHMETIC MODE     0                  0.0 %                
 ============================================================
-Total COMBINATIONAL ATOMS in the block tx_path.gen_regZ9:	1 (0.02 % Utilization)
+Total COMBINATIONAL ATOMS in the block tx_path.gen_regZ9:	2 (0.03 % Utilization)
 
 
 RAMS
@@ -3931,9 +3875,9 @@ SEQUENTIAL ATOMS
 
 Name          Total elements     Utilization     Notes
 ------------------------------------------------------
-REGISTERS     39                 1.74 %               
+REGISTERS     39                 1.76 %               
 ======================================================
-Total SEQUENTIAL ATOMS in the block tx_path.general_fifoZ3:	39 (0.63 % Utilization)
+Total SEQUENTIAL ATOMS in the block tx_path.general_fifoZ3:	39 (0.64 % Utilization)
 
 
 COMBINATIONAL ATOMS
@@ -3944,7 +3888,7 @@ Name                Total elements     Utilization     Notes
 ATOMS               28                 1.16 %               
 ARITHMETIC MODE     0                  0.0 %                
 ============================================================
-Total COMBINATIONAL ATOMS in the block tx_path.general_fifoZ3:	28 (0.45 % Utilization)
+Total COMBINATIONAL ATOMS in the block tx_path.general_fifoZ3:	28 (0.46 % Utilization)
 
 
 RAMS
@@ -3987,9 +3931,9 @@ SEQUENTIAL ATOMS
 
 Name          Total elements     Utilization     Notes
 ------------------------------------------------------
-REGISTERS     106                4.74 %               
+REGISTERS     106                4.77 %               
 ======================================================
-Total SEQUENTIAL ATOMS in the block tx_path.mp_enc:	106 (1.71 % Utilization)
+Total SEQUENTIAL ATOMS in the block tx_path.mp_enc:	106 (1.73 % Utilization)
 
 
 COMBINATIONAL ATOMS
@@ -3997,10 +3941,10 @@ COMBINATIONAL ATOMS
 
 Name                Total elements     Utilization     Notes
 ------------------------------------------------------------
-ATOMS               73                 3.01 %               
+ATOMS               83                 3.45 %               
 ARITHMETIC MODE     0                  0.0 %                
 ============================================================
-Total COMBINATIONAL ATOMS in the block tx_path.mp_enc:	73 (1.18 % Utilization)
+Total COMBINATIONAL ATOMS in the block tx_path.mp_enc:	83 (1.35 % Utilization)
 
 
 RAMS
@@ -4043,7 +3987,7 @@ SEQUENTIAL ATOMS
 
 Name          Total elements     Utilization     Notes
 ------------------------------------------------------
-REGISTERS     10                 0.4470 %             
+REGISTERS     10                 0.450 %              
 ======================================================
 Total SEQUENTIAL ATOMS in the block tx_path.ram_simple_1:	10 (0.16 % Utilization)
 
@@ -4053,7 +3997,7 @@ COMBINATIONAL ATOMS
 
 Name                Total elements     Utilization     Notes
 ------------------------------------------------------------
-ATOMS               8                  0.330 %              
+ATOMS               8                  0.3320 %             
 ARITHMETIC MODE     0                  0.0 %                
 ============================================================
 Total COMBINATIONAL ATOMS in the block tx_path.ram_simple_1:	8 (0.13 % Utilization)
@@ -4099,9 +4043,9 @@ SEQUENTIAL ATOMS
 
 Name          Total elements     Utilization     Notes
 ------------------------------------------------------
-REGISTERS     71                 3.17 %               
+REGISTERS     70                 3.15 %               
 ======================================================
-Total SEQUENTIAL ATOMS in the block tx_path.tx_path_wbm:	71 (1.15 % Utilization)
+Total SEQUENTIAL ATOMS in the block tx_path.tx_path_wbm:	70 (1.14 % Utilization)
 
 
 COMBINATIONAL ATOMS
@@ -4109,10 +4053,10 @@ COMBINATIONAL ATOMS
 
 Name                Total elements     Utilization     Notes
 ------------------------------------------------------------
-ATOMS               93                 3.84 %               
+ATOMS               90                 3.74 %               
 ARITHMETIC MODE     0                  0.0 %                
 ============================================================
-Total COMBINATIONAL ATOMS in the block tx_path.tx_path_wbm:	93 (1.50 % Utilization)
+Total COMBINATIONAL ATOMS in the block tx_path.tx_path_wbm:	90 (1.47 % Utilization)
 
 
 RAMS
@@ -4155,9 +4099,9 @@ SEQUENTIAL ATOMS
 
 Name          Total elements     Utilization     Notes
 ------------------------------------------------------
-REGISTERS     30                 1.34 %               
+REGISTERS     30                 1.35 %               
 ======================================================
-Total SEQUENTIAL ATOMS in the block tx_path.uart_tx:	30 (0.48 % Utilization)
+Total SEQUENTIAL ATOMS in the block tx_path.uart_tx:	30 (0.49 % Utilization)
 
 
 COMBINATIONAL ATOMS
@@ -4165,10 +4109,10 @@ COMBINATIONAL ATOMS
 
 Name                Total elements     Utilization     Notes
 ------------------------------------------------------------
-ATOMS               31                 1.28 %               
+ATOMS               31                 1.29 %               
 ARITHMETIC MODE     0                  0.0 %                
 ============================================================
-Total COMBINATIONAL ATOMS in the block tx_path.uart_tx:	31 (0.50 % Utilization)
+Total COMBINATIONAL ATOMS in the block tx_path.uart_tx:	31 (0.51 % Utilization)
 
 
 RAMS
@@ -4221,7 +4165,7 @@ COMBINATIONAL ATOMS
 
 Name                Total elements     Utilization     Notes
 ------------------------------------------------------------
-ATOMS               3                  0.1240 %             
+ATOMS               3                  0.1250 %             
 ARITHMETIC MODE     0                  0.0 %                
 ============================================================
 Total COMBINATIONAL ATOMS in the block tx_path.wbs_regZ1_1:	3 (0.05 % Utilization)

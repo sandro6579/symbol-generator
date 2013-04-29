@@ -1,36 +1,31 @@
-@TM:1364392208
-@N:  :"":0:0:0:-1|Running in 32-bit mode
+@TM:1366012176
 @N:  :"":0:0:0:-1|Running in logic synthesis mode without enhanced optimization
-@TM:1364578494
-@N: FA100 :"":0:0:0:-1|Instance "mds_top_inst.intercon_z_inst.wbs_gnt[0]" with "31" loads has been replicated "1" time(s) due to hard fanout limit of "30" 
-@N: FA100 :"":0:0:0:-1|Instance "mds_top_inst.tx_path_inst.tx_wbm_inst.wbm_tgc_o" with "62" loads has been replicated "2" time(s) due to hard fanout limit of "30" 
-@TM:1364392452
+@TM:1365969178
+@N:  :"":0:0:0:-1|Running in 32-bit mode
+@TM:1366012312
 @N: FA174 :"":0:0:0:-1|The following device usage report estimates place and route data. Please look at the place and route report for final resource usage..
-@TM:1364392208
-@W: FA314 :"":0:0:0:-1|User defined clock "top_synthesis|fpga_clk" overrides inclk0_input_frequency of "clk_blk_inst.pll_inst.altpll_component"
-@W: FA314 :"":0:0:0:-1|User defined clock "top_synthesis|fpga_clk" overrides inclk0_input_frequency of "clk_blk_inst.pll_inst.altpll_component"
-@W: FA314 :"":0:0:0:-1|User defined clock "top_synthesis|fpga_clk" overrides inclk0_input_frequency of "clk_blk_inst.pll_inst.altpll_component"
+@TM:1366012176
 @N: MF249 :"":0:0:0:-1|Running in 64-bit mode.
 @N: MF257 :"":0:0:0:-1|Gated clock conversion enabled 
-@TM:1364392452
+@TM:1366012312
 @N: MF276 :"":0:0:0:-1|Gated clock conversion enabled, but no gated clocks found in design 
 @N: MF333 :"":0:0:0:-1|Generated clock conversion enabled, but no generated clocks found in design 
-@TM:1364392208
+@TM:1366012176
 @W: MO161 :"":0:0:0:-1|Register bit false_5 is always 0, optimizing ...
 @W: MO161 :"":0:0:0:-1|Register bit false_4 is always 0, optimizing ...
 @W: MO161 :"":0:0:0:-1|Register bit false_3 is always 0, optimizing ...
 @W: MO161 :"":0:0:0:-1|Register bit false_2 is always 0, optimizing ...
 @W: MO161 :"":0:0:0:-1|Register bit false_1 is always 0, optimizing ...
 @W: MO161 :"":0:0:0:-1|Register bit false_0 is always 0, optimizing ...
-@TM:1364392452
+@TM:1366016762
+@W: MT116 :"":0:0:0:-1|Paths from clock (global_nets_top|clk_blk_inst.pll_new_2_inst.sdram_clk_derived_clock:r) to clock (global_nets_top|clk_blk_inst.pll_new_1_inst.system_clk_derived_clock:r) are overconstrained because the required time of 0.12 ns is too small.  
+@W: MT116 :"":0:0:0:-1|Paths from clock (global_nets_top|clk_blk_inst.pll_new_1_inst.system_clk_derived_clock:r) to clock (global_nets_top|clk_blk_inst.pll_new_2_inst.sdram_clk_derived_clock:r) are overconstrained because the required time of 0.12 ns is too small.  
+@TM:1366012312
 @N: MT320 :"":0:0:0:-1|This timing report estimates place and route data. Please look at the place and route timing report for final timing..
 @N: MT322 :"":0:0:0:-1|Clock constraints cover only FF-to-FF paths associated with the clock..
-@TM:1364395784
-@W: MT420 :"":0:0:0:-1|Found inferred clock top_synthesis|fpga_clk with period 6.25ns. A user-defined clock should be declared on object "p:fpga_clk"
-@TM:1364392208
+@TM:1366012176
 @N: CD720 :"C:\Synopsys\fpga_D201003SP1\lib\vhd\std.vhd":123:18:123:21|M
 @N: CD231 :"C:\Synopsys\fpga_D201003SP1\lib\vhd\std_logic_textio.vhd":79:15:79:16|M
-@TM:1364399347
 @N: CD630 :"H:\Project\SG_Project\VHDL\altera_16to8_dc_ram.vhd":42:7:42:25|M
 @N: CD630 :"H:\Project\SG_Project\VHDL\altera_16to8_dc_ram.vhd":62:11:62:20|M
 @N: CD630 :"H:\Project\SG_Project\VHDL\altera_8to16_dc_ram.vhd":42:7:42:25|M
@@ -42,41 +37,39 @@
 @N: CD630 :"H:\Project\SG_Project\VHDL\clk_blk_top.vhd":32:7:32:17|M
 @N: CD630 :"H:\Project\SG_Project\VHDL\dc_fifo.vhd":42:7:42:13|M
 @N: CD630 :"H:\Project\SG_Project\VHDL\dc_fifo.vhd":68:11:68:16|M
-@TM:1364399476
+@TM:1366012312
 @W: MT246 :"h:\project\sg_project\vhdl\dc_fifo.vhd":104:1:104:16|M
-@TM:1364399347
+@TM:1366012176
 @N: CD630 :"H:\Project\SG_Project\VHDL\disp_ctrl_top.vhd":35:7:35:19|M
-@W: CD638 :"H:\Project\SG_Project\VHDL\disp_ctrl_top.vhd":156:7:156:23|M
-@W: CD638 :"H:\Project\SG_Project\VHDL\disp_ctrl_top.vhd":177:7:177:19|M
-@W: CD638 :"H:\Project\SG_Project\VHDL\disp_ctrl_top.vhd":179:7:179:17|M
-@W: CD638 :"H:\Project\SG_Project\VHDL\disp_ctrl_top.vhd":180:7:180:19|M
-@W: CD638 :"H:\Project\SG_Project\VHDL\disp_ctrl_top.vhd":220:7:220:28|M
-@W: CL240 :"H:\Project\SG_Project\VHDL\disp_ctrl_top.vhd":220:7:220:28|M
-@W: CD638 :"H:\Project\SG_Project\VHDL\disp_ctrl_top.vhd":222:7:222:31|M
-@W: CL240 :"H:\Project\SG_Project\VHDL\disp_ctrl_top.vhd":222:7:222:31|M
-@W: CD638 :"H:\Project\SG_Project\VHDL\disp_ctrl_top.vhd":223:7:223:29|M
-@W: CL240 :"H:\Project\SG_Project\VHDL\disp_ctrl_top.vhd":223:7:223:29|M
-@W: CD638 :"H:\Project\SG_Project\VHDL\disp_ctrl_top.vhd":225:7:225:32|M
-@W: CL240 :"H:\Project\SG_Project\VHDL\disp_ctrl_top.vhd":225:7:225:32|M
-@W: CD638 :"H:\Project\SG_Project\VHDL\disp_ctrl_top.vhd":255:7:255:17|M
-@W: CD638 :"H:\Project\SG_Project\VHDL\disp_ctrl_top.vhd":256:7:256:23|M
-@W: CD638 :"H:\Project\SG_Project\VHDL\disp_ctrl_top.vhd":271:7:271:12|M
-@W: CD638 :"H:\Project\SG_Project\VHDL\disp_ctrl_top.vhd":272:7:272:13|M
-@TM:1364399476
-@W: BN132 :"h:\project\sg_project\vhdl\disp_ctrl_top.vhd":765:2:765:3|M
-@W: BN132 :"h:\project\sg_project\vhdl\disp_ctrl_top.vhd":765:2:765:3|M
-@W: BN132 :"h:\project\sg_project\vhdl\disp_ctrl_top.vhd":765:2:765:3|M
-@W: BN132 :"h:\project\sg_project\vhdl\disp_ctrl_top.vhd":765:2:765:3|M
-@TM:1364399347
-@W: CD326 :"H:\Project\SG_Project\VHDL\disp_ctrl_top.vhd":973:0:973:11|M
-@W: CD326 :"H:\Project\SG_Project\VHDL\disp_ctrl_top.vhd":995:0:995:11|M
-@W: CL168 :"H:\Project\SG_Project\VHDL\disp_ctrl_top.vhd":995:0:995:11|M
-@W: CL111 :"H:\Project\SG_Project\VHDL\disp_ctrl_top.vhd":1306:1:1306:2|M
-@W: CL169 :"H:\Project\SG_Project\VHDL\disp_ctrl_top.vhd":1306:1:1306:2|M
-@N: CL177 :"H:\Project\SG_Project\VHDL\disp_ctrl_top.vhd":1306:1:1306:2|M
-@W: CL190 :"H:\Project\SG_Project\VHDL\disp_ctrl_top.vhd":1306:1:1306:2|M
-@W: CL260 :"H:\Project\SG_Project\VHDL\disp_ctrl_top.vhd":1306:1:1306:2|M
-@W: CL260 :"H:\Project\SG_Project\VHDL\disp_ctrl_top.vhd":1306:1:1306:2|M
+@W: CD638 :"H:\Project\SG_Project\VHDL\disp_ctrl_top.vhd":157:7:157:23|M
+@W: CD638 :"H:\Project\SG_Project\VHDL\disp_ctrl_top.vhd":178:7:178:19|M
+@W: CD638 :"H:\Project\SG_Project\VHDL\disp_ctrl_top.vhd":180:7:180:17|M
+@W: CD638 :"H:\Project\SG_Project\VHDL\disp_ctrl_top.vhd":181:7:181:19|M
+@W: CD638 :"H:\Project\SG_Project\VHDL\disp_ctrl_top.vhd":221:7:221:28|M
+@W: CL240 :"H:\Project\SG_Project\VHDL\disp_ctrl_top.vhd":221:7:221:28|M
+@W: CD638 :"H:\Project\SG_Project\VHDL\disp_ctrl_top.vhd":223:7:223:31|M
+@W: CL240 :"H:\Project\SG_Project\VHDL\disp_ctrl_top.vhd":223:7:223:31|M
+@W: CD638 :"H:\Project\SG_Project\VHDL\disp_ctrl_top.vhd":224:7:224:29|M
+@W: CL240 :"H:\Project\SG_Project\VHDL\disp_ctrl_top.vhd":224:7:224:29|M
+@W: CD638 :"H:\Project\SG_Project\VHDL\disp_ctrl_top.vhd":226:7:226:32|M
+@W: CL240 :"H:\Project\SG_Project\VHDL\disp_ctrl_top.vhd":226:7:226:32|M
+@W: CD638 :"H:\Project\SG_Project\VHDL\disp_ctrl_top.vhd":256:7:256:17|M
+@W: CD638 :"H:\Project\SG_Project\VHDL\disp_ctrl_top.vhd":257:7:257:23|M
+@W: CD638 :"H:\Project\SG_Project\VHDL\disp_ctrl_top.vhd":272:7:272:12|M
+@W: CD638 :"H:\Project\SG_Project\VHDL\disp_ctrl_top.vhd":273:7:273:13|M
+@W: BN132 :"h:\project\sg_project\vhdl\disp_ctrl_top.vhd":766:2:766:3|M
+@W: BN132 :"h:\project\sg_project\vhdl\disp_ctrl_top.vhd":766:2:766:3|M
+@W: BN132 :"h:\project\sg_project\vhdl\disp_ctrl_top.vhd":766:2:766:3|M
+@W: BN132 :"h:\project\sg_project\vhdl\disp_ctrl_top.vhd":766:2:766:3|M
+@W: CD326 :"H:\Project\SG_Project\VHDL\disp_ctrl_top.vhd":974:0:974:11|M
+@W: CD326 :"H:\Project\SG_Project\VHDL\disp_ctrl_top.vhd":996:0:996:11|M
+@W: CL168 :"H:\Project\SG_Project\VHDL\disp_ctrl_top.vhd":996:0:996:11|M
+@W: CL111 :"H:\Project\SG_Project\VHDL\disp_ctrl_top.vhd":1307:1:1307:2|M
+@W: CL169 :"H:\Project\SG_Project\VHDL\disp_ctrl_top.vhd":1307:1:1307:2|M
+@N: CL177 :"H:\Project\SG_Project\VHDL\disp_ctrl_top.vhd":1307:1:1307:2|M
+@W: CL190 :"H:\Project\SG_Project\VHDL\disp_ctrl_top.vhd":1307:1:1307:2|M
+@W: CL260 :"H:\Project\SG_Project\VHDL\disp_ctrl_top.vhd":1307:1:1307:2|M
+@W: CL260 :"H:\Project\SG_Project\VHDL\disp_ctrl_top.vhd":1307:1:1307:2|M
 @N: CD630 :"H:\Project\SG_Project\VHDL\gen_reg.vhd":34:7:34:13|M
 @N: CD630 :"H:\Project\SG_Project\VHDL\gen_reg.vhd":34:7:34:13|M
 @N: CD630 :"H:\Project\SG_Project\VHDL\gen_reg.vhd":34:7:34:13|M
@@ -92,9 +85,7 @@
 @N: CD630 :"H:\Project\SG_Project\VHDL\gen_reg.vhd":34:7:34:13|M
 @N: CD630 :"H:\Project\SG_Project\VHDL\gen_reg.vhd":34:7:34:13|M
 @W: CL159 :"H:\Project\SG_Project\VHDL\gen_reg.vhd":62:3:62:7|M
-@TM:1364399476
 @N: BN116 :"h:\project\sg_project\vhdl\gen_reg.vhd":86:2:86:3|M
-@TM:1364399347
 @N: CD364 :"H:\Project\SG_Project\VHDL\gen_reg.vhd":102:5:102:12|M
 @N: CD364 :"H:\Project\SG_Project\VHDL\gen_reg.vhd":102:5:102:12|M
 @N: CD364 :"H:\Project\SG_Project\VHDL\gen_reg.vhd":102:5:102:12|M
@@ -124,7 +115,6 @@
 @N: CD364 :"H:\Project\SG_Project\VHDL\gen_reg.vhd":106:4:106:11|M
 @N: CD364 :"H:\Project\SG_Project\VHDL\gen_reg.vhd":106:4:106:11|M
 @N: CD630 :"H:\Project\SG_Project\VHDL\global_nets_top.vhd":37:7:37:21|M
-@TM:1364404330
 @N: CD630 :"H:\Project\SG_Project\VHDL\Hexss.vhd":23:7:23:11|M
 @N: FA239 :"h:\project\sg_project\vhdl\hexss.vhd":48:3:48:11|M
 @N: CD630 :"H:\Project\SG_Project\VHDL\intercon.vhd":35:7:35:14|M
@@ -132,8 +122,6 @@
 @N: CD233 :"H:\Project\SG_Project\VHDL\intercon.vhd":98:22:98:23|M
 @N: CD233 :"H:\Project\SG_Project\VHDL\intercon.vhd":98:22:98:23|M
 @W: CL138 :"H:\Project\SG_Project\VHDL\intercon.vhd":167:2:167:3|M
-@N: FA100 :"h:\project\sg_project\vhdl\intercon.vhd":167:2:167:3|M
-@N: FA100 :"h:\project\sg_project\vhdl\intercon.vhd":167:2:167:3|M
 @N: CD364 :"H:\Project\SG_Project\VHDL\intercon.vhd":175:6:175:12|M
 @N: CD364 :"H:\Project\SG_Project\VHDL\intercon.vhd":175:6:175:12|M
 @N: CD364 :"H:\Project\SG_Project\VHDL\intercon.vhd":184:6:184:11|M
@@ -282,9 +270,6 @@
 @N: CD630 :"H:\Project\SG_Project\VHDL\mem_mng_top.vhd":29:7:29:17|M
 @N: CD364 :"H:\Project\SG_Project\VHDL\mem_mng_top.vhd":505:4:505:14|M
 @N: CD364 :"H:\Project\SG_Project\VHDL\mem_mng_top.vhd":506:4:506:14|M
-@TM:1364578494
-@N: FA100 :"h:\project\sg_project\vhdl\mem_mng_top.vhd":769:10:769:11|M
-@TM:1364491902
 @N: CD630 :"H:\Project\SG_Project\VHDL\mp_dec.vhd":52:7:52:12|M
 @N: CD231 :"H:\Project\SG_Project\VHDL\mp_dec.vhd":108:19:108:20|M
 @W: CD638 :"H:\Project\SG_Project\VHDL\mp_dec.vhd":152:7:152:12|M
@@ -361,14 +346,19 @@
 @N: BN116 :"h:\project\sg_project\vhdl\pixel_mng.vhd":453:2:453:3|M
 @N: BN116 :"h:\project\sg_project\vhdl\pixel_mng.vhd":467:2:467:3|M
 @N: CD364 :"H:\Project\SG_Project\VHDL\pixel_mng.vhd":473:4:473:14|M
-@N: CD630 :"H:\Project\SG_Project\VHDL\pll.vhd":42:7:42:9|M
-@N: CD630 :"H:\Project\SG_Project\VHDL\pll.vhd":68:11:68:16|M
+@TM:1366016634
+@N: CD630 :"H:\Project\SG_Project\VHDL\pll_new_1.vhd":42:7:42:15|M
+@N: CD630 :"H:\Project\SG_Project\VHDL\pll_new_1.vhd":66:11:66:16|M
+@N: CD630 :"H:\Project\SG_Project\VHDL\pll_new_2.vhd":42:7:42:15|M
+@N: CD630 :"H:\Project\SG_Project\VHDL\pll_new_2.vhd":64:11:64:16|M
 @N: CD630 :"H:\Project\SG_Project\VHDL\ram_simple.vhd":45:7:45:16|M
 @N: CL134 :"H:\Project\SG_Project\VHDL\ram_simple.vhd":69:7:69:14|M
+@TM:1366016762
 @W: MF244 :"h:\project\sg_project\vhdl\ram_simple.vhd":69:7:69:14|M
 @W: MF245 :"h:\project\sg_project\vhdl\ram_simple.vhd":69:7:69:14|M
 @W: BN132 :"h:\project\sg_project\vhdl\ram_simple.vhd":98:2:98:3|M
 @N: BN116 :"h:\project\sg_project\vhdl\ram_simple.vhd":113:2:113:3|M
+@TM:1366016634
 @N: CD630 :"H:\Project\SG_Project\VHDL\reset_blk_top.vhd":38:7:38:19|M
 @N: CD630 :"H:\Project\SG_Project\VHDL\reset_debouncer.vhd":30:7:30:21|M
 @N: CD364 :"H:\Project\SG_Project\VHDL\reset_debouncer.vhd":87:4:87:11|M
@@ -377,9 +367,11 @@
 @W: CL159 :"H:\Project\SG_Project\VHDL\rx_path.vhd":67:4:67:12|M
 @N: CD231 :"H:\Project\SG_Project\VHDL\rx_path.vhd":82:16:82:17|M
 @W: CD326 :"H:\Project\SG_Project\VHDL\rx_path.vhd":270:1:270:9|M
+@TM:1366016762
 @N:  :"h:\project\sg_project\vhdl\rx_path.vhd":420:2:420:3|M
 @N:  :"h:\project\sg_project\vhdl\rx_path.vhd":420:2:420:3|M
 @N: BN116 :"h:\project\sg_project\vhdl\rx_path.vhd":420:2:420:3|M
+@TM:1366016634
 @N: CL201 :"H:\Project\SG_Project\VHDL\rx_path.vhd":420:2:420:3|M
 @N: CD364 :"H:\Project\SG_Project\VHDL\rx_path.vhd":457:5:457:18|M
 @N: CD364 :"H:\Project\SG_Project\VHDL\rx_path.vhd":466:6:466:21|M
@@ -409,18 +401,21 @@
 @N: CD630 :"H:\Project\SG_Project\VHDL\sdram_controller.vhd":42:7:42:22|M
 @N: CD231 :"H:\Project\SG_Project\VHDL\sdram_controller.vhd":116:18:116:19|M
 @N: CD231 :"H:\Project\SG_Project\VHDL\sdram_controller.vhd":127:18:127:19|M
+@TM:1366016762
 @N:  :"h:\project\sg_project\vhdl\sdram_controller.vhd":224:1:224:2|M
 @N:  :"h:\project\sg_project\vhdl\sdram_controller.vhd":224:1:224:2|M
 @N:  :"h:\project\sg_project\vhdl\sdram_controller.vhd":224:1:224:2|M
 @N:  :"h:\project\sg_project\vhdl\sdram_controller.vhd":296:1:296:2|M
-@N:  :"h:\project\sg_project\vhdl\sdram_controller.vhd":359:1:359:2|M
+@TM:1366016634
 @N: CD364 :"H:\Project\SG_Project\VHDL\sdram_controller.vhd":456:4:456:12|M
 @N: CD364 :"H:\Project\SG_Project\VHDL\sdram_controller.vhd":559:3:559:16|M
 @N: CD364 :"H:\Project\SG_Project\VHDL\sdram_controller.vhd":592:4:592:12|M
 @N: CD364 :"H:\Project\SG_Project\VHDL\sdram_controller.vhd":597:4:597:12|M
 @N: CD364 :"H:\Project\SG_Project\VHDL\sdram_controller.vhd":603:4:603:12|M
 @N: CD364 :"H:\Project\SG_Project\VHDL\sdram_controller.vhd":633:4:633:14|M
+@TM:1366016762
 @W: BN132 :"h:\project\sg_project\vhdl\sdram_controller.vhd":642:1:642:2|M
+@TM:1366016634
 @N: CD630 :"H:\Project\SG_Project\VHDL\SG\general_fifo.vhd":61:7:61:18|M
 @N: CD630 :"H:\Project\SG_Project\VHDL\SG\general_fifo.vhd":61:7:61:18|M
 @N: CD630 :"H:\Project\SG_Project\VHDL\SG\general_fifo.vhd":61:7:61:18|M
@@ -429,6 +424,7 @@
 @N: CL134 :"H:\Project\SG_Project\VHDL\SG\general_fifo.vhd":96:7:96:9|M
 @N: CL134 :"H:\Project\SG_Project\VHDL\SG\general_fifo.vhd":96:7:96:9|M
 @N: CL134 :"H:\Project\SG_Project\VHDL\SG\general_fifo.vhd":96:7:96:9|M
+@TM:1366016762
 @W: MF244 :"h:\project\sg_project\vhdl\sg\general_fifo.vhd":96:7:96:9|M
 @W: MF244 :"h:\project\sg_project\vhdl\sg\general_fifo.vhd":96:7:96:9|M
 @W: MF244 :"h:\project\sg_project\vhdl\sg\general_fifo.vhd":96:7:96:9|M
@@ -438,10 +434,12 @@
 @W: MF245 :"h:\project\sg_project\vhdl\sg\general_fifo.vhd":96:7:96:9|M
 @W: MF245 :"h:\project\sg_project\vhdl\sg\general_fifo.vhd":96:7:96:9|M
 @N: BN116 :"h:\project\sg_project\vhdl\sg\general_fifo.vhd":116:2:116:3|M
+@TM:1366016634
 @N: CL177 :"H:\Project\SG_Project\VHDL\SG\general_fifo.vhd":136:2:136:3|M
 @N: CL177 :"H:\Project\SG_Project\VHDL\SG\general_fifo.vhd":136:2:136:3|M
 @N: CL177 :"H:\Project\SG_Project\VHDL\SG\general_fifo.vhd":136:2:136:3|M
 @N: CL177 :"H:\Project\SG_Project\VHDL\SG\general_fifo.vhd":136:2:136:3|M
+@TM:1366016762
 @N: BN116 :"h:\project\sg_project\vhdl\sg\general_fifo.vhd":182:2:182:3|M
 @N:  :"h:\project\sg_project\vhdl\sg\general_fifo.vhd":198:2:198:3|M
 @N:  :"h:\project\sg_project\vhdl\sg\general_fifo.vhd":198:2:198:3|M
@@ -454,20 +452,25 @@
 @N:  :"h:\project\sg_project\vhdl\sg\general_fifo.vhd":235:2:235:3|M
 @N:  :"h:\project\sg_project\vhdl\sg\general_fifo.vhd":235:2:235:3|M
 @N:  :"h:\project\sg_project\vhdl\sg\general_fifo.vhd":235:2:235:3|M
+@TM:1366016634
 @N: CD364 :"H:\Project\SG_Project\VHDL\SG\general_fifo.vhd":245:6:245:10|M
 @N: CD364 :"H:\Project\SG_Project\VHDL\SG\general_fifo.vhd":245:6:245:10|M
 @N: CD364 :"H:\Project\SG_Project\VHDL\SG\general_fifo.vhd":245:6:245:10|M
 @N: CD364 :"H:\Project\SG_Project\VHDL\SG\general_fifo.vhd":245:6:245:10|M
 @N: CD630 :"H:\Project\SG_Project\VHDL\SG\led.vhd":26:7:26:9|M
+@TM:1366016762
 @N:  :"h:\project\sg_project\vhdl\sg\led.vhd":62:2:62:3|M
+@TM:1366016634
 @N: CD630 :"H:\Project\SG_Project\VHDL\SG\manager.vhd":45:7:45:13|M
 @N: CD231 :"H:\Project\SG_Project\VHDL\SG\manager.vhd":108:14:108:15|M
 @W: CL169 :"H:\Project\SG_Project\VHDL\SG\manager.vhd":164:2:164:3|M
 @N: CL201 :"H:\Project\SG_Project\VHDL\SG\manager.vhd":235:2:235:3|M
 @W: CD604 :"H:\Project\SG_Project\VHDL\SG\manager.vhd":331:4:331:17|M
+@TM:1366016762
 @N:  :"h:\project\sg_project\vhdl\sg\manager.vhd":361:2:361:3|M
 @N:  :"h:\project\sg_project\vhdl\sg\manager.vhd":361:2:361:3|M
 @N:  :"h:\project\sg_project\vhdl\sg\manager.vhd":394:2:394:3|M
+@TM:1366016634
 @W: CL169 :"H:\Project\SG_Project\VHDL\SG\manager.vhd":447:2:447:3|M
 @W: CL189 :"H:\Project\SG_Project\VHDL\SG\manager.vhd":447:2:447:3|M
 @W: CL190 :"H:\Project\SG_Project\VHDL\SG\manager.vhd":447:2:447:3|M
@@ -476,9 +479,13 @@
 @N: CD630 :"H:\Project\SG_Project\VHDL\SG\mux2.vhd":30:7:30:10|M
 @N: CD630 :"H:\Project\SG_Project\VHDL\SG\opcode_store.vhd":33:7:33:18|M
 @W: CL159 :"H:\Project\SG_Project\VHDL\SG\opcode_store.vhd":37:4:37:9|M
+@TM:1366016762
 @W: BN132 :"h:\project\sg_project\vhdl\sg\opcode_store.vhd":138:2:138:3|M
+@TM:1366016634
 @W: CL169 :"H:\Project\SG_Project\VHDL\SG\opcode_store.vhd":183:2:183:3|M
+@TM:1366016762
 @N:  :"h:\project\sg_project\vhdl\sg\opcode_store.vhd":203:2:203:3|M
+@TM:1366016634
 @N: CD630 :"H:\Project\SG_Project\VHDL\SG\opcode_unite.vhd":37:7:37:18|M
 @N: CD233 :"H:\Project\SG_Project\VHDL\SG\opcode_unite.vhd":64:14:64:15|M
 @W: CL169 :"H:\Project\SG_Project\VHDL\SG\opcode_unite.vhd":96:2:96:3|M
@@ -486,57 +493,70 @@
 @W: CD604 :"H:\Project\SG_Project\VHDL\SG\opcode_unite.vhd":151:6:151:19|M
 @N: CD630 :"H:\Project\SG_Project\VHDL\SG\RAM_300.vhd":40:7:40:13|M
 @N: CL134 :"H:\Project\SG_Project\VHDL\SG\RAM_300.vhd":56:9:56:11|M
+@TM:1366016762
 @W: BN132 :"h:\project\sg_project\vhdl\sg\ram_300.vhd":88:2:88:3|M
+@TM:1366016634
 @N: CD630 :"H:\Project\SG_Project\VHDL\SG\SG_WBM_IF.vhd":30:7:30:15|M
 @N: CD231 :"H:\Project\SG_Project\VHDL\SG\SG_WBM_IF.vhd":74:17:74:18|M
-@TM:1364578494
-@N:  :"h:\project\sg_project\vhdl\sg\sg_wbm_if.vhd":110:2:110:3|M
-@N: CD364 :"H:\Project\SG_Project\VHDL\SG\SG_WBM_IF.vhd":116:4:116:12|M
-@W: BN132 :"h:\project\sg_project\vhdl\sg\sg_wbm_if.vhd":161:2:161:3|M
-@W: CL169 :"H:\Project\SG_Project\VHDL\SG\SG_WBM_IF.vhd":161:2:161:3|M
-@W: CL190 :"H:\Project\SG_Project\VHDL\SG\SG_WBM_IF.vhd":161:2:161:3|M
-@N: CL201 :"H:\Project\SG_Project\VHDL\SG\SG_WBM_IF.vhd":161:2:161:3|M
-@W: CL260 :"H:\Project\SG_Project\VHDL\SG\SG_WBM_IF.vhd":161:2:161:3|M
-@N: CD364 :"H:\Project\SG_Project\VHDL\SG\SG_WBM_IF.vhd":238:6:238:11|M
-@N: CD364 :"H:\Project\SG_Project\VHDL\SG\SG_WBM_IF.vhd":279:6:279:11|M
-@N: CD364 :"H:\Project\SG_Project\VHDL\SG\SG_WBM_IF.vhd":358:6:358:11|M
-@N:  :"h:\project\sg_project\vhdl\sg\sg_wbm_if.vhd":389:2:389:3|M
-@N: CD364 :"H:\Project\SG_Project\VHDL\SG\SG_WBM_IF.vhd":399:5:399:11|M
-@N: CD364 :"H:\Project\SG_Project\VHDL\SG\SG_WBM_IF.vhd":402:4:402:10|M
-@TM:1364491902
+@N: CD364 :"H:\Project\SG_Project\VHDL\SG\SG_WBM_IF.vhd":118:4:118:12|M
+@TM:1366016762
+@W: BN132 :"h:\project\sg_project\vhdl\sg\sg_wbm_if.vhd":163:2:163:3|M
+@TM:1366016634
+@W: CL169 :"H:\Project\SG_Project\VHDL\SG\SG_WBM_IF.vhd":163:2:163:3|M
+@W: CL190 :"H:\Project\SG_Project\VHDL\SG\SG_WBM_IF.vhd":163:2:163:3|M
+@N: CL201 :"H:\Project\SG_Project\VHDL\SG\SG_WBM_IF.vhd":163:2:163:3|M
+@W: CL260 :"H:\Project\SG_Project\VHDL\SG\SG_WBM_IF.vhd":163:2:163:3|M
+@N: CD364 :"H:\Project\SG_Project\VHDL\SG\SG_WBM_IF.vhd":240:6:240:11|M
+@N: CD364 :"H:\Project\SG_Project\VHDL\SG\SG_WBM_IF.vhd":281:6:281:11|M
+@N: CD364 :"H:\Project\SG_Project\VHDL\SG\SG_WBM_IF.vhd":360:6:360:11|M
+@TM:1366016762
+@N:  :"h:\project\sg_project\vhdl\sg\sg_wbm_if.vhd":391:2:391:3|M
+@TM:1366016634
+@N: CD364 :"H:\Project\SG_Project\VHDL\SG\SG_WBM_IF.vhd":401:5:401:11|M
+@N: CD364 :"H:\Project\SG_Project\VHDL\SG\SG_WBM_IF.vhd":404:4:404:10|M
 @N: CD630 :"H:\Project\SG_Project\VHDL\SG\Symbol_Generator_Top.vhd":23:7:23:26|M
 @W: CD638 :"H:\Project\SG_Project\VHDL\SG\Symbol_Generator_Top.vhd":208:8:208:22|M
 @W: CD638 :"H:\Project\SG_Project\VHDL\SG\Symbol_Generator_Top.vhd":239:8:239:19|M
 @W: CD638 :"H:\Project\SG_Project\VHDL\SG\Symbol_Generator_Top.vhd":240:8:240:19|M
 @N: CD630 :"H:\Project\SG_Project\VHDL\sync_rst_gen.vhd":22:7:22:18|M
 @N: CD630 :"H:\Project\SG_Project\VHDL\synthetic_frame_generator.vhd":25:7:25:31|M
+@TM:1366016762
 @W: BN132 :"h:\project\sg_project\vhdl\synthetic_frame_generator.vhd":107:2:107:3|M
 @W: BN132 :"h:\project\sg_project\vhdl\synthetic_frame_generator.vhd":107:2:107:3|M
 @W: BN132 :"h:\project\sg_project\vhdl\synthetic_frame_generator.vhd":107:2:107:3|M
 @W: BN132 :"h:\project\sg_project\vhdl\synthetic_frame_generator.vhd":107:2:107:3|M
+@TM:1366016634
 @W: CL190 :"H:\Project\SG_Project\VHDL\synthetic_frame_generator.vhd":107:2:107:3|M
 @N: CL201 :"H:\Project\SG_Project\VHDL\synthetic_frame_generator.vhd":107:2:107:3|M
 @W: CL260 :"H:\Project\SG_Project\VHDL\synthetic_frame_generator.vhd":107:2:107:3|M
 @W: CL260 :"H:\Project\SG_Project\VHDL\synthetic_frame_generator.vhd":107:2:107:3|M
+@TM:1366016762
 @W: MO161 :"h:\project\sg_project\vhdl\synthetic_frame_generator.vhd":107:2:107:3|M
+@TM:1366016634
 @N: CD364 :"H:\Project\SG_Project\VHDL\synthetic_frame_generator.vhd":154:4:154:14|M
+@TM:1366016762
 @N:  :"h:\project\sg_project\vhdl\synthetic_frame_generator.vhd":166:2:166:3|M
 @N:  :"h:\project\sg_project\vhdl\synthetic_frame_generator.vhd":166:2:166:3|M
+@TM:1366016634
 @N: CD364 :"H:\Project\SG_Project\VHDL\synthetic_frame_generator.vhd":184:6:184:9|M
 @N: CD364 :"H:\Project\SG_Project\VHDL\synthetic_frame_generator.vhd":185:6:185:9|M
 @N: CD364 :"H:\Project\SG_Project\VHDL\synthetic_frame_generator.vhd":192:5:192:8|M
 @N: CD364 :"H:\Project\SG_Project\VHDL\synthetic_frame_generator.vhd":193:5:193:8|M
 @N:  :"H:\Project\SG_Project\VHDL\top_synthesis.vhd":23:7:23:19|M
 @N: CD630 :"H:\Project\SG_Project\VHDL\top_synthesis.vhd":23:7:23:19|M
+@W: CD638 :"H:\Project\SG_Project\VHDL\top_synthesis.vhd":213:7:213:28|M
+@W: CD638 :"H:\Project\SG_Project\VHDL\top_synthesis.vhd":214:7:214:23|M
 @N: CD630 :"H:\Project\SG_Project\VHDL\tx_path.vhd":25:7:25:13|M
 @W: CL246 :"H:\Project\SG_Project\VHDL\tx_path.vhd":90:4:90:12|M
 @W: CL159 :"H:\Project\SG_Project\VHDL\tx_path.vhd":91:4:91:12|M
 @W: CD326 :"H:\Project\SG_Project\VHDL\tx_path.vhd":624:1:624:10|M
 @N: CD630 :"H:\Project\SG_Project\VHDL\tx_path_wbm.vhd":25:7:25:17|M
 @N: CD233 :"H:\Project\SG_Project\VHDL\tx_path_wbm.vhd":69:17:69:18|M
+@TM:1366016762
 @N:  :"h:\project\sg_project\vhdl\tx_path_wbm.vhd":134:2:134:3|M
 @N:  :"h:\project\sg_project\vhdl\tx_path_wbm.vhd":134:2:134:3|M
 @N: BN116 :"h:\project\sg_project\vhdl\tx_path_wbm.vhd":134:2:134:3|M
+@TM:1366016634
 @N: CL201 :"H:\Project\SG_Project\VHDL\tx_path_wbm.vhd":134:2:134:3|M
 @N: CD364 :"H:\Project\SG_Project\VHDL\tx_path_wbm.vhd":170:6:170:16|M
 @N: CD364 :"H:\Project\SG_Project\VHDL\tx_path_wbm.vhd":181:6:181:16|M
@@ -554,7 +574,9 @@
 @N: CD364 :"H:\Project\SG_Project\VHDL\tx_path_wbm.vhd":265:4:265:17|M
 @N: CD630 :"H:\Project\SG_Project\VHDL\uart_rx.vhd":46:7:46:13|M
 @N: CD231 :"H:\Project\SG_Project\VHDL\uart_rx.vhd":74:24:74:25|M
+@TM:1366016762
 @N:  :"h:\project\sg_project\vhdl\uart_rx.vhd":119:2:119:3|M
+@TM:1366016634
 @W: CL169 :"H:\Project\SG_Project\VHDL\uart_rx.vhd":119:2:119:3|M
 @W: CL169 :"H:\Project\SG_Project\VHDL\uart_rx.vhd":119:2:119:3|M
 @W: CL190 :"H:\Project\SG_Project\VHDL\uart_rx.vhd":119:2:119:3|M
@@ -565,22 +587,28 @@
 @W: CD604 :"H:\Project\SG_Project\VHDL\uart_rx.vhd":302:4:302:17|M
 @N: CD630 :"H:\Project\SG_Project\VHDL\uart_tx.vhd":39:7:39:13|M
 @N: CD233 :"H:\Project\SG_Project\VHDL\uart_tx.vhd":70:24:70:25|M
+@TM:1366016762
 @N:  :"h:\project\sg_project\vhdl\uart_tx.vhd":111:2:111:3|M
+@TM:1366016634
 @N: CL201 :"H:\Project\SG_Project\VHDL\uart_tx.vhd":111:2:111:3|M
 @N: CD364 :"H:\Project\SG_Project\VHDL\uart_tx.vhd":157:7:157:13|M
 @W: CD604 :"H:\Project\SG_Project\VHDL\uart_tx.vhd":162:5:162:18|M
 @N: CD630 :"H:\Project\SG_Project\VHDL\vesa_gen_ctrl.vhd":75:7:75:19|M
+@TM:1366016762
 @W: BN132 :"h:\project\sg_project\vhdl\vesa_gen_ctrl.vhd":255:2:255:3|M
 @W: BN132 :"h:\project\sg_project\vhdl\vesa_gen_ctrl.vhd":255:2:255:3|M
 @W: MO161 :"h:\project\sg_project\vhdl\vesa_gen_ctrl.vhd":255:2:255:3|M
 @W: MO161 :"h:\project\sg_project\vhdl\vesa_gen_ctrl.vhd":255:2:255:3|M
+@TM:1366016634
 @N: CD364 :"H:\Project\SG_Project\VHDL\vesa_gen_ctrl.vhd":279:5:279:17|M
 @N: CD364 :"H:\Project\SG_Project\VHDL\vesa_gen_ctrl.vhd":280:5:280:13|M
 @N: CD364 :"H:\Project\SG_Project\VHDL\vesa_gen_ctrl.vhd":281:5:281:16|M
 @N: CD364 :"H:\Project\SG_Project\VHDL\vesa_gen_ctrl.vhd":282:5:282:17|M
 @N: CD364 :"H:\Project\SG_Project\VHDL\vesa_gen_ctrl.vhd":283:5:283:17|M
 @N: CD364 :"H:\Project\SG_Project\VHDL\vesa_gen_ctrl.vhd":284:5:284:17|M
+@TM:1366016762
 @N: BN116 :"h:\project\sg_project\vhdl\vesa_gen_ctrl.vhd":307:2:307:3|M
+@TM:1366016634
 @N: CD364 :"H:\Project\SG_Project\VHDL\vesa_gen_ctrl.vhd":325:5:325:17|M
 @N: CD364 :"H:\Project\SG_Project\VHDL\vesa_gen_ctrl.vhd":329:4:329:16|M
 @N: CD630 :"H:\Project\SG_Project\VHDL\wbs_reg.vhd":26:7:26:13|M
